@@ -1,0 +1,46 @@
+// Functions / Helpers
+
+// Lists
+// ------------------------------
+
+// @function th-list-has-index()
+//
+// Check list for a index.
+// @param $list | list | List to search (required).
+// @param $index | number | List index to find (required).
+// @return $_return | boolean | If list contains index.
+
+@function th-list-has-index(
+  $list,
+  $index
+){
+	$_return: false;
+  @if length($list) >= $index {
+    $_return: true;
+  }
+  @return $_return;
+}
+
+// @function th-list-deep-has()
+//
+// Check list for a value (recurring).
+// @param $list | list | List to search (required).
+// @param $find | mixed | Value to find (required).
+// @return $_return | boolean | If list contains value.
+
+@function th-list-deep-has(
+	$list,
+	$find
+){
+	$_return: false;
+	@each $value in $list {
+		@if list == type-of($value) {
+			$_return: th-list-deep-has($value, $find);
+		} @else {
+			@if $find == $value {
+				@return true;
+			}
+		}
+	}
+	@return $_return;
+}

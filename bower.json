@@ -1,0 +1,19 @@
+{
+  "name": "type-heading",
+  "version": "0.0.5",
+  "authors": [
+    "Elliot Mitchum <elliot@ellio7.com>"
+  ],
+  "description": "A responsive typography tool for headings",
+  "license": "MIT",
+  "homepage": "https://github.com/ellioseven/type-heading",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "type-heading-*.gem",
+    "*.gemspec",
+    "test",
+    "tests"
+  ]
+}

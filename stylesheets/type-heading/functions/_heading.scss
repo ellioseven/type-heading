@@ -1,0 +1,84 @@
+// Functions / Heading
+
+// @function th-heading-get-map()
+//
+// Return a heading map from $th-headings.
+// @param $heading | string | $heading | A heading map key (required). | [$th-headings]
+// @return $_return | list | Heading map.
+
+@function th-heading-get-map(
+  $heading
+){
+  $_return: false;
+  @if string == type-of($heading) and map-has-key($th-headings, $heading) {
+    $_return: map-get($th-headings, $heading);
+  } @else if list == type-of($heading) {
+    $_return: $heading;
+  }
+  @return $_return;
+}
+
+// @function th-heading-get()
+//
+// Return a heading list from $th-headings.
+// @param $heading | mixed | A heading map key or list (required). | [$th-headings]
+// @param breakpoint | number | A heading list breakpoint (optional). | [default:false|$th-headings]
+// @return $_return | list | Heading list.
+
+@function th-heading-get(
+  $heading,
+  $breakpoint: false
+){
+  $_return: false;
+  @if string == type-of($heading) {
+    $_return: th-heading-get-map($heading);
+    @if _th-heading-has-next($_return) {
+      $_return: _th-heading-get-next($_return, $breakpoint);
+    }
+  } @else if list == type-of($heading) {
+    $_return: $heading;
+  }
+  @return $_return;
+}
+
+// @function _th-heading-has-next()
+//
+// Check a heading map for multiple lists.
+// @access private
+// @param $heading | mixed | A heading map key or list (required). | [$th-headings]
+// @return $_return | boolean | If heading map contains multiple lists.
+
+@function _th-heading-has-next(
+  $heading
+){
+  $_return: false;
+  $heading: th-heading-get-map($heading);
+  @if list-separator($heading) != space { $_return: true; }
+  @return $_return;
+}
+
+// @function _th-heading-get-next()
+//
+// Return a heading list from a heading map with multiple heading lists by breakpoint.
+// @access private
+// @param $heading | mixed | A heading map key or list (required). | [$th-headings]
+// @param breakpoint | number | A heading list breakpoint (optional). | [default:false|$th-headings]
+// @return $_return | list | Heading list.
+
+@function _th-heading-get-next(
+  $heading,
+  $breakpoint: false
+){
+  $_return: false;
+  $heading: th-heading-get-map($heading);
+  @if $breakpoint {
+    @each $property in $heading {
+      @if th-property-get($property, breakpoint) == $breakpoint {
+        $_return: $property;
+      }
+    }
+  } @else {
+    $_return: nth($heading, 1);
+  }
+  @return $_return;
+}

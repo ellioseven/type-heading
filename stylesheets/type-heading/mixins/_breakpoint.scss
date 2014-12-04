@@ -1,0 +1,17 @@
+// Mixins / Breakpoint
+
+// @mixin th-breakpoint-heading()
+//
+// Output styles for a heading list within a media query.
+// @param $heading | mixed | A heading map key or list (required). | [$th-headings]
+// @param $breakpoint | number | A heading list breakpoint (required). | [$th-headings]
+
+@mixin th-breakpoint-heading(
+  $heading,
+  $breakpoint,
+  $direction: min-width
+){
+  @media screen and (#{$direction}: #{$breakpoint}){
+    @include th-heading($heading, $breakpoint);
+  }
+}

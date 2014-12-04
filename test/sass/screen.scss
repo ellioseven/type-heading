@@ -1,0 +1,17 @@
+@import "type-heading";
+
+$th-headings: (
+  h1: (36px 42px, 42px 48px default 768px),
+  h2: (24px 36px, 32px 38px default 768px),
+  h3: (18px),
+  h4: (16px),
+  h5: (14px),
+  h6: (12px)
+  );
+
+$th-defaults: (
+  font-size: 16px,
+  line-height: 24px,
+  margin-top: 20px,
+  margin-bottom: 20px
+  );

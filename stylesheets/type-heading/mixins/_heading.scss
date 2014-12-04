@@ -1,0 +1,37 @@
+// Mixins / Heading
+
+// @mixin th-heading
+//
+// Output styles for a heading list.
+// @param $heading | mixed | A heading map key or list (required). | [$th-headings]
+// @param $breakpoint | number | A heading list breakpoint (optional). | [default:false|$th-headings]
+
+@mixin th-heading(
+  $heading,
+  $breakpoint: false
+){
+  $heading-value: th-heading-get($heading, $breakpoint);
+  margin-top: th-property-get($heading, margin-top, $breakpoint);
+  margin-bottom: th-property-get($heading, margin-bottom, $breakpoint);
+  font-size: th-property-get($heading, font-size, $breakpoint);
+  line-height: th-property-get($heading, line-height, $breakpoint);
+}
+
+// @mixin th-headings
+//
+// Output styles for all heading lists in a heading map.
+// @param $heading | string | A heading map key. | [$th-headings]
+
+@mixin th-headings(
+  $heading
+){
+  $heading-map: th-heading-get-map($heading);
+  @each $heading in $heading-map {
+    $breakpoint: th-property-get($heading, breakpoint);
+    @if $breakpoint {
+      @include th-breakpoint-heading($heading, $breakpoint);
+    } @else {
+      @include th-heading($heading);
+    }
+  }
+}

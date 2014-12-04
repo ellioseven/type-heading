@@ -1,0 +1,108 @@
+// Functions / Property
+
+// $th-properties
+//
+// Define heading properties.
+
+$th-properties: (
+  font-size,
+  line-height,
+  (margin-top margin-bottom),
+  breakpoint
+  );
+
+// @function th-property-name-exists()
+//
+// Check if a heading property exists.
+// @param $property-name | string | A property name (required). | [$th-properties]
+// @param $_return | boolean | If property name exists.
+
+@function th-property-name-exists(
+  $property-name
+){
+  $_return: false;
+  @if th-list-deep-has($th-properties, $property-name) { 
+    $_return: true;
+  }
+  @return $_return;
+}
+
+// @function th-property-index()
+//
+// Return index of a property name.
+// @param $property-name | string | A property name (required). | [$th-properties]
+// @return $_return | mixed | Property name index.
+
+@function th-property-index(
+  $property-name
+){
+  @if not th-property-name-exists($property-name) { @return false; }
+  $_return: false;
+  @each $property in $th-properties {
+    @if type-of($property) == list {
+      @each $property-inner in $property {
+        @if $property-inner == $property-name {
+          $property-index-outer: index($th-properties, $property);
+          $property-index-inner: index($property, $property-inner);
+          $_return: ($property-index-outer, $property-index-inner);
+        }
+      }
+    } @else if $property == $property-name {
+      $_return: index($th-properties, $property); 
+    }
+  }
+  @return $_return;
+}
+
+// @function th-property-get-default()
+//
+// Return a default heading property value.
+// @param $property-name | string | A heading property name (required). | [$th-properties]
+// @return $_return | number | Default heading property value.
+
+@function th-property-get-default(
+  $property-name
+){
+  @if not th-property-name-exists($property-name) { @return false; }
+  @return map-get($th-defaults, $property-name);
+}
+
+// @function th-property-get
+//
+// Returns a heading list property value.
+// @param $heading | mixed | A heading map key or list (required). | [$th-headings]
+// @param $property-name | string | A heading property name (required). | [$th-defaults]
+// @param $breakpoint | number | A heading breakpoint (optional). | [$th-headings]
+// @return $_return | number | Heading property value.
+
+@function th-property-get(
+  $heading,
+  $property-name,
+  $breakpoint: false
+){
+  @if not th-property-name-exists($property-name) { @return false; }
+  @if length($heading) == 1 and $property-name == breakpoint { @return false; }
+  $_return: false;
+  $heading: th-heading-get($heading, $breakpoint);
+  $property-index: th-property-index($property-name);
+  $property-index-outer: $property-index;
+  $property-index-inner: false;
+  @if type-of($property-index) == list {
+    $property-index-outer: nth($property-index, 1);
+    $property-index-inner: nth($property-index, 2);
+  }
+  @if th-list-has-index($heading, $property-index-outer) {
+    $_return: nth($heading, $property-index-outer);
+    @if list == type-of($_return) {
+      @if th-list-has-index($_return, $property-index-inner) {
+        $_return: nth($_return, $property-index-inner);
+      } @else {
+        $_return: th-property-get-default($property-name);
+      }
+    }
+  } @else {
+    $_return: default;
+  }
+  @if $_return == default { $_return: th-property-get-default($property-name); }
+  @return $_return;
+}
