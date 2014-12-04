@@ -37,7 +37,7 @@ $th-properties: (
   $property-name
 ){
   @if not th-property-name-exists($property-name) { @return false; }
-  $_return: false;
+  $_return: $property-name;
   @each $property in $th-properties {
     @if type-of($property) == list {
       @each $property-inner in $property {
@@ -63,8 +63,10 @@ $th-properties: (
 @function th-property-get-default(
   $property-name
 ){
+  $_return: $property-name;
   @if not th-property-name-exists($property-name) { @return false; }
-  @return map-get($th-defaults, $property-name);
+  $_return: map-get($th-defaults, $property-name);
+  @return $_return;
 }
 
 // @function th-property-get
@@ -82,7 +84,7 @@ $th-properties: (
 ){
   @if not th-property-name-exists($property-name) { @return false; }
   @if length($heading) == 1 and $property-name == breakpoint { @return false; }
-  $_return: false;
+  $_return: $heading;
   $heading: th-heading-get($heading, $breakpoint);
   $property-index: th-property-index($property-name);
   $property-index-outer: $property-index;

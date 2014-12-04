@@ -10,7 +10,7 @@
   $heading,
   $breakpoint: false
 ){
-  $heading-value: th-heading-get($heading, $breakpoint);
+  $heading: th-heading-get($heading, $breakpoint);
   margin-top: th-property-get($heading, margin-top, $breakpoint);
   margin-bottom: th-property-get($heading, margin-bottom, $breakpoint);
   font-size: th-property-get($heading, font-size, $breakpoint);

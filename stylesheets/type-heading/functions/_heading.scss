@@ -9,11 +9,9 @@
 @function th-heading-get-map(
   $heading
 ){
-  $_return: false;
+  $_return: $heading;
   @if string == type-of($heading) and map-has-key($th-headings, $heading) {
     $_return: map-get($th-headings, $heading);
-  } @else if list == type-of($heading) {
-    $_return: $heading;
   }
   @return $_return;
 }
@@ -29,14 +27,12 @@
   $heading,
   $breakpoint: false
 ){
-  $_return: false;
+  $_return: $heading;
   @if string == type-of($heading) {
     $_return: th-heading-get-map($heading);
     @if _th-heading-has-next($_return) {
       $_return: _th-heading-get-next($_return, $breakpoint);
     }
-  } @else if list == type-of($heading) {
-    $_return: $heading;
   }
   @return $_return;
 }
@@ -51,9 +47,11 @@
 @function _th-heading-has-next(
   $heading
 ){
-  $_return: false;
+  $_return: $heading;
   $heading: th-heading-get-map($heading);
-  @if list-separator($heading) != space { $_return: true; }
+  @if list-separator($heading) != space { 
+    $_return: true; 
+  }
   @return $_return;
 }
 
@@ -69,7 +67,7 @@
   $heading,
   $breakpoint: false
 ){
-  $_return: false;
+  $_return: $heading;
   $heading: th-heading-get-map($heading);
   @if $breakpoint {
     @each $property in $heading {
