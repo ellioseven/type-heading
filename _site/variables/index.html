@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <title>Variables</title>
+  <meta name="description" content="A responsive typography tool for headings.">
+  <link rel="stylesheet" href="http://ellioseven.github.io/type-heading/css/main.css">
+  <link rel="canonical" href="http://ellioseven.github.io/type-heading/variables/">
+  <link rel="alternate" type="application/atom+xml" title="Type Heading" href="http://ellioseven.github.io/type-heading/feed.xml" />
+</head>
+
+  <body>
+    <header class="site-header">
+  <div class="site-inner site-header-inner">
+    <div class="branding">
+      <p class="branding-title"><a href="http://ellioseven.github.io/type-heading/">Type Heading</a></p>
+      <p class="branding-description">A responsive typography tool for headings.</p>
+    </div>
+    <nav class="site-navigation">
+      <ul>
+        
+          
+        
+          
+          <li><a href="http://ellioseven.github.io/type-heading/getting-started/">Getting Started</a></li>
+          
+        
+          
+        
+          
+          <li><a href="http://ellioseven.github.io/type-heading/usage/">Usage</a></li>
+          
+        
+          
+          <li><a href="http://ellioseven.github.io/type-heading/variables/">Variables</a></li>
+          
+        
+      </ul>
+    </nav>
+  </div><!-- .site-header-inner -->
+</header>
+
+    <main class="site-main">
+      <div class="site-inner site-main-inner">
+        <article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">Variables</h1>
+  </header>
+  <div class="entry-content">
+    <hr>
+
+<h4>$th-headings</h4>
+
+<p><strong>Type:</strong> Map</p>
+
+<p><strong>Description:</strong> Define heading maps, lists and property values.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// Define heading maps, lists and property values</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span>
+  <span class="na">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">30</span><span class="kt">px</span> <span class="mi">38</span><span class="kt">px</span><span class="p">)</span><span class="o">,</span>
+  <span class="na">h2</span><span class="o">:</span> <span class="p">(</span><span class="mi">24</span><span class="kt">px</span> <span class="mi">30</span><span class="kt">px</span><span class="p">)</span><span class="o">,</span>
+  <span class="na">h3</span><span class="o">:</span> <span class="p">(</span><span class="mi">18</span><span class="kt">px</span> <span class="mi">24</span><span class="kt">px</span><span class="p">)</span><span class="o">,</span>
+  <span class="na">h4</span><span class="o">:</span> <span class="p">(</span><span class="mi">16</span><span class="kt">px</span> <span class="mi">22</span><span class="kt">px</span><span class="p">)</span><span class="o">,</span>
+  <span class="na">h5</span><span class="o">:</span> <span class="p">(</span><span class="mi">14</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="p">)</span><span class="o">,</span>
+  <span class="na">h6</span><span class="o">:</span> <span class="p">(</span><span class="mi">12</span><span class="kt">px</span> <span class="mi">18</span><span class="kt">px</span><span class="p">)</span>
+  <span class="o">);</span></code></pre></div>
+
+<p><strong>Map Structure:</strong></p>
+
+<p>Heading property values are structured like so:</p>
+
+<ol>
+<li>Font Size</li>
+<li>Line Height</li>
+<li>Margin Top / Bottom</li>
+<li>Breakpoint</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="na">key</span><span class="o">:</span> <span class="p">(</span><span class="no">font-size</span> <span class="no">line-height</span> <span class="p">(</span><span class="no">margin-top</span> <span class="no">margin-bottom</span><span class="p">)</span> <span class="n">breakpoint</span><span class="p">)</span><span class="err">;</span></code></pre></div>
+
+<p><strong>Heading Breakpoints:</strong></p>
+
+<p>Specify a heading list at a breakpoint:</p>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// Specify a heading list at a breakpoint</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">30</span><span class="kt">px</span> <span class="mi">38</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">50</span><span class="kt">px</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span></code></pre></div>
+
+<p><strong>Heading Margins:</strong></p>
+
+<p>A heading&#39;s margin top and bottom can be defined together by a single number value:</p>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// Heading margin top and bottom number value</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">30</span><span class="kt">px</span> <span class="mi">38</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span></code></pre></div>
+
+<p>A heading&#39;s margin top and bottom can also be defined individually by a list value:</p>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// Heading margin top and bottom list value</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">30</span><span class="kt">px</span> <span class="mi">38</span><span class="kt">px</span> <span class="p">(</span><span class="mi">10</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="p">))</span> <span class="p">)</span><span class="err">;</span></code></pre></div>
+
+<p><strong>Default Heading Property Values:</strong></p>
+
+<p>Heading property values can be defined based on a default value in two ways:</p>
+
+<ol>
+<li>Not defining the property value:</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// Default heading property values by exclusion</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h3</span><span class="o">:</span> <span class="p">(</span><span class="mi">18</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+
+<span class="na">$th-defaults</span><span class="o">:</span> <span class="p">(</span>
+  <span class="na">font-size</span><span class="o">:</span> <span class="mi">16</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">line-height</span><span class="o">:</span> <span class="mi">24</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">margin-top</span><span class="o">:</span> <span class="mi">30</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span>
+  <span class="o">);</span>
+
+<span class="c1">// is the same as writing</span>
+<span class="c1">// $th-headings: ( h3: (18px 24px (30px 20px)) );</span></code></pre></div>
+
+<ol>
+<li>Defining a property value with a <code>default</code> keyword:</li>
+</ol>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// Default heading property value with the default keyword</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h3</span><span class="o">:</span> <span class="p">(</span><span class="mi">18</span><span class="kt">px</span> <span class="no">default</span> <span class="p">(</span><span class="mi">20</span><span class="kt">px</span> <span class="mi">10</span><span class="kt">px</span><span class="p">))</span> <span class="p">)</span><span class="err">;</span>
+
+<span class="na">$th-defaults</span><span class="o">:</span> <span class="p">(</span>
+  <span class="na">font-size</span><span class="o">:</span> <span class="mi">16</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">line-height</span><span class="o">:</span> <span class="mi">24</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">margin-top</span><span class="o">:</span> <span class="mi">30</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span>
+  <span class="o">);</span>
+
+<span class="c1">// is the same as writing</span>
+<span class="c1">// $th-headings: ( h3: (18px 24px (20px 10px)) );</span></code></pre></div>
+
+<div class="info">Be careful when defining a heading's margin top property value:</div>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// Margin bottom outputs as 22px</span>
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span> <span class="mi">32</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="p">(</span><span class="mi">20</span><span class="kt">px</span><span class="o">,</span><span class="p">)</span> <span class="mi">768</span><span class="kt">px</span> <span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+<span class="na">$th-defaults</span><span class="o">:</span> <span class="p">(</span> <span class="no">margin-bottom</span><span class="o">:</span> <span class="mi">22</span><span class="kt">px</span> <span class="p">)</span><span class="err">;</span>
+<span class="k">@debug</span> <span class="nf">th-property-get</span><span class="p">(</span><span class="n">h1</span><span class="o">,</span> <span class="no">margin-bottom</span><span class="o">,</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span><span class="err">;</span>
+
+<span class="c1">// Margin bottom outputs as 22px</span>
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span> <span class="mi">32</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="p">(</span><span class="mi">20</span><span class="kt">px</span><span class="o">,</span> <span class="no">default</span><span class="p">)</span> <span class="mi">768</span><span class="kt">px</span> <span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+<span class="na">$th-defaults</span><span class="o">:</span> <span class="p">(</span> <span class="no">margin-top</span><span class="o">:</span> <span class="mi">18</span><span class="kt">px</span><span class="o">,</span> <span class="no">margin-bottom</span><span class="o">:</span> <span class="mi">22</span><span class="kt">px</span> <span class="p">)</span><span class="err">;</span>
+<span class="k">@debug</span> <span class="nf">th-property-get</span><span class="p">(</span><span class="n">h1</span><span class="o">,</span> <span class="no">margin-bottom</span><span class="o">,</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span><span class="err">;</span>
+
+<span class="c1">// Margin bottom outputs as 20px</span>
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span> <span class="mi">32</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="p">(</span><span class="mi">20</span><span class="kt">px</span><span class="p">)</span> <span class="mi">768</span><span class="kt">px</span> <span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+<span class="na">$th-defaults</span><span class="o">:</span> <span class="p">(</span> <span class="no">margin-top</span><span class="o">:</span> <span class="mi">18</span><span class="kt">px</span><span class="o">,</span> <span class="no">margin-bottom</span><span class="o">:</span> <span class="mi">22</span><span class="kt">px</span> <span class="p">)</span><span class="err">;</span>
+<span class="k">@debug</span> <span class="nf">th-property-get</span><span class="p">(</span><span class="n">h1</span><span class="o">,</span> <span class="no">margin-bottom</span><span class="o">,</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span><span class="err">;</span></code></pre></div>
+
+<hr>
+
+<h4>$th-defaults</h4>
+
+<p><strong>Type:</strong> Map</p>
+
+<p><strong>Description:</strong> Define default heading property values.</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// Define default heading property values.</span>
+
+<span class="na">$th-defaults</span><span class="o">:</span> <span class="p">(</span>
+  <span class="na">font-size</span><span class="o">:</span> <span class="mi">16</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">line-height</span><span class="o">:</span> <span class="mi">24</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">margin-top</span><span class="o">:</span> <span class="mi">24</span><span class="kt">px</span><span class="o">,</span>
+  <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">24</span><span class="kt">px</span>
+  <span class="o">);</span></code></pre></div>
+
+<p>Default heading property values will be used for any heading list value that uses
+the <code>default</code> keyword or if not included within the list.</p>
+
+  </div>
+</article>
+
+      </div><!-- .site-main-inner -->
+    </main>
+    <footer class="site-footer">
+  <div class="site-inner site-footer-inner">
+    <ul>
+      <li>Type Heading</li>
+      <li>A responsive typography tool for headings.</li>
+      <li><a href="/change-log">View the Change Log</a></li>
+    </ul>
+    <p>&copy; 2014 <a href="http://www.ellio7.com">Ellioseven</a></p>
+  </div><!-- .site-footer -->
+</footer>
+  </body>
+</html>

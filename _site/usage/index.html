@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+  <title>Usage</title>
+  <meta name="description" content="A responsive typography tool for headings.">
+  <link rel="stylesheet" href="http://ellioseven.github.io/type-heading/css/main.css">
+  <link rel="canonical" href="http://ellioseven.github.io/type-heading/usage/">
+  <link rel="alternate" type="application/atom+xml" title="Type Heading" href="http://ellioseven.github.io/type-heading/feed.xml" />
+</head>
+
+  <body>
+    <header class="site-header">
+  <div class="site-inner site-header-inner">
+    <div class="branding">
+      <p class="branding-title"><a href="http://ellioseven.github.io/type-heading/">Type Heading</a></p>
+      <p class="branding-description">A responsive typography tool for headings.</p>
+    </div>
+    <nav class="site-navigation">
+      <ul>
+        
+          
+        
+          
+          <li><a href="http://ellioseven.github.io/type-heading/getting-started/">Getting Started</a></li>
+          
+        
+          
+        
+          
+          <li><a href="http://ellioseven.github.io/type-heading/usage/">Usage</a></li>
+          
+        
+          
+          <li><a href="http://ellioseven.github.io/type-heading/variables/">Variables</a></li>
+          
+        
+      </ul>
+    </nav>
+  </div><!-- .site-header-inner -->
+</header>
+
+    <main class="site-main">
+      <div class="site-inner site-main-inner">
+        <article class="entry">
+  <header class="entry-header">
+    <h1 class="entry-title">Usage</h1>
+  </header>
+  <div class="entry-content">
+    <hr>
+
+<h2>Headings</h2>
+
+<hr>
+
+<h4>th-heading-get()</h4>
+
+<p><strong>Type:</strong> Function</p>
+
+<p><strong>Description:</strong> Return a heading list from $th-headings.</p>
+
+<p><strong>Format:</strong> <code>th-heading-get($heading, $breakpoint)</code></p>
+
+<p><strong>$heading:</strong> mixed | A heading map key or list (required). | [$th-headings]</p>
+
+<p><strong>$breakpoint:</strong> number | A heading list breakpoint (optional). | [default:false|$th-headings]</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// With heading map key example</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">36</span><span class="kt">px</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+<span class="k">@debug</span> <span class="nf">th-heading-get</span><span class="p">(</span><span class="n">h1</span><span class="p">)</span><span class="err">;</span> <span class="c1">// 36px 42px 20px</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// With heading map key and heading list breakpoint example</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">36</span><span class="kt">px</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+<span class="k">@debug</span> <span class="nf">th-heading-get</span><span class="p">(</span><span class="n">h1</span><span class="o">,</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span><span class="err">;</span> <span class="c1">// 42px 48px 20px 768px</span></code></pre></div>
+
+<hr>
+
+<h4>th-heading-get-map()</h4>
+
+<p><strong>Type:</strong> Function</p>
+
+<p><strong>Description:</strong> Return a heading map from $th-headings.</p>
+
+<p><strong>Format:</strong> <code>th-heading-get-map($heading)</code></p>
+
+<p><strong>$heading:</strong> string | A heading map key (required). | [$th-headings]</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// With heading map key example</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">36</span><span class="kt">px</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+<span class="k">@debug</span> <span class="nf">th-heading-get-map</span><span class="p">(</span><span class="n">h1</span><span class="p">)</span><span class="err">;</span> <span class="c1">// 36px 42px 20px, 42px 48px 20px 768px</span></code></pre></div>
+
+<hr>
+
+<h4>th-heading()</h4>
+
+<p><strong>Type:</strong> Mixin</p>
+
+<p><strong>Description:</strong> Output styles for a heading list.</p>
+
+<p><strong>Format:</strong> <code>@include th-heading($heading, $breakpoint)</code></p>
+
+<p><strong>$heading:</strong> string | A heading map key (required). | [$th-headings]</p>
+
+<p><strong>$breakpoint:</strong> number | A heading list breakpoint (optional). | [default:false|$th-headings]</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// With heading map key example</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">36</span><span class="kt">px</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+
+<span class="c1">// Input</span>
+<span class="nt">h1</span> <span class="err">{</span> <span class="o">@</span><span class="nt">include</span> <span class="nt">th-heading</span><span class="o">(</span><span class="nt">h1</span><span class="o">);</span> <span class="err">}</span>
+
+<span class="c1">// Output</span>
+<span class="nt">h1</span> <span class="err">{</span>
+  <span class="na">margin-top</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+  <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+  <span class="na">font-size</span><span class="o">:</span> <span class="mi">36</span><span class="kt">px</span><span class="err">;</span>
+  <span class="na">line-height</span><span class="o">:</span> <span class="mi">42</span><span class="kt">px</span><span class="err">;</span>
+<span class="err">}</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// With heading list breakpoint example</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">36</span><span class="kt">px</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+
+<span class="c1">// Input</span>
+<span class="nt">h1</span> <span class="err">{</span> <span class="o">@</span><span class="nt">include</span> <span class="nt">th-heading</span><span class="o">(</span><span class="nt">h1</span><span class="o">,</span> <span class="nt">768px</span><span class="o">);</span> <span class="err">}</span>
+
+<span class="c1">// Output</span>
+<span class="nt">h1</span> <span class="err">{</span>
+  <span class="na">margin-top</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+  <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+  <span class="na">font-size</span><span class="o">:</span> <span class="mi">42</span><span class="kt">px</span><span class="err">;</span>
+  <span class="na">line-height</span><span class="o">:</span> <span class="mi">48</span><span class="kt">px</span><span class="err">;</span>
+<span class="err">}</span></code></pre></div>
+
+<hr>
+
+<h4>th-headings()</h4>
+
+<p><strong>Type:</strong> Mixin</p>
+
+<p><strong>Description:</strong> Output styles for all heading lists in a heading map.</p>
+
+<p><strong>Format:</strong> <code>@include th-headings($heading, $breakpoint)</code></p>
+
+<p><strong>$heading:</strong> string | A heading map key (required). | [$th-headings]</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// With heading map key example</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">36</span><span class="kt">px</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+
+<span class="c1">// Input</span>
+<span class="nt">h1</span> <span class="err">{</span> <span class="o">@</span><span class="nt">include</span> <span class="nt">th-headings</span><span class="o">(</span><span class="nt">h1</span><span class="o">);</span> <span class="err">}</span>
+
+<span class="c1">// Output</span>
+<span class="nt">h1</span> <span class="err">{</span>
+  <span class="na">margin-top</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+  <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+  <span class="na">font-size</span><span class="o">:</span> <span class="mi">36</span><span class="kt">px</span><span class="err">;</span>
+  <span class="na">line-height</span><span class="o">:</span> <span class="mi">42</span><span class="kt">px</span><span class="err">;</span>
+<span class="err">}</span>
+
+<span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="nt">768px</span><span class="o">)</span> <span class="err">{</span>
+  <span class="nt">h1</span> <span class="err">{</span>
+    <span class="na">margin-top</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+    <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+    <span class="na">font-size</span><span class="o">:</span> <span class="mi">42</span><span class="kt">px</span><span class="err">;</span>
+    <span class="na">line-height</span><span class="o">:</span> <span class="mi">48</span><span class="kt">px</span><span class="err">;</span>
+  <span class="err">}</span>
+<span class="err">}</span></code></pre></div>
+
+<hr>
+
+<h2>Properties</h2>
+
+<hr>
+
+<h4>th-property-get()</h4>
+
+<p><strong>Type:</strong> Function</p>
+
+<p><strong>Description:</strong> Returns a heading list property value.</p>
+
+<p><strong>Format:</strong> <code>th-property-get($heading, $property-name, $breakpoint)</code></p>
+
+<p><strong>$heading:</strong> mixed |  A heading map key or list (required). | [$th-headings]</p>
+
+<p><strong>$property-name:</strong> string | A heading property name (required).</p>
+
+<p><strong>$breakpoint:</strong> number | A heading list breakpoint (optional). | [$th-headings]</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// With heading map key and property name example</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">36</span><span class="kt">px</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+
+<span class="c1">// Input</span>
+<span class="na">h1</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">font-size</span><span class="o">:</span> <span class="nf">th-property-get</span><span class="p">(</span><span class="n">h1</span><span class="o">,</span> <span class="no">font-size</span><span class="p">)</span><span class="err">;</span> <span class="err">}</span>
+
+<span class="c1">// Output</span>
+<span class="nt">h1</span> <span class="err">{</span>
+  <span class="na">font-size</span><span class="o">:</span> <span class="mi">36</span><span class="kt">px</span><span class="err">;</span>
+<span class="err">}</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// With heading map key, property name and list breakpoint example</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">36</span><span class="kt">px</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+
+<span class="c1">// Input</span>
+<span class="na">h1</span><span class="err"> </span><span class="na">{</span><span class="err"> </span><span class="na">line-height</span><span class="o">:</span> <span class="nf">th-property-get</span><span class="p">(</span><span class="n">h1</span><span class="o">,</span> <span class="no">line-height</span><span class="o">,</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span><span class="err">;</span> <span class="err">}</span>
+
+<span class="c1">// Output</span>
+<span class="nt">h1</span> <span class="err">{</span>
+  <span class="na">line-height</span><span class="o">:</span> <span class="mi">48</span><span class="kt">px</span><span class="err">;</span>
+<span class="err">}</span></code></pre></div>
+
+<hr>
+
+<h4>th-property-get-default()</h4>
+
+<p><strong>Type:</strong> Function</p>
+
+<p><strong>Description:</strong> Return a default heading property value.</p>
+
+<p><strong>Format:</strong> <code>th-property-get-default($property-name)</code></p>
+
+<p><strong>$property-name:</strong> string | A heading property name (required).</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// With heading property name example</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">36</span><span class="kt">px</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+
+<span class="c1">// Input</span>
+<span class="nt">h1</span> <span class="err">{</span> 
+  <span class="na">margin-top</span><span class="o">:</span> <span class="nf">th-property-get-default</span><span class="p">(</span><span class="no">margin-top</span><span class="p">)</span><span class="err">;</span>
+  <span class="na">margin-bottom</span><span class="o">:</span> <span class="nf">th-property-get-default</span><span class="p">(</span><span class="no">margin-bottom</span><span class="p">)</span><span class="err">;</span>
+<span class="err">}</span>
+
+<span class="c1">// Output</span>
+<span class="nt">h1</span> <span class="err">{</span>
+  <span class="na">margin-top</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+  <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+<span class="err">}</span></code></pre></div>
+
+<hr>
+
+<h2>Breakpoints</h2>
+
+<hr>
+
+<h4>th-breakpoint-heading()</h4>
+
+<p><strong>Type:</strong> Mixin</p>
+
+<p><strong>Description:</strong> Output styles for a heading list within a media query.</p>
+
+<p><strong>Format:</strong> <code>@include th-breakpoint-heading($heading, $breakpoint, $direction)</code></p>
+
+<p><strong>$heading:</strong> string | A heading map key (required). | [$th-headings]</p>
+
+<p><strong>$breakpoint:</strong> number | A heading list breakpoint (required). | [$th-headings]</p>
+
+<p><strong>$direction:</strong> string | Media query direction (optional). | [default:min-width|max-width]</p>
+
+<p><strong>Example:</strong></p>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// Output styles for a heading list within a min width media query.</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">36</span><span class="kt">px</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+
+<span class="c1">// Input</span>
+<span class="nt">h1</span> <span class="err">{</span> <span class="o">@</span><span class="nt">include</span> <span class="nt">th-breakpoint-heading</span><span class="o">(</span><span class="nt">h1</span><span class="o">,</span> <span class="nt">768px</span><span class="o">)</span> <span class="err">}</span>
+
+<span class="c1">// Output</span>
+<span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">min-width</span><span class="nd">:</span> <span class="nt">768px</span><span class="o">)</span> <span class="err">{</span>
+  <span class="nt">h1</span> <span class="err">{</span>
+    <span class="na">margin-top</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+    <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+    <span class="na">font-size</span><span class="o">:</span> <span class="mi">42</span><span class="kt">px</span><span class="err">;</span>
+    <span class="na">line-height</span><span class="o">:</span> <span class="mi">48</span><span class="kt">px</span><span class="err">;</span>
+  <span class="err">}</span>
+<span class="err">}</span></code></pre></div>
+
+<div class="highlight"><pre><code class="language-sass" data-lang="sass"><span class="c1">// Output styles for a heading list within a max width media query.</span>
+
+<span class="na">$th-headings</span><span class="o">:</span> <span class="p">(</span> <span class="n">h1</span><span class="o">:</span> <span class="p">(</span><span class="mi">36</span><span class="kt">px</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span><span class="o">,</span> <span class="mi">42</span><span class="kt">px</span> <span class="mi">48</span><span class="kt">px</span> <span class="mi">20</span><span class="kt">px</span> <span class="mi">768</span><span class="kt">px</span><span class="p">)</span> <span class="p">)</span><span class="err">;</span>
+
+<span class="c1">// Input</span>
+<span class="nt">h1</span> <span class="err">{</span> <span class="o">@</span><span class="nt">include</span> <span class="nt">th-breakpoint-heading</span><span class="o">(</span><span class="nt">h1</span><span class="o">,</span> <span class="nt">768px</span><span class="o">,</span> <span class="nt">max-width</span><span class="o">)</span> <span class="err">}</span>
+
+<span class="c1">// Output</span>
+<span class="k">@media</span> <span class="nt">screen</span> <span class="nt">and</span> <span class="o">(</span><span class="nt">max-width</span><span class="nd">:</span> <span class="nt">768px</span><span class="o">)</span> <span class="err">{</span>
+  <span class="nt">h1</span> <span class="err">{</span>
+    <span class="na">margin-top</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+    <span class="na">margin-bottom</span><span class="o">:</span> <span class="mi">20</span><span class="kt">px</span><span class="err">;</span>
+    <span class="na">font-size</span><span class="o">:</span> <span class="mi">42</span><span class="kt">px</span><span class="err">;</span>
+    <span class="na">line-height</span><span class="o">:</span> <span class="mi">48</span><span class="kt">px</span><span class="err">;</span>
+  <span class="err">}</span>
+<span class="err">}</span></code></pre></div>
+
+  </div>
+</article>
+
+      </div><!-- .site-main-inner -->
+    </main>
+    <footer class="site-footer">
+  <div class="site-inner site-footer-inner">
+    <ul>
+      <li>Type Heading</li>
+      <li>A responsive typography tool for headings.</li>
+      <li><a href="/change-log">View the Change Log</a></li>
+    </ul>
+    <p>&copy; 2014 <a href="http://www.ellio7.com">Ellioseven</a></p>
+  </div><!-- .site-footer -->
+</footer>
+  </body>
+</html>
