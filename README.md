@@ -15,4 +15,4 @@ To use Type Heading, you will need:
 ## Get Started
 
 * [Github](https://github.com/ellioseven/type-heading)
-* [Documentation}(http://ellioseven.github.io/type-heading/)
+* [Documentation](http://ellioseven.github.io/type-heading/)
