@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.summary = %q{A responsive typography tool for headings}
   s.description = %q{A responsive typography tool for headings}
   s.email = "elliot@ellio7.com"
-  s.homepage = "ellioseven.github.io/type-heading"
+  s.homepage = "http://ellioseven.github.io/type-heading"
 
   # Gem Files
   s.files = %w(README.md)
