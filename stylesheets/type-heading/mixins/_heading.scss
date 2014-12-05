@@ -26,12 +26,16 @@
   $heading
 ){
   $heading-map: th-heading-get-map($heading);
-  @each $heading in $heading-map {
-    $breakpoint: th-property-get($heading, breakpoint);
-    @if $breakpoint {
-      @include th-breakpoint-heading($heading, $breakpoint);
-    } @else {
-      @include th-heading($heading);
+  @if _th-heading-has-next($heading-map) {
+    @each $heading in $heading-map {
+      $breakpoint: th-property-get($heading, breakpoint);
+      @if $breakpoint {
+        @include th-breakpoint-heading($heading, $breakpoint);
+      } @else {
+        @include th-heading($heading);
+      }
     }
+  } @else {
+    @include th-heading($heading)
   }
 }
