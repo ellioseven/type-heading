@@ -47,9 +47,9 @@
 @function _th-heading-has-next(
   $heading
 ){
-  $_return: $heading;
+  $_return: false;
   $heading: th-heading-get-map($heading);
-  @if list-separator($heading) != space { 
+  @if list-separator($heading) == comma { 
     $_return: true; 
   }
   @return $_return;
