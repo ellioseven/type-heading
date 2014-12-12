@@ -1,8 +1,12 @@
 [![Gem Version](https://badge.fury.io/rb/type-heading.svg)](http://badge.fury.io/rb/type-heading)
 
-# Type Heading
+# Type Heading - Alpha
 
 A responsive typography tool for headings.
+
+**Note:** Type heading is currently in [Alpha](http://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha).
+Currently, Type Heading should only be used for testing and/or development, not
+production work.
 
 ## Requirements
 
