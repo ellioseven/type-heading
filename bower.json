@@ -13,6 +13,7 @@
     "bower_components",
     "type-heading-*.gem",
     "*.gemspec",
+    "sache.json",
     "test",
     "tests"
   ]
