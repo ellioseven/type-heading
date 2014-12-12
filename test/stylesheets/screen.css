@@ -1,0 +1,139 @@
+/* line 82, ../sass/screen.scss */
+.default {
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 24px;
+  margin-bottom: 20px;
+}
+
+/* line 89, ../sass/screen.scss */
+h1 {
+  margin-top: 24px;
+  margin-bottom: 20px;
+  font-size: 36px;
+  line-height: 42px;
+}
+@media screen and (min-width: 768px) {
+  /* line 89, ../sass/screen.scss */
+  h1 {
+    margin-top: 30px;
+    margin-bottom: 35px;
+    font-size: 42px;
+    line-height: 48px;
+  }
+}
+
+/* line 90, ../sass/screen.scss */
+h2 {
+  margin-top: 24px;
+  margin-bottom: 20px;
+  font-size: 24px;
+  line-height: 36px;
+}
+@media screen and (min-width: 768px) {
+  /* line 90, ../sass/screen.scss */
+  h2 {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    font-size: 32px;
+    line-height: 38px;
+  }
+}
+
+/* line 91, ../sass/screen.scss */
+h3 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  line-height: 24px;
+}
+@media screen and (min-width: 768px) {
+  /* line 91, ../sass/screen.scss */
+  h3 {
+    margin-top: 24px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+/* line 92, ../sass/screen.scss */
+h4 {
+  margin-top: 24px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 24px;
+}
+@media screen and (min-width: 768px) {
+  /* line 92, ../sass/screen.scss */
+  h4 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+/* line 93, ../sass/screen.scss */
+h5 {
+  margin-top: 24px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+/* line 94, ../sass/screen.scss */
+h6 {
+  margin-top: 24px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  line-height: 24px;
+}
+
+/* line 96, ../sass/screen.scss */
+h1 {
+  margin-top: 30px;
+  margin-bottom: 35px;
+  font-size: 42px;
+  line-height: 48px;
+}
+
+/* line 97, ../sass/screen.scss */
+h2 {
+  margin-top: 25px;
+  margin-bottom: 20px;
+  font-size: 32px;
+  line-height: 38px;
+}
+
+/* line 98, ../sass/screen.scss */
+h3 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+/* line 99, ../sass/screen.scss */
+h4 {
+  margin-top: 24px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* line 100, ../sass/screen.scss */
+h5 {
+  margin-top: 24px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+/* line 101, ../sass/screen.scss */
+h6 {
+  margin-top: 24px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  line-height: 24px;
+}
