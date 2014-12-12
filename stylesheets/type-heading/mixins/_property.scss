@@ -1,0 +1,64 @@
+// Mixins / Property
+
+// @mixin th-property-font-size
+// 
+// Output heading list font size property value.
+// @param $heading: mixed | A heading map key or list (required). | $th-headings
+// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+
+@mixin th-property-font-size(
+	$heading,
+	$breakpoint: false
+){
+	font-size: th-property-font-size($heading, $breakpoint);
+}
+
+// @mixin th-property-line-height
+// 
+// Output heading list line height property value.
+// @param $heading: mixed | A heading map key or list (required). | $th-headings
+// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+
+@mixin th-property-line-height(
+	$heading,
+	$breakpoint: false
+){
+	line-height: th-property-line-height($heading, $breakpoint);
+}
+
+// @mixin th-property-margin-top
+// 
+// Output heading list margin top property value.
+// @param $heading: mixed | A heading map key or list (required). | $th-headings
+// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+
+@mixin th-property-margin-top(
+	$heading,
+	$breakpoint: false
+){
+	margin-top: th-property-margin-top($heading, $breakpoint);
+}
+
+// @mixin th-property-margin-bottom
+// 
+// Output heading list margin bottom property value.
+// @param $heading: mixed | A heading map key or list (required). | $th-headings
+// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+
+@mixin th-property-margin-bottom(
+	$heading,
+	$breakpoint: false
+){
+	margin-bottom: th-property-margin-bottom($heading, $breakpoint);
+}
+
+// @mixin th-property-default
+// 
+// Output a default heading property value.
+// @param $property-name: string | A heading property name (required). | $th-defaults
+
+@mixin th-property-default(
+	$property-name
+){
+	#{$property-name}: th-property-default($property-name);
+}

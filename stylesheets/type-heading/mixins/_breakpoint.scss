@@ -3,8 +3,9 @@
 // @mixin th-breakpoint-heading()
 //
 // Output styles for a heading list within a media query.
-// @param $heading | mixed | A heading map key or list (required). | [$th-headings]
-// @param $breakpoint | number | A heading list breakpoint (required). | [$th-headings]
+// @param $heading: mixed | A heading map key or list (required). | $th-headings
+// @param $breakpoint: number | A heading list breakpoint (required). | $th-headings
+// @param $direction: string | Media query direction (optional). | min-width, max-width
 
 @mixin th-breakpoint-heading(
   $heading,

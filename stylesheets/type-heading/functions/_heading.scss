@@ -1,27 +1,11 @@
 // Functions / Heading
 
-// @function th-heading-get-map()
-//
-// Return a heading map from $th-headings.
-// @param $heading | string | $heading | A heading map key (required). | [$th-headings]
-// @return $_return | list | Heading map.
-
-@function th-heading-get-map(
-  $heading
-){
-  $_return: $heading;
-  @if string == type-of($heading) and map-has-key($th-headings, $heading) {
-    $_return: map-get($th-headings, $heading);
-  }
-  @return $_return;
-}
-
 // @function th-heading-get()
 //
-// Return a heading list from $th-headings.
-// @param $heading | mixed | A heading map key or list (required). | [$th-headings]
-// @param breakpoint | number | A heading list breakpoint (optional). | [default:false|$th-headings]
-// @return $_return | list | Heading list.
+// Return a heading list.
+// @param $heading: mixed | A heading map key or list (required). | $th-headings
+// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+// @return $_return: list | Heading list.
 
 @function th-heading-get(
   $heading,
@@ -37,12 +21,28 @@
   @return $_return;
 }
 
+// @function th-heading-get-map()
+//
+// Return a heading map.
+// @param $heading: string | A heading map key (required). | $th-headings
+// @return $_return: list | Heading map.
+
+@function th-heading-get-map(
+  $heading
+){
+  $_return: $heading;
+  @if string == type-of($heading) and map-has-key($th-headings, $heading) {
+    $_return: map-get($th-headings, $heading);
+  }
+  @return $_return;
+}
+
 // @function _th-heading-has-next()
 //
-// Check a heading map for multiple lists.
+// Check a for multiple heading lists.
 // @access private
-// @param $heading | mixed | A heading map key or list (required). | [$th-headings]
-// @return $_return | boolean | If heading map contains multiple lists.
+// @param $heading: mixed | A heading map key or list (required). | $th-headings
+// @return $_return: boolean | If heading map contains multiple lists.
 
 @function _th-heading-has-next(
   $heading
@@ -57,11 +57,11 @@
 
 // @function _th-heading-get-next()
 //
-// Return a heading list from a heading map with multiple heading lists by breakpoint.
+// Return a heading list by breakpoint.
 // @access private
-// @param $heading | mixed | A heading map key or list (required). | [$th-headings]
-// @param breakpoint | number | A heading list breakpoint (optional). | [default:false|$th-headings]
-// @return $_return | list | Heading list.
+// @param $heading: mixed | A heading map key or list (required). | $th-headings
+// @param $breakpoint: number | A heading list breakpoint (optional). | default:false, $th-headings
+// @return $_return: list | Heading list.
 
 @function _th-heading-get-next(
   $heading,
@@ -71,7 +71,7 @@
   $heading: th-heading-get-map($heading);
   @if $breakpoint {
     @each $property in $heading {
-      @if th-property-get($property, breakpoint) == $breakpoint {
+      @if th-property($property, breakpoint) == $breakpoint {
         $_return: $property;
       }
     }

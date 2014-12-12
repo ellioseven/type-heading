@@ -4,16 +4,16 @@
 //
 // Define heading maps, lists and property values.
 // @type map
-// @map-structure key: (properties, properties)
-// @list-structure key: (font-size line-height (margin-top margin-bottom) breakpoint)
+// @map-structure: $th-headings ( key: (properties, properties) )
+// @list-structure (font-size line-height (margin-top margin-bottom) breakpoint)
 
 $th-headings: (
-  h1: (36px 42px, 42px 48px 24px 768px),
-  h2: (24px 36px 20px),
-  h3: (18px 24px 20px),
-  h4: (18px 24px 20px),
-  h5: (18px 24px),
-  h6: (18px 22px (30px 32px))
+  h1: (36px 42px, 42px 48px default 768px),
+  h2: (24px 36px),
+  h3: (18px 30px),
+  h4: (16px),
+  h5: (14px),
+  h6: (12px)
   ) !default;
 
 // $th-defaults
@@ -22,8 +22,8 @@ $th-headings: (
 // @type map
 
 $th-defaults: (
-  font-size: 12px,
+  font-size: 16px,
   line-height: 24px,
-  margin-top: 28px,
-  margin-bottom: 22px
+  margin-top: 20px,
+  margin-bottom: 20px
   ) !default;

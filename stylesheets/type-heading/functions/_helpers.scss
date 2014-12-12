@@ -6,27 +6,58 @@
 // @function th-list-has-index()
 //
 // Check list for a index.
-// @param $list | list | List to search (required).
-// @param $index | number | List index to find (required).
-// @return $_return | boolean | If list contains index.
+// @param $list: list | List to search (required).
+// @param $index: number | List index to find (required).
+// @return $_return: boolean | If list contains index.
 
 @function th-list-has-index(
   $list,
   $index
 ){
 	$_return: false;
-  @if length($list) >= $index {
+  @if list == type-of($list) and length($list) >= $index {
     $_return: true;
   }
+  @return $_return;
+}
+
+// @function th-list-get-deep
+//
+// Gets a value within lists by a list of indexes (recurring).
+// @param $list: list | List to search (required).
+// @param $index: mixed | List index(es) to find (required).
+// @return $_return: mixed | List value to found.
+
+@function th-list-get-deep(
+  $list,
+  $index
+){
+  $_return: false;
+  $indexes: false;
+  @if list == type-of($index) {
+    $indexes: $index;
+    $index: nth($index, 1);
+  }
+  @if th-list-has-index($list, $index) { 
+    $list: nth($list, $index);
+    @if list == type-of($list) and $indexes {
+      $list: th-list-get-deep($list, list-remove-nth($indexes, 1));
+    }
+  } @else if( list != type-of($list) and $index == 1 ) {
+    $list: $list;
+  } @else {
+    $list: false;
+  }
+  $_return: $list;
   @return $_return;
 }
 
 // @function th-list-deep-has()
 //
 // Check list for a value (recurring).
-// @param $list | list | List to search (required).
-// @param $find | mixed | Value to find (required).
-// @return $_return | boolean | If list contains value.
+// @param $list: list | List to search (required).
+// @param $find: mixed | Value to find (required).
+// @return $_return: boolean | If list contains value.
 
 @function th-list-deep-has(
 	$list,
@@ -43,4 +74,23 @@
 		}
 	}
 	@return $_return;
+}
+
+// @function th-list-remove-nth
+// 
+// Removes a list item by it's index / nth.
+// @param $list: list | List to search (required).
+// @param $index: mixed | List index(es) to find (required).
+
+@function list-remove-nth(
+  $list,
+  $index
+){
+  $_return: ();
+  @each $value in $list {
+    @if $index != index($list, $value) {
+      $_return: append($_return, $value);
+    }
+  }
+  @return $_return;
 }

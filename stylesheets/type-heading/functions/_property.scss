@@ -11,13 +11,110 @@ $th-properties: (
   breakpoint
   );
 
-// @function th-property-name-exists()
+// @function th-property
 //
-// Check if a heading property exists.
-// @param $property-name | string | A property name (required). | [$th-properties]
-// @param $_return | boolean | If property name exists.
+// Return heading list property value.
+// @param $heading: mixed | A heading map key or list (required). | $th-headings
+// @param $property-name: string | A heading property name (required). | $th-defaults
+// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+// @return $_return: number | Heading property value.
 
-@function th-property-name-exists(
+@function th-property(
+  $heading,
+  $property-name,
+  $breakpoint: false
+){
+  $heading-list: th-heading-get($heading, $breakpoint);
+  $property-index: _th-property-index($property-name);
+  $_return: th-list-get-deep($heading-list, $property-index);
+  @if $_return == default or $_return == false { 
+    $_return: th-property-default($property-name);
+  }
+  @return $_return;
+}
+
+// @function th-property-font-size
+// 
+// Return heading list font size property value.
+// @param $heading: mixed | A heading map key or list (required). | $th-headings
+// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+// @return $_return: number | Heading list font size property value.
+
+@function th-property-font-size(
+  $heading,
+  $breakpoint: false
+){
+  $_return: th-property($heading, font-size, $breakpoint);
+  @return $_return;
+}
+
+// @function th-property-line-height
+// 
+// Return heading list line height property value.
+// @param $heading: mixed | A heading map key or list (required). | $th-headings
+// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+// @return $_return: number | Heading list line height property value.
+
+@function th-property-line-height(
+  $heading,
+  $breakpoint: false
+){
+  $_return: th-property($heading, line-height, $breakpoint);
+  @return $_return;
+}
+
+// @function th-property-margin-top
+// 
+// Return heading list margin top property value.
+// @param $heading: mixed | A heading map key or list (required). | $th-headings
+// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+// @return $_return: number | Heading list margin top property value.
+
+@function th-property-margin-top(
+  $heading,
+  $breakpoint: false
+){
+  $_return: th-property($heading, margin-top, $breakpoint);
+  @return $_return;
+}
+
+// @function th-property-margin-bottom
+// 
+// Return heading list margin bottom property value.
+// @param $heading: mixed | A heading map key or list (required). | $th-headings
+// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
+// @return $_return: number | Heading list margin bottom property value.
+
+@function th-property-margin-bottom(
+  $heading,
+  $breakpoint: false
+){
+  $_return: th-property($heading, margin-bottom, $breakpoint);
+  @return $_return;
+}
+
+// @function th-property-default()
+//
+// Return a default heading property value.
+// @param $property-name: string | A heading property name (required). | $th-defaults
+// @return $_return: number | Default heading property value.
+
+@function th-property-default(
+  $property-name
+){
+  $_return: $property-name;
+  $_return: map-get($th-defaults, $property-name);
+  @return $_return;
+}
+
+// @function _th-property-name-exists()
+//
+// Check if a heading property name exists.
+// @access private
+// @param $property-name: string | A property name (required). | $th-properties
+// @param $_return: boolean | If property name exists.
+
+@function _th-property-name-exists(
   $property-name
 ){
   $_return: false;
@@ -27,16 +124,16 @@ $th-properties: (
   @return $_return;
 }
 
-// @function th-property-index()
+// @function _th-property-index()
 //
 // Return index of a property name.
-// @param $property-name | string | A property name (required). | [$th-properties]
-// @return $_return | mixed | Property name index.
+// @access private
+// @param $property-name: string | A property name (required). | $th-properties
+// @return $_return: mixed | Property name index.
 
-@function th-property-index(
+@function _th-property-index(
   $property-name
 ){
-  @if not th-property-name-exists($property-name) { @return false; }
   $_return: $property-name;
   @each $property in $th-properties {
     @if type-of($property) == list {
@@ -51,60 +148,5 @@ $th-properties: (
       $_return: index($th-properties, $property); 
     }
   }
-  @return $_return;
-}
-
-// @function th-property-get-default()
-//
-// Return a default heading property value.
-// @param $property-name | string | A heading property name (required). | [$th-properties]
-// @return $_return | number | Default heading property value.
-
-@function th-property-get-default(
-  $property-name
-){
-  $_return: $property-name;
-  @if not th-property-name-exists($property-name) { @return false; }
-  $_return: map-get($th-defaults, $property-name);
-  @return $_return;
-}
-
-// @function th-property-get
-//
-// Returns a heading list property value.
-// @param $heading | mixed | A heading map key or list (required). | [$th-headings]
-// @param $property-name | string | A heading property name (required). | [$th-defaults]
-// @param $breakpoint | number | A heading breakpoint (optional). | [$th-headings]
-// @return $_return | number | Heading property value.
-
-@function th-property-get(
-  $heading,
-  $property-name,
-  $breakpoint: false
-){
-  @if not th-property-name-exists($property-name) { @return false; }
-  @if length($heading) == 1 and $property-name == breakpoint { @return false; }
-  $_return: $heading;
-  $heading: th-heading-get($heading, $breakpoint);
-  $property-index: th-property-index($property-name);
-  $property-index-outer: $property-index;
-  $property-index-inner: false;
-  @if type-of($property-index) == list {
-    $property-index-outer: nth($property-index, 1);
-    $property-index-inner: nth($property-index, 2);
-  }
-  @if th-list-has-index($heading, $property-index-outer) {
-    $_return: nth($heading, $property-index-outer);
-    @if list == type-of($_return) {
-      @if th-list-has-index($_return, $property-index-inner) {
-        $_return: nth($_return, $property-index-inner);
-      } @else {
-        $_return: th-property-get-default($property-name);
-      }
-    }
-  } @else {
-    $_return: default;
-  }
-  @if $_return == default { $_return: th-property-get-default($property-name); }
   @return $_return;
 }
