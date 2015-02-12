@@ -1,0 +1,63 @@
+// Mixins
+
+// Utilities
+// ------------------------------
+
+// axs-hide
+// Hides elements that are created to help the visually impaired.
+//
+// @since 0.0.1
+// @type Mixin
+// @group utilities
+
+@mixin axs-hide {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// Typography
+// ------------------------------
+
+// type-heading-base
+// Outputs base heading styles.
+//
+// @since 0.0.1
+// @type Mixin
+// @group typography
+
+@mixin type-heading-base {
+  font-family: $type-font-family-display;
+  font-weight: 600;
+}
+
+// Layout
+// ------------------------------
+
+// layout-with-layouts
+// Output @content within all Susy layouts.
+//
+// @since 0.0.1
+// @type Function
+// @group layout
+// @content Styles to be included within each Susy layout.
+//
+// @link http://susydocs.oddbird.net/en/latest/toolkit/#breakpoint
+//
+// @see {mixin} susy-breakpoint
+// 
+// @example Output container styles
+// // @include layout-with-layouts {
+// //   @include container;
+// // }
+
+@mixin layout-with-layouts {
+  @content;
+  @include susy-breakpoint($breakpoint-medium, $susy-medium) { @content; }
+  @include susy-breakpoint($breakpoint-large, $susy-large) { @content; }
+}

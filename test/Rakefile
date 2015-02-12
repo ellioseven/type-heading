@@ -1,0 +1,7 @@
+desc 'Run Tests'
+task :test do
+	puts 'Compile sass tests...'
+	system 'bundle exec compass compile'
+	puts 'Diff sass tests...'
+	system 'git diff --no-index stylesheets/expect.css stylesheets/actual.css'
+end

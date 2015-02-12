@@ -1,0 +1,396 @@
+function th-heading {
+  /* Describe: Return heading */
+  map: 10px 20px 30px 40px;
+  /* Describe: Return heading by breakpoint */
+  map: 50px 60px 70px 80px 768px;
+  /* Describe: Return a further heading by breakpoint */
+  map: 90px 100px 110px 120px 1024px;
+}
+
+function th-heading-get-map {
+  /* Describe: Return heading map */
+  map: 5px;
+  /* Describe: Return heading map with breakpoint */
+  map: 10px 20px 30px 40px, 50px 60px 70px 80px 768px, 90px 100px 110px 120px 1024px;
+}
+
+function th-heading-has-next {
+  /* Describe: Check for heading with next */
+  result: true;
+  /* Describe: Check for heading without next */
+  result: false;
+}
+
+function th-heading-get-next {
+  /* Describe: Get heading with next */
+  map: 10px 20px 30px 40px;
+  /* Describe: Get heading with next and breakpoint */
+  map: 50px 60px 70px 80px 768px;
+}
+
+function th-property {
+  /* Describe: Return property from heading */
+  font-size: 0.55556em;
+  /* Describe: Return property from heading with breakpoint */
+  font-size: 2.77778em;
+  /* Describe: Return default property from heading */
+  margin-top: 3px;
+  /* Describe: Return default property from heading with breakpoint */
+  margin-bottom: 0.22222rem;
+  /* Describe: Return default from heading via keyword */
+  margin-top: 3px;
+  /* Describe: Return default from heading via missing value */
+  line-height: 0.11111;
+}
+
+function _th-property-get {
+  /* Describe: Return font size property value. */
+  font-size: 10px;
+  /* Describe: Return margin top property value. */
+  margin-top: 30px;
+  /* Describe: Return margin bottom property value. */
+  margin-bottom: 40px;
+  /* Describe: Return missing value. */
+  margin-bottom: false;
+  /* Describe: Return missing inner value. */
+  margin-bottom: 30px;
+}
+
+function th-property-font-size {
+  /* Describe: Return font size from heading */
+  font-size: 0.55556em;
+  /* Describe: Return font size from heading with breakpoint */
+  font-size: 2.77778em;
+  /* Describe: Return font size from heading with a single value */
+  font-size: 0.27778em;
+}
+
+function th-property-line-height {
+  /* Describe: Return line height from heading */
+  line-height: 1.11111;
+  /* Describe: Return line height from heading with breakpoint */
+  line-height: 3.33333;
+}
+
+function th-property-margin-top {
+  /* Describe: Return margin-top from heading */
+  margin-top: 30px;
+  /* Describe: Return margin-top from heading with breakpoint */
+  margin-top: 70px;
+  /* Describe: Return margin-top from heading with single value */
+  margin-top: 29px;
+}
+
+function th-property-margin-bottom {
+  /* Describe: Return margin-bottom from heading */
+  margin-bottom: 2.22222rem;
+  /* Describe: Return margin-bottom from heading with breakpoint */
+  margin-bottom: 4.44444rem;
+  /* Describe: Return margin-bottom from heading with single value */
+  margin-bottom: 1.61111rem;
+}
+
+function th-property-default {
+  /* Describe: Return default font size value. */
+  font-size: 0.05556em;
+}
+
+function _th-property-unit-convert {
+  /* Describe: Convert 10px font size to em. */
+  font-size: 0.55556em;
+  /* Describe: Convert 10px font size with base font size of 20px. */
+  font-size: 0.5em;
+}
+
+function th-math-power {
+  /* Describe: Calculate power of 5 to 3. */
+  boolean: 125;
+  /* Describe: Calculate power of 5 to 1. */
+  boolean: 5;
+  /* Describe: Calculate power of -5 to 3. */
+  boolean: -125;
+}
+
+function th-math-round-to {
+  /* Describe: Round 5.0246 to 3 decimal places */
+  boolean: 5.025;
+}
+
+function th-list-has-index {
+  /* Describe: Check list for an index. */
+  boolean: true;
+  /* Describe: Check list for an index. */
+  boolean: false;
+}
+
+function th-list-has {
+  /* Describe: Check list for value x (exists). */
+  map: true;
+  /* Describe: Check list for value x (doesn't exist). */
+  map: false;
+}
+
+function th-list-has-deep {
+  /* Describe: Check list for a value. */
+  boolean: true;
+  /* Describe: Check list for a deep value. */
+  boolean: true;
+  /* Describe: Check list for a deep value that doesnt exist. */
+  boolean: false;
+}
+
+function th-unit-strip {
+  /* Describe: Strip unit from 32px. */
+  map: 32;
+}
+
+function th-unit-cast {
+  /* Describe: Create a 32px number. */
+  map: 32px;
+  /* Describe: Create a 32foo number (doesn't exist). */
+  map: 32;
+}
+
+function th-unit-convert {
+  /* Describe: Bind 32 to em. */
+  map: 32em;
+}
+
+function th-unit-convert-absolute {
+  /* Describe: Convert 4.889em to px. */
+  font-size: 88.002px;
+  /* Describe: Convert 4.889 to px. */
+  font-size: 88.002px;
+  /* Describe: Convert 4.889rem to px. */
+  font-size: 88.002px;
+  /* Describe: Convert 2.750em to px with base font size of 32px. */
+  font-size: 88px;
+}
+
+function th-unit-convert-relative {
+  /* Describe: Convert 32px to em. */
+  font-size: 1.77778em;
+  /* Describe: Convert 32px to rel. */
+  font-size: 1.77778;
+  /* Describe: Convert 32px to rem. */
+  font-size: 1.77778rem;
+  /* Describe: Convert 32px to em with base font size of 12px. */
+  font-size: 2.66667em;
+}
+
+function th-unit-convert-em {
+  /* Describe: Convert 22px to em. */
+  font-size: 1.22222em;
+  /* Describe: Convert 24px to em with base font size of 32px. */
+  font-size: 0.75em;
+}
+
+function th-unit-convert-rem {
+  /* Describe: Convert 22px to rem. */
+  font-size: 1.22222rem;
+  /* Describe: Convert 24px to rem with base font size of 32px. */
+  font-size: 0.75rem;
+}
+
+function th-unit-convert-rel {
+  /* Describe: Convert 22px to rel. */
+  font-size: 1.22222;
+  /* Describe: Convert 24px to rel with base font size of 32px. */
+  font-size: 0.75;
+}
+
+function th-unit-convert-px {
+  /* Describe: Convert 2.35em to px. */
+  font-size: 42.3px;
+  /* Describe: Convert 2.35em to px with base font size of 22px. */
+  font-size: 51.7px;
+}
+
+mixin th-heading {
+  /* Describe: Output styles for a heading. */
+  margin-top: 30px;
+  margin-bottom: 4rem;
+  font-size: 0.55556em;
+  line-height: 2;
+  /* Describe: Output styles for a heading with a breakpoint. */
+  margin-top: 70px;
+  margin-bottom: 1.6rem;
+  font-size: 2.77778em;
+  line-height: 1.2;
+  /* Describe: Output styles for a heading with a default keyword. */
+  margin-top: 28px;
+  margin-bottom: 12rem;
+  font-size: 0.22222em;
+  line-height: 0.5;
+  /* Describe: Output styles for a heading with only one value. */
+  margin-top: 3px;
+  margin-bottom: 0.8rem;
+  font-size: 0.27778em;
+  line-height: 0.4;
+  /* Describe: Output styles for a heading with a singular list value. */
+  margin-top: 29px;
+  margin-bottom: 3.22222rem;
+  font-size: 0.5em;
+  line-height: 2.11111;
+  /* Describe: Output styles for a heading without unit conversion. */
+  margin-top: 30px;
+  margin-bottom: 40px;
+  font-size: 10px;
+  line-height: 20px;
+}
+
+mixin th-headings {
+  /* Describe: Output styles for a heading. */
+  margin-top: 3px;
+  margin-bottom: 0.8rem;
+  font-size: 0.27778em;
+  line-height: 0.4;
+  /* Describe: Output styles for a heading without unit conversion. */
+  margin-top: 29px;
+  margin-bottom: 29px;
+  font-size: 9px;
+  line-height: 19px;
+  /* Describe: Output styles for a heading with multiple breakpoints. */
+  margin-top: 30px;
+  margin-bottom: 4rem;
+  font-size: 0.55556em;
+  line-height: 2;
+  /* Describe: Output styles for a heading with a min-width breakpoint. */
+  margin-top: 30px;
+  margin-bottom: 4rem;
+  font-size: 0.55556em;
+  line-height: 2;
+  /* Describe: Output styles for a heading with a max-width breakpoint. */
+  margin-top: 30px;
+  margin-bottom: 4rem;
+  font-size: 0.55556em;
+  line-height: 2;
+}
+@media screen and (min-width: 768px) {
+  mixin th-headings {
+    margin-top: 69px;
+    margin-bottom: 69px;
+    font-size: 49px;
+    line-height: 59px;
+  }
+}
+@media screen and (min-width: 768px) {
+  mixin th-headings {
+    margin-top: 70px;
+    margin-bottom: 1.6rem;
+    font-size: 2.77778em;
+    line-height: 1.2;
+  }
+}
+@media screen and (min-width: 1024px) {
+  mixin th-headings {
+    margin-top: 110px;
+    margin-bottom: 1.33333rem;
+    font-size: 5em;
+    line-height: 1.11111;
+  }
+}
+@media screen and (min-width: 768px) {
+  mixin th-headings {
+    margin-top: 70px;
+    margin-bottom: 1.6rem;
+    font-size: 2.77778em;
+    line-height: 1.2;
+  }
+}
+@media screen and (min-width: 1024px) {
+  mixin th-headings {
+    margin-top: 110px;
+    margin-bottom: 1.33333rem;
+    font-size: 5em;
+    line-height: 1.11111;
+  }
+}
+@media screen and (max-width: 768px) {
+  mixin th-headings {
+    margin-top: 70px;
+    margin-bottom: 1.6rem;
+    font-size: 2.77778em;
+    line-height: 1.2;
+  }
+}
+@media screen and (max-width: 1024px) {
+  mixin th-headings {
+    margin-top: 110px;
+    margin-bottom: 1.33333rem;
+    font-size: 5em;
+    line-height: 1.11111;
+  }
+}
+
+mixin th-property-font-size {
+  /* Describe: Output font-size for a heading. */
+  font-size: 0.55556em;
+  /* Describe: Output font-size for a heading with a breakpoint. */
+  font-size: 2.77778em;
+  /* Describe: Output font-size for a heading with a single value. */
+  font-size: 0.27778em;
+  /* Describe: Output font-size for a heading without unit conversion. */
+  font-size: 5px;
+}
+
+mixin th-property-line-height {
+  /* Describe: Output line-height for a heading. */
+  line-height: 1.11111;
+  /* Describe: Output line-height for a heading with a breakpoint. */
+  line-height: 3.33333;
+  /* Describe: Output line-height for a heading without unit conversion. */
+  line-height: 20px;
+}
+
+mixin th-property-margin-top {
+  /* Describe: Output margin-top for a heading. */
+  margin-top: 30px;
+  /* Describe: Output margin-top for a heading with a breakpoint. */
+  margin-top: 70px;
+  /* Describe: Output margin-top for a heading with a singular list value. */
+  margin-top: 29px;
+  /* Describe: Output margin-top for a heading without unit conversion. */
+  margin-top: 29px;
+}
+
+mixin th-property-margin-bottom {
+  /* Describe: Output margin-bottom for a heading. */
+  margin-bottom: 2.22222rem;
+  /* Describe: Output margin-bottom for a heading with a breakpoint. */
+  margin-bottom: 4.44444rem;
+  /* Describe: Output margin-bottom for a heading with a singular list value. */
+  margin-bottom: 1.61111rem;
+  /* Describe: Output margin-bottom for a heading without unit conversion. */
+  margin-bottom: 29px;
+}
+
+mixin th-breakpoint-heading {
+  /* Describe: Output styles for a heading within a min-width breakpoint. */
+  /* Describe: Output styles for a heading within a min-width breakpoint without unit conversion. */
+  /* Describe: Output styles for a heading within a max-width breakpoint. */
+}
+@media screen and (min-width: 768px) {
+  mixin th-breakpoint-heading {
+    margin-top: 69px;
+    margin-bottom: 1.40816rem;
+    font-size: 2.72222em;
+    line-height: 1.20408;
+  }
+}
+@media screen and (min-width: 768px) {
+  mixin th-breakpoint-heading {
+    margin-top: 69px;
+    margin-bottom: 69px;
+    font-size: 49px;
+    line-height: 59px;
+  }
+}
+@media screen and (max-width: 768px) {
+  mixin th-breakpoint-heading {
+    margin-top: 69px;
+    margin-bottom: 1.40816rem;
+    font-size: 2.72222em;
+    line-height: 1.20408;
+  }
+}

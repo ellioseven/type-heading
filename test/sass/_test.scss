@@ -1,0 +1,19 @@
+// Type Heading Test
+
+@import "type-heading";
+
+// Partials
+// ------------------------------
+
+@import "settings";
+@import "helpers";
+
+// Tests
+// ------------------------------
+
+@import "tests/functions/heading";
+@import "tests/functions/property";
+@import "tests/functions/helpers";
+@import "tests/mixins/heading";
+@import "tests/mixins/property";
+@import "tests/mixins/breakpoint";

@@ -1,0 +1,27 @@
+// Variables
+
+$th-base-font-size: 18px;
+
+$th-headings: (
+  h1: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px, 90px 100px (110px 120px) 1024px),
+  h2: (9px 19px 29px, 49px 59px 69px 768px),
+  h3: (8px 18px (default default), 48px 58px (default default) 768px),
+  h4: (7px 17px default, 47px 57px default 768px),
+  h5: (6px, 46px default default 768px),
+  h6: (5px),
+  h7: (4px default (28px, 48px))
+);
+
+$th-property-defaults: (
+  font-size: 1px,
+  line-height: 2px,
+  margin-top: 3px,
+  margin-bottom: 4px
+);
+
+$th-property-units: (
+  font-size: em,
+  line-height: rel,
+  margin-top: false,
+  margin-bottom: rem
+);

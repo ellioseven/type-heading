@@ -1,0 +1,382 @@
+// Tests / Functions / Property
+
+// th-property()
+// ------------------------------
+
+function th-property {
+
+	@include th-assert(
+		$describe: "Return property from heading",
+		$expect: 0.55556em,
+		$actual: th-property(h1, font-size)
+	){
+		@include th-assert-expect {
+			font-size: $expect;
+		}
+		@include th-assert-actual {
+			font-size: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return property from heading with breakpoint",
+		$expect: 2.77778em,
+		$actual: th-property(h1, font-size, 768px)
+	){
+		@include th-assert-expect {
+			font-size: $expect;
+		}
+		@include th-assert-actual {
+			font-size: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return default property from heading",
+		$expect: 3px,
+		$actual: th-property(h3, margin-top)
+	){
+		@include th-assert-expect {
+			margin-top: $expect;
+		}
+		@include th-assert-actual {
+			margin-top: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return default property from heading with breakpoint",
+		$expect: 0.22222rem,
+		$actual: th-property(h3, margin-bottom, 768px)
+	){
+		@include th-assert-expect {
+			margin-bottom: $expect;
+		}
+		@include th-assert-actual {
+			margin-bottom: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return default from heading via keyword",
+		$expect: 3px,
+		$actual: th-property(h3, margin-top)
+	){
+		@include th-assert-expect {
+			margin-top: $expect;
+		}
+		@include th-assert-actual {
+			margin-top: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return default from heading via missing value",
+		$expect: 0.11111,
+		$actual: th-property(h5, line-height)
+	){
+		@include th-assert-expect {
+			line-height: $expect;
+		}
+		@include th-assert-actual {
+			line-height: $actual;
+		}
+	}
+
+}
+
+// _th-property-get()
+// ------------------------------
+
+function _th-property-get {
+
+	@include th-assert(
+		$describe: "Return font size property value.",
+		$expect: 10px,
+		$actual: _th-property-get((10px 20px 30px), font-size)
+	){
+		@include th-assert-expect {
+			font-size: $expect;
+		}
+		@include th-assert-actual {
+			font-size: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return margin top property value.",
+		$expect: 30px,
+		$actual: _th-property-get((10px 20px (30px 40px)), margin-top)
+	){
+		@include th-assert-expect {
+			margin-top: $expect;
+		}
+		@include th-assert-actual {
+			margin-top: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return margin bottom property value.",
+		$expect: 40px,
+		$actual: _th-property-get((10px 20px (30px 40px)), margin-bottom)
+	){
+		@include th-assert-expect {
+			margin-bottom: $expect;
+		}
+		@include th-assert-actual {
+			margin-bottom: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return missing value.",
+		$expect: false,
+		$actual: _th-property-get((10px 20px), margin-bottom)
+	){
+		@include th-assert-expect {
+			margin-bottom: $expect;
+		}
+		@include th-assert-actual {
+			margin-bottom: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return missing inner value.",
+		$expect: 30px,
+		$actual: _th-property-get((10px 20px 30px), margin-bottom)
+	){
+		@include th-assert-expect {
+			margin-bottom: $expect;
+		}
+		@include th-assert-actual {
+			margin-bottom: $actual;
+		}
+	}
+
+}
+
+// th-property-font-size()
+// ------------------------------
+
+function th-property-font-size {
+
+	@include th-assert(
+		$describe: "Return font size from heading",
+		$expect: 0.55556em,
+		$actual: th-property(h1, font-size)
+	){
+		@include th-assert-expect {
+			font-size: $expect;
+		}
+		@include th-assert-actual {
+			font-size: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return font size from heading with breakpoint",
+		$expect: 2.77778em,
+		$actual: th-property(h1, font-size, 768px)
+	){
+		@include th-assert-expect {
+			font-size: $expect;
+		}
+		@include th-assert-actual {
+			font-size: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return font size from heading with a single value",
+		$expect: 0.27778em,
+		$actual: th-property(h6, font-size)
+	){
+		@include th-assert-expect {
+			font-size: $expect;
+		}
+		@include th-assert-actual {
+			font-size: $actual;
+		}
+	}
+
+}
+
+// th-property-line-height()
+// ------------------------------
+
+function th-property-line-height {
+
+	@include th-assert(
+		$describe: "Return line height from heading",
+		$expect: 1.11111,
+		$actual: th-property(h1, line-height)
+	){
+		@include th-assert-expect {
+			line-height: $expect;
+		}
+		@include th-assert-actual {
+			line-height: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return line height from heading with breakpoint",
+		$expect: 3.33333,
+		$actual: th-property(h1, line-height, 768px)
+	){
+		@include th-assert-expect {
+			line-height: $expect;
+		}
+		@include th-assert-actual {
+			line-height: $actual;
+		}
+	}
+
+}
+
+// th-property-margin-top()
+// ------------------------------
+
+function th-property-margin-top {
+
+	@include th-assert(
+		$describe: "Return margin-top from heading",
+		$expect: 30px,
+		$actual: th-property(h1, margin-top)
+	){
+		@include th-assert-expect {
+			margin-top: $expect;
+		}
+		@include th-assert-actual {
+			margin-top: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return margin-top from heading with breakpoint",
+		$expect: 70px,
+		$actual: th-property(h1, margin-top, 768px)
+	){
+		@include th-assert-expect {
+			margin-top: $expect;
+		}
+		@include th-assert-actual {
+			margin-top: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return margin-top from heading with single value",
+		$expect: 29px,
+		$actual: th-property(h2, margin-top)
+	){
+		@include th-assert-expect {
+			margin-top: $expect;
+		}
+		@include th-assert-actual {
+			margin-top: $actual;
+		}
+	}
+
+}
+
+// th-property-margin-bottom()
+// ------------------------------
+
+function th-property-margin-bottom {
+
+	@include th-assert(
+		$describe: "Return margin-bottom from heading",
+		$expect: 2.22222rem,
+		$actual: th-property(h1, margin-bottom)
+	){
+		@include th-assert-expect {
+			margin-bottom: $expect;
+		}
+		@include th-assert-actual {
+			margin-bottom: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return margin-bottom from heading with breakpoint",
+		$expect: 4.44444rem,
+		$actual: th-property(h1, margin-bottom, 768px)
+	){
+		@include th-assert-expect {
+			margin-bottom: $expect;
+		}
+		@include th-assert-actual {
+			margin-bottom: $actual;
+		}
+	}
+
+	@include th-assert(
+		$describe: "Return margin-bottom from heading with single value",
+		$expect: 1.61111rem,
+		$actual: th-property(h2, margin-bottom)
+	){
+		@include th-assert-expect {
+			margin-bottom: $expect;
+		}
+		@include th-assert-actual {
+			margin-bottom: $actual;
+		}
+	}
+
+}
+
+// th-property-default()
+// ------------------------------
+
+function th-property-default {
+
+	@include th-assert(
+		$describe: "Return default font size value.",
+		$expect: 0.05556em,
+		$actual: th-property-default(font-size)
+	){
+		@include th-assert-expect {
+			font-size: $expect;
+		}
+		@include th-assert-actual {
+			font-size: $actual;
+		}
+	}
+
+}
+
+// _th-property-unit-convert()
+// ------------------------------
+
+function _th-property-unit-convert {
+
+  @include th-assert(
+    $describe: "Convert 10px font size to em.",
+    $expect: 0.55556em,
+    $actual: _th-property-unit-convert(font-size, 10px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 10px font size with base font size of 20px.",
+    $expect: 0.5em,
+    $actual: _th-property-unit-convert(font-size, 10px, 20px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}

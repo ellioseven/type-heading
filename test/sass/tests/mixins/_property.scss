@@ -1,0 +1,206 @@
+// Tests / Mixins / Property
+
+// th-property-font-size()
+// ------------------------------
+
+mixin th-property-font-size {
+
+  @include th-assert(
+    $describe: "Output font-size for a heading."
+  ){
+    @include th-assert-expect {
+      font-size: 0.55556em;
+    }
+    @include th-assert-actual {
+      @include th-property-font-size(h1);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output font-size for a heading with a breakpoint."
+  ){
+    @include th-assert-expect {
+      font-size: 2.77778em;
+    }
+    @include th-assert-actual {
+      @include th-property-font-size(h1, 768px);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output font-size for a heading with a single value."
+  ){
+    @include th-assert-expect {
+      font-size: 0.27778em;
+    }
+    @include th-assert-actual {
+      @include th-property-font-size(h6);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output font-size for a heading without unit conversion."
+  ){
+    @include th-assert-expect {
+      font-size: 5px;
+    }
+    @include th-assert-actual {
+      @include th-property-font-size(
+        $heading: h6,
+        $convert: false
+      );
+    }
+  }
+
+}
+
+// th-property-line-height()
+// ------------------------------
+
+mixin th-property-line-height {
+
+  @include th-assert(
+    $describe: "Output line-height for a heading."
+  ){
+    @include th-assert-expect {
+      line-height: 1.11111;
+    }
+    @include th-assert-actual {
+      @include th-property-line-height(h1);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output line-height for a heading with a breakpoint."
+  ){
+    @include th-assert-expect {
+      line-height: 3.33333;
+    }
+    @include th-assert-actual {
+      @include th-property-line-height(h1, 768px);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output line-height for a heading without unit conversion."
+  ){
+    @include th-assert-expect {
+      line-height: 20px;
+    }
+    @include th-assert-actual {
+      @include th-property-line-height(
+        $heading: h1,
+        $convert: false
+      );
+    }
+  }
+
+}
+
+// th-property-margin-top()
+// ------------------------------
+
+mixin th-property-margin-top {
+
+  @include th-assert(
+    $describe: "Output margin-top for a heading."
+  ){
+    @include th-assert-expect {
+      margin-top: 30px;
+    }
+    @include th-assert-actual {
+      @include th-property-margin-top(h1);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output margin-top for a heading with a breakpoint."
+  ){
+    @include th-assert-expect {
+      margin-top: 70px;
+    }
+    @include th-assert-actual {
+      @include th-property-margin-top(h1, 768px);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output margin-top for a heading with a singular list value."
+  ){
+    @include th-assert-expect {
+      margin-top: 29px;
+    }
+    @include th-assert-actual {
+      @include th-property-margin-top(h2);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output margin-top for a heading without unit conversion."
+  ){
+    @include th-assert-expect {
+      margin-top: 29px;
+    }
+    @include th-assert-actual {
+      @include th-property-margin-top(
+        $heading: h2,
+        $convert: false
+      );
+    }
+  }
+
+}
+
+// th-property-margin-bottom()
+// ------------------------------
+
+mixin th-property-margin-bottom {
+
+  @include th-assert(
+    $describe: "Output margin-bottom for a heading."
+  ){
+    @include th-assert-expect {
+      margin-bottom: 2.22222rem;
+    }
+    @include th-assert-actual {
+      @include th-property-margin-bottom(h1);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output margin-bottom for a heading with a breakpoint."
+  ){
+    @include th-assert-expect {
+      margin-bottom: 4.44444rem;
+    }
+    @include th-assert-actual {
+      @include th-property-margin-bottom(h1, 768px);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output margin-bottom for a heading with a singular list value."
+  ){
+    @include th-assert-expect {
+      margin-bottom: 1.61111rem;
+    }
+    @include th-assert-actual {
+      @include th-property-margin-bottom(h2);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output margin-bottom for a heading without unit conversion."
+  ){
+    @include th-assert-expect {
+      margin-bottom: 29px;
+    }
+    @include th-assert-actual {
+      @include th-property-margin-bottom(
+        $heading: h2,
+        $convert: false
+      );
+    }
+  }
+
+}

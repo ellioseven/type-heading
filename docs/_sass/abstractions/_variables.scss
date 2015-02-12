@@ -1,0 +1,66 @@
+// Variables
+
+// Base Sizing
+// ------------------------------
+
+$base-font-size: 21px;
+$base-line-height: 30px;
+$base-vertical-margin: $base-line-height;
+
+// Import functions needed through the stylesheet.
+@import "functions";
+
+// Colours
+// ------------------------------
+
+$color-blue: #08c;
+$color-grey-dark: #222;
+$color-grey-slate: #989898;
+$color-grey-light: #ddd;
+$color-grey-white: #f9f9f9;
+$color-brand-primary: #6A9FB5;
+
+// Breakpoints
+// ------------------------------
+
+$breakpoint-medium: em(768px, 16px);
+$breakpoint-medium-below: em(767px, 16px);
+$breakpoint-large: em(1024px, 16px);
+$breakpoint-large-below: em(1023px, 16px);
+$breakpoint-large-x: em(1200, 16px);
+$breakpoint-large-x-below: em(1199, 16px);
+
+// Typography
+// ------------------------------
+
+$type-font-family-body: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$type-font-family-display: $type-font-family-body;
+$type-font-family-mono: menlo, monospace;
+
+$type-anchor-font-color: $color-blue;
+$type-anchor-hover-font-color: $color-grey-dark;
+
+// Grid
+// ------------------------------
+
+$grid-container-padding: em(20px);
+
+// Susy Grid
+// http://susydocs.oddbird.net/en/latest/settings/
+
+$susy: (
+  columns: 12,
+  gutter-position: after,
+  global-box-sizing: border-box
+);
+
+$susy-medium: (
+  container: 640px
+);
+
+$susy-large: ();
+
+// Selects
+// ------------------------------
+
+$select-form-text-inputs: unquote('input[type="text"],input[type="password"],input[type="date"],input[type="datetime"],input[type="datetime-local"],input[type="month"],input[type="week"],input[type="email"],input[type="number"],input[type="search"],input[type="tel"],input[type="time"],input[type="url"]');

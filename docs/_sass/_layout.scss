@@ -1,0 +1,59 @@
+// Layout
+
+body {
+  @include breakpoint($breakpoint-large){
+    padding-left: em(320px);
+  }
+  @include breakpoint($breakpoint-large-x){
+    padding-left: em(370px);
+  }
+}
+
+// Regions
+// ------------------------------
+
+.site-header {
+  padding-left: $grid-container-padding;
+  padding-right: $grid-container-padding;
+  @include breakpoint($breakpoint-medium) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  @include breakpoint($breakpoint-large){
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: em(320px);
+    padding-left: em($base-vertical-margin);
+    padding-right: em($base-vertical-margin);
+  }
+  @include breakpoint($breakpoint-large-x){
+    width: em(370px);
+  }
+
+  .site-header-inner {
+    @include susy-breakpoint($breakpoint-medium $breakpoint-large-below, $susy-medium) {
+      @include container;
+    }
+  }
+}
+
+.site-main .site-main-inner {
+  padding-left: $grid-container-padding;
+  padding-right: $grid-container-padding;
+  @include susy-breakpoint($breakpoint-medium, $susy-medium){
+    @include container;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.site-footer .site-footer-inner {
+  padding-left: $grid-container-padding;
+  padding-right: $grid-container-padding;
+  @include susy-breakpoint($breakpoint-medium, $susy-medium){
+    @include container;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

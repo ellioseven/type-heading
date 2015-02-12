@@ -1,13 +1,33 @@
-// Functions / Heading
+// Heading
+// 
+// @group Functions / Heading
+// @author Elliot Mitchum
 
-// @function th-heading-get()
-//
+// th-heading
 // Return a heading list.
-// @param $heading: mixed | A heading map key or list (required). | $th-headings
-// @param $breakpoint: number | A heading list breakpoint (optional). | $th-headings
-// @return $_return: list | Heading list.
+//
+// @since 0.0.10
+// @type function
+//
+// @requires {function} th-heading-get-map
+// @requires {function} _th-heading-has-next
+// @requires {function} _th-heading-get-next
+//
+// @param {list | string} $heading A heading map key or list (required).
+// @param {number} $breakpoint A heading list breakpoint.
+//
+// @returns {list} A heading list.
+//
+// @example scss Return a heading list.
+// // // h1: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px)
+// // th-heading(h1)
+// // // 10px 20px (30px 40px)
+// // @example scss Return a heading list with breakpoint.
+// // // h1: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px)
+// // th-heading(h1, 768px)
+// // // 50px 60px (70px 80px) 768px
 
-@function th-heading-get(
+@function th-heading(
   $heading,
   $breakpoint: false
 ){
@@ -21,11 +41,20 @@
   @return $_return;
 }
 
-// @function th-heading-get-map()
-//
+// th-heading-get-map
 // Return a heading map.
-// @param $heading: string | A heading map key (required). | $th-headings
-// @return $_return: list | Heading map.
+//
+// @since 0.0.10
+// @type function
+//
+// @param {string} $heading A heading map key (required).
+//
+// @returns {list} A heading map.
+//
+// @example scss Return h1 heading map.
+// // // h1: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px)
+// // th-heading-get-map(h1)
+// // // 10px 20px (30px 40px), 50px 60px (70px 80px) 768px
 
 @function th-heading-get-map(
   $heading
@@ -37,12 +66,27 @@
   @return $_return;
 }
 
-// @function _th-heading-has-next()
-//
+// _th-heading-has-next
 // Check a for multiple heading lists.
+//
+// @since 0.0.10
+// @type function
 // @access private
-// @param $heading: mixed | A heading map key or list (required). | $th-headings
-// @return $_return: boolean | If heading map contains multiple lists.
+// 
+// @requires {function} th-heading-get-map
+//
+// @param {list | string} $heading A heading map key or list (required).
+//
+// @returns {boolean} If heading map contains multiple lists.
+//
+// @example scss Check heading with next.
+// // // h1: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px)
+// // _th-heading-has-next(h1)
+// // // true
+// @example scss Check heading without next.
+// // // h5: (10px 20px (30px 40px))
+// // _th-heading-has-next(h5)
+// // // false
 
 @function _th-heading-has-next(
   $heading
@@ -55,13 +99,25 @@
   @return $_return;
 }
 
-// @function _th-heading-get-next()
-//
+// _th-heading-get-next
 // Return a heading list by breakpoint.
+//
+// @since 0.0.10
+// @type function
 // @access private
-// @param $heading: mixed | A heading map key or list (required). | $th-headings
-// @param $breakpoint: number | A heading list breakpoint (optional). | default:false, $th-headings
-// @return $_return: list | Heading list.
+//
+// @requires {function} th-heading-get-map
+// @requires {function} th-property
+//
+// @param {list | string} $heading A heading map key or list (required).
+// @param {boolean | number} $breakpoint (false) A heading list breakpoint.
+//
+// @returns {list} Heading list.
+//
+// @example scss Return h1 heading map.
+// // // h1: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px)
+// // _th-heading-get-next(h1, 768px)
+// // // 50px 60px (70px 80px) 768px
 
 @function _th-heading-get-next(
   $heading,
@@ -70,9 +126,12 @@
   $_return: $heading;
   $heading: th-heading-get-map($heading);
   @if $breakpoint {
-    @each $property in $heading {
-      @if th-property($property, breakpoint) == $breakpoint {
-        $_return: $property;
+    @each $heading-list in $heading {
+      @if th-property(
+        $heading: $heading-list,
+        $property-name: breakpoint,
+        $convert: false) == $breakpoint {
+        $_return: $heading-list;
       }
     }
   } @else {

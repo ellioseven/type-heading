@@ -2,7 +2,7 @@
 
 # Type Heading - Alpha
 
-A responsive typography tool for headings.
+A responsive typography tool.
 
 **Note:** Type heading is currently in [Alpha](http://en.wikipedia.org/wiki/Software_release_life_cycle#Alpha).
 Currently, Type Heading should only be used for testing and/or development, not
@@ -10,11 +10,11 @@ production work.
 
 ## Requirements
 
-To use Type Heading, you will need:
+To use Type Heading, you will need at least:
 
-- Ruby: 2.2.2
-- Sass 3.4.7
-- Compass: 1.0.1
+- Ruby: 2.1.5
+- Sass 3.3.13
+- Compass 1.0.1
 
 ## Get Started
 

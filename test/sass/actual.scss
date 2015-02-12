@@ -1,0 +1,6 @@
+// Type Heading Test: Actual
+// Generates the 'actual' test enviroment.
+
+$th-env: actual;
+$th-warn: true;
+@import "test";

@@ -1,0 +1,46 @@
+// Settings
+// 
+// @group Settings
+// @author Elliot Mitchum
+
+// th-base-font-size
+// Font size used for relative calculations.
+//
+// @since 0.0.10
+// @type string
+
+$th-base-font-size: 16px !default;
+
+// th-headings
+// Define headings and their values.
+//
+// @since 0.0.10
+// @type map
+
+$th-headings: () !default;
+
+// th-property-defaults
+// Define default property values.
+//
+// @since 0.0.10
+// @type map
+
+$th-property-defaults: (
+  font-size: 16px,
+  line-height: 24px,
+  margin-top: 20px,
+  margin-bottom: 20px
+) !default;
+
+// th-property-defaults
+// Define units for heading properties.
+//
+// @since 0.0.11
+// @type map
+
+$th-property-units: (
+  font-size: false,
+  line-height: false,
+  margin-top: false,
+  margin-bottom: false
+) !default;

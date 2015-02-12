@@ -1,14 +1,88 @@
-// Functions / Helpers
+// Helpers
+// 
+// @group Functions / Helpers
+// @author Elliot Mitchum
+
+// Math
+// ------------------------------
+
+// th-math-power
+// Returns a powered number by exponent.
+//
+// @since 0.0.11
+// @type function
+//
+// @param {number} $number The base number (required). 
+// @param {number} $exponent The base number's exponent (required). 
+//
+// @returns {number} The powered number.
+//
+// @example scss Calculate 10 to the power of 3.
+// // th-math-power(10, 3)
+// // // 1000
+
+@function th-math-power(
+  $number,
+  $exponent
+){
+  $_return: $number;
+  @if $exponent > 1 {
+    @for $i from 2 through $exponent {
+      $_return: $_return * $number;
+    }
+  }
+  @if $exponent < 1 {
+    @for $i from 0 through -#{$exponent} {
+      $_return: $_return / $number;
+    }
+  }
+  @return $_return; 
+}
+
+// th-math-round-to
+// Returns a floated number rounded to a decimal point.
+//
+// @since 0.0.11
+// @type function
+//
+// @requires {function} th-math-power
+//
+// @param {number} $number The number to round from (required).
+// @param {number} $decimal The decimal place to round to (required).
+//
+// @returns {number} The rounded number.
+//
+// @example scss Round 1.234 to 2 decimal places.
+// // th-math-round-to(1.234, 2)
+// // // 1.23
+
+@function th-math-round-to(
+  $number,
+  $decimal
+){
+  $_return: $number;
+  $_return: round( $number * th-math-power(10, $decimal) );
+  $_return: $_return / th-math-power(10, $decimal);
+  @return $_return;
+}
 
 // Lists
 // ------------------------------
 
-// @function th-list-has-index()
-//
+// th-list-has-index
 // Check list for a index.
-// @param $list: list | List to search (required).
-// @param $index: number | List index to find (required).
-// @return $_return: boolean | If list contains index.
+//
+// @since 0.0.1
+// @type function
+//
+// @param {list} $list List to search (required).
+// @param {number} $index The list index to retrieve (required). 
+//
+// @returns {boolean} If list contains index.
+//
+// @example scss Check list for 2nd index.
+// // @debug th-list-has-index((a, b, c), 2);
+// // // true
 
 @function th-list-has-index(
   $list,
@@ -21,76 +95,377 @@
   @return $_return;
 }
 
-// @function th-list-get-deep
+// th-list-get-index-deep
+// Return the index of a value within multiple lists.
 //
-// Gets a value within lists by a list of indexes (recurring).
-// @param $list: list | List to search (required).
-// @param $index: mixed | List index(es) to find (required).
-// @return $_return: mixed | List value to found.
+// @since 0.0.11
+// @type function
+//
+// @requires {function} th-list-has
+//
+// @param {list} $list The list to search through (required).
+// @param {number | string} $find The value to find (required).
+// @param {list} $indexes List of previous indexes.
+//
+// @returns {list} The index of the found value.
+//
+// @example scss Get the index of 'f' in (a, b, (c, d, (e, f))).
+// // th-list-get-index-deep( (a, b, (c, d, (e, f))), f )
+// // // 3 3 2
 
-@function th-list-get-deep(
+@function th-list-get-index-deep(
   $list,
-  $index
+  $find,
+  $indexes: ()
 ){
-  $_return: false;
-  $indexes: false;
-  @if list == type-of($index) {
-    $indexes: $index;
-    $index: nth($index, 1);
-  }
-  @if th-list-has-index($list, $index) { 
-    $list: nth($list, $index);
-    @if list == type-of($list) and $indexes {
-      $list: th-list-get-deep($list, list-remove-nth($indexes, 1));
+  $_return: $find;
+  $index: 0;
+  @if th-list-has($list, $find) {
+    @if length($indexes) > 0 {
+      $_return: append($indexes, index($list, $find));
+    } @else {
+      $_return: index($list, $find);
     }
-  } @else if( list != type-of($list) and $index == 1 ) {
-    $list: $list;
   } @else {
-    $list: false;
+    @each $value in $list {
+      $index: $index + 1;
+      @if type-of($value) == list {
+        $_return: th-list-get-index-deep($value, $find, append($indexes, $index));
+      }
+    }
   }
-  $_return: $list;
   @return $_return;
 }
 
-// @function th-list-deep-has()
+// th-list-has
+// Check list for a value.
 //
-// Check list for a value (recurring).
-// @param $list: list | List to search (required).
-// @param $find: mixed | Value to find (required).
-// @return $_return: boolean | If list contains value.
+// @since 0.0.1
+// @type function
+//
+// @param {list} $list List to search (required).
+// @param {number | string} $find Value to find (required). 
+//
+// @returns {boolean} If list contains value.
+//
+// @example scss Check list for 'b'.
+// // th-list-has((a b c), b);
+// // // true
 
-@function th-list-deep-has(
-	$list,
-	$find
-){
-	$_return: false;
-	@each $value in $list {
-		@if list == type-of($value) {
-			$_return: th-list-deep-has($value, $find);
-		} @else {
-			@if $find == $value {
-				@return true;
-			}
-		}
-	}
-	@return $_return;
-}
-
-// @function th-list-remove-nth
-// 
-// Removes a list item by it's index / nth.
-// @param $list: list | List to search (required).
-// @param $index: mixed | List index(es) to find (required).
-
-@function list-remove-nth(
+@function th-list-has(
   $list,
-  $index
+  $find
 ){
-  $_return: ();
+  $_return: false;
   @each $value in $list {
-    @if $index != index($list, $value) {
-      $_return: append($_return, $value);
+    @if $find == $value {
+      @return true;
     }
   }
+  @return $_return;
+}
+
+// th-list-has-deep
+// Check list for a value (recurring).
+//
+// @since 0.0.10
+// @type function
+//
+// @param {list} $list List to search (required). 
+// @param {number | string} $find Value to find (required). 
+//
+// @returns {boolean} If list contains value.
+//
+// @example scss Check for 'f' in (a b (c d (e f))).
+// // th-list-has-deep((a b (c d (e f))), f)
+// // // true
+
+@function th-list-has-deep(
+  $list,
+  $find
+){
+  $_return: false;
+  @each $value in $list {
+    @if list == type-of($value) {
+      $_return: th-list-has-deep($value, $find);
+    } @else {
+      @if $find == $value {
+        @return true;
+      }
+    }
+  }
+  @return $_return;
+}
+
+// Units
+// ------------------------------
+
+// th-unit-strip
+// Strips the unit from a number.
+//
+// @since 0.0.11
+// @type function
+//
+// @param {number} $number Number to strip unit from (required).
+//
+// @returns {number} The stripped number.
+//
+// @example scss Strip px from 24px.
+// // th-unit-strip(24px)
+// // // 24
+
+@function th-unit-strip(
+  $number
+){
+  $_return: $number / ($number * 0 + 1);
+  @return $_return;
+}
+
+// th-unit-cast
+// Creates a number with a unit.
+//
+// @since 0.0.11
+// @type function
+//
+// @param {number} $number The unitless number to create (required).
+// @param {string} $unit The type of unit to create (required). 
+//
+// @returns {number} The created number with new unit.
+//
+// @example scss Create 24px.
+// // th-unit-cast(24, px);
+// // // 24px
+
+@function th-unit-cast(
+  $number,
+  $unit
+){
+  $_return: $number;
+  $strings: px em rem;
+  $units: 1px 1em 1rem;
+  $index: index($strings, $unit);
+  @if $index {
+    $_return: $number * nth($units, $index);
+  }
+  @return $_return;
+}
+
+// th-unit-convert
+// Converts the unit of a number.
+//
+// @since 0.0.11
+// @type function
+//
+// @requires {function} th-unit-strip 
+// @requires {function} th-unit-cast 
+//
+// @param {number} $number The numbered unit to convert (required).
+// @param {string} $unit The unit to convert to (required). 
+//
+// @returns {number} The converted number.
+//
+// @example scss Convert 24px to 24em.
+// // th-unit-convert(24px, em)
+// // // 24em
+
+@function th-unit-convert(
+  $number,
+  $unit
+){
+  $_return: $number;
+  $_return: th-unit-strip($number) * th-unit-cast(1, $unit);
+  @if ($_return == th-unit-cast(0, $unit)) { 
+    $_return: 0;
+  }
+  @return $_return;
+}
+
+// th-unit-convert-absolute
+// Converts a relative number to an absolute number.
+//
+// @since 0.0.11
+// @type function
+//
+// @requires {function} th-unit-strip
+// @requires {function} th-math-round-to
+// @requires {function} th-unit-convert
+//
+// @param {number} $number The number to convert (required).
+// @param {string} $unit The type of absolute unit (required).
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The converted absolute number.
+//
+// @example scss Convert 2em to px.
+// // th-unit-convert-absolute(2em, px)
+// // // 32px
+// @example scss Convert 2em to px with base font size of 10px.
+// // th-unit-convert-absolute(2em, px, 10px);
+// // // 20px
+
+@function th-unit-convert-absolute(
+  $number,
+  $unit,
+  $base-font-size: $th-base-font-size
+){
+  $_return: $number;
+  $_return: th-unit-strip($number) * th-unit-strip($base-font-size);
+  $_return: th-math-round-to($_return, 5);
+  @if $unit {
+    $_return: th-unit-convert($_return, $unit);
+  }
+  @return $_return;
+}
+
+// th-unit-convert-relative
+// Converts an absolute number to a relative number.
+//
+// @since 0.0.11
+// @type function
+//
+// @requires {function} th-unit-strip
+// @requires {function} th-math-round-to
+// @requires {function} th-unit-convert
+//
+// @param {number} $number The number to convert (required).
+// @param {string} $unit The type of relative unit (required).
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The converted number.
+//
+// @example scss Convert 24px to em.
+// // th-unit-convert-relative(24px, em)
+// // // 1.5
+// @example scss Convert 24px to em with a base font size of 32px.
+// // th-unit-convert-relative(24px, em, 32px)
+// // // 0.75em
+
+@function th-unit-convert-relative(
+  $number,
+  $unit,
+  $base-font-size: $th-base-font-size
+){
+  $_return: $number;
+  $_return: th-unit-strip($number) / th-unit-strip($base-font-size);
+  $_return: th-math-round-to($_return, 5);
+  @if $unit {
+    $_return: th-unit-convert($_return, $unit);
+  }
+  @return $_return;
+}
+
+// th-unit-convert-em
+// Converts an absolute number to an em number.
+//
+// @since 0.0.11
+// @type function
+//
+// @requires th-unit-convert-relative
+//
+// @param {number} $number The number to convert (required).
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The converted number.
+//
+// @example scss Convert 24px to em.
+// // th-unit-convert-em(24px)
+// // // 1.5
+// @example scss Convert 24px to em with a base font size of 32px.
+// // th-unit-convert-em(24px, 32px)
+// // // 0.75em
+
+@function th-unit-convert-em(
+  $number,
+  $base-font-size: $th-base-font-size
+){
+  $_return: $number;
+  $_return: th-unit-convert-relative($number, em, $base-font-size);
+  @return $_return;
+}
+
+// th-unit-convert-rem
+// Converts an absolute number to an rem number.
+//
+// @since 0.0.11
+// @type function
+//
+// @requires th-unit-convert-relative
+//
+// @param {number} $number The number to convert (required).
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The converted number.
+//
+// @example scss Convert 24px to rem.
+// // th-unit-convert-rem(24px)
+// // // 1.5
+// @example scss Convert 24px to rem with a base font size of 32px.
+// // th-unit-convert-rem(24px, 32px)
+// // // 0.75rem
+
+@function th-unit-convert-rem(
+  $number,
+  $base-font-size: $th-base-font-size
+){
+  $_return: $number;
+  $_return: th-unit-convert-relative($number, rem, $base-font-size);
+  @return $_return;
+}
+
+// th-unit-convert-rel
+// Converts an absolute number to a relative number.
+//
+// @since 0.0.11
+// @type function
+//
+// @requires th-unit-convert-relative
+//
+// @param {number} $number The number to convert (required).
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The converted number.
+//
+// @example scss Convert 24px to a relative number.
+// // th-unit-convert-rel(24px)
+// // // 1.5
+// @example scss Convert 24px to a relative number with a base font size of 32px.
+// // th-unit-convert-rel(24px, 32px)
+// // // 0.75
+
+@function th-unit-convert-rel(
+  $number,
+  $base-font-size: $th-base-font-size
+){
+  $_return: $number;
+  $_return: th-unit-convert-relative($number, false, $base-font-size);
+  @return $_return;
+}
+
+// th-unit-convert-px
+// Converts a relative number to a px number.
+//
+// @since 0.0.11
+// @type function
+//
+// @requires th-unit-convert-absolute
+//
+// @param {number} $number The number to convert (required).
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The converted number.
+//
+// @example scss Convert 2em to a px number.
+// // th-unit-convert-absolute(2em)
+// // // 32px
+// @example scss Convert 2em to a px number with a base font size of 18px.
+// // th-unit-convert-px(2em, 18px)
+// // // 36px
+
+@function th-unit-convert-px(
+  $number,
+  $base-font-size: $th-base-font-size
+){
+  $_return: $number;
+  $_return: th-unit-convert-absolute($number, px, $base-font-size);
   @return $_return;
 }

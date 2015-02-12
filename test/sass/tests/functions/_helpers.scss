@@ -1,0 +1,503 @@
+// Tests / Functions / Helpers
+
+// th-math-power()
+// ------------------------------
+
+function th-math-power {
+
+  @include th-assert(
+    $describe: "Calculate power of 5 to 3.",
+    $expect: 125,
+    $actual: th-math-power(5, 3)
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Calculate power of 5 to 1.",
+    $expect: 5,
+    $actual: th-math-power(5, 1)
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Calculate power of -5 to 3.",
+    $expect: -125,
+    $actual: th-math-power(-5, 3)
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+}
+
+// th-math-round-to()
+// ------------------------------
+
+function th-math-round-to {
+
+  @include th-assert(
+    $describe: "Round 5.0246 to 3 decimal places",
+    $expect: 5.025,
+    $actual: th-math-round-to(5.0246, 3)
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+}
+
+// th-list-has-index()
+// ------------------------------
+
+function th-list-has-index {
+
+  @include th-assert(
+    $describe: "Check list for an index.",
+    $expect: true,
+    $actual: th-list-has-index( (1, 2, 3), 1 )
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Check list for an index.",
+    $expect: false,
+    $actual: th-list-has-index( (1, 2, 3), 4 )
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+}
+
+// th-list-has()
+// ------------------------------
+
+function th-list-has {
+
+  @include th-assert(
+    $describe: "Check list for value x (exists).",
+    $expect: true,
+    $actual: th-list-has( (a, b, x), x )
+  ){
+    @include th-assert-expect {
+      map: $expect;
+    }
+    @include th-assert-actual {
+      map: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Check list for value x (doesn't exist).",
+    $expect: false,
+    $actual: th-list-has( (a, b, c), x )
+  ){
+    @include th-assert-expect {
+      map: $expect;
+    }
+    @include th-assert-actual {
+      map: $actual;
+    }
+  }
+
+}
+
+// th-list-has-deep()
+// ------------------------------
+
+function th-list-has-deep {
+
+  @include th-assert(
+    $describe: "Check list for a value.",
+    $expect: true,
+    $actual: th-list-has-deep( (a, (b, c), d), a)
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Check list for a deep value.",
+    $expect: true,
+    $actual: th-list-has-deep( (a, (b, c), d), c)
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Check list for a deep value that doesnt exist.",
+    $expect: false,
+    $actual: th-list-has-deep( (a, (b, c), d), e)
+  ){
+    @include th-assert-expect {
+      boolean: $expect;
+    }
+    @include th-assert-actual {
+      boolean: $actual;
+    }
+  }
+
+}
+
+// th-unit-strip()
+// ------------------------------
+
+function th-unit-strip {
+
+  @include th-assert(
+    $describe: "Strip unit from 32px.",
+    $expect: 32,
+    $actual: th-unit-strip(32px)
+  ){
+    @include th-assert-expect {
+      map: $expect;
+    }
+    @include th-assert-actual {
+      map: $actual;
+    }
+  }
+
+}
+
+// th-unit-cast()
+// ------------------------------
+
+function th-unit-cast {
+
+  @include th-assert(
+    $describe: "Create a 32px number.",
+    $expect: 32px,
+    $actual: th-unit-cast(32, px)
+  ){
+    @include th-assert-expect {
+      map: $expect;
+    }
+    @include th-assert-actual {
+      map: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Create a 32foo number (doesn't exist).",
+    $expect: 32,
+    $actual: th-unit-cast(32, foo)
+  ){
+    @include th-assert-expect {
+      map: $expect;
+    }
+    @include th-assert-actual {
+      map: $actual;
+    }
+  }
+
+}
+
+// th-unit-convert()
+// ------------------------------
+
+function th-unit-convert {
+
+  @include th-assert(
+    $describe: "Bind 32 to em.",
+    $expect: 32em,
+    $actual: th-unit-cast(32, em)
+  ){
+    @include th-assert-expect {
+      map: $expect;
+    }
+    @include th-assert-actual {
+      map: $actual;
+    }
+  }
+
+}
+
+
+// th-unit-convert-absolute()
+// ------------------------------
+
+function th-unit-convert-absolute {
+
+  @include th-assert(
+    $describe: "Convert 4.889em to px.",
+    $expect: 88.002px,
+    $actual: th-unit-convert-absolute(4.889em, px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 4.889 to px.",
+    $expect: 88.002px,
+    $actual: th-unit-convert-absolute(4.889, px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 4.889rem to px.",
+    $expect: 88.002px,
+    $actual: th-unit-convert-absolute(4.889rem, px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 2.750em to px with base font size of 32px.",
+    $expect: 88px,
+    $actual: th-unit-convert-absolute(2.750em, px, 32px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
+
+// th-unit-convert-relative()
+// ------------------------------
+
+function th-unit-convert-relative {
+
+  @include th-assert(
+    $describe: "Convert 32px to em.",
+    $expect: 1.77778em,
+    $actual: th-unit-convert-relative(32px, em)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 32px to rel.",
+    $expect: 1.77778,
+    $actual: th-unit-convert-relative(32px, false)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 32px to rem.",
+    $expect: 1.77778rem,
+    $actual: th-unit-convert-relative(32px, rem)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 32px to em with base font size of 12px.",
+    $expect: 2.66667em,
+    $actual: th-unit-convert-relative(32px, em, 12px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
+
+// _th-unit-convert-em()
+// ------------------------------
+
+function th-unit-convert-em {
+
+  @include th-assert(
+    $describe: "Convert 22px to em.",
+    $expect: 1.22222em,
+    $actual: th-unit-convert-em(22px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 24px to em with base font size of 32px.",
+    $expect: 0.75em,
+    $actual: th-unit-convert-em(24px, 32px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
+
+// _th-unit-convert-rem()
+// ------------------------------
+
+function th-unit-convert-rem {
+
+  @include th-assert(
+    $describe: "Convert 22px to rem.",
+    $expect: 1.22222rem,
+    $actual: th-unit-convert-rem(22px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 24px to rem with base font size of 32px.",
+    $expect: 0.75rem,
+    $actual: th-unit-convert-rem(24px, 32px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
+
+// th-unit-convert-rel()
+// ------------------------------
+
+function th-unit-convert-rel {
+
+  @include th-assert(
+    $describe: "Convert 22px to rel.",
+    $expect: 1.22222,
+    $actual: th-unit-convert-rel(22px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 24px to rel with base font size of 32px.",
+    $expect: 0.75,
+    $actual: th-unit-convert-rel(24px, 32px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}
+
+// th-unit-convert-px()
+// ------------------------------
+
+function th-unit-convert-px {
+
+  @include th-assert(
+    $describe: "Convert 2.35em to px.",
+    $expect: 42.3px,
+    $actual: th-unit-convert-px(2.35em)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+  @include th-assert(
+    $describe: "Convert 2.35em to px with base font size of 22px.",
+    $expect: 51.7px,
+    $actual: th-unit-convert-px(2.35em, 22px)
+  ){
+    @include th-assert-expect {
+      font-size: $expect;
+    }
+    @include th-assert-actual {
+      font-size: $actual;
+    }
+  }
+
+}

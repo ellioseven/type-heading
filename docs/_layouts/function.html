@@ -1,0 +1,105 @@
+<article class="doc doc-function">
+<header class="doc-header">
+<h4 class="doc-title"><span>Function: </span>{{function.name}}()</h4>
+</header>
+<div class="doc-content">
+<section class="doc-section doc-section-details">
+<h5 class="doc-section-title">Details</h5>
+<div class="table-responsive">
+<table class="doc-details">
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+<th>Since</th>
+<th>Group</th>
+<th>Access</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Function</td>
+<td>{{function.description}}</td>
+<td>{{function.since}}</td>
+<td>{{function.group}}</td>
+<td>{{function.access}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="doc-section doc-section-parameters">
+<h5 class="doc-section-title">Parameters</h5>
+<div class="table-responsive">
+<table class="doc-parameters">
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+<th>Options</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+{% for params in function.params %}
+<tr>
+{% for param in params %}
+<td>${{param[0]}}</td>
+{% for paramInner in param[1] %}
+<td>
+{% if paramInner.type %}
+{{paramInner.type}}
+{% endif %}
+{% if paramInner.description %}
+{{paramInner.description}}
+{% endif %}
+{% if paramInner.default %}
+{{paramInner.default}}
+{% endif %}
+{% if paramInner.options %}
+{{paramInner.options}}
+{% endif %}
+{% if paramInner.required %}
+Yes
+{% endif %}
+</td>
+{% endfor %}
+{% endfor %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</section>
+<section class="doc-section doc-section-return">
+<h5 class="doc-section-title">Return</h5>
+<div class="table-responsive">
+<table class="doc-return">
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+{% for return in function.return %}
+{% if return.type %}
+<td>{{return.type}}</td>
+{% endif %}
+{% if return.description %}
+<td>{{return.description}}</td>
+{% endif %}
+{% endfor %}
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="doc-section doc-section-content">
+{{function.content}}
+</section>
+</div>
+</article>

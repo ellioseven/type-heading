@@ -1,0 +1,26 @@
+// Placeholders
+
+// Grid
+// ------------------------------
+
+// grid-container
+// Container styles.
+//
+// @since 0.0.1
+// @type Placeholder
+// @group grid
+// 
+// @link http://susydocs.oddbird.net/en/latest/toolkit/#container
+//
+// @see {mixin} container
+//
+// @example scss Output container styles.
+// // @extend grid-container;
+
+%grid-container {
+  padding-left: $grid-container-padding;
+  padding-right: $grid-container-padding;
+  @include layout-with-layouts {
+    @include container;
+  }
+}
