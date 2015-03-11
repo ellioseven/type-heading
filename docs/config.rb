@@ -7,9 +7,10 @@ require 'breakpoint'
 require 'type-heading'
 
 # Set this to the root of your project when deployed:
-http_path = "/"
+http_path = "http://ellioseven.github.io/type-heading/"
 css_dir = "css"
 sass_dir = "_sass"
+img_dir = "images"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
