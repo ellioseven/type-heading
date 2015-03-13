@@ -237,6 +237,9 @@ mixin th-heading {
   margin-bottom: 40px;
   font-size: 10px;
   line-height: 20px;
+  /* Describe: Output only font-size and line-height styles for a heading. */
+  font-size: 0.55556em;
+  line-height: 2;
 }
 
 mixin th-headings {

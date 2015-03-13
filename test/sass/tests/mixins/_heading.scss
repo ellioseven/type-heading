@@ -92,6 +92,21 @@ mixin th-heading {
     }
   }
 
+  @include th-assert(
+  $describe: "Output only font-size and line-height styles for a heading."
+  ){
+    @include th-assert-expect {
+      font-size: 0.55556em;
+      line-height: 2;
+    }
+    @include th-assert-actual {
+      @include th-heading(
+        $heading: h1,
+        $include: (font-size line-height)
+      );
+    }
+  }
+
 }
 
 // th-headings()
