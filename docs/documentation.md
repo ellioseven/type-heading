@@ -20,6 +20,10 @@ menu: true
 {% for function in headingFunctions %}
 {% include_relative _layouts/function.html %}
 {% endfor %}
+### Headings: Mixins
+{% for mixin in headingMixins %}
+{% include_relative _layouts/mixin.html %}
+{% endfor %}
 ## Properties
 ### Properties: Functions
 {% for function in propertyFunctions %}
