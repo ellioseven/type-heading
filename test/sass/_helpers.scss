@@ -1,36 +1,18 @@
 // Helpers
 
-$th-warn: true !default;
 $th-env: false !default;
 
 // @mixin th-asserts
 //
 // Iniates an assertion.
 // @param $assertion: string | The assertion description / name.
-// @param $expect: mixed | The expected result.
-// @param $actual: mixed | The actual result.
 
 @mixin th-assert(
-  $describe,
-  $expect: null,
-  $actual: null,
-  $warn: true
+  $describe
 ){
   $describe: $describe !global;
   /* Describe: #{$describe} */
-  @if $expect != null and $actual != null {
-    $expect: $expect !global;
-    $actual: $actual !global;
-    @if $warn == true {
-      @include th-assert-warn;
-    }
-  }
   @content;
-  @if $expect != null and $actual != null {
-    $expect: null !global;
-    $actual: null !global;
-  }
-  $describe: null !global;
 }
 
 // @mixin th-assert-expect
@@ -50,16 +32,5 @@ $th-env: false !default;
 @mixin th-assert-actual {
   @if $th-env == actual {
     @content;
-  }
-}
-
-// @function th-assert-equal
-//
-// Warn for an unequal assertion.
-
-@mixin th-assert-warn {
-	$assertion: selector-parse(&);
-  @if $actual != $expect and $th-warn {
-  	@warn "Failed Assertion - Section: #{$assertion} | Describe: #{$describe} | Expected: #{$expect} | Actual: #{$actual}";
   }
 }

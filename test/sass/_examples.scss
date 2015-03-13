@@ -3,15 +3,13 @@
 // Assertion example: function
 assert-function {
 	@include th-assert(
-		$describe: "assert function",
-		$expect: 11px,
-		$actual: foo($bar)
+		$describe: "assert function"
 	){
 		@include th-assert-expect {
-			property: $expect;
+			property: 11px
 		}
 		@include th-assert-actual {
-			property: $actual;
+			property: foo($bar)
 		}
 	}
 }
