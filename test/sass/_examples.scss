@@ -6,10 +6,10 @@ assert-function {
 		$describe: "assert function"
 	){
 		@include th-assert-expect {
-			property: 11px
+      result: 11px
 		}
 		@include th-assert-actual {
-			property: foo($bar)
+      result: foo($bar)
 		}
 	}
 }

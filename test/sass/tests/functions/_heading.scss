@@ -9,10 +9,10 @@ function th-heading {
 		$describe: "Return heading"
 	){
 		@include th-assert-expect {
-			map: (10px 20px (30px 40px));
+			result: (10px 20px (30px 40px));
 		}
 		@include th-assert-actual {
-			map: th-heading(h1);
+			result: th-heading(h1);
 		}
 	}
 
@@ -20,10 +20,10 @@ function th-heading {
 		$describe: "Return heading by breakpoint"
 	){
 		@include th-assert-expect {
-			map: (50px 60px (70px 80px) 768px);
+			result: (50px 60px (70px 80px) 768px);
 		}
 		@include th-assert-actual {
-			map: th-heading(h1, 768px);
+			result: th-heading(h1, 768px);
 		}
 	}
 
@@ -31,10 +31,10 @@ function th-heading {
 		$describe: "Return a further heading by breakpoint"
 	){
 		@include th-assert-expect {
-			map: (90px 100px (110px 120px) 1024px);
+			result: (90px 100px (110px 120px) 1024px);
 		}
 		@include th-assert-actual {
-			map: th-heading(h1, 1024px);
+			result: th-heading(h1, 1024px);
 		}
 	}
 
@@ -49,10 +49,10 @@ function th-heading-get-map {
 		$describe: "Return heading map"
 	){
 		@include th-assert-expect {
-			map: (5px);
+			result: (5px);
 		}
 		@include th-assert-actual {
-			map: th-heading-get-map(h6);
+			result: th-heading-get-map(h6);
 		}
 	}
 
@@ -60,10 +60,10 @@ function th-heading-get-map {
 		$describe: "Return heading map with breakpoint"
 	){
 		@include th-assert-expect {
-			map: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px, 90px 100px (110px 120px) 1024px);
+			result: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px, 90px 100px (110px 120px) 1024px);
 		}
 		@include th-assert-actual {
-			map: th-heading-get-map(h1);
+			result: th-heading-get-map(h1);
 		}
 	}
 
@@ -107,10 +107,10 @@ function th-heading-get-next {
 		$describe: "Get heading with next"
 	){
 		@include th-assert-expect {
-			map: (10px 20px (30px 40px));
+			result: (10px 20px (30px 40px));
 		}
 		@include th-assert-actual {
-			map: _th-heading-get-next(h1);
+			result: _th-heading-get-next(h1);
 		}
 	}
 
@@ -118,10 +118,10 @@ function th-heading-get-next {
 		$describe: "Get heading with next and breakpoint"
 	){
 		@include th-assert-expect {
-			map: (50px 60px (70px 80px) 768px);
+			result: (50px 60px (70px 80px) 768px);
 		}
 		@include th-assert-actual {
-			map: _th-heading-get-next(h1, 768px);
+			result: _th-heading-get-next(h1, 768px);
 		}
 	}
 

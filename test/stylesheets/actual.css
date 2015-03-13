@@ -1,17 +1,17 @@
 function th-heading {
   /* Describe: Return heading */
-  map: 10px 20px 30px 40px;
+  result: 10px 20px 30px 40px;
   /* Describe: Return heading by breakpoint */
-  map: 50px 60px 70px 80px 768px;
+  result: 50px 60px 70px 80px 768px;
   /* Describe: Return a further heading by breakpoint */
-  map: 90px 100px 110px 120px 1024px;
+  result: 90px 100px 110px 120px 1024px;
 }
 
 function th-heading-get-map {
   /* Describe: Return heading map */
-  map: 5px;
+  result: 5px;
   /* Describe: Return heading map with breakpoint */
-  map: 10px 20px 30px 40px, 50px 60px 70px 80px 768px, 90px 100px 110px 120px 1024px;
+  result: 10px 20px 30px 40px, 50px 60px 70px 80px 768px, 90px 100px 110px 120px 1024px;
 }
 
 function th-heading-has-next {
@@ -23,187 +23,187 @@ function th-heading-has-next {
 
 function th-heading-get-next {
   /* Describe: Get heading with next */
-  map: 10px 20px 30px 40px;
+  result: 10px 20px 30px 40px;
   /* Describe: Get heading with next and breakpoint */
-  map: 50px 60px 70px 80px 768px;
+  result: 50px 60px 70px 80px 768px;
 }
 
 function th-property {
   /* Describe: Return property from heading */
-  font-size: 0.55556em;
+  result: 0.55556em;
   /* Describe: Return property from heading with breakpoint */
-  font-size: 2.77778em;
+  result: 2.77778em;
   /* Describe: Return default property from heading */
-  margin-top: 3px;
+  result: 3px;
   /* Describe: Return default property from heading with breakpoint */
-  margin-bottom: 0.22222rem;
+  result: 0.22222rem;
   /* Describe: Return default from heading via keyword */
-  margin-top: 3px;
+  result: 3px;
   /* Describe: Return default from heading via missing value */
-  line-height: 0.11111;
+  result: 0.11111;
 }
 
 function _th-property-get {
   /* Describe: Return font size property value. */
-  font-size: 10px;
+  result: 10px;
   /* Describe: Return margin top property value. */
-  margin-top: 30px;
+  result: 30px;
   /* Describe: Return margin bottom property value. */
-  margin-bottom: 40px;
+  result: 40px;
   /* Describe: Return missing value. */
-  margin-bottom: false;
+  result: false;
   /* Describe: Return missing inner value. */
-  margin-bottom: 30px;
+  result: 30px;
 }
 
 function th-property-font-size {
   /* Describe: Return font size from heading */
-  font-size: 0.55556em;
+  result: 0.55556em;
   /* Describe: Return font size from heading with breakpoint */
-  font-size: 2.77778em;
+  result: 2.77778em;
   /* Describe: Return font size from heading with a single value */
-  font-size: 0.27778em;
+  result: 0.27778em;
 }
 
 function th-property-line-height {
   /* Describe: Return line height from heading */
-  line-height: 1.11111;
+  result: 1.11111;
   /* Describe: Return line height from heading with breakpoint */
-  line-height: 3.33333;
+  result: 3.33333;
 }
 
 function th-property-margin-top {
   /* Describe: Return margin-top from heading */
-  margin-top: 30px;
+  result: 30px;
   /* Describe: Return margin-top from heading with breakpoint */
-  margin-top: 70px;
+  result: 70px;
   /* Describe: Return margin-top from heading with single value */
-  margin-top: 29px;
+  result: 29px;
 }
 
 function th-property-margin-bottom {
   /* Describe: Return margin-bottom from heading */
-  margin-bottom: 2.22222rem;
+  result: 2.22222rem;
   /* Describe: Return margin-bottom from heading with breakpoint */
-  margin-bottom: 4.44444rem;
+  result: 4.44444rem;
   /* Describe: Return margin-bottom from heading with single value */
-  margin-bottom: 1.61111rem;
+  result: 1.61111rem;
 }
 
 function th-property-default {
   /* Describe: Return default font size value. */
-  font-size: 0.05556em;
+  result: 0.05556em;
 }
 
 function _th-property-unit-convert {
   /* Describe: Convert 10px font size to em. */
-  font-size: 0.55556em;
+  result: 0.55556em;
   /* Describe: Convert 10px font size with base font size of 20px. */
-  font-size: 0.5em;
+  result: 0.5em;
 }
 
 function th-math-power {
   /* Describe: Calculate power of 5 to 3. */
-  boolean: 125;
+  result: 125;
   /* Describe: Calculate power of 5 to 1. */
-  boolean: 5;
+  result: 5;
   /* Describe: Calculate power of -5 to 3. */
-  boolean: -125;
+  result: -125;
 }
 
 function th-math-round-to {
   /* Describe: Round 5.0246 to 3 decimal places */
-  boolean: 5.025;
+  result: 5.025;
 }
 
 function th-list-has-index {
   /* Describe: Check list for an index. */
-  boolean: true;
+  result: true;
   /* Describe: Check list for an index. */
-  boolean: false;
+  result: false;
 }
 
 function th-list-has {
   /* Describe: Check list for value x (exists). */
-  map: true;
+  result: true;
   /* Describe: Check list for value x (doesn't exist). */
-  map: false;
+  result: false;
 }
 
 function th-list-has-deep {
   /* Describe: Check list for a value. */
-  boolean: true;
+  result: true;
   /* Describe: Check list for a deep value. */
-  boolean: true;
+  result: true;
   /* Describe: Check list for a deep value that doesnt exist. */
-  boolean: false;
+  result: false;
 }
 
 function th-unit-strip {
   /* Describe: Strip unit from 32px. */
-  map: 32;
+  result: 32;
 }
 
 function th-unit-cast {
   /* Describe: Create a 32px number. */
-  map: 32px;
+  result: 32px;
   /* Describe: Create a 32foo number (doesn't exist). */
-  map: 32;
+  result: 32;
 }
 
 function th-unit-convert {
   /* Describe: Bind 32 to em. */
-  map: 32em;
+  result: 32em;
 }
 
 function th-unit-convert-absolute {
   /* Describe: Convert 4.889em to px. */
-  font-size: 88.002px;
+  result: 88.002px;
   /* Describe: Convert 4.889 to px. */
-  font-size: 88.002px;
+  result: 88.002px;
   /* Describe: Convert 4.889rem to px. */
-  font-size: 88.002px;
+  result: 88.002px;
   /* Describe: Convert 2.750em to px with base font size of 32px. */
-  font-size: 88px;
+  result: 88px;
 }
 
 function th-unit-convert-relative {
   /* Describe: Convert 32px to em. */
-  font-size: 1.77778em;
+  result: 1.77778em;
   /* Describe: Convert 32px to rel. */
-  font-size: 1.77778;
+  result: 1.77778;
   /* Describe: Convert 32px to rem. */
-  font-size: 1.77778rem;
+  result: 1.77778rem;
   /* Describe: Convert 32px to em with base font size of 12px. */
-  font-size: 2.66667em;
+  result: 2.66667em;
 }
 
 function th-unit-convert-em {
   /* Describe: Convert 22px to em. */
-  font-size: 1.22222em;
+  result: 1.22222em;
   /* Describe: Convert 24px to em with base font size of 32px. */
-  font-size: 0.75em;
+  result: 0.75em;
 }
 
 function th-unit-convert-rem {
   /* Describe: Convert 22px to rem. */
-  font-size: 1.22222rem;
+  result: 1.22222rem;
   /* Describe: Convert 24px to rem with base font size of 32px. */
-  font-size: 0.75rem;
+  result: 0.75rem;
 }
 
 function th-unit-convert-rel {
   /* Describe: Convert 22px to rel. */
-  font-size: 1.22222;
+  result: 1.22222;
   /* Describe: Convert 24px to rel with base font size of 32px. */
-  font-size: 0.75;
+  result: 0.75;
 }
 
 function th-unit-convert-px {
   /* Describe: Convert 2.35em to px. */
-  font-size: 42.3px;
+  result: 42.3px;
   /* Describe: Convert 2.35em to px with base font size of 22px. */
-  font-size: 51.7px;
+  result: 51.7px;
 }
 
 mixin th-heading {
