@@ -339,6 +339,25 @@ context used:
 )
 {% endhighlight %}
 
+### Output Certain Heading Properties
+
+You can choose to only output certain properties of a heading:
+
+{% highlight sass %}
+// Output h1 styles but only include font-size and line-height
+@include th-heading(
+  $heading: h1,
+  $include: (font-size line-height)
+)
+{% endhighlight %}
+
+You may include any of the following properties:
+
+* `font-size`
+* `line-height`
+* `margin-top`
+* `margin-bottom`
+
 ---
 
 ## Output a Property

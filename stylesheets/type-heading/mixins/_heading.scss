@@ -19,6 +19,7 @@
 // @param {string} $heading A heading map key (required).
 // @param {number | boolean} $breakpoint (false) A heading list breakpoint.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+// @param {list | boolean} $include (false font-size line-height margin-top margin-bottom) Include only certain properties in the mixin output.
 //
 // @example scss Output h1 styles.
 // // th-heading(h1)
@@ -37,12 +38,18 @@
 // //   $heading: h1,
 // //   $base-font-size: 48px
 // // )
+// @example scss Output h1 styles but only include font-size and line-height
+// // th-heading(
+// //   $heading: h1,
+// //   $include: (font-size line-height)
+// // )
 
 @mixin th-heading(
   $heading,
   $breakpoint: false,
   $convert: true,
-  $base-font-size: $th-base-font-size
+  $base-font-size: $th-base-font-size,
+  $include: (font-size line-height margin-top margin-bottom)
 ){
   $heading: th-heading(
     $heading: $heading,
@@ -54,30 +61,38 @@
     $base-font-size: $base-font-size,
     $convert: false
   );
-  @include th-property-margin-top(
-    $heading: $heading,
-    $breakpoint: $breakpoint,
-    $convert: $convert,
-    $base-font-size: $font-size
-  );
-  @include th-property-margin-bottom(
-    $heading: $heading,
-    $breakpoint: $breakpoint,
-    $convert: $convert,
-    $base-font-size: $font-size
-  );
-  @include th-property-font-size(
-    $heading: $heading,
-    $breakpoint: $breakpoint,
-    $convert: $convert,
-    $base-font-size: $base-font-size
-  );
-  @include th-property-line-height(
-    $heading: $heading,
-    $breakpoint: $breakpoint,
-    $convert: $convert,
-    $base-font-size: $font-size
-  );
+  @if not $include or th-list-has($include, margin-top) {
+    @include th-property-margin-top(
+      $heading: $heading,
+      $breakpoint: $breakpoint,
+      $convert: $convert,
+      $base-font-size: $font-size
+    );
+  }
+  @if not $include or th-list-has($include, margin-bottom) {
+    @include th-property-margin-bottom(
+      $heading: $heading,
+      $breakpoint: $breakpoint,
+      $convert: $convert,
+      $base-font-size: $font-size
+    );
+  }
+  @if not $include or th-list-has($include, font-size) {
+    @include th-property-font-size(
+      $heading: $heading,
+      $breakpoint: $breakpoint,
+      $convert: $convert,
+      $base-font-size: $base-font-size
+    );
+  }
+  @if not $include or th-list-has($include, line-height) {
+    @include th-property-line-height(
+      $heading: $heading,
+      $breakpoint: $breakpoint,
+      $convert: $convert,
+      $base-font-size: $font-size
+    );
+  }
 }
 
 // th-headings

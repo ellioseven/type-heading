@@ -26,6 +26,13 @@ params: [
     default: '$th-base-font-size',
     options: false,
     required: false
+  ],
+  include: [
+    type: 'List',
+    description: 'Include only certain properties in the mixin output.',
+    default: false,
+    options: 'font-size | line-height | margin-top | margin-bottom',
+    required: false
   ]
 ]
 ---
@@ -53,5 +60,14 @@ Output h1 styles with a base font size of 48px:
 @include th-heading(
   $heading: h1,
   $base-font-size: 48px
+)
+{% endhighlight %}
+
+Output h1 styles but only include font-size and line-height:
+
+{% highlight sass %}
+th-heading(
+    $heading: h1,
+    $include: (font-size line-height)
 )
 {% endhighlight %}
