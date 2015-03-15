@@ -50,7 +50,7 @@
   $breakpoint: false,
   $convert: true,
   $base-font-size: $th-base-font-size,
-  $include: (font-size line-height margin-top margin-bottom)
+  $include: false
 ){
   $heading: th-heading(
     $heading: $heading,
