@@ -1,6 +1,7 @@
 // Tests / Mixins / Breakpoint
 
 // th-breakpoint-heading()
+// ------------------------------
 
 mixin th-breakpoint-heading {
 
@@ -16,27 +17,9 @@ mixin th-breakpoint-heading {
       }
     }
     @include th-assert-actual {
-      @include th-breakpoint-heading(h2, 768px);
-    }
-  }
-
-  @include th-assert(
-    $describe: "Output styles for a heading within a min-width breakpoint without unit conversion."
-  ){
-    @include th-assert-expect {
-      @media screen and (min-width: 768px) {
-        margin-top: 69px;
-        margin-bottom: 69px;
-        font-size: 49px;
-        line-height: 59px;
+      @include th-breakpoint-heading(768px) {
+        @include th-heading($heading: h2, $breakpoint: 768px);
       }
-    }
-    @include th-assert-actual {
-      @include th-breakpoint-heading(
-        $heading: h2,
-        $convert: false,
-        $breakpoint: 768px
-      );
     }
   }
 
@@ -52,7 +35,9 @@ mixin th-breakpoint-heading {
       }
     }
     @include th-assert-actual {
-      @include th-breakpoint-heading(h2, 768px, max-width);
+      @include th-breakpoint-heading(768px, max-width) {
+        @include th-heading($heading: h2, $breakpoint: 768px);
+      }
     }
   }
 

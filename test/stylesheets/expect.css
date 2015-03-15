@@ -370,7 +370,6 @@ mixin th-property-margin-bottom {
 
 mixin th-breakpoint-heading {
   /* Describe: Output styles for a heading within a min-width breakpoint. */
-  /* Describe: Output styles for a heading within a min-width breakpoint without unit conversion. */
   /* Describe: Output styles for a heading within a max-width breakpoint. */
 }
 @media screen and (min-width: 768px) {
@@ -379,14 +378,6 @@ mixin th-breakpoint-heading {
     margin-bottom: 1.40816rem;
     font-size: 2.72222em;
     line-height: 1.20408;
-  }
-}
-@media screen and (min-width: 768px) {
-  mixin th-breakpoint-heading {
-    margin-top: 69px;
-    margin-bottom: 69px;
-    font-size: 49px;
-    line-height: 59px;
   }
 }
 @media screen and (max-width: 768px) {

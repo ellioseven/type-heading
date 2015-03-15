@@ -133,12 +133,16 @@
       $breakpoint: th-property($heading, breakpoint);
       @if $breakpoint {
         @include th-breakpoint-heading(
-          $heading: $heading,
           $breakpoint: $breakpoint,
-          $direction: $direction,
-          $convert: $convert,
-          $base-font-size: $base-font-size
-        );
+          $direction: $direction
+        ){
+          @include th-heading(
+            $heading: $heading,
+            $convert: $convert,
+            $base-font-size: $base-font-size,
+            $breakpoint: $breakpoint
+          );
+        }
       } @else {
         @include th-heading(
           $heading: $heading,
@@ -150,6 +154,7 @@
   } @else {
     @include th-heading(
       $heading: $heading,
+      $convert: $convert,
       $base-font-size: $base-font-size
     );
   }

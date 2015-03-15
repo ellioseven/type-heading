@@ -11,11 +11,8 @@
 //
 // @requires {mixin} th-heading
 //
-// @param {list | string} $heading A heading map key or list (required).
 // @param {number | boolean} $breakpoint (false) A heading list breakpoint (required).
 // @param {string} $direction (min-width | max-width) Media query direction.
-// @param {boolean} $convert (true) If returned value should be unit converted.
-// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @example scss Output h1 styles with min width media query.
 // // @include th-breakpoint-heading(
@@ -28,25 +25,12 @@
 // //   $breakpoint: 768px,
 // //   $direction: max-width
 // // )
-// @example scss Output h1 styles with a base font size of 48px.
-// // @include th-breakpoint-heading(
-// //   $heading: h1,
-// //   $base-font-size: 48px
-// // )
 
 @mixin th-breakpoint-heading(
-  $heading,
   $breakpoint,
-  $direction: min-width,
-  $convert: true,
-  $base-font-size: $th-base-font-size
+  $direction: min-width
 ){
   @media screen and (#{$direction}: #{$breakpoint}){
-    @include th-heading(
-      $heading: $heading,
-      $breakpoint: $breakpoint,
-      $convert: $convert,
-      $base-font-size: $base-font-size
-    );
+    @content;
   }
 }
