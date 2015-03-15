@@ -14,6 +14,7 @@
 // @param {list | string} $heading A heading map key or list (required).
 // @param {number | boolean} $breakpoint (false) A heading list breakpoint (required).
 // @param {string} $direction (min-width | max-width) Media query direction.
+// @param {boolean} $convert (true) If returned value should be unit converted.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @example scss Output h1 styles with min width media query.

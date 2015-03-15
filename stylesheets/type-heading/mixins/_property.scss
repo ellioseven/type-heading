@@ -13,6 +13,7 @@
 //
 // @param {string} $heading A heading map key (required).
 // @param {number | boolean} $breakpoint (false) A heading list breakpoint.
+// @param {boolean} $convert (true) If returned value should be unit converted.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @example scss Output h1 font size styles.
@@ -47,6 +48,7 @@
 //
 // @param {string} $heading A heading map key (required).
 // @param {number | boolean} $breakpoint (false) A heading list breakpoint.
+// @param {boolean} $convert (true) If returned value should be unit converted.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @example scss Output h1 line height styles.
@@ -81,6 +83,7 @@
 //
 // @param {string} $heading A heading map key (required).
 // @param {number | boolean} $breakpoint (false) A heading list breakpoint.
+// @param {boolean} $convert (true) If returned value should be unit converted.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @example scss Output h1 margin top styles.
@@ -115,6 +118,7 @@
 //
 // @param {string} $heading A heading map key (required).
 // @param {number | boolean} $breakpoint (false) A heading list breakpoint.
+// @param {boolean} $convert (true) If returned value should be unit converted.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @example scss Output h1 margin bottom styles.

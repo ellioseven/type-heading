@@ -18,6 +18,7 @@
 //
 // @param {string} $heading A heading map key (required).
 // @param {number | boolean} $breakpoint (false) A heading list breakpoint.
+// @param {boolean} $convert (true) If returned value should be unit converted.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 // @param {list | boolean} $include (false font-size line-height margin-top margin-bottom) Include only certain properties in the mixin output.
 //
@@ -109,6 +110,7 @@
 //
 // @param {list | string} $heading A heading map key or list (required).
 // @param {string} $direction (min-width | max-width) Media query direction.
+// @param {boolean} $convert (true) If returned value should be unit converted.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @example scss Output all h1 styles.
