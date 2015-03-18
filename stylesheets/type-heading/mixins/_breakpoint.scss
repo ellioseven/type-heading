@@ -3,7 +3,7 @@
 // @group Mixins / Breakpoint
 // @author Elliot Mitchum
 
-// th-breakpoint-heading
+// th-breakpoint
 // Output styles for a heading list within a media query.
 //
 // @since 0.0.10
@@ -15,18 +15,18 @@
 // @param {string} $direction (min-width | max-width) Media query direction.
 //
 // @example scss Output h1 styles with min width media query.
-// // @include th-breakpoint-heading(
+// // @include th-breakpoint(
 // //   $heading: h1,
 // //   $breakpoint: 768px
 // // )
 // @example scss Output h1 styles with max width media query.
-// // @include th-breakpoint-heading(
+// // @include th-breakpoint(
 // //   $heading: h1,
 // //   $breakpoint: 768px,
 // //   $direction: max-width
 // // )
 
-@mixin th-breakpoint-heading(
+@mixin th-breakpoint(
   $breakpoint,
   $direction: min-width
 ){

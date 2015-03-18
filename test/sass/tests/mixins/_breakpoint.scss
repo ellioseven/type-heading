@@ -1,9 +1,9 @@
 // Tests / Mixins / Breakpoint
 
-// th-breakpoint-heading()
+// th-breakpoint()
 // ------------------------------
 
-mixin th-breakpoint-heading {
+mixin th-breakpoint {
 
   @include th-assert(
     $describe: "Output styles for a heading within a min-width breakpoint."
@@ -17,7 +17,7 @@ mixin th-breakpoint-heading {
       }
     }
     @include th-assert-actual {
-      @include th-breakpoint-heading(768px) {
+      @include th-breakpoint(768px) {
         @include th-heading($heading: h2, $breakpoint: 768px);
       }
     }
@@ -35,7 +35,7 @@ mixin th-breakpoint-heading {
       }
     }
     @include th-assert-actual {
-      @include th-breakpoint-heading(768px, max-width) {
+      @include th-breakpoint(768px, max-width) {
         @include th-heading($heading: h2, $breakpoint: 768px);
       }
     }

@@ -108,7 +108,7 @@
 // @requires {function} th-heading-get-map
 // @requires {function} _th-heading-has-next
 // @requires {function} th-property
-// @requires {mixin} th-breakpoint-heading
+// @requires {mixin} th-breakpoint
 // @requires {mixin} th-heading
 //
 // @param {list | string} $heading A heading map key or list (required).
@@ -135,7 +135,7 @@
     @each $heading in $heading-map {
       $breakpoint: th-property($heading, breakpoint);
       @if $breakpoint {
-        @include th-breakpoint-heading(
+        @include th-breakpoint(
           $breakpoint: $breakpoint,
           $direction: $direction
         ){
