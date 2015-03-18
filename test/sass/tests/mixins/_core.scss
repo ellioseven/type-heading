@@ -1,0 +1,47 @@
+// Tests / Mixins / Core
+
+// th-with-breakpoint()
+// ------------------------------
+
+mixin th-with-breakpoint {
+
+  @include th-assert(
+    $describe: "Return heading with a 768px breakpoint."
+  ){
+    @include th-assert-expect {
+      result: 50px 60px 70px 80px 768px;
+    }
+    @include th-assert-actual {
+      @include th-with-breakpoint(768px) {
+        result: th-heading(h1);
+      }
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output font-size for a heading with a 768px breakpoint."
+  ){
+    @include th-assert-expect {
+      font-size: 2.72222em;
+    }
+    @include th-assert-actual {
+      @include th-with-breakpoint(768px) {
+        @include th-property-font-size(h2);
+      }
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return font-size for a heading with a 768px breakpoint."
+  ){
+    @include th-assert-expect {
+      result: 2.72222em;
+    }
+    @include th-assert-actual {
+      @include th-with-breakpoint(768px) {
+        result: th-property-font-size(h2);
+      }
+    }
+  }
+
+}

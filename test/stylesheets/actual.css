@@ -1,3 +1,12 @@
+mixin th-with-breakpoint {
+  /* Describe: Return heading with a 768px breakpoint. */
+  result: 50px 60px 70px 80px 768px;
+  /* Describe: Output font-size for a heading with a 768px breakpoint. */
+  font-size: 2.72222em;
+  /* Describe: Return font-size for a heading with a 768px breakpoint. */
+  result: 2.72222em;
+}
+
 function th-heading {
   /* Describe: Return heading */
   result: 10px 20px 30px 40px;

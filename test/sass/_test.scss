@@ -1,6 +1,6 @@
 // Type Heading Test
 
-@import "type-heading";
+@import "../stylesheets/type-heading";
 
 // Partials
 // ------------------------------
@@ -11,6 +11,7 @@
 // Tests
 // ------------------------------
 
+@import "tests/mixins/core";
 @import "tests/functions/heading";
 @import "tests/functions/property";
 @import "tests/functions/helpers";

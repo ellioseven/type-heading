@@ -27,6 +27,7 @@ $th-properties: (
 // @requires {function} th-property-get
 // @requires {function} th-property-default
 // @requires {function} _th-property-unit-convert
+// @requires {function} _th-core-global-breakpoint
 //
 // @param {list | string} $heading A heading map key or list (required).
 // @param {string} $property-name (font-size | line-height | margin-top | margin-bottom | breakpoint) A heading property name (required).
@@ -69,6 +70,7 @@ $th-properties: (
 ){
   $_return: false;
   $heading: th-heading($heading, $breakpoint);
+  $breakpoint: _th-core-global-breakpoint($breakpoint);
   $_return: _th-property-get($heading, $property-name);
   @if $_return == default or $_return == false { 
     $_return: th-property-default($property-name, $base-font-size, false);

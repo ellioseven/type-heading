@@ -1,0 +1,38 @@
+// Breakpoint
+//
+// @group Functions / Core
+// @author Elliot Mitchum
+
+// _th-core-global-breakpoint
+// Allows breakpoint override for sections of code.
+//
+// @since 0.0.12
+// @type Number
+// @access private
+
+$_th-core-global-breakpoint: false !default;
+
+// _th-core-global-breakpoint
+// Returns global breakpoint property.
+//
+// @since 0.0.12
+// @type function
+// @access private
+// @group breakpoint
+//
+// @param {number} $breakpoint A heading list breakpoint (required).
+//
+// @returns {Number} The breakpoint parameter.
+//
+// @example scss Return $th-breakpoint-global parameter.
+// // $breakpoint: _th-core-global-breakpoint($breakpoint);
+
+@function _th-core-global-breakpoint(
+  $breakpoint
+){
+  @if global-variable-exists('_th-core-global-breakpoint') and $_th-core-global-breakpoint {
+    @return $_th-core-global-breakpoint;
+  } @else {
+    @return $breakpoint;
+  }
+}

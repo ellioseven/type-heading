@@ -10,6 +10,7 @@
 // @type mixin
 //
 // @requires {function} th-property-font-size
+// @requires {function} _th-core-global-breakpoint
 //
 // @param {string} $heading A heading map key (required).
 // @param {number | boolean} $breakpoint (false) A heading list breakpoint.
@@ -30,6 +31,7 @@
 	$convert: true,
 	$base-font-size: $th-base-font-size
 ){
+  $breakpoint: _th-core-global-breakpoint($breakpoint);
 	font-size: th-property-font-size(
 		$heading: $heading,
 		$breakpoint: $breakpoint,
@@ -65,6 +67,7 @@
 	$convert: true,
 	$base-font-size: $th-base-font-size
 ){
+  $breakpoint: _th-core-global-breakpoint($breakpoint);
 	line-height: th-property-line-height(
 		$heading: $heading,
 		$breakpoint: $breakpoint,
@@ -100,6 +103,7 @@
 	$convert: true,
 	$base-font-size: $th-base-font-size
 ){
+  $breakpoint: _th-core-global-breakpoint($breakpoint);
 	margin-top: th-property-margin-top(
 		$heading: $heading,
 		$breakpoint: $breakpoint,
@@ -135,6 +139,7 @@
 	$convert: true,
 	$base-font-size: $th-base-font-size
 ){
+  $breakpoint: _th-core-global-breakpoint($breakpoint);
 	margin-bottom: th-property-margin-bottom(
 		$heading: $heading,
 		$breakpoint: $breakpoint,

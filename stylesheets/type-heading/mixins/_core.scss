@@ -1,0 +1,37 @@
+// Core
+//
+// @group Mixins / Core
+// @author Elliot Mitchum
+
+// _th-core-global-breakpoint
+// Allows breakpoint override for sections of code.
+//
+// @since 0.0.12
+// @type Number
+// @access private
+
+$_th-core-global-breakpoint: false !default;
+
+// th-with-breakpoint
+// Use a breakpoint for a section of code.
+//
+// @since 0.0.12
+// @type mixin
+//
+// @requires {variable} $_th-core-global-breakpoint
+//
+// @param {number} $breakpoint (false) A heading list breakpoint (required).
+//
+// @example scss Use a heading with a 768px breakpoint.
+// // @include th-with-breakpoint(768px) {
+// //   @include th-heading(h1);
+// // }
+
+@mixin th-with-breakpoint(
+  $breakpoint
+){
+  $cache: $_th-core-global-breakpoint;
+  $_th-core-global-breakpoint: $breakpoint !global;
+  @content;
+  $_th-core-global-breakpoint: $cache !global;
+}
