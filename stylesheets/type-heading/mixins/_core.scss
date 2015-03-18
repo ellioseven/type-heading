@@ -22,7 +22,7 @@ $_th-core-global-breakpoint: false !default;
 //
 // @param {number} $breakpoint (false) A heading list breakpoint (required).
 //
-// @example scss Use a heading with a 768px breakpoint.
+// @example scss Output a heading with a 768px breakpoint.
 // // @include th-with-breakpoint(768px) {
 // //   @include th-heading(h1);
 // // }
