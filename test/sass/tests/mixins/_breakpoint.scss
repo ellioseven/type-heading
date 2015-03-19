@@ -6,10 +6,10 @@
 mixin th-breakpoint {
 
   @include th-assert(
-    $describe: "Output styles for a heading within a min-width breakpoint."
+    $describe: "Output a heading with a 768px breakpoint within a 768px min-width media query."
   ){
     @include th-assert-expect {
-      @media screen and (min-width: 768px) {
+      @media (min-width: 768px) {
         margin-top: 69px;
         margin-bottom: 1.40816rem;
         font-size: 2.72222em;
@@ -17,17 +17,17 @@ mixin th-breakpoint {
       }
     }
     @include th-assert-actual {
-      @include th-breakpoint(768px) {
-        @include th-heading($heading: h2, $breakpoint: 768px);
+      @include th-breakpoint(768px, 768px) {
+        @include th-heading($heading: h2);
       }
     }
   }
 
   @include th-assert(
-    $describe: "Output styles for a heading within a max-width breakpoint."
+    $describe: "Output styles for a heading with a 768px breakpoint within a 768px max-width media query."
   ){
     @include th-assert-expect {
-      @media screen and (max-width: 768px) {
+      @media (max-width: 768px) {
         margin-top: 69px;
         margin-bottom: 1.40816rem;
         font-size: 2.72222em;
@@ -35,8 +35,26 @@ mixin th-breakpoint {
       }
     }
     @include th-assert-actual {
-      @include th-breakpoint(768px, max-width) {
-        @include th-heading($heading: h2, $breakpoint: 768px);
+      @include th-breakpoint(max-width 768px, 768px) {
+        @include th-heading(h2);
+      }
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output styles for a heading with a 768px breakpoint within a range media query range from 768px to 1023px."
+  ){
+    @include th-assert-expect {
+      @media (min-width: 768px) and (max-width: 1023px) {
+        margin-top: 69px;
+        margin-bottom: 1.40816rem;
+        font-size: 2.72222em;
+        line-height: 1.20408;
+      }
+    }
+    @include th-assert-actual {
+      @include th-breakpoint(768px 1023px, 768px) {
+        @include th-heading(h2);
       }
     }
   }

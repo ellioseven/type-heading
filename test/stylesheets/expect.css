@@ -267,18 +267,8 @@ mixin th-headings {
   margin-bottom: 4rem;
   font-size: 0.55556em;
   line-height: 2;
-  /* Describe: Output styles for a heading with a min-width breakpoint. */
-  margin-top: 30px;
-  margin-bottom: 4rem;
-  font-size: 0.55556em;
-  line-height: 2;
-  /* Describe: Output styles for a heading with a max-width breakpoint. */
-  margin-top: 30px;
-  margin-bottom: 4rem;
-  font-size: 0.55556em;
-  line-height: 2;
 }
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   mixin th-headings {
     margin-top: 69px;
     margin-bottom: 69px;
@@ -286,7 +276,7 @@ mixin th-headings {
     line-height: 59px;
   }
 }
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   mixin th-headings {
     margin-top: 70px;
     margin-bottom: 1.6rem;
@@ -294,39 +284,7 @@ mixin th-headings {
     line-height: 1.2;
   }
 }
-@media screen and (min-width: 1024px) {
-  mixin th-headings {
-    margin-top: 110px;
-    margin-bottom: 1.33333rem;
-    font-size: 5em;
-    line-height: 1.11111;
-  }
-}
-@media screen and (min-width: 768px) {
-  mixin th-headings {
-    margin-top: 70px;
-    margin-bottom: 1.6rem;
-    font-size: 2.77778em;
-    line-height: 1.2;
-  }
-}
-@media screen and (min-width: 1024px) {
-  mixin th-headings {
-    margin-top: 110px;
-    margin-bottom: 1.33333rem;
-    font-size: 5em;
-    line-height: 1.11111;
-  }
-}
-@media screen and (max-width: 768px) {
-  mixin th-headings {
-    margin-top: 70px;
-    margin-bottom: 1.6rem;
-    font-size: 2.77778em;
-    line-height: 1.2;
-  }
-}
-@media screen and (max-width: 1024px) {
+@media (min-width: 1024px) {
   mixin th-headings {
     margin-top: 110px;
     margin-bottom: 1.33333rem;
@@ -378,10 +336,11 @@ mixin th-property-margin-bottom {
 }
 
 mixin th-breakpoint {
-  /* Describe: Output styles for a heading within a min-width breakpoint. */
-  /* Describe: Output styles for a heading within a max-width breakpoint. */
+  /* Describe: Output a heading with a 768px breakpoint within a 768px min-width media query. */
+  /* Describe: Output styles for a heading with a 768px breakpoint within a 768px max-width media query. */
+  /* Describe: Output styles for a heading with a 768px breakpoint within a range media query range from 768px to 1023px. */
 }
-@media screen and (min-width: 768px) {
+@media (min-width: 768px) {
   mixin th-breakpoint {
     margin-top: 69px;
     margin-bottom: 1.40816rem;
@@ -389,7 +348,15 @@ mixin th-breakpoint {
     line-height: 1.20408;
   }
 }
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
+  mixin th-breakpoint {
+    margin-top: 69px;
+    margin-bottom: 1.40816rem;
+    font-size: 2.72222em;
+    line-height: 1.20408;
+  }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
   mixin th-breakpoint {
     margin-top: 69px;
     margin-bottom: 1.40816rem;

@@ -110,6 +110,7 @@
 // @requires {function} th-property
 // @requires {mixin} th-breakpoint
 // @requires {mixin} th-heading
+// @requires {gem} breakpoint - https://github.com/at-import/breakpoint
 //
 // @param {list | string} $heading A heading map key or list (required).
 // @param {string} $direction (min-width | max-width) Media query direction.
@@ -126,7 +127,6 @@
 
 @mixin th-headings(
   $heading,
-  $direction: min-width,
   $convert: true,
   $base-font-size: $th-base-font-size
 ){
@@ -136,14 +136,13 @@
       $breakpoint: th-property($heading, breakpoint);
       @if $breakpoint {
         @include th-breakpoint(
-          $breakpoint: $breakpoint,
-          $direction: $direction
+          $query: $breakpoint,
+          $breakpoint: $breakpoint
         ){
           @include th-heading(
             $heading: $heading,
             $convert: $convert,
-            $base-font-size: $base-font-size,
-            $breakpoint: $breakpoint
+            $base-font-size: $base-font-size
           );
         }
       } @else {

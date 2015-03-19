@@ -265,8 +265,7 @@ particular map key, use the `th-headings` mixin.
 
 ### Heading Breakpoints
 
-You can output a heading with a particular breakpoint (this won't output
-a media query):
+You can output a heading with a particular breakpoint (this won't output a media query):
 
 {% highlight sass %}
 @include th-heading(
@@ -275,7 +274,10 @@ a media query):
 )
 {% endhighlight %}
 
-You can output styles for a heading accross all breakpoints, use `th-headings()`
+**Note:** You will need to install the [Breakpoint](https://github.com/at-import/breakpoint) gem for `th-headings()` to work.
+You can learn more about the gem [the wiki](https://github.com/at-import/breakpoint/wiki).
+
+You can output styles for a heading across all breakpoints, use `th-headings()`
 like so (this will output media queries):
 
 {% highlight sass %}
@@ -300,16 +302,6 @@ h1 {
   margin-bottom: 30px;
   }
 }
-{% endhighlight %}
-
-A min-width media query will be assumed. You can specify max-width media queries
-like so:
-
-{% highlight sass %}
-@include th-headings(
-  $heading: h1,
-  $direction: max-width
-)
 {% endhighlight %}
 
 ### Disable Heading Unit Conversion
@@ -477,4 +469,32 @@ th-property-line-height(
   $heading: h1,
   $base-font-size: 24px
 )
+{% endhighlight %}
+
+---
+
+## Working With Breakpoints
+
+Type Heading integrates with the [Breakpoint](https://github.com/at-import/breakpoint) gem.
+
+Please [read through the wiki](https://github.com/at-import/breakpoint/wiki) to learn more about the Breakpoint gem and
+what you can do with the `$query` parameter.
+
+You can easily access and output a heading (with a breakpoint within a media query) with the `th-breakpoint` mixin, like so:
+
+{% highlight sass %}
+// Output a heading with a 768px breakpoint within a 768px min-width media query.
+@include th-breakpoint($query: 768px, $breakpoint: 768px) {
+  @include th-heading(h1);
+}
+{% endhighlight %}
+
+You can also access a headings properties without outputting a media query with the `th-with-breakpoint` mixin:
+
+{% highlight sass %}
+// Return font-size and line-height for a heading with a 768px breakpoint.
+@include th-with-breakpoint(768px) {
+  $font-size: th-property-font-size(h2);
+  $line-height: th-property-line-height(h2);
+}
 {% endhighlight %}

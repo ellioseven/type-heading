@@ -11,6 +11,7 @@ menu: true
 {% assign headingMixins = site.collections.mixins.docs | where: 'group', 'Heading' | sort:'weight' %}
 {% assign propertyFunctions = site.collections.functions.docs | where: 'group', 'Property' | sort:'weight' %}
 {% assign propertyMixins = site.collections.mixins.docs | where: 'group', 'Property' | sort:'weight' %}
+{% assign breakpointMixins = site.collections.mixins.docs | where: 'group', 'Breakpoint' | sort:'weight' %}
 ## Settings
 ### Settings: General
 {% for setting in settings %}
@@ -37,5 +38,9 @@ menu: true
 {% endfor %}
 ### Properties: Mixins
 {% for mixin in propertyMixins %}
+{% include_relative _layouts/mixin.html %}
+{% endfor %}
+### Breakpoint: Mixins
+{% for mixin in breakpointMixins %}
 {% include_relative _layouts/mixin.html %}
 {% endfor %}

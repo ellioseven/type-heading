@@ -4,33 +4,33 @@
 // @author Elliot Mitchum
 
 // th-breakpoint
-// Output styles for a heading list within a media query.
+// Output styles with a breakpoint within a media query.
 //
 // @since 0.0.10
 // @type mixin
 //
-// @requires {mixin} th-heading
+// @requires {mixin} th-with-breakpoint
+// @requires {gem} breakpoint - https://github.com/at-import/breakpoint
 //
-// @param {number | boolean} $breakpoint (false) A heading list breakpoint (required).
-// @param {string} $direction (min-width | max-width) Media query direction.
+// @param {List} $query The media query to parse (https://github.com/at-import/breakpoint/wiki/Basic-Media-Queries) (required).
+// @param {number | boolean} $breakpoint (false) A heading list breakpoint.
 //
-// @example scss Output h1 styles with min width media query.
-// // @include th-breakpoint(
-// //   $heading: h1,
-// //   $breakpoint: 768px
-// // )
-// @example scss Output h1 styles with max width media query.
-// // @include th-breakpoint(
-// //   $heading: h1,
-// //   $breakpoint: 768px,
-// //   $direction: max-width
-// // )
+// @example scss Output a heading with a 768px within a 768px min-width media query.
+// // @include th-breakpoint(min-width 768px, 768px) {
+// //   @include th-heading(h1);
+// // }
 
 @mixin th-breakpoint(
-  $breakpoint,
-  $direction: min-width
+  $query,
+  $breakpoint
 ){
-  @media screen and (#{$direction}: #{$breakpoint}){
-    @content;
+  @if variable-exists('breakpoint') and mixin-exists('breakpoint') {
+    @include breakpoint($query) {
+      @include th-with-breakpoint($breakpoint) {
+        @content;
+      }
+    }
+  } @else {
+    @warn 'th-breakpoint requires the Breakpoint gem - https://github.com/at-import/breakpoint';
   }
 }
