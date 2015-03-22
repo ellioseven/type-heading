@@ -274,11 +274,11 @@ You can output a heading with a particular breakpoint (this won't output a media
 )
 {% endhighlight %}
 
-**Note:** You will need to install the [Breakpoint](https://github.com/at-import/breakpoint) gem for `th-headings()` to work.
-You can learn more about the gem [the wiki](https://github.com/at-import/breakpoint/wiki).
-
 You can output styles for a heading across all breakpoints, use `th-headings()`
 like so (this will output media queries):
+
+**Note:** You will need to install the [Breakpoint](https://github.com/at-import/breakpoint) gem for `th-headings()` to work.
+You can learn more about the gem [the wiki](https://github.com/at-import/breakpoint/wiki).
 
 {% highlight sass %}
 @include th-headings(h1)
@@ -303,6 +303,9 @@ h1 {
   }
 }
 {% endhighlight %}
+
+Please see the [documentation]({{site.url}}/documentation/#mixin-thheadings) for more information about the `th-headings`
+mixin.
 
 ### Disable Heading Unit Conversion
 

@@ -177,4 +177,28 @@ mixin th-headings {
     }
   }
 
+  @include th-assert(
+    $describe: "Output font-size and line-height styles for h1 heading with multiple breakpoints."
+  ){
+    @include th-assert-expect {
+      font-size: 0.55556em;
+      line-height: 2;
+      @media (min-width: 768px) {
+        font-size: 2.77778em;
+        line-height: 1.2;
+      }
+      @media (min-width: 1024px) {
+        font-size: 5em;
+        line-height: 1.11111;
+      }
+    }
+    @include th-assert-actual {
+      @include th-headings(
+        $heading: h1,
+        $include: (font-size line-height)
+      );
+    }
+  }
+
+
 }
