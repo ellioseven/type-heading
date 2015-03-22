@@ -132,22 +132,13 @@
   $include: false
 ){
   $heading-map: th-heading-get-map($heading);
-  @if _th-heading-has-next($heading-map) {
-    @each $heading in $heading-map {
-      $breakpoint: th-property($heading, breakpoint);
-      @if $breakpoint {
-        @include th-breakpoint(
-          $query: $breakpoint,
-          $breakpoint: $breakpoint
-        ){
-          @include th-heading(
-            $heading: $heading,
-            $convert: $convert,
-            $base-font-size: $base-font-size,
-            $include: $include
-          );
-        }
-      } @else {
+  @each $heading in $heading-map {
+    $breakpoint: th-property($heading, breakpoint);
+    @if $breakpoint {
+      @include th-breakpoint(
+        $query: $breakpoint,
+        $breakpoint: $breakpoint
+      ){
         @include th-heading(
           $heading: $heading,
           $convert: $convert,
@@ -155,13 +146,13 @@
           $include: $include
         );
       }
+    } @else {
+      @include th-heading(
+        $heading: $heading,
+        $convert: $convert,
+        $base-font-size: $base-font-size,
+        $include: $include
+      );
     }
-  } @else {
-    @include th-heading(
-      $heading: $heading,
-      $convert: $convert,
-      $base-font-size: $base-font-size,
-      $include: $include
-    );
   }
 }
