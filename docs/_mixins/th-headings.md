@@ -44,15 +44,6 @@ Output all h1 styles across all breakpoints:
 @include th-headings(h1)
 {% endhighlight %}
 
-Output all h1 styles with max width media queries across all breakpoints:
-
-{% highlight sass %}
-@include th-headings(
-  $heading: h1,
-  $direction: max-width
-)
-{% endhighlight %}
-
 Output font-size and line-height h1 styles across all breakpoints:
 
 {% highlight sass %}

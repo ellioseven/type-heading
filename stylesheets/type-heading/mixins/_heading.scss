@@ -119,11 +119,6 @@
 //
 // @example scss Output all h1 styles across all breakpoints.
 // // @include th-headings(h1)
-// @example scss Output all h1 styles with max width media queries across all breakpoints.
-// // @include th-headings(
-// //   $heading: h1,
-// //   $direction: max-width
-// // )
 // @example scss Output font-size and line-height h1 styles across all breakpoints.
 // // th-headings(
 // //   $heading: h1,
