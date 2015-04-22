@@ -34,11 +34,11 @@
 ){
   $_return: $heading;
   $breakpoint: _th-core-global-breakpoint($breakpoint);
-  @if string == type-of($heading) {
-    $_return: th-heading-get-map($heading);
-    @if _th-heading-has-next($_return) {
-      $_return: _th-heading-get-next($_return, $breakpoint);
-    }
+  @if string == type-of($_return) {
+    $_return: th-heading-get-map($_return);
+  }
+  @if _th-heading-has-next($_return) {
+    $_return: _th-heading-get-next($_return, $breakpoint);
   }
   @return $_return;
 }
