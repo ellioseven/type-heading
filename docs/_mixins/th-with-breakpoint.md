@@ -1,5 +1,5 @@
 ---
-weight: 1
+weight: 2
 name: 'th-with-breakpoint'
 description: 'Use a breakpoint for a section of code.'
 since: '0.0.12'

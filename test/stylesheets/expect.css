@@ -7,6 +7,61 @@ mixin th-with-breakpoint {
   result: 2.72222em;
 }
 
+mixin th-with {
+  /* Describe: Output font-size, line-height, margin-top and margin-bottom properties individually for a heading with breakpoints. */
+  margin-top: 30px;
+  margin-bottom: 40px;
+  font-size: 10px;
+  line-height: 20px;
+  /* Describe: Output font-size, line-height, margin-top and margin-bottom properties individually for a heading with a single breakpoint. */
+  margin-top: 3px;
+  margin-bottom: 4px;
+  font-size: 5px;
+  line-height: 2px;
+  /* Describe: Output font-size, line-height, margin-top and margin-bottom properties individually for a heading with conversion and base-font-size of 14px. */
+  margin-top: 3px;
+  margin-bottom: 0.8rem;
+  font-size: 0.35714em;
+  line-height: 0.4;
+  /* Describe: Output font-size, line-height, margin-top and margin-bottom properties individually for a heading with breakpoints with conversion. */
+  margin-top: 30px;
+  margin-bottom: 4rem;
+  font-size: 0.55556em;
+  line-height: 2;
+}
+@media (min-width: 768px) {
+  mixin th-with {
+    margin-top: 70px;
+    margin-bottom: 80px;
+    font-size: 50px;
+    line-height: 60px;
+  }
+}
+@media (min-width: 1024px) {
+  mixin th-with {
+    margin-top: 110px;
+    margin-bottom: 120px;
+    font-size: 90px;
+    line-height: 100px;
+  }
+}
+@media (min-width: 768px) {
+  mixin th-with {
+    margin-top: 70px;
+    margin-bottom: 1.6rem;
+    font-size: 2.77778em;
+    line-height: 1.2;
+  }
+}
+@media (min-width: 1024px) {
+  mixin th-with {
+    margin-top: 110px;
+    margin-bottom: 1.33333rem;
+    font-size: 5em;
+    line-height: 1.11111;
+  }
+}
+
 function th-heading {
   /* Describe: Return heading */
   result: 10px 20px 30px 40px;
