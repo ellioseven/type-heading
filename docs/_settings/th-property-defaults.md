@@ -1,5 +1,5 @@
 ---
-weight: 3
+weight: 4
 name: 'th-property-defaults'
 description: 'Define default heading values.'
 since: '0.0.10'

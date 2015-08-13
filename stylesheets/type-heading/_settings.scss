@@ -7,9 +7,17 @@
 // Font size used for relative calculations.
 //
 // @since 0.0.10
-// @type string
+// @type number
 
 $th-base-font-size: 16px !default;
+
+// th-rem-base
+// Font size base for calculating rem units.
+//
+// @since 0.0.14
+// @type number
+
+$th-rem-base: $th-base-font-size !default;
 
 // th-headings
 // Define headings and their values.

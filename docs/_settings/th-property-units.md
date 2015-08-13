@@ -1,5 +1,5 @@
 ---
-weight: 4
+weight: 5
 name: 'th-property-units'
 description: 'Define units for heading properties.'
 since: '0.0.11'

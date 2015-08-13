@@ -405,10 +405,10 @@
 
 @function th-unit-convert-rem(
   $number,
-  $base-font-size: $th-base-font-size
+  $base-font-size: $th-rem-base
 ){
   $_return: $number;
-  $_return: th-unit-convert-relative($number, rem, $base-font-size);
+  $_return: th-unit-convert-relative($number, rem, $th-rem-base);
   @return $_return;
 }
 

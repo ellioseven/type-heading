@@ -3,7 +3,7 @@ weight: 1
 name: 'th-base-font-size'
 description: 'Font size used for relative calculations.'
 since: '0.0.10'
-type: 'String'
+type: 'Number'
 default: '16px'
 ---
 Used for calculating relative calculations such as em. The default font size is

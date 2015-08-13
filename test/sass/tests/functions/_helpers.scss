@@ -362,21 +362,10 @@ function th-unit-convert-rem {
     $describe: "Convert 22px to rem."
   ){
     @include th-assert-expect {
-      result: 1.22222rem;
+      result: 0.91667rem;
     }
     @include th-assert-actual {
       result: th-unit-convert-rem(22px);
-    }
-  }
-
-  @include th-assert(
-    $describe: "Convert 24px to rem with base font size of 32px."
-  ){
-    @include th-assert-expect {
-      result: 0.75rem;
-    }
-    @include th-assert-actual {
-      result: th-unit-convert-rem(24px, 32px);
     }
   }
 

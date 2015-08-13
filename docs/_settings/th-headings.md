@@ -1,5 +1,5 @@
 ---
-weight: 2
+weight: 3
 name: 'th-headings'
 description: 'Define headings and their values.'
 since: '0.0.10'

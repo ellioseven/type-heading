@@ -42,7 +42,7 @@ function th-property {
 		$describe: "Return default property from heading with breakpoint"
 	){
 		@include th-assert-expect {
-      result: 0.22222rem;
+      result: 0.16667rem;
 		}
 		@include th-assert-actual {
       result: th-property(h3, margin-bottom, 768px);
@@ -253,7 +253,7 @@ function th-property-margin-bottom {
 		$describe: "Return margin-bottom from heading"
 	){
 		@include th-assert-expect {
-      result: 2.22222rem;
+      result: 1.66667rem;
 		}
 		@include th-assert-actual {
       result: th-property(h1, margin-bottom);
@@ -264,7 +264,7 @@ function th-property-margin-bottom {
 		$describe: "Return margin-bottom from heading with breakpoint"
 	){
 		@include th-assert-expect {
-      result: 4.44444rem;
+      result: 3.33333rem;
 		}
 		@include th-assert-actual {
       result: th-property(h1, margin-bottom, 768px);
@@ -275,7 +275,7 @@ function th-property-margin-bottom {
 		$describe: "Return margin-bottom from heading with single value"
 	){
 		@include th-assert-expect {
-      result: 1.61111rem;
+      result: 1.20833rem;
 		}
 		@include th-assert-actual {
       result: th-property(h2, margin-bottom);

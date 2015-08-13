@@ -160,7 +160,7 @@ mixin th-property-margin-bottom {
     $describe: "Output margin-bottom for a heading."
   ){
     @include th-assert-expect {
-      margin-bottom: 2.22222rem;
+      margin-bottom: 1.66667rem;
     }
     @include th-assert-actual {
       @include th-property-margin-bottom(h1);
@@ -171,7 +171,7 @@ mixin th-property-margin-bottom {
     $describe: "Output margin-bottom for a heading with a breakpoint."
   ){
     @include th-assert-expect {
-      margin-bottom: 4.44444rem;
+      margin-bottom: 3.33333rem;
     }
     @include th-assert-actual {
       @include th-property-margin-bottom(h1, 768px);
@@ -182,7 +182,7 @@ mixin th-property-margin-bottom {
     $describe: "Output margin-bottom for a heading with a singular list value."
   ){
     @include th-assert-expect {
-      margin-bottom: 1.61111rem;
+      margin-bottom: 1.20833rem;
     }
     @include th-assert-actual {
       @include th-property-margin-bottom(h2);
