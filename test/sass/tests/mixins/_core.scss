@@ -103,7 +103,7 @@ mixin th-with {
   ){
     @include th-assert-expect {
       margin-top: 3px;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.16667rem;
       font-size: 0.35714em;
       line-height: 0.4;
     }
@@ -126,18 +126,18 @@ mixin th-with {
   ){
     @include th-assert-expect {
       margin-top: 30px;
-      margin-bottom: 4rem;
+      margin-bottom: 1.66667rem;
       font-size: 0.55556em;
       line-height: 2;
       @media (min-width: 768px) {
         margin-top: 70px;
-        margin-bottom: 1.6rem;
+        margin-bottom: 3.33333rem;
         font-size: 2.77778em;
         line-height: 1.2;
       }
       @media (min-width: 1024px) {
         margin-top: 110px;
-        margin-bottom: 1.33333rem;
+        margin-bottom: 5rem;
         font-size: 5em;
         line-height: 1.11111;
       }

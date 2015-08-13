@@ -20,12 +20,12 @@ mixin th-with {
   line-height: 2px;
   /* Describe: Output font-size, line-height, margin-top and margin-bottom properties individually for a heading with conversion and base-font-size of 14px. */
   margin-top: 3px;
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.16667rem;
   font-size: 0.35714em;
   line-height: 0.4;
   /* Describe: Output font-size, line-height, margin-top and margin-bottom properties individually for a heading with breakpoints with conversion. */
   margin-top: 30px;
-  margin-bottom: 4rem;
+  margin-bottom: 1.66667rem;
   font-size: 0.55556em;
   line-height: 2;
 }
@@ -48,7 +48,7 @@ mixin th-with {
 @media (min-width: 768px) {
   mixin th-with {
     margin-top: 70px;
-    margin-bottom: 1.6rem;
+    margin-bottom: 3.33333rem;
     font-size: 2.77778em;
     line-height: 1.2;
   }
@@ -56,7 +56,7 @@ mixin th-with {
 @media (min-width: 1024px) {
   mixin th-with {
     margin-top: 110px;
-    margin-bottom: 1.33333rem;
+    margin-bottom: 5rem;
     font-size: 5em;
     line-height: 1.11111;
   }
