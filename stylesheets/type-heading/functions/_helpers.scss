@@ -3,6 +3,44 @@
 // @group Functions / Helpers
 // @author Elliot Mitchum
 
+// Name
+// Description.
+//
+// @todo Task to be done.
+//
+// @since 1.0.0
+// @type Bool | String
+// @access private
+// @group helpers
+//
+// @throws Error related message.
+//
+// @link http://some.url Optional caption.
+//
+// @requires other-item
+// @requires {mixin} other-item
+// @requires $other-item
+// @requires %other-item
+//
+// @param {List} $foo
+// @param {List | String} $foo
+// @param {List} $foo Description.
+// @param {List} $foo (false) Description.
+//
+// @returns {List | String} Description.
+//
+// @example scss Description.
+// // (example)
+// // // (result)
+
+@function th-if($condition, $if-value, $else-value) {
+  @if ($condition == true) {
+    @return $if-value;
+  } @else {
+    @return $else-value;
+  }
+}
+
 // Math
 // ------------------------------
 
