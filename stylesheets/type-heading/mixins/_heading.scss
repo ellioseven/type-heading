@@ -54,48 +54,30 @@
   $base-font-size: $th-base-font-size,
   $include: false
 ){
-  $heading: th-heading(
-    $heading: $heading,
-    $breakpoint: $breakpoint
-  );
-  $font-size: th-property-font-size(
-    $heading: $heading,
-    $breakpoint: $breakpoint,
-    $base-font-size: $base-font-size,
-    $convert: false
-  );
+  $base: false;
   $breakpoint: _th-core-global-breakpoint($breakpoint);
-  @if not $include or th-list-has($include, margin-top) {
-    @include th-property-margin-top(
+  @include th-with-breakpoint($breakpoint) {
+    $heading: th-heading($heading);
+    $font-size: th-property-font-size(
       $heading: $heading,
-      $breakpoint: $breakpoint,
-      $convert: $convert,
-      $base-font-size: $font-size
+      $base-font-size: $base-font-size,
+      $convert: false
     );
-  }
-  @if not $include or th-list-has($include, margin-bottom) {
-    @include th-property-margin-bottom(
-      $heading: $heading,
-      $breakpoint: $breakpoint,
-      $convert: $convert,
-      $base-font-size: $font-size
-    );
-  }
-  @if not $include or th-list-has($include, font-size) {
-    @include th-property-font-size(
-      $heading: $heading,
-      $breakpoint: $breakpoint,
-      $convert: $convert,
-      $base-font-size: $base-font-size
-    );
-  }
-  @if not $include or th-list-has($include, line-height) {
-    @include th-property-line-height(
-      $heading: $heading,
-      $breakpoint: $breakpoint,
-      $convert: $convert,
-      $base-font-size: $font-size
-    );
+    @each $property in $_TH-PROPERTIES {
+      @if not $include or th-list-has($include, $property) {
+        @if font-size == $property {
+          $base: $base-font-size;
+        } @else {
+          $base: $font-size;
+        }
+        @include th-property(
+          $property: $property,
+          $heading: $heading,
+          $convert: $convert,
+          $base-font-size: $base
+        );
+      }
+    }
   }
 }
 

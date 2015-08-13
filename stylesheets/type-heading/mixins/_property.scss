@@ -31,13 +31,13 @@
 	$convert: true,
 	$base-font-size: $th-base-font-size
 ){
-  $breakpoint: _th-core-global-breakpoint($breakpoint);
-	font-size: th-property-font-size(
-		$heading: $heading,
-		$breakpoint: $breakpoint,
-		$convert: $convert,
-		$base-font-size: $base-font-size
-	);
+  @include th-property(
+    $property: font-size,
+    $heading: $heading,
+    $breakpoint: $breakpoint,
+    $convert: $convert,
+    $base-font-size: $base-font-size
+  );
 }
 
 // th-property-line-height
@@ -67,13 +67,13 @@
 	$convert: true,
 	$base-font-size: $th-base-font-size
 ){
-  $breakpoint: _th-core-global-breakpoint($breakpoint);
-	line-height: th-property-line-height(
-		$heading: $heading,
-		$breakpoint: $breakpoint,
-		$convert: $convert,
-		$base-font-size: $base-font-size
-	);
+  @include th-property(
+    $property: line-height,
+    $heading: $heading,
+    $breakpoint: $breakpoint,
+    $convert: $convert,
+    $base-font-size: $base-font-size
+  );
 }
 
 // th-property-margin-top
@@ -103,13 +103,13 @@
 	$convert: true,
 	$base-font-size: $th-base-font-size
 ){
-  $breakpoint: _th-core-global-breakpoint($breakpoint);
-	margin-top: th-property-margin-top(
-		$heading: $heading,
-		$breakpoint: $breakpoint,
-		$convert: $convert,
-		$base-font-size: $base-font-size
-	);
+  @include th-property(
+    $property: margin-top,
+    $heading: $heading,
+    $breakpoint: $breakpoint,
+    $convert: $convert,
+    $base-font-size: $base-font-size
+  );
 }
 
 // th-property-margin-bottom
@@ -134,16 +134,62 @@
 // // )
 
 @mixin th-property-margin-bottom(
-	$heading,
-	$breakpoint: false,
-	$convert: true,
-	$base-font-size: $th-base-font-size
+  $heading,
+  $breakpoint: false,
+  $convert: true,
+  $base-font-size: $th-base-font-size
+){
+  @include th-property(
+    $property: margin-bottom,
+    $heading: $heading,
+    $breakpoint: $breakpoint,
+    $convert: $convert,
+    $base-font-size: $base-font-size
+  );
+}
+
+// Name
+// Description.
+//
+// @todo Task to be done.
+//
+// @since 1.0.0
+// @type Bool | String
+// @access private
+// @group helpers
+//
+// @throws Error related message.
+//
+// @link http://some.url Optional caption.
+//
+// @requires other-item
+// @requires {mixin} other-item
+// @requires $other-item
+// @requires %other-item
+//
+// @param {List} $foo
+// @param {List | String} $foo
+// @param {List} $foo Description.
+// @param {List} $foo (false) Description.
+//
+// @returns {List | String} Description.
+//
+// @example scss Description.
+// // (example)
+// // // (result)
+
+@mixin th-property(
+  $property,
+  $heading,
+  $breakpoint: false,
+  $convert: true,
+  $base-font-size: $th-base-font-size
 ){
   $breakpoint: _th-core-global-breakpoint($breakpoint);
-	margin-bottom: th-property-margin-bottom(
-		$heading: $heading,
-		$breakpoint: $breakpoint,
-		$convert: $convert,
-		$base-font-size: $base-font-size
-	);
+  #{$property}: call(th-property-#{$property},
+    $heading: $heading,
+    $breakpoint: $breakpoint,
+    $convert: $convert,
+    $base-font-size: $base-font-size
+  );
 }
