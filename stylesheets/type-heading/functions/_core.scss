@@ -12,6 +12,38 @@
 
 $_th-core-global-breakpoint: false !default;
 
+// Name
+// Description.
+//
+// @todo Task to be done.
+//
+// @since 1.0.0
+// @type Bool | String
+// @access private
+// @group helpers
+//
+// @throws Error related message.
+//
+// @link http://some.url Optional caption.
+//
+// @requires other-item
+// @requires {mixin} other-item
+// @requires $other-item
+// @requires %other-item
+//
+// @param {List} $foo
+// @param {List | String} $foo
+// @param {List} $foo Description.
+// @param {List} $foo (false) Description.
+//
+// @returns {List | String} Description.
+//
+// @example scss Description.
+// // (example)
+// // // (result)
+
+$_th-core-with: false !default;
+
 // _th-core-global-breakpoint
 // Returns global breakpoint property.
 //
@@ -80,4 +112,42 @@ $_th-core-global-breakpoint: false !default;
     $convert: false
   );
   @return $base;
+}
+
+// Name
+// Description.
+//
+// @todo Task to be done.
+//
+// @since 1.0.0
+// @type Bool | String
+// @access private
+// @group helpers
+//
+// @throws Error related message.
+//
+// @link http://some.url Optional caption.
+//
+// @requires other-item
+// @requires {mixin} other-item
+// @requires $other-item
+// @requires %other-item
+//
+// @param {List} $foo
+// @param {List | String} $foo
+// @param {List} $foo Description.
+// @param {List} $foo (false) Description.
+//
+// @returns {List | String} Description.
+//
+// @example scss Description.
+// // (example)
+// // // (result)
+
+@function th-with-get($property) {
+  @if $_th-core-with {
+    @return map-get($_th-core-with, $property);
+  } @else {
+    @warn "th-with is not set."
+  }
 }

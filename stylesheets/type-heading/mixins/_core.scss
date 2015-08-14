@@ -12,6 +12,38 @@
 
 $_th-core-global-breakpoint: false !default;
 
+// Name
+// Description.
+//
+// @todo Task to be done.
+//
+// @since 1.0.0
+// @type Bool | String
+// @access private
+// @group helpers
+//
+// @throws Error related message.
+//
+// @link http://some.url Optional caption.
+//
+// @requires other-item
+// @requires {mixin} other-item
+// @requires $other-item
+// @requires %other-item
+//
+// @param {List} $foo
+// @param {List | String} $foo
+// @param {List} $foo Description.
+// @param {List} $foo (false) Description.
+//
+// @returns {List | String} Description.
+//
+// @example scss Description.
+// // (example)
+// // // (result)
+
+$_th-with: false !default;
+
 // th-with-breakpoint
 // Use a breakpoint for a section of code.
 //
@@ -92,12 +124,19 @@ $_th-core-global-breakpoint: false !default;
   $convert: false,
   $base-font-size: $th-base-font-size
 ){
-  $font-size: th-property-font-size($heading: $heading-list, $convert: false);
-  $th-font-size: th-property-font-size($heading: $heading-list, $convert: $convert, $base-font-size: $base-font-size) !global;
-  $th-line-height: th-property-line-height($heading: $heading-list, $convert: $convert, $base-font-size: $font-size) !global;
-  $th-margin-top: th-property-margin-top($heading: $heading-list, $convert: $convert, $base-font-size: $font-size) !global;
-  $th-margin-bottom: th-property-margin-bottom($heading: $heading-list, $convert: $convert, $base-font-size: $font-size) !global;
-  $th-breakpoint: th-property($heading: $heading-list, $property-name: breakpoint) !global;
+  $th-with-vars: ();
+  $font-size: _th-core-get-base($heading-list, $base-font-size);
+  @each $property in $_TH-PROPERTIES {
+    $base: th-if(font-size == $property, $base-font-size, $font-size);
+    $th-with-vars: map-merge($th-with-vars, (
+      $property: call(th-property-#{$property},
+        $heading: $heading-list,
+        $convert: $convert,
+        $base-font-size: $base
+      ))
+    );
+  }
+  $_th-core-with: $th-with-vars !global;
 }
 
 // th-with-var-reset
@@ -108,11 +147,7 @@ $_th-core-global-breakpoint: false !default;
 // @access private
 
 @mixin _th-with-var-reset {
-  $th-font-size: false !global;
-  $th-line-height: false !global;
-  $th-margin-top: false !global;
-  $th-margin-bottom: false !global;
-  $th-breakpoint: false !global;
+  $_th-core-with: false !global;
 }
 
 // th-with
