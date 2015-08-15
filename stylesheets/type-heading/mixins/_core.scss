@@ -12,37 +12,14 @@
 
 $_th-core-global-breakpoint: false !default;
 
-// Name
-// Description.
+// _th-core-with
+// Map of available properties with a th-with loop.
 //
-// @todo Task to be done.
-//
-// @since 1.0.0
-// @type Bool | String
+// @since 0.0.14
+// @type Map
 // @access private
-// @group helpers
-//
-// @throws Error related message.
-//
-// @link http://some.url Optional caption.
-//
-// @requires other-item
-// @requires {mixin} other-item
-// @requires $other-item
-// @requires %other-item
-//
-// @param {List} $foo
-// @param {List | String} $foo
-// @param {List} $foo Description.
-// @param {List} $foo (false) Description.
-//
-// @returns {List | String} Description.
-//
-// @example scss Description.
-// // (example)
-// // // (result)
 
-$_th-with: false !default;
+$_th-core-with: () !default;
 
 // th-with-breakpoint
 // Use a breakpoint for a section of code.
@@ -103,20 +80,17 @@ $_th-with: false !default;
 }
 
 // th-with-var-set
-// Sets global variables for heading properties used by various mixins.
+// Sets $_th-core-with global variable with heading properties.
 //
 // @since 0.0.14
 // @type mixin
 // @access private
 //
-// @requires {function} th-property-font-size
-// @requires {function} th-property-line-height
-// @requires {function} th-property-margin-top
-// @requires {function} th-property-margin-bottom
-// @requires {function} th-property
+// @requires {variable} $_TH-PROPERTIES
+// @requires {function} _th-core-get-base
 //
-// @param {list} $heading-list - A list of heading property values.
-// @param {boolean} $convert (false) - If returned value should be unit converted.
+// @param {list} $heading-list A list of heading property values.
+// @param {boolean} $convert (false) If returned value should be unit converted.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 
 @mixin _th-with-var-set(
@@ -140,7 +114,7 @@ $_th-with: false !default;
 }
 
 // th-with-var-reset
-// Resets global variables for heading properties used by various mixins.
+// Resets $th-with-vars global variable.
 //
 // @since 0.0.14
 // @type mixin
@@ -168,10 +142,10 @@ $_th-with: false !default;
 //
 // @example scss Output font-size, line-height, margin-top and margin-bottom properties individually for a heading.
 // // @include th-with(h1) {
-// //   margin-top: $th-margin-top;
-// //   margin-bottom: $th-margin-bottom;
-// //   font-size: $th-font-size;
-// //   line-height: $th-line-height;
+// //   margin-top: th-with-get(margin-top);
+// //   margin-bottom: th-with-get(margin-bottom);
+// //   font-size: th-with-get(font-size);;
+// //   line-height: th-with-get(line-height);
 // // }
 
 @mixin th-with(

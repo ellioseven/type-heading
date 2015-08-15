@@ -3,37 +3,31 @@
 // @group Functions / Helpers
 // @author Elliot Mitchum
 
-// Name
-// Description.
+// Logic
+// ------------------------------
+
+// th-if
+// Shorthand if else statement.
 //
-// @todo Task to be done.
+// @since 0.0.14
+// @type function
 //
-// @since 1.0.0
-// @type Bool | String
-// @access private
-// @group helpers
+// @param {boolean} $condition The condition to pass.
+// @param {mixed} $if-value The return value if condition is true.
+// @param {mixed} $else-value The return value if condition is false.
 //
-// @throws Error related message.
-//
-// @link http://some.url Optional caption.
-//
-// @requires other-item
-// @requires {mixin} other-item
-// @requires $other-item
-// @requires %other-item
-//
-// @param {List} $foo
-// @param {List | String} $foo
-// @param {List} $foo Description.
-// @param {List} $foo (false) Description.
-//
-// @returns {List | String} Description.
+// @returns {mixed} The return value of the condition.
 //
 // @example scss Description.
-// // (example)
-// // // (result)
+// // h1 {
+// //  font-size: th-if($foo == $bar, 10px, 20px);
+// // }
 
-@function th-if($condition, $if-value, $else-value) {
+@function th-if(
+  $condition,
+  $if-value,
+  $else-value
+){
   @if ($condition == true) {
     @return $if-value;
   } @else {

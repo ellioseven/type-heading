@@ -12,37 +12,14 @@
 
 $_th-core-global-breakpoint: false !default;
 
-// Name
-// Description.
+// _th-core-with
+// Map of available properties with a th-with loop.
 //
-// @todo Task to be done.
-//
-// @since 1.0.0
-// @type Bool | String
+// @since 0.0.14
+// @type Map
 // @access private
-// @group helpers
-//
-// @throws Error related message.
-//
-// @link http://some.url Optional caption.
-//
-// @requires other-item
-// @requires {mixin} other-item
-// @requires $other-item
-// @requires %other-item
-//
-// @param {List} $foo
-// @param {List | String} $foo
-// @param {List} $foo Description.
-// @param {List} $foo (false) Description.
-//
-// @returns {List | String} Description.
-//
-// @example scss Description.
-// // (example)
-// // // (result)
 
-$_th-core-with: false !default;
+$_th-core-with: () !default;
 
 // _th-core-global-breakpoint
 // Returns global breakpoint property.
@@ -69,42 +46,26 @@ $_th-core-with: false !default;
   }
 }
 
-// Name
-// Description.
+// _th-core-get-base
+// Shortcut for retreiving a headings base font size without unit conversion.
 //
-// @todo Task to be done.
-//
-// @since 1.0.0
-// @type Bool | String
+// @since 0.0.14
+// @type function
 // @access private
-// @group helpers
 //
-// @throws Error related message.
+// @requires {function} th-property-font-size
 //
-// @link http://some.url Optional caption.
+// @param {list | string} $heading A heading map key or list (required).
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+// @param {number} $breakpoint A heading list breakpoint.
 //
-// @requires other-item
-// @requires {mixin} other-item
-// @requires $other-item
-// @requires %other-item
-//
-// @param {List} $foo
-// @param {List | String} $foo
-// @param {List} $foo Description.
-// @param {List} $foo (false) Description.
-//
-// @returns {List | String} Description.
-//
-// @example scss Description.
-// // (example)
-// // // (result)
+// @returns {number} Unconverted heading font size.
 
 @function _th-core-get-base(
   $heading,
   $base-font-size: $th-base-font-size,
   $breakpoint: false
 ){
-  $breakpoint: _th-core-global-breakpoint($breakpoint);
   $base: th-property-font-size(
     $heading: $heading,
     $breakpoint: $breakpoint,
@@ -114,40 +75,27 @@ $_th-core-with: false !default;
   @return $base;
 }
 
-// Name
-// Description.
+// th-with-get
+// Return a property value within a th-with loop.
 //
-// @todo Task to be done.
+// @since 0.0.14
+// @type function
 //
-// @since 1.0.0
-// @type Bool | String
-// @access private
-// @group helpers
+// @requires {variable} $_th-core-with
 //
-// @throws Error related message.
+// @param {string} $property (font-size|line-height|margin-top|margin-bottom) The property value to return.
 //
-// @link http://some.url Optional caption.
+// @returns {number} The property value.
 //
-// @requires other-item
-// @requires {mixin} other-item
-// @requires $other-item
-// @requires %other-item
-//
-// @param {List} $foo
-// @param {List | String} $foo
-// @param {List} $foo Description.
-// @param {List} $foo (false) Description.
-//
-// @returns {List | String} Description.
-//
-// @example scss Description.
-// // (example)
-// // // (result)
+// @example scss Return font size from within a th-with loop.
+// // @include th-with(h1) {
+// //   font-size: th-with-get(font-size);
+// // }
 
-@function th-with-get($property) {
+@function th-with-get(
+  $property
+){
   @if $_th-core-with {
     @return map-get($_th-core-with, $property);
-  } @else {
-    @warn "th-with is not set."
   }
 }

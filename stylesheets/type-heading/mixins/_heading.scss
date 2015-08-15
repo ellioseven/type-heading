@@ -9,13 +9,10 @@
 // @since 0.0.10
 // @type mixin
 //
-// @requires {function} th-heading
-// @requires {function} th-property-font-size
+// @requires {variable} $_TH-PROPERTIES
 // @requires {function} _th-core-global-breakpoint
-// @requires {mixin} th-property-margin-top
-// @requires {mixin} th-property-margin-bottom
-// @requires {mixin} th-property-font-size
-// @requires {mixin} th-property-line-height
+// @requires {function} _th-core-get-base
+// @requires {mixin} th-property
 // @requires {mixin} th-with-breakpoint
 //
 // @param {string} $heading A heading map key (required).
@@ -62,7 +59,7 @@
       @if not $include or th-list-has($include, $property) {
         $base: th-if(font-size == $property, $base-font-size, $font-size);
         @include th-property(
-          $property: $property,
+          $property-name: $property,
           $heading: $heading,
           $convert: $convert,
           $base-font-size: $base
@@ -78,12 +75,8 @@
 // @since 0.0.10
 // @type mixin
 //
-// @requires {function} th-heading-get-map
-// @requires {function} _th-heading-has-next
-// @requires {function} th-property
-// @requires {mixin} th-breakpoint
+// @requires {mixin} _th-heading-loop
 // @requires {mixin} th-heading
-// @requires {gem} breakpoint - https://github.com/at-import/breakpoint
 //
 // @param {list | string} $heading A heading map key or list (required).
 // @param {string} $direction (min-width | max-width) Media query direction.
