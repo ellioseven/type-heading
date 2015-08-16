@@ -3,6 +3,38 @@
 // @group Functions / Helpers
 // @author Elliot Mitchum
 
+// Logic
+// ------------------------------
+
+// th-if
+// Shorthand if else statement.
+//
+// @since 0.0.14
+// @type function
+//
+// @param {boolean} $condition The condition to pass.
+// @param {mixed} $if-value The return value if condition is true.
+// @param {mixed} $else-value The return value if condition is false.
+//
+// @returns {mixed} The return value of the condition.
+//
+// @example scss Description.
+// // h1 {
+// //  font-size: th-if($foo == $bar, 10px, 20px);
+// // }
+
+@function th-if(
+  $condition,
+  $if-value,
+  $else-value
+){
+  @if ($condition == true) {
+    @return $if-value;
+  } @else {
+    @return $else-value;
+  }
+}
+
 // Math
 // ------------------------------
 
