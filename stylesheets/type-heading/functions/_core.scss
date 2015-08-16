@@ -4,16 +4,25 @@
 // @author Elliot Mitchum
 
 // _th-core-global-breakpoint
-// Allows breakpoint override for sections of code.
+// Global breakpoint variable for various mixins and functions.
 //
 // @since 0.0.12
-// @type Number
+// @type number
 // @access private
 
 $_th-core-global-breakpoint: false !default;
 
+// _th-core-with
+// Map of property values within a th-with loop.
+//
+// @since 0.0.14
+// @type map
+// @access private
+
+$_th-core-with: () !default;
+
 // _th-core-global-breakpoint
-// Returns global breakpoint property.
+// Returns either global breakpoint if set or current breakpoint value.
 //
 // @since 0.0.12
 // @type function
@@ -22,10 +31,7 @@ $_th-core-global-breakpoint: false !default;
 //
 // @param {number} $breakpoint A heading list breakpoint (required).
 //
-// @returns {Number} The breakpoint parameter.
-//
-// @example scss Return $th-breakpoint-global parameter.
-// // $breakpoint: _th-core-global-breakpoint($breakpoint);
+// @returns {number} The breakpoint value.
 
 @function _th-core-global-breakpoint(
   $breakpoint
@@ -34,5 +40,30 @@ $_th-core-global-breakpoint: false !default;
     @return $_th-core-global-breakpoint;
   } @else {
     @return $breakpoint;
+  }
+}
+
+// th-with-get
+// Return a property value within a th-with loop.
+//
+// @since 0.0.14
+// @type function
+//
+// @requires {variable} $_th-core-with
+//
+// @param {string} $property (font-size|line-height|margin-top|margin-bottom) The property value to return.
+//
+// @returns {number} The property value.
+//
+// @example scss Return font size from within a th-with loop.
+// // @include th-with(h1) {
+// //   font-size: th-with-get(font-size);
+// // }
+
+@function th-with-get(
+  $property
+){
+  @if $_th-core-with {
+    @return map-get($_th-core-with, $property);
   }
 }

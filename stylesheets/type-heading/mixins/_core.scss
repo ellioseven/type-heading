@@ -12,6 +12,15 @@
 
 $_th-core-global-breakpoint: false !default;
 
+// _th-core-with
+// Map of available properties with a th-with loop.
+//
+// @since 0.0.14
+// @type Map
+// @access private
+
+$_th-core-with: () !default;
+
 // th-with-breakpoint
 // Use a breakpoint for a section of code.
 //
@@ -71,20 +80,17 @@ $_th-core-global-breakpoint: false !default;
 }
 
 // th-with-var-set
-// Sets global variables for heading properties used by various mixins.
+// Sets $_th-core-with global variable with heading properties.
 //
 // @since 0.0.14
 // @type mixin
 // @access private
 //
-// @requires {function} th-property-font-size
-// @requires {function} th-property-line-height
-// @requires {function} th-property-margin-top
-// @requires {function} th-property-margin-bottom
-// @requires {function} th-property
+// @requires {variable} $_TH-PROPERTIES
+// @requires {function} _th-core-get-base
 //
-// @param {list} $heading-list - A list of heading property values.
-// @param {boolean} $convert (false) - If returned value should be unit converted.
+// @param {list} $heading-list A list of heading property values.
+// @param {boolean} $convert (false) If returned value should be unit converted.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 
 @mixin _th-with-var-set(
@@ -92,27 +98,34 @@ $_th-core-global-breakpoint: false !default;
   $convert: false,
   $base-font-size: $th-base-font-size
 ){
-  $font-size: th-property-font-size($heading: $heading-list, $convert: false);
-  $th-font-size: th-property-font-size($heading: $heading-list, $convert: $convert, $base-font-size: $base-font-size) !global;
-  $th-line-height: th-property-line-height($heading: $heading-list, $convert: $convert, $base-font-size: $font-size) !global;
-  $th-margin-top: th-property-margin-top($heading: $heading-list, $convert: $convert, $base-font-size: $font-size) !global;
-  $th-margin-bottom: th-property-margin-bottom($heading: $heading-list, $convert: $convert, $base-font-size: $font-size) !global;
-  $th-breakpoint: th-property($heading: $heading-list, $property-name: breakpoint) !global;
+  $th-with-vars: ();
+  $font-size: th-property-font-size(
+    $heading: $heading-list,
+    $base-font-size: $base-font-size,
+    $convert: false
+  );
+  @each $property in $_TH-PROPERTIES {
+    $base: th-if(font-size == $property, $base-font-size, $font-size);
+    $th-with-vars: map-merge($th-with-vars, (
+      $property: call(th-property-#{$property},
+        $heading: $heading-list,
+        $convert: $convert,
+        $base-font-size: $base
+      ))
+    );
+  }
+  $_th-core-with: $th-with-vars !global;
 }
 
 // th-with-var-reset
-// Resets global variables for heading properties used by various mixins.
+// Resets $th-with-vars global variable.
 //
 // @since 0.0.14
 // @type mixin
 // @access private
 
 @mixin _th-with-var-reset {
-  $th-font-size: false !global;
-  $th-line-height: false !global;
-  $th-margin-top: false !global;
-  $th-margin-bottom: false !global;
-  $th-breakpoint: false !global;
+  $_th-core-with: false !global;
 }
 
 // th-with
@@ -133,10 +146,10 @@ $_th-core-global-breakpoint: false !default;
 //
 // @example scss Output font-size, line-height, margin-top and margin-bottom properties individually for a heading.
 // // @include th-with(h1) {
-// //   margin-top: $th-margin-top;
-// //   margin-bottom: $th-margin-bottom;
-// //   font-size: $th-font-size;
-// //   line-height: $th-line-height;
+// //   margin-top: th-with-get(margin-top);
+// //   margin-bottom: th-with-get(margin-bottom);
+// //   font-size: th-with-get(font-size);;
+// //   line-height: th-with-get(line-height);
 // // }
 
 @mixin th-with(
