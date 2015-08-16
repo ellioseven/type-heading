@@ -338,7 +338,6 @@ $th-properties: (
   $convert: true,
   $base-font-size: $th-base-font-size
 ){
-  $_return: $property-name;
   $_return: map-get($th-property-defaults, $property-name);
   @if $convert == true {
     $_return: _th-property-unit-convert(
