@@ -99,7 +99,11 @@ $_th-core-with: () !default;
   $base-font-size: $th-base-font-size
 ){
   $th-with-vars: ();
-  $font-size: _th-core-get-base($heading-list, $base-font-size);
+  $font-size: th-property-font-size(
+    $heading: $heading-list,
+    $base-font-size: $base-font-size,
+    $convert: false
+  );
   @each $property in $_TH-PROPERTIES {
     $base: th-if(font-size == $property, $base-font-size, $font-size);
     $th-with-vars: map-merge($th-with-vars, (
