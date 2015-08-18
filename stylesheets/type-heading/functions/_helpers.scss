@@ -379,7 +379,6 @@
 ){
   $_return: $number;
   $_return: th-unit-strip($number) / th-unit-strip($base-font-size);
-  $_return: th-math-round-to($_return, 5);
   @if $unit {
     $_return: th-unit-convert($_return, $unit);
   }
@@ -411,7 +410,8 @@
   $base-font-size: $th-base-font-size
 ){
   $_return: $number;
-  $_return: th-unit-convert-relative($number, em, $base-font-size);
+  $_return: th-math-round-to($_return, 5);
+  $_return: th-unit-convert-relative($_return, em, $base-font-size);
   @return $_return;
 }
 
@@ -440,7 +440,8 @@
   $base-font-size: $th-rem-base
 ){
   $_return: $number;
-  $_return: th-unit-convert-relative($number, rem, $th-rem-base);
+  $_return: th-math-round-to($_return, 5);
+  $_return: th-unit-convert-relative($_return, rem, $th-rem-base);
   @return $_return;
 }
 
@@ -469,7 +470,8 @@
   $base-font-size: $th-base-font-size
 ){
   $_return: $number;
-  $_return: th-unit-convert-relative($number, false, $base-font-size);
+  $_return: th-math-round-to($_return, 5);
+  $_return: th-unit-convert-relative($_return, false, $base-font-size);
   @return $_return;
 }
 
@@ -498,6 +500,38 @@
   $base-font-size: $th-base-font-size
 ){
   $_return: $number;
-  $_return: th-unit-convert-absolute($number, px, $base-font-size);
+  $_return: th-math-round-to($_return, 5);
+  $_return: th-unit-convert-absolute($_return, px, $base-font-size);
+  @return $_return;
+}
+
+// th-unit-convert-percent
+// Converts an absolute number to a percentage.
+//
+// @since 0.0.11
+// @type function
+//
+// @requires th-unit-convert-relative
+//
+// @param {number} $number The number to convert (required).
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The converted number.
+//
+// @example scss Convert 24px to a percentage.
+// // th-unit-convert-rel(24px)
+// // // 150%
+// @example scss Convert 24px to a percentage with a base font size of 32px.
+// // th-unit-convert-rel(24px, 32px)
+// // // 75%
+
+@function th-unit-convert-percent(
+  $number,
+  $base-font-size: $th-base-font-size
+){
+  $_return: $number;
+  $_return: th-math-round-to($_return, 7);
+  $_return: th-unit-convert-relative($number, false, $base-font-size);
+  $_return: $_return * 100%;
   @return $_return;
 }
