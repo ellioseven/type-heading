@@ -71,10 +71,10 @@ mixin th-with {
     }
     @include th-assert-actual {
       @include th-with(h1) {
-        margin-top: $th-margin-top;
-        margin-bottom: $th-margin-bottom;
-        font-size: $th-font-size;
-        line-height: $th-line-height;
+        margin-top: th-with-get(margin-top);
+        margin-bottom: th-with-get(margin-bottom);
+        font-size: th-with-get(font-size);
+        line-height: th-with-get(line-height);
       }
     }
   }
@@ -90,10 +90,10 @@ mixin th-with {
     }
     @include th-assert-actual {
       @include th-with(h6) {
-        margin-top: $th-margin-top;
-        margin-bottom: $th-margin-bottom;
-        font-size: $th-font-size;
-        line-height: $th-line-height;
+        margin-top: th-with-get(margin-top);
+        margin-bottom: th-with-get(margin-bottom);
+        font-size: th-with-get(font-size);
+        line-height: th-with-get(line-height);
       }
     }
   }
@@ -113,10 +113,10 @@ mixin th-with {
         $convert: true,
         $base-font-size: 14px
       ){
-        margin-top: $th-margin-top;
-        margin-bottom: $th-margin-bottom;
-        font-size: $th-font-size;
-        line-height: $th-line-height;
+        margin-top: th-with-get(margin-top);
+        margin-bottom: th-with-get(margin-bottom);
+        font-size: th-with-get(font-size);
+        line-height: th-with-get(line-height);
       }
     }
   }
@@ -144,10 +144,10 @@ mixin th-with {
     }
     @include th-assert-actual {
       @include th-with(h1, true) {
-        margin-top: $th-margin-top;
-        margin-bottom: $th-margin-bottom;
-        font-size: $th-font-size;
-        line-height: $th-line-height;
+        margin-top: th-with-get(margin-top);
+        margin-bottom: th-with-get(margin-bottom);
+        font-size: th-with-get(font-size);
+        line-height: th-with-get(line-height);
       }
     }
   }

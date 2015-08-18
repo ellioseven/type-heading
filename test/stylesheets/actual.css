@@ -274,7 +274,17 @@ mixin th-heading {
   margin-bottom: 1.66667rem;
   font-size: 0.55556em;
   line-height: 2;
+  /* Describe: Output styles for a heading manually. */
+  margin-top: 30px;
+  margin-bottom: 1.66667rem;
+  font-size: 0.55556em;
+  line-height: 2;
   /* Describe: Output styles for a heading with a breakpoint. */
+  margin-top: 70px;
+  margin-bottom: 3.33333rem;
+  font-size: 2.77778em;
+  line-height: 1.2;
+  /* Describe: Output styles for a heading with a breakpoint manually. */
   margin-top: 70px;
   margin-bottom: 3.33333rem;
   font-size: 2.77778em;

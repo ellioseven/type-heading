@@ -20,6 +20,20 @@ mixin th-heading {
   }
 
   @include th-assert(
+    $describe: "Output styles for a heading manually."
+  ){
+    @include th-assert-expect {
+      margin-top: 30px;
+      margin-bottom: 1.66667rem;
+      font-size: 0.55556em;
+      line-height: 2;
+    }
+    @include th-assert-actual {
+      @include th-heading(10px 20px (30px 40px));
+    }
+  }
+
+  @include th-assert(
     $describe: "Output styles for a heading with a breakpoint."
   ){
     @include th-assert-expect {
@@ -30,6 +44,20 @@ mixin th-heading {
     }
     @include th-assert-actual {
       @include th-heading(h1, 768px);
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output styles for a heading with a breakpoint manually."
+  ){
+    @include th-assert-expect {
+      margin-top: 70px;
+      margin-bottom: 3.33333rem;
+      font-size: 2.77778em;
+      line-height: 1.2;
+    }
+    @include th-assert-actual {
+      @include th-heading((10px 20px (30px 40px), 50px 60px (70px 80px) 768px, 90px 100px (110px 120px) 1024px), 768px);
     }
   }
 
