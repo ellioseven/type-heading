@@ -105,6 +105,10 @@ function th-property {
   result: 3px;
   /* Describe: Return default from heading via missing value */
   result: 0.11111;
+  /* Describe: Return property from heading and unit override to percent. */
+  result: 55.55556%;
+  /* Describe: Return property from heading and unit override to percent with base font size of 14px. */
+  result: 357.14286%;
 }
 
 function _th-property-get {
@@ -159,7 +163,7 @@ function th-property-default {
   result: 0.05556em;
 }
 
-function _th-property-unit-convert {
+function _th-property-unit-convert-property {
   /* Describe: Convert 10px font size to em. */
   result: 0.55556em;
   /* Describe: Convert 10px font size with base font size of 20px. */
@@ -380,6 +384,10 @@ mixin th-property-font-size {
   font-size: 0.27778em;
   /* Describe: Output font-size for a heading without unit conversion. */
   font-size: 5px;
+  /* Describe: Output font-size from heading and unit override to percent. */
+  font-size: 55.55556%;
+  /* Describe: Output property from heading and unit override to percent with base font size of 14px. */
+  font-size: 357.14286%;
 }
 
 mixin th-property-line-height {
@@ -389,6 +397,8 @@ mixin th-property-line-height {
   line-height: 3.33333;
   /* Describe: Output line-height for a heading without unit conversion. */
   line-height: 20px;
+  /* Describe: Output line-height from heading and unit override to percent. */
+  line-height: 111.11111%;
 }
 
 mixin th-property-margin-top {
@@ -400,6 +410,8 @@ mixin th-property-margin-top {
   margin-top: 29px;
   /* Describe: Output margin-top for a heading without unit conversion. */
   margin-top: 29px;
+  /* Describe: Output margin-top from heading and unit override to percent. */
+  margin-top: 166.66667%;
 }
 
 mixin th-property-margin-bottom {
@@ -411,6 +423,8 @@ mixin th-property-margin-bottom {
   margin-bottom: 1.20833rem;
   /* Describe: Output margin-bottom for a heading without unit conversion. */
   margin-bottom: 29px;
+  /* Describe: Output margin-bottom from heading and unit override to percent. */
+  margin-bottom: 222.22222%;
 }
 
 mixin th-breakpoint {

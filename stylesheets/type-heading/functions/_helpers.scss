@@ -232,6 +232,44 @@
 // Units
 // ------------------------------
 
+// _th-unit-convert
+// Coverts a number into another unit.
+//
+// @since 0.0.14
+// @type function
+// @access private
+//
+// @param {string} $unit (px|em|rem|rel|percent) - A unit to convert the number to.
+// @param {number} $number - The number to convert.
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The converted number.
+//
+// @example scss Convert 14px to em.
+// // _th-unit-convert(
+// //   $unit: em,
+// //   $number: 14px
+// // )
+// @example scss Convert 14px with base font size of 20px to em.
+// // _th-property-unit-convert(
+// //   $unit: em,
+// //   $number: 14px
+// //   $base-font-size: 20px
+// // )
+
+@function th-unit-convert(
+  $unit,
+  $number,
+  $base-font-size: $th-base-font-size
+){
+  $function: th-unit-convert-#{$unit};
+  @if function-exists($function) and unit($number) != $unit {
+    @return call($function, $number, $base-font-size);
+  } @else {
+    @return $number;
+  }
+}
+
 // th-unit-strip
 // Strips the unit from a number.
 //
@@ -282,7 +320,7 @@
   @return $_return;
 }
 
-// th-unit-convert
+// th-unit-convert-number
 // Converts the unit of a number.
 //
 // @since 0.0.11
@@ -297,10 +335,10 @@
 // @returns {number} The converted number.
 //
 // @example scss Convert 24px to 24em.
-// // th-unit-convert(24px, em)
+// // th-unit-convert-number(24px, em)
 // // // 24em
 
-@function th-unit-convert(
+@function th-unit-convert-number(
   $number,
   $unit
 ){
@@ -344,7 +382,7 @@
   $_return: th-unit-strip($number) * th-unit-strip($base-font-size);
   $_return: th-math-round-to($_return, 5);
   @if $unit {
-    $_return: th-unit-convert($_return, $unit);
+    $_return: th-unit-convert-number($_return, $unit);
   }
   @return $_return;
 }
@@ -380,7 +418,7 @@
   $_return: $number;
   $_return: th-unit-strip($number) / th-unit-strip($base-font-size);
   @if $unit {
-    $_return: th-unit-convert($_return, $unit);
+    $_return: th-unit-convert-number($_return, $unit);
   }
   @return $_return;
 }

@@ -26,7 +26,7 @@ $th-properties: (
 // @requires {function} th-heading
 // @requires {function} th-property-get
 // @requires {function} th-property-default
-// @requires {function} _th-property-unit-convert
+// @requires {function} _th-property-unit-convert-property
 // @requires {function} _th-core-global-breakpoint
 //
 // @param {list | string} $heading A heading map key or list (required).
@@ -75,8 +75,10 @@ $th-properties: (
   @if $_return == default or $_return == false { 
     $_return: th-property-default($property-name, $base-font-size, false);
   }
-  @if $convert == true {
-    $_return: _th-property-unit-convert($property-name, $_return, $base-font-size);
+  @if string == type-of($convert) {
+    $_return: th-unit-convert($convert, $_return, $base-font-size);
+  } @elseif $convert == true {
+    $_return: _th-property-unit-convert-property($property-name, $_return, $base-font-size);
   }
   @return $_return;
 }
@@ -322,7 +324,7 @@ $th-properties: (
 // @since 0.0.10
 // @type function
 //
-// @requires _th-property-unit-convert
+// @requires _th-property-unit-convert-property
 //
 // @param {string} $property-name (font-size | line-height | margin-top | margin-bottom | breakpoint) A property name (required).
 // @param {boolean} $convert (true) If returned value should be unit converted.
@@ -340,26 +342,19 @@ $th-properties: (
 ){
   $_return: map-get($th-property-defaults, $property-name);
   @if $convert == true {
-    $_return: _th-property-unit-convert(
-      $property-name: $property-name,
-      $property-value: $_return,
-      $base-font-size: $base-font-size
-    );
+    $_return: _th-property-unit-convert-property($property-name, $_return, $base-font-size);
   }
   @return $_return;
 }
 
-// _th-property-unit-convert
-// Returns a property's converted unit value.
+// _th-property-unit-convert-property
+// Returns a property's converted unit value by property name.
 //
 // @since 0.0.11
 // @type function
 // @access private
 //
-// @requires th-unit-convert-em
-// @requires th-unit-convert-rem
-// @requires th-unit-convert-rel
-// @requires th-unit-convert-px
+// @requires _th-property-unit-convert-property
 //
 // @param {string} $property-name (font-size | line-height | margin-top | margin-bottom | breakpoint) A property name (required).
 // @param {number} $property-value The number value of the property (required). 
@@ -368,30 +363,22 @@ $th-properties: (
 // @returns {number} The converted unit value.
 //
 // @example scss Convert heading font size of 14px.
-// // _th-property-unit-convert(
+// // _th-property-unit-convert-property(
 // //   $property-name: font-size,
 // //   $property-value: 14px
 // // )
 // @example scss Convert heading font size of 14px with base font size of 20px.
-// // _th-property-unit-convert(
+// // _th-property-unit-convert-property(
 // //   $property-name: font-size,
 // //   $property-value: 14px,
 // //   $base-font-size: 20px
 // // )
 
-@function _th-property-unit-convert(
+@function _th-property-unit-convert-property(
   $property-name,
   $property-value,
   $base-font-size: $th-base-font-size
 ){
-  $_return: $property-value;
   $unit: map-get($th-property-units, $property-name);
-  @if not $unit or $unit == unit($property-value) {
-    @return $_return;
-  }
-  $function: th-unit-convert-#{$unit};
-  @if function-exists($function) {
-    $_return: call($function, $property-value, $base-font-size);
-  }
-  @return $_return;
+  @return th-unit-convert($unit, $property-value, $base-font-size);
 }

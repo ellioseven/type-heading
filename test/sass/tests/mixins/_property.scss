@@ -52,6 +52,28 @@ mixin th-property-font-size {
     }
   }
 
+  @include th-assert(
+    $describe: "Output font-size from heading and unit override to percent."
+  ){
+    @include th-assert-expect {
+      font-size: 55.55556%;
+    }
+    @include th-assert-actual {
+      font-size: th-property(h1, font-size, false, percent);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output property from heading and unit override to percent with base font size of 14px."
+  ){
+    @include th-assert-expect {
+      font-size: 357.14286%;
+    }
+    @include th-assert-actual {
+      font-size: th-property(h1, font-size, 768px, percent, 14px);
+    }
+  }
+
 }
 
 // th-property-line-height()
@@ -91,6 +113,20 @@ mixin th-property-line-height {
       @include th-property-line-height(
         $heading: h1,
         $convert: false
+      );
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output line-height from heading and unit override to percent."
+  ){
+    @include th-assert-expect {
+      line-height: 111.11111%;
+    }
+    @include th-assert-actual {
+      @include th-property-line-height(
+        $heading: h1,
+        $convert: percent
       );
     }
   }
@@ -149,6 +185,20 @@ mixin th-property-margin-top {
     }
   }
 
+  @include th-assert(
+    $describe: "Output margin-top from heading and unit override to percent."
+  ){
+    @include th-assert-expect {
+      margin-top: 166.66667%;
+    }
+    @include th-assert-actual {
+      @include th-property-margin-top(
+        $heading: h1,
+        $convert: percent
+      );
+    }
+  }
+
 }
 
 // th-property-margin-bottom()
@@ -199,6 +249,20 @@ mixin th-property-margin-bottom {
       @include th-property-margin-bottom(
         $heading: h2,
         $convert: false
+      );
+    }
+  }
+
+  @include th-assert(
+    $describe: "Output margin-bottom from heading and unit override to percent."
+  ){
+    @include th-assert-expect {
+      margin-bottom: 222.22222%;
+    }
+    @include th-assert-actual {
+      @include th-property-margin-bottom(
+        $heading: h1,
+        $convert: percent
       );
     }
   }
