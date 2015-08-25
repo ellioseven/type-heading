@@ -32,7 +32,7 @@ $th-properties: (
 // @param {list | string} $heading A heading map key or list (required).
 // @param {string} $property-name (font-size | line-height | margin-top | margin-bottom | breakpoint) A heading property name (required).
 // @param {number} $breakpoint A heading list breakpoint.
-// @param {boolean} $convert (true) If returned value should be unit converted.
+// @param {boolean|string} $convert (true|false|px|em|rem|rel|percent) If returned value should be unit converted or overridden.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @returns {number} Heading property value.
@@ -53,6 +53,12 @@ $th-properties: (
 // //   $heading: h1,
 // //   $property-name: font-size,
 // //   $convert: false
+// // )
+// @example scss Return font size from a h1 heading map and unit override to percent.
+// // th-property(
+// //   $heading: h1,
+// //   $property-name: font-size,
+// //   $convert: percent
 // // )
 // @example scss Return font size from a h1 with a base font size of 24px.
 // // th-property(
@@ -132,7 +138,7 @@ $th-properties: (
 //
 // @param {list | string} $heading A heading map key or list (required).
 // @param {number | boolean} $breakpoint A heading list breakpoint.
-// @param {boolean} $convert (true) If returned value should be unit converted.
+// @param {boolean|string} $convert (true|false|px|em|rem|rel|percent) If returned value should be unit converted or overridden.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @returns {number} The heading font size value.
@@ -148,6 +154,11 @@ $th-properties: (
 // // th-property-font-size(
 // //   $heading: h1,
 // //   $convert: false
+// // )
+// @example scss Return font size from a h1 heading map and unit override to percent.
+// // th-property-font-size(
+// //   $heading: h1,
+// //   $convert: percent
 // // )
 // @example scss Return font size from a h1 with a base font size of 24px.
 // // th-property-font-size(
@@ -181,7 +192,7 @@ $th-properties: (
 //
 // @param {list | string} $heading A heading map key or list (required).
 // @param {number} $breakpoint A heading list breakpoint.
-// @param {boolean} $convert (true) If returned value should be unit converted.
+// @param {boolean|string} $convert (true|false|px|em|rem|rel|percent) If returned value should be unit converted or overridden.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @returns {number} The heading line height value.
@@ -197,6 +208,11 @@ $th-properties: (
 // // th-property-line-height(
 // //   $heading: h1,
 // //   $convert: false
+// // )
+// @example scss Return line height from a h1 heading map and unit override to percent.
+// // th-property-line-height(
+// //   $heading: h1,
+// //   $convert: percent
 // // )
 // @example scss Return line height from a h1 with a base font size of 24px.
 // // th-property-line-height(
@@ -230,7 +246,7 @@ $th-properties: (
 //
 // @param {list | string} $heading A heading map key or list (required).
 // @param {number | boolean} $breakpoint (false) A heading list breakpoint.
-// @param {boolean} $convert (true) If returned value should be unit converted.
+// @param {boolean|string} $convert (true|false|px|em|rem|rel|percent) If returned value should be unit converted or overridden.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @returns {number} The heading margin top value.
@@ -246,6 +262,11 @@ $th-properties: (
 // // th-property-margin-top(
 // //   $heading: h1,
 // //   $convert: false
+// // )
+// @example scss Return margin top from a h1 heading map and unit override to percent.
+// // th-property-margin-top(
+// //   $heading: h1,
+// //   $convert: percent
 // // )
 // @example scss Return margin top from a h1 with a base font size of 24px.
 // // th-property-margin-top(
@@ -279,7 +300,7 @@ $th-properties: (
 //
 // @param {list | string} $heading A heading map key or list (required).
 // @param {number | boolean} $breakpoint (false) A heading list breakpoint.
-// @param {boolean} $convert (true) If returned value should be unit converted.
+// @param {boolean|string} $convert (true|false|px|em|rem|rel|percent) If returned value should be unit converted or overridden.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @returns {number} The heading margin bottom value.
@@ -295,6 +316,11 @@ $th-properties: (
 // // th-property-margin-bottom(
 // //   $heading: h1,
 // //   $convert: false
+// // )
+// @example scss Return margin bottom from a h1 heading map and unit override to percent.
+// // th-property-margin-bottom(
+// //   $heading: h1,
+// //   $convert: percent
 // // )
 // @example scss Return margin bottom from a h1 with a base font size of 24px.
 // // th-property-margin-bottom(
@@ -327,7 +353,7 @@ $th-properties: (
 // @requires _th-property-unit-convert-property
 //
 // @param {string} $property-name (font-size | line-height | margin-top | margin-bottom | breakpoint) A property name (required).
-// @param {boolean} $convert (true) If returned value should be unit converted.
+// @param {boolean|string} $convert (true|false|px|em|rem|rel|percent) If returned value should be unit converted or overridden.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @returns {number} The default property value.
@@ -357,7 +383,7 @@ $th-properties: (
 // @requires _th-property-unit-convert-property
 //
 // @param {string} $property-name (font-size | line-height | margin-top | margin-bottom | breakpoint) A property name (required).
-// @param {number} $property-value The number value of the property (required). 
+// @param {number} $property-value The number value of the property (required).
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @returns {number} The converted unit value.
