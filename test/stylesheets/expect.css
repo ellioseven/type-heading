@@ -104,7 +104,7 @@ function th-property {
   /* Describe: Return default from heading via keyword */
   result: 3px;
   /* Describe: Return default from heading via missing value */
-  result: 0.11111;
+  result: 0.33333;
   /* Describe: Return property from heading and unit override to percent. */
   result: 55.55556%;
   /* Describe: Return property from heading and unit override to percent with base font size of 14px. */
@@ -135,9 +135,9 @@ function th-property-font-size {
 
 function th-property-line-height {
   /* Describe: Return line height from heading */
-  result: 1.11111;
+  result: 2;
   /* Describe: Return line height from heading with breakpoint */
-  result: 3.33333;
+  result: 1.2;
 }
 
 function th-property-margin-top {
@@ -374,13 +374,13 @@ mixin th-property-font-size {
 
 mixin th-property-line-height {
   /* Describe: Output line-height for a heading. */
-  line-height: 1.11111;
+  line-height: 2;
   /* Describe: Output line-height for a heading with a breakpoint. */
-  line-height: 3.33333;
+  line-height: 1.2;
   /* Describe: Output line-height for a heading without unit conversion. */
   line-height: 20px;
   /* Describe: Output line-height from heading and unit override to percent. */
-  line-height: 111.11111%;
+  line-height: 200%;
 }
 
 mixin th-property-margin-top {
@@ -393,7 +393,7 @@ mixin th-property-margin-top {
   /* Describe: Output margin-top for a heading without unit conversion. */
   margin-top: 29px;
   /* Describe: Output margin-top from heading and unit override to percent. */
-  margin-top: 166.66667%;
+  margin-top: 300%;
 }
 
 mixin th-property-margin-bottom {
@@ -406,7 +406,7 @@ mixin th-property-margin-bottom {
   /* Describe: Output margin-bottom for a heading without unit conversion. */
   margin-bottom: 29px;
   /* Describe: Output margin-bottom from heading and unit override to percent. */
-  margin-bottom: 222.22222%;
+  margin-bottom: 400%;
 }
 
 mixin th-breakpoint {

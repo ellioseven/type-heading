@@ -85,7 +85,7 @@ mixin th-property-line-height {
     $describe: "Output line-height for a heading."
   ){
     @include th-assert-expect {
-      line-height: 1.11111;
+      line-height: 2;
     }
     @include th-assert-actual {
       @include th-property-line-height(h1);
@@ -96,7 +96,7 @@ mixin th-property-line-height {
     $describe: "Output line-height for a heading with a breakpoint."
   ){
     @include th-assert-expect {
-      line-height: 3.33333;
+      line-height: 1.2;
     }
     @include th-assert-actual {
       @include th-property-line-height(h1, 768px);
@@ -121,7 +121,7 @@ mixin th-property-line-height {
     $describe: "Output line-height from heading and unit override to percent."
   ){
     @include th-assert-expect {
-      line-height: 111.11111%;
+      line-height: 200%;
     }
     @include th-assert-actual {
       @include th-property-line-height(
@@ -189,8 +189,8 @@ mixin th-property-margin-top {
     $describe: "Output margin-top from heading and unit override to percent."
   ){
     @include th-assert-expect {
-      margin-top: 166.66667%;
-    }
+      margin-top: 300%;
+  }
     @include th-assert-actual {
       @include th-property-margin-top(
         $heading: h1,
@@ -257,7 +257,7 @@ mixin th-property-margin-bottom {
     $describe: "Output margin-bottom from heading and unit override to percent."
   ){
     @include th-assert-expect {
-      margin-bottom: 222.22222%;
+      margin-bottom: 400%;
     }
     @include th-assert-actual {
       @include th-property-margin-bottom(

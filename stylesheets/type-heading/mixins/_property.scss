@@ -53,6 +53,9 @@
   $convert: true,
   $base-font-size: $th-base-font-size
 ){
+  @if font-size != $property-name {
+    $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
+  }
   @if th-list-has($_TH-PROPERTIES, $property-name) {
     $breakpoint: _th-core-global-breakpoint($breakpoint);
     #{$property-name}: call(th-property-#{$property-name},
@@ -148,6 +151,7 @@
   $convert: true,
   $base-font-size: $th-base-font-size
 ){
+  $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
   @include th-property(
     $property-name: line-height,
     $heading: $heading,
@@ -194,6 +198,7 @@
   $convert: true,
   $base-font-size: $th-base-font-size
 ){
+  $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
   @include th-property(
     $property-name: margin-top,
     $heading: $heading,
@@ -240,6 +245,7 @@
   $convert: true,
   $base-font-size: $th-base-font-size
 ){
+  $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
   @include th-property(
     $property-name: margin-bottom,
     $heading: $heading,

@@ -78,7 +78,10 @@ $th-properties: (
   $heading: th-heading($heading, $breakpoint);
   $breakpoint: _th-core-global-breakpoint($breakpoint);
   $_return: _th-property-get($heading, $property-name);
-  @if $_return == default or $_return == false { 
+  @if $property-name != font-size {
+    $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
+  }
+  @if $_return == default or $_return == false {
     $_return: th-property-default($property-name, $base-font-size, false);
   }
   @if string == type-of($convert) {
@@ -223,9 +226,10 @@ $th-properties: (
 @function th-property-line-height(
   $heading,
   $breakpoint: false,
-  $base-font-size: $th-base-font-size,
+  $base-font-size: th-property-font-size($heading, $breakpoint, false),
   $convert: true
 ){
+  $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
   $_return: th-property(
     $heading: $heading,
     $property-name: line-height,
@@ -277,9 +281,10 @@ $th-properties: (
 @function th-property-margin-top(
   $heading,
   $breakpoint: false,
-  $base-font-size: $th-base-font-size,
+  $base-font-size: th-property-font-size($heading, $breakpoint, false),
   $convert: true
 ){
+  $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
   $_return: th-property(
     $heading: $heading,
     $property-name: margin-top,
@@ -334,6 +339,7 @@ $th-properties: (
   $base-font-size: $th-base-font-size,
   $convert: true
 ){
+  $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
   $_return: th-property(
     $heading: $heading,
     $property-name: margin-bottom,
@@ -407,4 +413,16 @@ $th-properties: (
 ){
   $unit: map-get($th-property-units, $property-name);
   @return th-unit-convert($unit, $property-value, $base-font-size);
+}
+
+@function _th-property-base(
+  $heading,
+  $breakpoint,
+  $base-font-size
+) {
+  $_return: $base-font-size;
+  @if $base-font-size == $th-base-font-size {
+    $_return: th-property-font-size($heading, $breakpoint, false);
+  }
+  @return $_return;
 }

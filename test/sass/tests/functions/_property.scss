@@ -64,7 +64,7 @@ function th-property {
     $describe: "Return default from heading via missing value"
   ){
     @include th-assert-expect {
-      result: 0.11111;
+      result: 0.33333;
     }
     @include th-assert-actual {
       result: th-property(h5, line-height);
@@ -169,7 +169,7 @@ function th-property-font-size {
       result: 0.55556em;
     }
     @include th-assert-actual {
-      result: th-property(h1, font-size);
+      result: th-property-font-size(h1);
     }
   }
 
@@ -180,7 +180,7 @@ function th-property-font-size {
       result: 2.77778em;
     }
     @include th-assert-actual {
-      result: th-property(h1, font-size, 768px);
+      result: th-property-font-size(h1, 768px);
     }
   }
 
@@ -191,7 +191,7 @@ function th-property-font-size {
       result: 0.27778em;
     }
     @include th-assert-actual {
-      result: th-property(h6, font-size);
+      result: th-property-font-size(h6);
     }
   }
 
@@ -206,10 +206,10 @@ function th-property-line-height {
     $describe: "Return line height from heading"
   ){
     @include th-assert-expect {
-      result: 1.11111;
+      result: 2;
     }
     @include th-assert-actual {
-      result: th-property(h1, line-height);
+      result: th-property-line-height(h1);
     }
   }
 
@@ -217,10 +217,10 @@ function th-property-line-height {
     $describe: "Return line height from heading with breakpoint"
   ){
     @include th-assert-expect {
-      result: 3.33333;
+      result: 1.2;
     }
     @include th-assert-actual {
-      result: th-property(h1, line-height, 768px);
+      result: th-property-line-height(h1, 768px);
     }
   }
 
@@ -238,7 +238,7 @@ function th-property-margin-top {
       result: 30px;
     }
     @include th-assert-actual {
-      result: th-property(h1, margin-top);
+      result: th-property-margin-top(h1);
     }
   }
 
@@ -249,7 +249,7 @@ function th-property-margin-top {
       result: 70px;
     }
     @include th-assert-actual {
-      result: th-property(h1, margin-top, 768px);
+      result: th-property-margin-top(h1, 768px);
     }
   }
 
@@ -260,7 +260,7 @@ function th-property-margin-top {
       result: 29px;
     }
     @include th-assert-actual {
-      result: th-property(h2, margin-top);
+      result: th-property-margin-top(h2);
     }
   }
 
@@ -278,7 +278,7 @@ function th-property-margin-bottom {
       result: 1.66667rem;
     }
     @include th-assert-actual {
-      result: th-property(h1, margin-bottom);
+      result: th-property-margin-bottom(h1);
     }
   }
 
@@ -289,7 +289,7 @@ function th-property-margin-bottom {
       result: 3.33333rem;
     }
     @include th-assert-actual {
-      result: th-property(h1, margin-bottom, 768px);
+      result: th-property-margin-bottom(h1, 768px);
     }
   }
 
@@ -300,7 +300,7 @@ function th-property-margin-bottom {
       result: 1.20833rem;
     }
     @include th-assert-actual {
-      result: th-property(h2, margin-bottom);
+      result: th-property-margin-bottom(h2);
     }
   }
 
