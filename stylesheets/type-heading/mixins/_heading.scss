@@ -17,7 +17,6 @@
 //
 // @param {string} $heading A heading map key (required).
 // @param {number | boolean} $breakpoint (false) A heading list breakpoint.
-// @param {boolean} $convert (true) If returned value should be unit converted.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 // @param {list | boolean} $include (false font-size line-height margin-top margin-bottom) Include only certain properties in the mixin output.
 //
@@ -27,11 +26,6 @@
 // // th-heading(
 // //   $heading: h1,
 // //   $breakpoint: 768px
-// // )
-// @example scss Output h1 styles without unit conversion.
-// // th-heading(
-// //   $heading: h1,
-// //   $convert: false
 // // )
 // @example scss Output h1 styles with a base font size of 48px.
 // // th-heading(
@@ -47,7 +41,6 @@
 @mixin th-heading(
   $heading,
   $breakpoint: false,
-  $convert: true,
   $base-font-size: $th-base-font-size,
   $include: false
 ){
@@ -65,7 +58,6 @@
         @include th-property(
           $property-name: $property,
           $heading: $heading,
-          $convert: $convert,
           $base-font-size: $base
         );
       }
@@ -84,7 +76,6 @@
 //
 // @param {list | string} $heading A heading map key or list (required).
 // @param {string} $direction (min-width | max-width) Media query direction.
-// @param {boolean} $convert (true) If returned value should be unit converted.
 // @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
 //
 // @example scss Output all h1 styles across all breakpoints.
@@ -97,14 +88,12 @@
 
 @mixin th-headings(
   $heading,
-  $convert: true,
   $base-font-size: $th-base-font-size,
   $include: false
 ){
   @include _th-heading-loop($heading) {
     @include th-heading(
       $heading: $heading,
-      $convert: $convert,
       $base-font-size: $base-font-size,
       $include: $include
     );

@@ -104,23 +104,6 @@ mixin th-heading {
   }
 
   @include th-assert(
-    $describe: "Output styles for a heading without unit conversion."
-  ){
-    @include th-assert-expect {
-      margin-top: 30px;
-      margin-bottom: 40px;
-      font-size: 10px;
-      line-height: 20px;
-    }
-    @include th-assert-actual {
-      @include th-heading(
-        $heading: h1,
-        $convert: false
-      );
-    }
-  }
-
-  @include th-assert(
     $describe: "Output only font-size and line-height styles for a heading."
   ){
     @include th-assert-expect {
@@ -153,29 +136,6 @@ mixin th-headings {
     }
     @include th-assert-actual {
       @include th-headings(h6);
-    }
-  }
-
-  @include th-assert(
-    $describe: "Output styles for a heading without unit conversion."
-  ){
-    @include th-assert-expect {
-      margin-top: 29px;
-      margin-bottom: 29px;
-      font-size: 9px;
-      line-height: 19px;
-      @media (min-width: 768px) {
-        margin-top: 69px;
-        margin-bottom: 69px;
-        font-size: 49px;
-        line-height: 59px;
-      }
-    }
-    @include th-assert-actual {
-      @include th-headings(
-        $heading: h2,
-        $convert: false
-      );
     }
   }
 
