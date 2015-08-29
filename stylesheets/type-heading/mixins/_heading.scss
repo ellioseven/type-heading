@@ -9,7 +9,7 @@
 // @since 0.0.10
 // @type mixin
 //
-// @requires {variable} $_TH-PROPERTIES
+// @requires {variable} $_th-core-properties
 // @requires {function} _th-core-breakpoint-context
 // @requires {function} _th-core-get-base
 // @requires {mixin} th-property
@@ -51,7 +51,7 @@
       $base-font-size: $base-font-size,
       $convert: false
     );
-    @each $property in $_TH-PROPERTIES {
+    @each $property in $_th-core-properties {
       @if not $include or th-list-has($include, $property) {
         @include th-property(
           $property-name: $property,

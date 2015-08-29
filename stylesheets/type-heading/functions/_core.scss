@@ -21,6 +21,15 @@ $_th-core-breakpoint-context: false !default;
 
 $_th-core-with: () !default;
 
+// $_th-core-properties
+// A list of available properties.
+//
+// @since 0.0.14
+// @type number
+// @access private
+
+$_th-core-properties: (margin-top margin-bottom font-size line-height);
+
 // _th-core-breakpoint-context
 // Returns either global breakpoint if set or current breakpoint value.
 //

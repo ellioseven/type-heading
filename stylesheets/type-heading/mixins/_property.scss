@@ -56,7 +56,7 @@
   @if font-size != $property-name {
     $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
   }
-  @if th-list-has($_TH-PROPERTIES, $property-name) {
+  @if th-list-has($_th-core-properties, $property-name) {
     $breakpoint: _th-core-breakpoint-context($breakpoint);
     #{$property-name}: call(th-property-#{$property-name},
       $heading: $heading,

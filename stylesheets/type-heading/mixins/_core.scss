@@ -86,7 +86,7 @@ $_th-core-with: () !default;
 // @type mixin
 // @access private
 //
-// @requires {variable} $_TH-PROPERTIES
+// @requires {variable} $_th-core-properties
 // @requires {function} _th-core-get-base
 //
 // @param {list} $heading-list A list of heading property values.
@@ -104,7 +104,7 @@ $_th-core-with: () !default;
     $base-font-size: $base-font-size,
     $convert: false
   );
-  @each $property in $_TH-PROPERTIES {
+  @each $property in $_th-core-properties {
     $base: th-if(font-size == $property, $base-font-size, $font-size);
     $th-with-vars: map-merge($th-with-vars, (
       $property: call(th-property-#{$property},
