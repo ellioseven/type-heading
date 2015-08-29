@@ -44,7 +44,6 @@
   $base-font-size: $th-base-font-size,
   $include: false
 ){
-  $base: false;
   $breakpoint: _th-core-global-breakpoint($breakpoint);
   @include th-with-breakpoint($breakpoint) {
     $font-size: th-property-font-size(
@@ -54,11 +53,10 @@
     );
     @each $property in $_TH-PROPERTIES {
       @if not $include or th-list-has($include, $property) {
-        $base: th-if(font-size == $property, $base-font-size, $font-size);
         @include th-property(
           $property-name: $property,
           $heading: $heading,
-          $base-font-size: $base
+          $base-font-size: th-if(font-size == $property, $base-font-size, $font-size)
         );
       }
     }
