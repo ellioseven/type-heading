@@ -74,22 +74,21 @@ $th-properties: (
   $convert: true,
   $base-font-size: $th-base-font-size
 ){
-  $_return: false;
   $heading: th-heading($heading, $breakpoint);
   $breakpoint: _th-core-breakpoint-context($breakpoint);
-  $_return: _th-property-get($heading, $property-name);
+  $property: _th-property-get($heading, $property-name);
   @if $property-name != font-size {
     $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
   }
-  @if $_return == default or $_return == false {
-    $_return: th-property-default($property-name, $base-font-size, false);
+  @if $property == default or $property == false {
+    $property: th-property-default($property-name, $base-font-size, false);
   }
   @if string == type-of($convert) {
-    $_return: th-unit-convert($convert, $_return, $base-font-size);
+    $property: th-unit-convert($convert, $property, $base-font-size);
   } @elseif $convert == true {
-    $_return: _th-property-unit-convert-property($property-name, $_return, $base-font-size);
+    $property: _th-property-unit-convert-property($property-name, $property, $base-font-size);
   }
-  @return $_return;
+  @return $property;
 }
 
 // _th-property-get
@@ -175,14 +174,13 @@ $th-properties: (
   $convert: true,
   $base-font-size: $th-base-font-size
 ){
-  $_return: th-property(
+  @return th-property(
     $heading: $heading,
     $property-name: font-size,
     $breakpoint: $breakpoint,
     $convert: $convert,
     $base-font-size: $base-font-size
   );
-  @return $_return;
 }
 
 // th-property-line-height
@@ -229,15 +227,13 @@ $th-properties: (
   $base-font-size: th-property-font-size($heading, $breakpoint, false),
   $convert: true
 ){
-  $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
-  $_return: th-property(
+  @return th-property(
     $heading: $heading,
     $property-name: line-height,
     $breakpoint: $breakpoint,
     $convert: $convert,
-    $base-font-size: $base-font-size
+    $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size)
   );
-  @return $_return;
 }
 
 // th-property-margin-top
@@ -284,15 +280,13 @@ $th-properties: (
   $base-font-size: th-property-font-size($heading, $breakpoint, false),
   $convert: true
 ){
-  $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
-  $_return: th-property(
+  @return th-property(
     $heading: $heading,
     $property-name: margin-top,
     $breakpoint: $breakpoint,
     $convert: $convert,
-    $base-font-size: $base-font-size
+    $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size)
   );
-  @return $_return;
 }
 
 // th-property-margin-bottom
@@ -339,15 +333,13 @@ $th-properties: (
   $base-font-size: $th-base-font-size,
   $convert: true
 ){
-  $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
-  $_return: th-property(
+  @return th-property(
     $heading: $heading,
     $property-name: margin-bottom,
     $breakpoint: $breakpoint,
     $convert: $convert,
-    $base-font-size: $base-font-size
+    $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size)
   );
-  @return $_return;
 }
 
 // th-property-default
@@ -372,11 +364,11 @@ $th-properties: (
   $convert: true,
   $base-font-size: $th-base-font-size
 ){
-  $_return: map-get($th-property-defaults, $property-name);
+  $property: map-get($th-property-defaults, $property-name);
   @if $convert == true {
-    $_return: _th-property-unit-convert-property($property-name, $_return, $base-font-size);
+    $property: _th-property-unit-convert-property($property-name, $property, $base-font-size);
   }
-  @return $_return;
+  @return $property;
 }
 
 // _th-property-unit-convert-property

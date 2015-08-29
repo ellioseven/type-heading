@@ -32,15 +32,10 @@
   $heading,
   $breakpoint: false
 ){
-  $_return: $heading;
   $breakpoint: _th-core-breakpoint-context($breakpoint);
-  @if string == type-of($_return) {
-    $_return: th-heading-get-map($_return);
-  }
-  @if _th-heading-has-next($_return) {
-    $_return: _th-heading-get-next($_return, $breakpoint);
-  }
-  @return $_return;
+  $heading: th-heading-get-map($heading);
+  $heading: _th-heading-maybe-next($heading, $breakpoint);
+  @return $heading;
 }
 
 // th-heading-get-map
@@ -61,11 +56,10 @@
 @function th-heading-get-map(
   $heading
 ){
-  $_return: $heading;
   @if string == type-of($heading) and map-has-key($th-headings, $heading) {
-    $_return: map-get($th-headings, $heading);
+    $heading: map-get($th-headings, $heading);
   }
-  @return $_return;
+  @return $heading;
 }
 
 // _th-heading-has-next
@@ -93,12 +87,12 @@
 @function _th-heading-has-next(
   $heading
 ){
-  $_return: false;
   $heading: th-heading-get-map($heading);
-  @if list-separator($heading) == comma { 
-    $_return: true; 
+  @if list-separator($heading) == comma {
+    @return true;
+  } @else {
+    @return false;
   }
-  @return $_return;
 }
 
 // _th-heading-get-next
@@ -125,7 +119,6 @@
   $heading,
   $breakpoint: false
 ){
-  $_return: $heading;
   $heading: th-heading-get-map($heading);
   @if $breakpoint {
     @each $heading-list in $heading {
@@ -133,11 +126,21 @@
         $heading: $heading-list,
         $property-name: breakpoint,
         $convert: false) == $breakpoint {
-        $_return: $heading-list;
+        $heading: $heading-list;
       }
     }
   } @else {
-    $_return: nth($heading, 1);
+    $heading: nth($heading, 1);
   }
-  @return $_return;
+  @return $heading;
+}
+
+@function _th-heading-maybe-next(
+  $heading,
+  $breakpoint
+){
+  @if _th-heading-has-next($heading) {
+    $heading: _th-heading-get-next($heading, $breakpoint);
+  }
+  @return $heading;
 }
