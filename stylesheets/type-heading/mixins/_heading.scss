@@ -10,7 +10,7 @@
 // @type mixin
 //
 // @requires {variable} $_TH-PROPERTIES
-// @requires {function} _th-core-global-breakpoint
+// @requires {function} _th-core-breakpoint-context
 // @requires {function} _th-core-get-base
 // @requires {mixin} th-property
 // @requires {mixin} th-with-breakpoint
@@ -44,7 +44,7 @@
   $base-font-size: $th-base-font-size,
   $include: false
 ){
-  $breakpoint: _th-core-global-breakpoint($breakpoint);
+  $breakpoint: _th-core-breakpoint-context($breakpoint);
   @include th-with-breakpoint($breakpoint) {
     $font-size: th-property-font-size(
       $heading: $heading,

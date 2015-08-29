@@ -3,14 +3,14 @@
 // @group Mixins / Core
 // @author Elliot Mitchum
 
-// _th-core-global-breakpoint
+// _th-core-breakpoint-context
 // Allows breakpoint override for sections of code.
 //
 // @since 0.0.12
 // @type Number
 // @access private
 
-$_th-core-global-breakpoint: false !default;
+$_th-core-breakpoint-context: false !default;
 
 // _th-core-with
 // Map of available properties with a th-with loop.
@@ -27,7 +27,7 @@ $_th-core-with: () !default;
 // @since 0.0.12
 // @type mixin
 //
-// @requires {variable} $_th-core-global-breakpoint
+// @requires {variable} $_th-core-breakpoint-context
 //
 // @param {number} $breakpoint (false) A heading list breakpoint (required).
 //
@@ -39,10 +39,10 @@ $_th-core-with: () !default;
 @mixin th-with-breakpoint(
   $breakpoint
 ){
-  $cache: $_th-core-global-breakpoint;
-  $_th-core-global-breakpoint: $breakpoint !global;
+  $cache: $_th-core-breakpoint-context;
+  $_th-core-breakpoint-context: $breakpoint !global;
   @content;
-  $_th-core-global-breakpoint: $cache !global;
+  $_th-core-breakpoint-context: $cache !global;
 }
 
 // th-heading-loop

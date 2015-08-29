@@ -3,14 +3,14 @@
 // @group Functions / Core
 // @author Elliot Mitchum
 
-// _th-core-global-breakpoint
+// _th-core-breakpoint-context
 // Global breakpoint variable for various mixins and functions.
 //
 // @since 0.0.12
 // @type number
 // @access private
 
-$_th-core-global-breakpoint: false !default;
+$_th-core-breakpoint-context: false !default;
 
 // _th-core-with
 // Map of property values within a th-with loop.
@@ -21,7 +21,7 @@ $_th-core-global-breakpoint: false !default;
 
 $_th-core-with: () !default;
 
-// _th-core-global-breakpoint
+// _th-core-breakpoint-context
 // Returns either global breakpoint if set or current breakpoint value.
 //
 // @since 0.0.12
@@ -33,11 +33,11 @@ $_th-core-with: () !default;
 //
 // @returns {number} The breakpoint value.
 
-@function _th-core-global-breakpoint(
+@function _th-core-breakpoint-context(
   $breakpoint
 ){
-  @if global-variable-exists('_th-core-global-breakpoint') and $_th-core-global-breakpoint {
-    @return $_th-core-global-breakpoint;
+  @if global-variable-exists('_th-core-breakpoint-context') and $_th-core-breakpoint-context {
+    @return $_th-core-breakpoint-context;
   } @else {
     @return $breakpoint;
   }

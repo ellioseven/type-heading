@@ -12,7 +12,7 @@
 // @requires {function} th-heading-get-map
 // @requires {function} _th-heading-has-next
 // @requires {function} _th-heading-get-next
-// @requires {function} _th-core-global-breakpoint
+// @requires {function} _th-core-breakpoint-context
 //
 // @param {list | string} $heading A heading map key or list (required).
 // @param {number} $breakpoint A heading list breakpoint.
@@ -33,7 +33,7 @@
   $breakpoint: false
 ){
   $_return: $heading;
-  $breakpoint: _th-core-global-breakpoint($breakpoint);
+  $breakpoint: _th-core-breakpoint-context($breakpoint);
   @if string == type-of($_return) {
     $_return: th-heading-get-map($_return);
   }

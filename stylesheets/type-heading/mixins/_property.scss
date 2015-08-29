@@ -9,7 +9,7 @@
 // @since 0.0.14
 // @type mixin
 //
-// @requires {function} _th-core-global-breakpoint
+// @requires {function} _th-core-breakpoint-context
 // @requires {mixin} other-item
 // @requires $other-item
 // @requires %other-item
@@ -57,7 +57,7 @@
     $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
   }
   @if th-list-has($_TH-PROPERTIES, $property-name) {
-    $breakpoint: _th-core-global-breakpoint($breakpoint);
+    $breakpoint: _th-core-breakpoint-context($breakpoint);
     #{$property-name}: call(th-property-#{$property-name},
       $heading: $heading,
       $breakpoint: $breakpoint,
@@ -74,7 +74,7 @@
 // @type mixin
 //
 // @requires {function} th-property-font-size
-// @requires {function} _th-core-global-breakpoint
+// @requires {function} _th-core-breakpoint-context
 //
 // @param {string} $heading A heading map key (required).
 // @param {number | boolean} $breakpoint (false) A heading list breakpoint.
