@@ -199,6 +199,42 @@
   @return $_return;
 }
 
+// th-list-get-nth-deep
+// Return the value by index within multiple lists.
+//
+// @since 0.0.14
+// @type function
+//
+// @requires {function} th-list-has-index
+//
+// @param {list} $list The list to search through (required).
+// @param {list} $indexes List of indexes to search through.
+//
+// @returns {mixed} The value of the used indexes.
+//
+// @example scss Get the value 'f' in (a, b, (c, d, (e, f))).
+// // th-list-get-nth-deep(3 3 2)
+
+@function th-list-get-nth-deep(
+  $list,
+  $indexes
+){
+  $_return: false;
+  @if list == type-of($list) {
+    $_return: $list;
+    @for $i from 1 through length($indexes) {
+      @if th-list-has-index($_return, nth($indexes, $i)) {
+        $_return: nth($_return, nth($indexes, $i));
+      } @else if $i == 1 {
+        $_return: false;
+      }
+    }
+  } @else if $indexes == 1 {
+    $_return: $list;
+  }
+  @return $_return;
+}
+
 // th-list-has-deep
 // Check list for a value (recurring).
 //
