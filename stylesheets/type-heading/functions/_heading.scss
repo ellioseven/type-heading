@@ -135,9 +135,24 @@
   @return $heading;
 }
 
+// _th-heading-maybe-next
+// Check and get a heading list from a heading map key.
+//
+// @since 0.0.14
+// @type function
+// @access private
+//
+// @requires {function} _th-heading-has-next
+// @requires {function} _th-heading-get-next
+//
+// @param {list | string} $heading A heading map key or list (required).
+// @param {boolean | number} $breakpoint (false) A heading list breakpoint.
+//
+// @returns {list} Heading list.
+
 @function _th-heading-maybe-next(
   $heading,
-  $breakpoint
+  $breakpoint: false
 ){
   @if _th-heading-has-next($heading) {
     $heading: _th-heading-get-next($heading, $breakpoint);
