@@ -112,22 +112,9 @@ $th-properties: (
 @function _th-property-get(
   $heading,
   $property-name
-  ){
-  $_return: false;
+){
   $property-indexes: th-list-get-index-deep($th-properties, $property-name);
-  @if list == type-of($heading) {
-    $_return: $heading;
-    @for $i from 1 through length($property-indexes) {
-      @if th-list-has-index($_return, nth($property-indexes, $i)) {
-        $_return: nth($_return, nth($property-indexes, $i));
-      } @else if $i == 1 {
-        $_return: false;
-      }
-    }
-  } @else if $property-indexes == 1 {
-    $_return: $heading;
-  }
-  @return $_return;
+  @return th-list-get-nth-deep($heading, $property-indexes);
 }
 
 // th-property-font-size
@@ -330,7 +317,7 @@ $th-properties: (
 @function th-property-margin-bottom(
   $heading,
   $breakpoint: false,
-  $base-font-size: $th-base-font-size,
+  $base-font-size: th-property-font-size($heading, $breakpoint, false),
   $convert: true
 ){
   @return th-property(
@@ -406,6 +393,27 @@ $th-properties: (
   $unit: map-get($th-property-units, $property-name);
   @return th-unit-convert($unit, $property-value, $base-font-size);
 }
+
+// _th-property-base
+// Get the base font size of a heading if base font size is equal to $th-base-font-size.
+//
+// @since 0.0.14
+// @type function
+//
+// @requires {function} th-property-font-size
+//
+// @param {list | string} $heading A heading map key or list (required).
+// @param {number | boolean} $breakpoint (false) A heading list breakpoint.
+// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+//
+// @returns {number} The base font size.
+//
+// @example scss Get base font size if $th-base-font-size IS NOT 20px.
+// // _th-property-base(h1, 768px, 20px)
+// // // 20px
+// @example scss Get base font size if $th-base-font-size IS 20px.
+// // _th-property-base(h1, 768px, 20px)
+// // // 50px
 
 @function _th-property-base(
   $heading,
