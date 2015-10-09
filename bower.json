@@ -4,7 +4,7 @@
   "authors": [
     "Elliot Mitchum <elliot@ellio7.com>"
   ],
-  "description": "A responsive typography tool for headings",
+  "description": "A responsive typography tool.",
   "license": "MIT",
   "homepage": "https://github.com/ellioseven/type-heading",
   "ignore": [
