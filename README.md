@@ -1,21 +1,37 @@
 [![Gem Version](https://badge.fury.io/rb/type-heading.svg)](http://badge.fury.io/rb/type-heading)
 
-# Type Heading - BETA
+# Type Heading
 
-A responsive typography tool.
+Type Heading is a lightweight Compass Extension that lets you easily manage
+responsive typographic sizing.
 
-Type heading is currently in **BETA**. It should only be used for testing and/or
-development, not production work.
+## Libsass Compatible
 
-## Requirements
+Ruby is fucking slow as fuck and I hate it. Type heading is 100% (or will try to
+be) compatible with Libsass.
 
-To use Type Heading, you will need at least:
+## Organised & Maintainable
 
-- Ruby: 2.1.5
-- Sass 3.3.13
-- Compass 1.0.1
+Reference or change any heading size throughout your stylesheets from a single
+variable. Now you don't have to try and remember what the font size of your h3 is!
 
-## Get Started
+## Reponsive Typography Made Easy
 
-* [Github](https://github.com/ellioseven/type-heading)
-* [Documentation](http://ellioseven.github.io/type-heading/)
+Headings are stuctured by breakpoint, giving you the power to quickly find the
+right heading size for the right media query.
+
+## Simple Unit Conversion
+
+Working with relative units can be tricky. Fortunately Type Heading can convert
+px values into relative units, so you can stay you away from any tricky math.
+
+## License
+
+Type Heading uses the [MIT license](http://en.wikipedia.org/wiki/MIT_License)
+and always will.
+
+## Contributing
+
+You can make Type Heading better! If you find a bug, please [create an
+issue](https://github.com/ellioseven/type-heading/issues) or
+[provide a pull request](https://github.com/ellioseven/type-heading/pulls).
