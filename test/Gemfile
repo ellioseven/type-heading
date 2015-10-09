@@ -4,8 +4,8 @@ group :development do
 
   # Sass, Compass and extensions.
   gem 'sass', '= 3.3.13'                    # Sass.
-  gem 'compass', '= 1.0.1'                 # Framework built on Sass.
-  gem 'type-heading', '= 0.0.13'            # Responsive typography headings.
+  gem 'compass', '= 1.0.1'                  # Framework built on Sass.
+  gem 'type-heading', '= 0.0.14'            # Responsive typography headings.
   gem 'breakpoint'                          # Manages CSS media queries.
 
 end

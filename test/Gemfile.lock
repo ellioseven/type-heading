@@ -25,7 +25,7 @@ GEM
     sass (3.3.13)
     sassy-maps (0.4.0)
       sass (~> 3.3)
-    type-heading (0.0.13)
+    type-heading (0.0.14)
       compass (~> 1.0, >= 1.0.1)
       sass (~> 3.3, >= 3.3.13)
 
@@ -36,4 +36,4 @@ DEPENDENCIES
   breakpoint
   compass (= 1.0.1)
   sass (= 3.3.13)
-  type-heading (= 0.0.13)
+  type-heading (= 0.0.14)
