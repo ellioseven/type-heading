@@ -1,46 +1,43 @@
-// Breakpoint
-//
-// @group Functions / Core
-// @author Elliot Mitchum
+////
+/// Core
+/// @group Core
+////
 
-// _th-core-breakpoint-context
-// Global breakpoint variable for various mixins and functions.
-//
-// @since 0.0.12
-// @type number
-// @access private
+//  $_th-core-breakpoint-context
+/// Global breakpoint variable for various mixins and functions.
+///
+/// @since 0.0.12
+/// @type Bool | Number
+/// @access private
 
 $_th-core-breakpoint-context: false !default;
 
-// _th-core-with
-// Map of property values within a th-with loop.
-//
-// @since 0.0.14
-// @type map
-// @access private
+//  $_th-core-with
+/// Map of heading property values within a th-with loop.
+///
+/// @since 0.0.14
+/// @see {function} th-with
+/// @type Map
+/// @access private
 
 $_th-core-with: () !default;
 
-// $_th-core-properties
-// A list of available properties.
-//
-// @since 0.0.14
-// @type number
-// @access private
+//  $_th-core-properties
+/// List of available heading property names.
+///
+/// @since 0.0.14
+/// @type List
+/// @access private
 
 $_th-core-properties: (margin-top margin-bottom font-size line-height);
 
-// _th-core-breakpoint-context
-// Returns either global breakpoint if set or current breakpoint value.
-//
-// @since 0.0.12
-// @type function
-// @access private
-// @group breakpoint
-//
-// @param {number} $breakpoint A heading list breakpoint (required).
-//
-// @returns {number} The breakpoint value.
+//  _th-core-breakpoint-context()
+/// Return either contextual breakpoint if set or current breakpoint value.
+///
+/// @since 0.0.12
+/// @return {number} Current or contextual breakpoint.
+///
+/// @param {number} $breakpoint - A heading breakpoint.
 
 @function _th-core-breakpoint-context(
   $breakpoint
@@ -52,27 +49,25 @@ $_th-core-properties: (margin-top margin-bottom font-size line-height);
   }
 }
 
-// th-with-get
-// Return a property value within a th-with loop.
-//
-// @since 0.0.14
-// @type function
-//
-// @requires {variable} $_th-core-with
-//
-// @param {string} $property (font-size|line-height|margin-top|margin-bottom) The property value to return.
-//
-// @returns {number} The property value.
-//
-// @example scss Return font size from within a th-with loop.
-// // @include th-with(h1) {
-// //   font-size: th-with-get(font-size);
-// // }
+//  th-with-get()
+/// Return a heading property value within a th-with loop.
+///
+/// @since 0.0.14
+/// @see {mixin} th-with
+/// @return {number} Heading property value.
+///
+/// @param {string} $property-name - Name of the heading property to return.
+///
+/// @example scss - Return font size from within a th-with loop.
+///  @include th-with(h1) {
+///    font-size: th-with-get(font-size);
+///  }
+///  // font-size: 18px;
 
 @function th-with-get(
-  $property
+  $property-name
 ){
   @if $_th-core-with {
-    @return map-get($_th-core-with, $property);
+    @return map-get($_th-core-with, $property-name);
   }
 }

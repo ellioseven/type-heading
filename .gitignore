@@ -2,3 +2,5 @@
 .sass-cache/
 type-heading-*.gem
 _site
+node_modules
+.idea/

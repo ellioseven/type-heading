@@ -1,40 +1,39 @@
-// Core
-//
-// @group Mixins / Core
-// @author Elliot Mitchum
+////
+/// Core
+/// @group Core
+////
 
 // _th-core-breakpoint-context
-// Allows breakpoint override for sections of code.
-//
-// @since 0.0.12
-// @type Number
-// @access private
+/// Global breakpoint variable for various mixins and functions.
+///
+/// @since 0.0.12
+/// @type Bool | Number
+/// @access private
 
 $_th-core-breakpoint-context: false !default;
 
 // _th-core-with
-// Map of available properties with a th-with loop.
-//
-// @since 0.0.14
-// @type Map
-// @access private
+/// Map of heading property values within a th-with loop.
+///
+/// @since 0.0.14
+/// @see {function} th-with
+/// @type Map
+/// @access private
 
 $_th-core-with: () !default;
 
-// th-with-breakpoint
-// Use a breakpoint for a section of code.
-//
-// @since 0.0.12
-// @type mixin
-//
-// @requires {variable} $_th-core-breakpoint-context
-//
-// @param {number} $breakpoint (false) A heading list breakpoint (required).
-//
-// @example scss Output a heading with a 768px breakpoint.
-// // @include th-with-breakpoint(768px) {
-// //   @include th-heading(h1);
-// // }
+// th-with-breakpoint()
+/// Use a breakpoint for a section of code.
+///
+/// @since 0.0.12
+/// @content
+///
+/// @param {number} $breakpoint - A heading list breakpoint.
+///
+/// @example scss - Output a heading with a 768px breakpoint.
+///   @include th-with-breakpoint(768px) {
+///     @include th-heading(h1);
+///   }
 
 @mixin th-with-breakpoint(
   $breakpoint
@@ -45,19 +44,15 @@ $_th-core-with: () !default;
   $_th-core-breakpoint-context: $cache !global;
 }
 
-// th-heading-loop
-// Loops through a heading map and outputs @content with breakpoint context.
-//
-// @since 0.0.14
-// @type mixin
-// @access private
-//
-// @requires {function} th-heading-get-map
-// @requires {function} _th-heading-has-next
-// @requires {function} _th-property-get
-// @requires {mixin} th-breakpoint
-//
-// @param {list | string} $heading A heading map key or list (required).
+// _th-heading-loop
+/// Loops through a heading map and outputs @content with breakpoint context.
+///
+/// @since 0.0.14
+/// @access private
+/// @content
+///
+/// @param {type} $name
+/// @param {list | string} $heading - A heading map key or list.
 
 @mixin _th-heading-loop(
   $heading
@@ -79,19 +74,16 @@ $_th-core-with: () !default;
   }
 }
 
-// th-with-var-set
-// Sets $_th-core-with global variable with heading properties.
-//
-// @since 0.0.14
-// @type mixin
-// @access private
-//
-// @requires {variable} $_th-core-properties
-// @requires {function} _th-core-get-base
-//
-// @param {list} $heading-list A list of heading property values.
-// @param {boolean} $convert (false) If returned value should be unit converted.
-// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+// _th-with-var-set()
+/// Sets $_th-core-with global variable with contextual heading property values.
+///
+/// @since 0.0.14
+/// @see th-with
+/// @access private
+///
+/// @param {list} $heading-list - A list of heading property values.
+/// @param {boolean} $convert [false] - If returned value should be unit converted.
+/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
 
 @mixin _th-with-var-set(
   $heading-list,
@@ -117,40 +109,37 @@ $_th-core-with: () !default;
   $_th-core-with: $th-with-vars !global;
 }
 
-// th-with-var-reset
-// Resets $th-with-vars global variable.
-//
-// @since 0.0.14
-// @type mixin
-// @access private
+// _th-with-var-reset()
+/// Resets $th-with-vars global variable.
+///
+/// @since 0.0.14
+/// @access private
 
 @mixin _th-with-var-reset {
   $_th-core-with: false !global;
 }
 
-// th-with
-// Loop through a headings breakpoints with access to it's property values as a global variable.
-// $th-font-size, $th-line-height, $th-margin-top, $th-margin-bottom will become available to you
-// within the mixin.
-//
-// @since 0.0.14
-// @type mixin
-//
-// @requires {mixin} _th-heading-loop
-// @requires {mixin} _th-with-var-set
-// @requires {mixin} _th-with-var-reset
-//
-// @param {list | string} $heading A heading map key or list (required).
-// @param {boolean} $convert (false) - If returned value should be unit converted.
-// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
-//
-// @example scss Output font-size, line-height, margin-top and margin-bottom properties individually for a heading.
-// // @include th-with(h1) {
-// //   margin-top: th-with-get(margin-top);
-// //   margin-bottom: th-with-get(margin-bottom);
-// //   font-size: th-with-get(font-size);;
-// //   line-height: th-with-get(line-height);
-// // }
+// th-with()
+/// Loop through a headings breakpoints with access to it's
+/// property values as a global variable. $th-font-size, $th-line-height,
+/// $th-margin-top, $th-margin-bottom will become available to you within the
+/// mixin.
+///
+/// @since 0.0.14
+/// @see {function} th-with-get
+/// @content [Styles for the contextual heading list]
+///
+/// @param {list | string} $heading - A heading map key or list.
+/// @param {boolean} $convert [false] - If returned value should be unit converted.
+/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
+///
+/// @example scss - Output font-size, line-height, margin-top and margin-bottom properties individually for a heading.
+///   @include th-with(h1) {
+///     margin-top: th-with-get(margin-top);
+///     margin-bottom: th-with-get(margin-bottom);
+///     font-size: th-with-get(font-size);;
+///     line-height: th-with-get(line-height);
+///   }
 
 @mixin th-with(
   $heading,

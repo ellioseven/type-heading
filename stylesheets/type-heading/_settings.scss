@@ -1,37 +1,49 @@
-// Settings
-// 
-// @group Settings
-// @author Elliot Mitchum
+////
+/// Settings
+/// @group Config
+////
 
-// th-base-font-size
-// Font size used for relative calculations.
-//
-// @since 0.0.10
-// @type number
+//  $th-base-font-size
+/// Font size used for relative calculations.
+///
+/// @since 0.0.10
+/// @type Number
 
 $th-base-font-size: 16px !default;
 
-// th-rem-base
-// Font size base for calculating rem units.
-//
-// @since 0.0.14
-// @type number
+// $th-rem-base
+/// Font size base for calculating rem units.
+///
+/// @since 0.0.14
+/// @type Number
 
 $th-rem-base: $th-base-font-size !default;
 
-// th-headings
-// Define headings and their values.
-//
-// @since 0.0.10
-// @type map
+//  $th-headings
+/// Sets of headings.
+///
+/// @since 0.0.10
+/// @type Map
+///
+/// @example scss - Defining a few sets of headings.
+///   $th-headings: (
+///     h1: (32px 38px 20px, 38px 42px 30px 768px),
+///     h2: (24px 30px, 32px 36px default 768px),
+///     h3: (18px 24px (10px 20px), 21px 26px 30px 768px)
+///   );
 
 $th-headings: () !default;
 
-// th-property-defaults
-// Define default property values.
-//
-// @since 0.0.10
-// @type map
+//  $th-property-defaults
+/// Default property values for headings.
+///
+/// @since 0.0.10
+/// @type Map
+///
+/// @prop {number} font-size [16px] - Default font size for headings
+/// @prop {number} line-height [24px] - Default line height for headings
+/// @prop {number} margin-top [20px] - Default margin top for headings
+/// @prop {number} margin-bottom [20px] - Default margin bottom for headings
 
 $th-property-defaults: (
   font-size: 16px,
@@ -40,11 +52,24 @@ $th-property-defaults: (
   margin-bottom: 20px
 ) !default;
 
-// th-property-defaults
-// Define units for heading properties.
-//
-// @since 0.0.11
-// @type map
+//  $th-property-defaults
+/// Units for heading properties.
+///
+/// @since 0.0.11
+/// @type Map
+///
+/// @prop {boolean | string} font-size [false] - (px | em | rem | rel | percent) - Unit conversion for font sizes.
+/// @prop {boolean | string} line-height [false] - (px | em | rem | rel | percent) - Unit conversion for line heights.
+/// @prop {boolean | string} margin-top [false] - (px | em | rem | rel | percent) - Unit conversion for top margins.
+/// @prop {boolean | string} margin-bottom [false] - (px | em | rem | rel | percent) - Unit conversion for bottom margins.
+///
+/// @example scss - Defining units for heading properties.
+///   $th-property-units: (
+///     font-size: percent,
+///     line-height: rel,
+///     margin-top: em,
+///     margin-bottom: em
+///   )
 
 $th-property-units: (
   font-size: false,

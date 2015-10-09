@@ -1,27 +1,25 @@
-// Helpers
-// 
-// @group Functions / Helpers
-// @author Elliot Mitchum
+////
+/// Helpers
+/// @group Helpers
+/// @access private
+////
 
 // Logic
 // ------------------------------
 
-// th-if
-// Shorthand if else statement.
-//
-// @since 0.0.14
-// @type function
-//
-// @param {boolean} $condition The condition to pass.
-// @param {mixed} $if-value The return value if condition is true.
-// @param {mixed} $else-value The return value if condition is false.
-//
-// @returns {mixed} The return value of the condition.
-//
-// @example scss Description.
-// // h1 {
-// //  font-size: th-if($foo == $bar, 10px, 20px);
-// // }
+//  th-if()
+/// Shorthand if else statement.
+///
+/// @since 0.0.14
+/// @return {mixed} The return value of the condition.
+///
+/// @param {boolean} $condition - The condition to pass.
+/// @param {mixed} $if-value - The return value if condition is true.
+/// @param {mixed} $else-value - The return value if condition is false.
+///
+/// @example scss - If 2 plus 2 equals 8, return 10px, else return 20px.
+///   th-if(2 + 2, 10px, 20px);
+///   // 20px
 
 @function th-if(
   $condition,
@@ -38,20 +36,18 @@
 // Math
 // ------------------------------
 
-// th-math-power
-// Returns a powered number by exponent.
-//
-// @since 0.0.11
-// @type function
-//
-// @param {number} $number The base number (required). 
-// @param {number} $exponent The base number's exponent (required). 
-//
-// @returns {number} The powered number.
-//
-// @example scss Calculate 10 to the power of 3.
-// // th-math-power(10, 3)
-// // // 1000
+//  th-math-power()
+/// Returns a powered number by exponent.
+///
+/// @since 0.0.11
+/// @return {number} The powered number.
+///
+/// @param {number} $number - The base number.
+/// @param {number} $exponent - The base number's exponent.
+///
+/// @example scss - Calculate 10 to the power of 3.
+///   th-math-power(10, 3)
+///   // 1000
 
 @function th-math-power(
   $number,
@@ -71,22 +67,18 @@
   @return $_return; 
 }
 
-// th-math-round-to
-// Returns a floated number rounded to a decimal point.
-//
-// @since 0.0.11
-// @type function
-//
-// @requires {function} th-math-power
-//
-// @param {number} $number The number to round from (required).
-// @param {number} $decimal The decimal place to round to (required).
-//
-// @returns {number} The rounded number.
-//
-// @example scss Round 1.234 to 2 decimal places.
-// // th-math-round-to(1.234, 2)
-// // // 1.23
+//  th-math-round-to()
+/// Returns a floated number rounded to a decimal point.
+///
+/// @since 0.0.11
+/// @return {number} The rounded number.
+///
+/// @param {number} $number - The number to round from.
+/// @param {number} $decimal - The decimal place to round to.
+///
+/// @example scss - Round 1.234 to 2 decimal places.
+///   th-math-round-to(1.234, 2)
+///   // 1.23
 
 @function th-math-round-to(
   $number,
@@ -101,22 +93,18 @@
 // Lists
 // ------------------------------
 
-
-
-// th-list-has-index
-// Check list for a index.
-//
-// @since 0.0.1
-// @type function
-//
-// @param {list} $list List to search (required).
-// @param {number} $index The list index to retrieve (required). 
-//
-// @returns {boolean} If list contains index.
-//
-// @example scss Check list for 2nd index.
-// // @debug th-list-has-index((a, b, c), 2);
-// // // true
+//  th-list-has-index()
+/// Check list for a index.
+///
+/// @since 0.0.11
+/// @return {boolean} If list contains index.
+///
+/// @param {list} $list - List to search.
+/// @param {number} $index - The list index to retrieve.
+///
+/// @example scss - Check list for 2n index.
+///   th-list-has-index((a, b, c), 2);
+///   // true
 
 @function th-list-has-index(
   $list,
@@ -129,23 +117,18 @@
   @return $_return;
 }
 
-// th-list-get-index-deep
-// Return the index of a value within multiple lists.
-//
-// @since 0.0.11
-// @type function
-//
-// @requires {function} th-list-has
-//
-// @param {list} $list The list to search through (required).
-// @param {number | string} $find The value to find (required).
-// @param {list} $indexes List of previous indexes.
-//
-// @returns {list} The index of the found value.
-//
-// @example scss Get the index of 'f' in (a, b, (c, d, (e, f))).
-// // th-list-get-index-deep( (a, b, (c, d, (e, f))), f )
-// // // 3 3 2
+//  th-list-get-index-deep()
+/// Return the index of a value within multiple lists.
+///
+/// @since 0.0.11
+/// @return {list} The index of the found value.
+///
+/// @param {list} $list - The list to search through.
+/// @param {number | string} $find - The value to find.
+///
+/// @example scss - Get the index of 'f' in (a, b, (c, d, (e, f))).
+///   th-list-get-index-deep( (a, b, (c, d, (e, f))), f )
+///   // 3 3 2
 
 @function th-list-get-index-deep(
   $list,
@@ -171,20 +154,18 @@
   @return $_return;
 }
 
-// th-list-has
-// Check list for a value.
-//
-// @since 0.0.1
-// @type function
-//
-// @param {list} $list List to search (required).
-// @param {number | string} $find Value to find (required). 
-//
-// @returns {boolean} If list contains value.
-//
-// @example scss Check list for 'b'.
-// // th-list-has((a b c), b);
-// // // true
+//  th-list-has()
+/// Check list for a value.
+///
+/// @since 0.0.11
+/// @return {boolean} If list contains value.
+///
+/// @param {list} $list - List to search.
+/// @param {number | string} $find - Value to find.
+///
+/// @example scss - Check list for 'b'.
+///   th-list-has((a b c), b);
+///   // true
 
 @function th-list-has(
   $list,
@@ -199,21 +180,18 @@
   @return $_return;
 }
 
-// th-list-get-nth-deep
-// Return the value by index within multiple lists.
-//
-// @since 0.0.14
-// @type function
-//
-// @requires {function} th-list-has-index
-//
-// @param {list} $list The list to search through (required).
-// @param {list} $indexes List of indexes to search through.
-//
-// @returns {mixed} The value of the used indexes.
-//
-// @example scss Get the value 'f' in (a, b, (c, d, (e, f))).
-// // th-list-get-nth-deep(3 3 2)
+//  th-list-get-nth-deep()
+/// Return a nested value by index (recursive).
+///
+/// @since 0.0.14
+/// @return {mixed} The nested list value.
+///
+/// @param {list} $list - List to search through.
+/// @param {list} $indexes - List of indexes to recurse.
+///
+/// @example scss - Get (3 3 2)n in (a, b, (c, d, (e, f))).
+///   th-list-get-nth-deep(3 3 2)
+///   // f
 
 @function th-list-get-nth-deep(
   $list,
@@ -235,20 +213,18 @@
   @return $_return;
 }
 
-// th-list-has-deep
-// Check list for a value (recurring).
-//
-// @since 0.0.10
-// @type function
-//
-// @param {list} $list List to search (required). 
-// @param {number | string} $find Value to find (required). 
-//
-// @returns {boolean} If list contains value.
-//
-// @example scss Check for 'f' in (a b (c d (e f))).
-// // th-list-has-deep((a b (c d (e f))), f)
-// // // true
+//  th-list-has-deep()
+/// Check list for a value (recursive).
+///
+/// @since 0.0.10
+/// @return {boolean} If list contains value.
+///
+/// @param {list} $list - List to search.
+/// @param {number | string} $find - Value to find.
+///
+/// @example scss - Check for 'f' in (a b (c d (e f))).
+///   th-list-has-deep((a b (c d (e f))), f)
+///   // true
 
 @function th-list-has-deep(
   $list,
@@ -270,30 +246,22 @@
 // Units
 // ------------------------------
 
-// _th-unit-convert
-// Coverts a number into another unit.
-//
-// @since 0.0.14
-// @type function
-// @access private
-//
-// @param {string} $unit (px|em|rem|rel|percent) - A unit to convert the number to.
-// @param {number} $number - The number to convert.
-// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
-//
-// @returns {number} The converted number.
-//
-// @example scss Convert 14px to em.
-// // _th-unit-convert(
-// //   $unit: em,
-// //   $number: 14px
-// // )
-// @example scss Convert 14px with base font size of 20px to em.
-// // _th-property-unit-convert(
-// //   $unit: em,
-// //   $number: 14px
-// //   $base-font-size: 20px
-// // )
+//  _th-unit-convert()
+/// Coverts a number into another unit.
+///
+/// @since 0.0.14
+/// @return {number} The converted number.
+///
+/// @param {string} $unit - (px|em|rem|rel|percent) A unit to convert the number to.
+/// @param {number} $number - The number to convert.
+/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
+///
+/// @example scss - Convert 14px to em.
+///   _th-unit-convert($unit: em, $number: 14px)
+///   // 0.875em
+/// @example scss - Convert 14px with base font size of 20px to em.
+///   _th-unit-convert($unit: em, $number: 14px, $base-font-size: 20px)
+///   // 0.700em
 
 @function th-unit-convert(
   $unit,
@@ -308,19 +276,17 @@
   }
 }
 
-// th-unit-strip
-// Strips the unit from a number.
-//
-// @since 0.0.11
-// @type function
-//
-// @param {number} $number Number to strip unit from (required).
-//
-// @returns {number} The stripped number.
-//
-// @example scss Strip px from 24px.
-// // th-unit-strip(24px)
-// // // 24
+//  th-unit-strip()
+/// Strips the unit from a number.
+///
+/// @since 0.0.11
+/// @return {number} The stripped number.
+///
+/// @param {number} $number - Number to strip unit from.
+///
+/// @example scss - Strip px from 24px.
+///   th-unit-strip(24px)
+///   // 24
 
 @function th-unit-strip(
   $number
@@ -329,20 +295,18 @@
   @return $_return;
 }
 
-// th-unit-cast
-// Creates a number with a unit.
-//
-// @since 0.0.11
-// @type function
-//
-// @param {number} $number The unitless number to create (required).
-// @param {string} $unit The type of unit to create (required). 
-//
-// @returns {number} The created number with new unit.
-//
-// @example scss Create 24px.
-// // th-unit-cast(24, px);
-// // // 24px
+//  th-unit-cast()
+/// Creates a number with a unit.
+///
+/// @since 0.0.11
+/// @return {number} The number with new unit.
+///
+/// @param {number} $number - The unitless number to create.
+/// @param {string} $unit - The type of unit to create.
+///
+/// @example scss - Change 24 to 24px.
+///   th-unit-cast(24, px);
+///   // 24px
 
 @function th-unit-cast(
   $number,
@@ -358,23 +322,18 @@
   @return $_return;
 }
 
-// th-unit-convert-number
-// Converts the unit of a number.
-//
-// @since 0.0.11
-// @type function
-//
-// @requires {function} th-unit-strip 
-// @requires {function} th-unit-cast 
-//
-// @param {number} $number The numbered unit to convert (required).
-// @param {string} $unit The unit to convert to (required). 
-//
-// @returns {number} The converted number.
-//
-// @example scss Convert 24px to 24em.
-// // th-unit-convert-number(24px, em)
-// // // 24em
+//  th-unit-convert-number()
+/// Converts the unit of a number.
+///
+/// @since 0.0.11
+/// @return {number} The converted number.
+///
+/// @param {number} $number - The numbered unit to convert.
+/// @param {string} $unit - The unit to convert to.
+///
+/// @example scss - Convert unit of 24px to em.
+///   th-unit-convert-number(24px, em)
+///   // 24em
 
 @function th-unit-convert-number(
   $number,
@@ -388,28 +347,22 @@
   @return $_return;
 }
 
-// th-unit-convert-absolute
-// Converts a relative number to an absolute number.
-//
-// @since 0.0.11
-// @type function
-//
-// @requires {function} th-unit-strip
-// @requires {function} th-math-round-to
-// @requires {function} th-unit-convert
-//
-// @param {number} $number The number to convert (required).
-// @param {string} $unit The type of absolute unit (required).
-// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
-//
-// @returns {number} The converted absolute number.
-//
-// @example scss Convert 2em to px.
-// // th-unit-convert-absolute(2em, px)
-// // // 32px
-// @example scss Convert 2em to px with base font size of 10px.
-// // th-unit-convert-absolute(2em, px, 10px);
-// // // 20px
+//  th-unit-convert-absolute()
+/// Converts a relative number to an absolute number.
+///
+/// @since 0.0.11
+/// @return {number} The converted absolute number.
+///
+// @param {number} $number - The number to convert.
+// @param {string} $unit - The type of absolute unit.
+// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
+///
+/// @example scss - Convert 2em to px.
+///   th-unit-convert-absolute(2em, px)
+///   // 32px
+/// @example scss - Convert 2em to px with base font size of 10px.
+///   th-unit-convert-absolute(2em, px, 10px);
+///   // 20px
 
 @function th-unit-convert-absolute(
   $number,
@@ -425,28 +378,22 @@
   @return $_return;
 }
 
-// th-unit-convert-relative
-// Converts an absolute number to a relative number.
-//
-// @since 0.0.11
-// @type function
-//
-// @requires {function} th-unit-strip
-// @requires {function} th-math-round-to
-// @requires {function} th-unit-convert
-//
-// @param {number} $number The number to convert (required).
-// @param {string} $unit The type of relative unit (required).
-// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
-//
-// @returns {number} The converted number.
-//
-// @example scss Convert 24px to em.
-// // th-unit-convert-relative(24px, em)
-// // // 1.5
-// @example scss Convert 24px to em with a base font size of 32px.
-// // th-unit-convert-relative(24px, em, 32px)
-// // // 0.75em
+//  th-unit-convert-relative()
+/// Converts an absolute number to a relative number.
+///
+/// @since 0.0.11
+/// @return {number} The converted relative number.
+///
+/// @param {number} $number - The number to convert.
+/// @param {string} $unit - The type of relative unit.
+/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
+///
+/// @example scss - Convert 24px to em.
+///   th-unit-convert-relative(24px, em)
+///   // 1.5
+/// @example scss - Convert 24px to em with a base font size of 32px.
+///   th-unit-convert-relative(24px, em, 32px)
+///   // 0.75em
 
 @function th-unit-convert-relative(
   $number,
@@ -461,25 +408,21 @@
   @return $_return;
 }
 
-// th-unit-convert-em
-// Converts an absolute number to an em number.
-//
-// @since 0.0.11
-// @type function
-//
-// @requires th-unit-convert-relative
-//
-// @param {number} $number The number to convert (required).
-// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
-//
-// @returns {number} The converted number.
-//
-// @example scss Convert 24px to em.
-// // th-unit-convert-em(24px)
-// // // 1.5
-// @example scss Convert 24px to em with a base font size of 32px.
-// // th-unit-convert-em(24px, 32px)
-// // // 0.75em
+//  th-unit-convert-em()
+/// Converts an absolute number to an em number.
+///
+/// @since 0.0.11
+/// @return {number} The converted number with em unit.
+///
+/// @param {number} $number - The number to convert.
+/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
+///
+/// @example scss - Convert 24px to em.
+///   th-unit-convert-em(24px)
+///   // 1.5em
+/// @example scss - Convert 24px to em with a base font size of 32px.
+///   th-unit-convert-em(24px, 32px)
+///   // 0.75em
 
 @function th-unit-convert-em(
   $number,
@@ -491,25 +434,21 @@
   @return $_return;
 }
 
-// th-unit-convert-rem
-// Converts an absolute number to an rem number.
-//
-// @since 0.0.11
-// @type function
-//
-// @requires th-unit-convert-relative
-//
-// @param {number} $number The number to convert (required).
-// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
-//
-// @returns {number} The converted number.
-//
-// @example scss Convert 24px to rem.
-// // th-unit-convert-rem(24px)
-// // // 1.5
-// @example scss Convert 24px to rem with a base font size of 32px.
-// // th-unit-convert-rem(24px, 32px)
-// // // 0.75rem
+//  th-unit-convert-rem()
+/// Converts an absolute number to an rem number.
+///
+/// @since 0.0.11
+/// @return {number} The converted number with rem unit.
+///
+/// @param {number} $number - The number to convert.
+/// @param {number} $base-font-size [$th-rem-base] - Font size used for rem calculations.
+///
+/// @example scss - Convert 24px to rem.
+///   th-unit-convert-rem(24px)
+///   // 1.5rem
+/// @example scss - Convert 24px to rem with a rem base of 32px.
+///   th-unit-convert-rem(24px, 32px)
+///   // 0.75rem
 
 @function th-unit-convert-rem(
   $number,
@@ -521,25 +460,21 @@
   @return $_return;
 }
 
-// th-unit-convert-rel
-// Converts an absolute number to a relative number.
-//
-// @since 0.0.11
-// @type function
-//
-// @requires th-unit-convert-relative
-//
-// @param {number} $number The number to convert (required).
-// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
-//
-// @returns {number} The converted number.
-//
-// @example scss Convert 24px to a relative number.
-// // th-unit-convert-rel(24px)
-// // // 1.5
-// @example scss Convert 24px to a relative number with a base font size of 32px.
-// // th-unit-convert-rel(24px, 32px)
-// // // 0.75
+//  th-unit-convert-rel
+/// Converts an absolute number to a relative number.
+///
+/// @since 0.0.11
+/// @return {number} The converted relative number.
+///
+/// @param {number} $number - The number to convert.
+/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
+///
+/// @example scss - Convert 24px to a relative number.
+///   th-unit-convert-rel(24px)
+///   // 1.5
+/// @example scss - 24px to a relative number with a base font size of 32px.
+///   th-unit-convert-rel(24px, 32px)
+///   // 0.75
 
 @function th-unit-convert-rel(
   $number,
@@ -551,25 +486,21 @@
   @return $_return;
 }
 
-// th-unit-convert-px
-// Converts a relative number to a px number.
-//
-// @since 0.0.11
-// @type function
-//
-// @requires th-unit-convert-absolute
-//
-// @param {number} $number The number to convert (required).
-// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
-//
-// @returns {number} The converted number.
-//
-// @example scss Convert 2em to a px number.
-// // th-unit-convert-absolute(2em)
-// // // 32px
-// @example scss Convert 2em to a px number with a base font size of 18px.
-// // th-unit-convert-px(2em, 18px)
-// // // 36px
+//  th-unit-convert-px()
+/// Converts a relative number to a px number.
+///
+/// @since 0.0.11
+/// @return {number} The converted absolute number.
+///
+/// @param {number} $number - The number to convert.
+/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
+///
+/// @example scss - Convert 2em to a px number.
+///   th-unit-convert-absolute(2em)
+///   // 32px
+/// @example scss - Convert 2em to a px number with a base font size of 18px.
+///   th-unit-convert-px(2em, 18px)
+///   // 36px
 
 @function th-unit-convert-px(
   $number,
@@ -581,25 +512,21 @@
   @return $_return;
 }
 
-// th-unit-convert-percent
-// Converts an absolute number to a percentage.
-//
-// @since 0.0.11
-// @type function
-//
-// @requires th-unit-convert-relative
-//
-// @param {number} $number The number to convert (required).
-// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
-//
-// @returns {number} The converted number.
-//
-// @example scss Convert 24px to a percentage.
-// // th-unit-convert-rel(24px)
-// // // 150%
-// @example scss Convert 24px to a percentage with a base font size of 32px.
-// // th-unit-convert-rel(24px, 32px)
-// // // 75%
+//  th-unit-convert-percent
+/// Converts an absolute number to a percentage.
+///
+/// @since 0.0.11
+/// @return {number} The converted percentage number.
+///
+/// @param {number} $number - The number to convert.
+/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
+///
+/// @example scss - Convert 24px to a percentage.
+///   th-unit-convert-rel(24px)
+///   // 150%
+// @example scss - Convert 24px to a percentage with a base font size of 32px.
+///   th-unit-convert-rel(24px, 32px)
+///   // 75%
 
 @function th-unit-convert-percent(
   $number,

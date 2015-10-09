@@ -1,0 +1,156 @@
+[4mRunning "sassdoc:default" (sassdoc) task[24m
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+[32m>> [39mSassDoc documentation successfully generated.
+
+[32mDone, without errors.[39m
+[4mRunning "sassdoc:default" (sassdoc) task[24m
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+one         two         
+First value Second value
+First value Second value
+[32m>> [39mSassDoc documentation successfully generated.
+
+[32mDone, without errors.[39m
+[4mRunning "sassdoc:default" (sassdoc) task[24m
+[32m>> [39mSassDoc documentation successfully generated.
+
+[32mDone, without errors.[39m

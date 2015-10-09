@@ -1,42 +1,35 @@
-// Heading
-// 
-// @group Mixins / Heading
-// @author Elliot Mitchum
+////
+/// Heading
+/// @group Heading
+////
 
-// th-heading
-// Output styles for a heading list.
-//
-// @since 0.0.10
-// @type mixin
-//
-// @requires {variable} $_th-core-properties
-// @requires {function} _th-core-breakpoint-context
-// @requires {function} _th-core-get-base
-// @requires {mixin} th-property
-// @requires {mixin} th-with-breakpoint
-//
-// @param {string} $heading A heading map key (required).
-// @param {number | boolean} $breakpoint (false) A heading list breakpoint.
-// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
-// @param {list | boolean} $include (false font-size line-height margin-top margin-bottom) Include only certain properties in the mixin output.
-//
-// @example scss Output h1 styles.
-// // th-heading(h1)
-// @example scss Output h1 styles with 768px breakpoint.
-// // th-heading(
-// //   $heading: h1,
-// //   $breakpoint: 768px
-// // )
-// @example scss Output h1 styles with a base font size of 48px.
-// // th-heading(
-// //   $heading: h1,
-// //   $base-font-size: 48px
-// // )
-// @example scss Output h1 styles but only include font-size and line-height
-// // th-heading(
-// //   $heading: h1,
-// //   $include: (font-size line-height)
-// // )
+//  th-heading()
+/// Output styles for a heading list.
+///
+/// @since 0.0.10
+///
+/// @param {string} $heading - A heading map key.
+/// @param {number | boolean} $breakpoint [false] - A heading list breakpoint.
+/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
+/// @param {list | boolean} $include [false] - (font-size | line-height | margin-top | margin-bottom) Restrict output properties.
+///
+/// @example scss Output h1 styles.
+///   th-heading(h1)
+/// @example scss - Output h1 styles with 768px breakpoint.
+///   th-heading(
+///     $heading: h1,
+///     $breakpoint: 768px
+///   )
+/// @example scss - Output h1 styles with a base font size of 48px.
+///   th-heading(
+///     $heading: h1,
+///     $base-font-size: 48px
+///   )
+/// @example scss - Output h1 styles but only include font-size and line-height.
+///   th-heading(
+///     $heading: h1,
+///     $include: (font-size line-height)
+///   )
 
 @mixin th-heading(
   $heading,
@@ -63,26 +56,22 @@
   }
 }
 
-// th-headings
-// Output styles for a heading accross all breakpoints.
-//
-// @since 0.0.10
-// @type mixin
-//
-// @requires {mixin} _th-heading-loop
-// @requires {mixin} th-heading
-//
-// @param {list | string} $heading A heading map key or list (required).
-// @param {string} $direction (min-width | max-width) Media query direction.
-// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
-//
-// @example scss Output all h1 styles across all breakpoints.
-// // @include th-headings(h1)
-// @example scss Output font-size and line-height h1 styles across all breakpoints.
-// // th-headings(
-// //   $heading: h1,
-// //   $include: (font-size line-height)
-// // )
+//  th-headings
+/// Output styles for a heading across all breakpoints.
+///
+/// @since 0.0.10
+///
+/// @param {list | string} $heading - A heading map key or list.
+/// @param {number} $base-font-size ($th-base-font-size) Font size used for relative calculations.
+/// @param {list | boolean} $include [false] - (font-size | line-height | margin-top | margin-bottom) Restrict output properties.
+///
+/// @example scss - Output all h1 styles across all breakpoints.
+///   @include th-headings(h1)
+/// @example scss - Output font-size and line-height h1 styles across all breakpoints.
+///   th-headings(
+///     $heading: h1,
+///     $include: (font-size line-height)
+///   )
 
 @mixin th-headings(
   $heading,

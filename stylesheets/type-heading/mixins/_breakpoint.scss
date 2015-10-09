@@ -1,24 +1,23 @@
-// Breakpoint
-// 
-// @group Mixins / Breakpoint
-// @author Elliot Mitchum
+////
+/// Breakpoint
+/// @group Breakpoint
+////
 
-// th-breakpoint
-// Output styles with a breakpoint within a media query.
-//
-// @since 0.0.10
-// @type mixin
-//
-// @requires {mixin} th-with-breakpoint
-// @requires {gem} breakpoint - https://github.com/at-import/breakpoint
-//
-// @param {List} $query The media query to parse (https://github.com/at-import/breakpoint/wiki/Basic-Media-Queries) (required).
-// @param {number | boolean} $breakpoint (false) A heading list breakpoint.
-//
-// @example scss Output a heading with a 768px within a 768px min-width media query.
-// // @include th-breakpoint(min-width 768px, 768px) {
-// //   @include th-heading(h1);
-// // }
+//  th-breakpoint()
+/// Output styles with a breakpoint within a media query. Requires the
+/// Breakpoint gem (https://github.com/at-import/breakpoint).
+///
+/// @since 0.0.10
+/// @output Styles to output within the breakpoint.
+/// @throw th-breakpoint() requires the Breakpoint gem - https://github.com/at-import/breakpoint
+///
+/// @param {list} $query - Media query to parse (https://github.com/at-import/breakpoint/wiki/Basic-Media-Queries).
+/// @param {number | boolean} $breakpoint [false] - A heading list breakpoint.
+///
+/// @example scss - Output a heading with a 768px within a 768px min-width media query.
+///   @include th-breakpoint(min-width 768px, 768px) {
+///     @include th-heading(h1);
+///   }
 
 @mixin th-breakpoint(
   $query,

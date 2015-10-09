@@ -1,32 +1,24 @@
-// Heading
-// 
-// @group Functions / Heading
-// @author Elliot Mitchum
+////
+/// Heading
+/// @group Heading
+////
 
-// th-heading
-// Return a heading list.
-//
-// @since 0.0.10
-// @type function
-//
-// @requires {function} th-heading-get-map
-// @requires {function} _th-heading-has-next
-// @requires {function} _th-heading-get-next
-// @requires {function} _th-core-breakpoint-context
-//
-// @param {list | string} $heading A heading map key or list (required).
-// @param {number} $breakpoint A heading list breakpoint.
-//
-// @returns {list} A heading list.
-//
-// @example scss Return a heading list.
-// // // h1: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px)
-// // th-heading(h1)
-// // // 10px 20px (30px 40px)
-// // @example scss Return a heading list with breakpoint.
-// // // h1: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px)
-// // th-heading(h1, 768px)
-// // // 50px 60px (70px 80px) 768px
+//  th-heading()
+/// Return a heading list. The first heading list will be returned
+/// if no breakpoint is specified.
+///
+/// @since 0.0.10
+/// @return {list} A heading list.
+///
+/// @param {list | string} $heading - A heading map key or list.
+/// @param {number} $breakpoint [false] - A heading list breakpoint.
+///
+/// @example scss Return a heading list.
+///   th-heading(h1)
+///   // (10px 20px (30px 40px)
+/// @example scss Return a heading list with breakpoint.
+///   th-heading(h1, 768px)
+///   // 50px 60px (70px 80px) 768px
 
 @function th-heading(
   $heading,
@@ -38,20 +30,17 @@
   @return $heading;
 }
 
-// th-heading-get-map
-// Return a heading map.
-//
-// @since 0.0.10
-// @type function
-//
-// @param {string} $heading A heading map key (required).
-//
-// @returns {list} A heading map.
-//
-// @example scss Return h1 heading map.
-// // // h1: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px)
-// // th-heading-get-map(h1)
-// // // 10px 20px (30px 40px), 50px 60px (70px 80px) 768px
+//  th-heading-get-map()
+/// Return a heading map.
+///
+/// @since 0.0.10
+/// @return {list} A heading map.
+///
+/// @param {string} $heading - A heading map key.
+///
+/// @example scss - Return h1 heading map.
+///   th-heading-get-map(h1)
+///   // 10px 20px (30px 40px), 50px 60px (70px 80px) 768px
 
 @function th-heading-get-map(
   $heading
@@ -62,27 +51,27 @@
   @return $heading;
 }
 
-// _th-heading-has-next
-// Check a for multiple heading lists.
-//
-// @since 0.0.10
-// @type function
-// @access private
-// 
-// @requires {function} th-heading-get-map
-//
-// @param {list | string} $heading A heading map key or list (required).
-//
-// @returns {boolean} If heading map contains multiple lists.
-//
-// @example scss Check heading with next.
-// // // h1: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px)
-// // _th-heading-has-next(h1)
-// // // true
-// @example scss Check heading without next.
-// // // h5: (10px 20px (30px 40px))
-// // _th-heading-has-next(h5)
-// // // false
+//  _th-heading-has-next()
+/// Check a for multiple heading lists.
+///
+/// @since 0.0.10
+/// @access private
+/// @return {boolean} If heading has next or not.
+///
+/// @param {list | string} $heading - A heading map key or list.
+///
+/// @example
+///   4 + 2 = 8
+///   4 / 2 = 2
+///
+/// @example scss - Check heading with next.
+///   // h1: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px)
+///   _th-heading-has-next(h1)
+///   // true
+/// @example scss - Check heading without next.
+///   // h2: (10px 20px (30px 40px))
+///   _th-heading-has-next(h2)
+///   // false
 
 @function _th-heading-has-next(
   $heading
@@ -95,25 +84,20 @@
   }
 }
 
-// _th-heading-get-next
-// Return a heading list by breakpoint.
-//
-// @since 0.0.10
-// @type function
-// @access private
-//
-// @requires {function} th-heading-get-map
-// @requires {function} th-property
-//
-// @param {list | string} $heading A heading map key or list (required).
-// @param {boolean | number} $breakpoint (false) A heading list breakpoint.
-//
-// @returns {list} Heading list.
-//
-// @example scss Return h1 heading map.
-// // // h1: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px)
-// // _th-heading-get-next(h1, 768px)
-// // // 50px 60px (70px 80px) 768px
+//  _th-heading-get-next()
+/// Return a heading list by breakpoint.
+///
+/// @since 0.0.10
+/// @access private
+/// @return {list} A heading list.
+///
+/// @param {list | string} $heading - A heading map key or list.
+/// @param {number} $breakpoint [false] - A heading list breakpoint.
+///
+/// @example scss - Return h1 heading map.
+///   // h1: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px)
+///   _th-heading-get-next(h1, 768px)
+///   // 50px 60px (70px 80px) 768px
 
 @function _th-heading-get-next(
   $heading,
@@ -135,20 +119,15 @@
   @return $heading;
 }
 
-// _th-heading-maybe-next
-// Check and get a heading list from a heading map key.
-//
-// @since 0.0.14
-// @type function
-// @access private
-//
-// @requires {function} _th-heading-has-next
-// @requires {function} _th-heading-get-next
-//
-// @param {list | string} $heading A heading map key or list (required).
-// @param {boolean | number} $breakpoint (false) A heading list breakpoint.
-//
-// @returns {list} Heading list.
+//  _th-heading-maybe-next()
+/// Check and get a heading list from a heading map key.
+///
+/// @since 0.0.14
+/// @access private
+/// @return {mixed} Returns heading list if available.
+///
+/// @param {list | string} $heading - A heading map key or list.
+/// @param {number} $breakpoint [false] - A heading list breakpoint.
 
 @function _th-heading-maybe-next(
   $heading,
