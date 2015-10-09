@@ -353,9 +353,9 @@
 /// @since 0.0.11
 /// @return {number} The converted absolute number.
 ///
-// @param {number} $number - The number to convert.
-// @param {string} $unit - The type of absolute unit.
-// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
+/// @param {number} $number - The number to convert.
+/// @param {string} $unit - The type of absolute unit.
+/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
 ///
 /// @example scss - Convert 2em to px.
 ///   th-unit-convert-absolute(2em, px)
@@ -524,7 +524,7 @@
 /// @example scss - Convert 24px to a percentage.
 ///   th-unit-convert-rel(24px)
 ///   // 150%
-// @example scss - Convert 24px to a percentage with a base font size of 32px.
+/// @example scss - Convert 24px to a percentage with a base font size of 32px.
 ///   th-unit-convert-rel(24px, 32px)
 ///   // 75%
 
