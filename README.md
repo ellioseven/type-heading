@@ -51,7 +51,6 @@ $th-property-units: (
   margin-bottom: em
 );
 
-// Output Headings
 h3 { @include th-headings(h3); }
 
 // h3 {
