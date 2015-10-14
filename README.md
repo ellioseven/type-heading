@@ -5,6 +5,63 @@
 Type Heading is a lightweight Compass Extension that lets you easily manage
 responsive typographic sizing.
 
+```sass
+// Define Headings
+$th-headings: (
+  h1: (32px 36px, 36px 42px default 768px),
+  h2: (28px 32px, 30px 34px default 768px),
+  h3: (24px 30px)
+);
+
+// Output Headings
+h1 { @include th-headings(h1); }
+
+// h1 {
+//   margin-top: 20px;
+//   margin-bottom: 20px;
+//   font-size: 32px;
+//   line-height: 36px;
+// }
+// 
+// @media (min-width: 768px) {
+//   h1 {
+//     margin-top: 20px;
+//     margin-bottom: 20px;
+//     font-size: 36px;
+//     line-height: 42px;
+//   }
+// }
+
+// Return properties
+$font-size-tablet: th-property-font-size(h1, 768px);
+// 36px
+
+// Output properties
+.my-component { @include th-property-font-size(h1); }
+
+// .my-component {
+//   font-size: 32px
+// }
+
+// Unit Conversion
+$th-property-units: (
+  font-size: percent,
+  line-height: rel,
+  margin-top: em,
+  margin-bottom: em
+);
+
+// Output Headings
+h3 { @include th-headings(h3); }
+
+// h3 {
+//   margin-top: 0.83333em;
+//   margin-bottom: 0.83333em;
+//   font-size: 150%;
+//   line-height: 1.25;
+// }
+```
+
 ## Libsass Compatible
 
 Ruby is fucking slow as fuck and I hate it. Type heading is 100% (or will try to
@@ -15,9 +72,9 @@ be) compatible with Libsass.
 Reference or change any heading size throughout your stylesheets from a single
 variable. Now you don't have to try and remember what the font size of your h3 is!
 
-## Reponsive Typography Made Easy
+## Responsive Typography Made Easy
 
-Headings are stuctured by breakpoint, giving you the power to quickly find the
+Headings are structured by breakpoint, giving you the power to quickly find the
 right heading size for the right media query.
 
 ## Simple Unit Conversion
