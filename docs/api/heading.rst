@@ -17,7 +17,9 @@ Source
 	@function th-heading($heading, $breakpoint: false) { 
 	  $breakpoint: _th-core-breakpoint-context($breakpoint);
 	  $heading: th-heading-get-map($heading);
-	  $heading: _th-heading-maybe-next($heading, $breakpoint);
+	  @if _th-heading-has-next($heading) {
+	    $heading: _th-heading-get-next($heading, $breakpoint);
+	  }
 	  @return $heading;
 	}
 
@@ -67,7 +69,17 @@ Requires
 Used By
 ~~~~~~~
 
+* [mixin] ``th-heading``
+
 * [function] ``th-property``
+
+* [mixin] ``th-property-font-size``
+
+* [mixin] ``th-property-line-height``
+
+* [mixin] ``th-property-margin-top``
+
+* [mixin] ``th-property-margin-bottom``
 
 Since
 ~~~~~
@@ -131,6 +143,8 @@ Requires
 Used By
 ~~~~~~~
 
+* [mixin] ``th-with``
+
 * [function] ``th-heading``
 
 Since
@@ -154,6 +168,7 @@ Source
 	@mixin th-heading($heading, $breakpoint: false, $base-font-size: $th-base-font-size, $include: false) { 
 	  $breakpoint: _th-core-breakpoint-context($breakpoint);
 	  @include th-with-breakpoint($breakpoint) {
+	    $heading: th-heading($heading, $breakpoint);
 	    $font-size: th-property-font-size(
 	      $heading: $heading,
 	      $base-font-size: $base-font-size,
@@ -231,6 +246,8 @@ Requires
 
 * ``th-property``
 
+* ``th-heading``
+
 * ``th-property-font-size``
 
 Used By
@@ -257,12 +274,14 @@ Source
 .. code-block:: scss
 
 	@mixin th-headings($heading, $base-font-size, $include: false) { 
+	  $loop: 1;
 	  @include _th-heading-loop($heading) {
 	    @include th-heading(
 	      $heading: $heading,
 	      $base-font-size: $base-font-size,
 	      $include: $include
 	    );
+	    $loop: $loop + 1;
 	  }
 	}
 

@@ -16,7 +16,6 @@ Source
 
 	@function th-property($heading, $property-name, $breakpoint: false, $convert: true, $base-font-size: $th-base-font-size) { 
 	  $heading: th-heading($heading, $breakpoint);
-	  $breakpoint: _th-core-breakpoint-context($breakpoint);
 	  $property: _th-property-get($heading, $property-name);
 	  @if $property-name != font-size {
 	    $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
@@ -124,6 +123,8 @@ Used By
 * [function] ``th-property-margin-top``
 
 * [function] ``th-property-margin-bottom``
+
+* [mixin] ``th-property``
 
 Since
 ~~~~~
@@ -620,7 +621,8 @@ Source
 	  }
 	  @if th-list-has($_th-core-properties, $property-name) {
 	    $breakpoint: _th-core-breakpoint-context($breakpoint);
-	    #{$property-name}: call(th-property-#{$property-name},
+	    #{$property-name}: th-property(
+	      $property-name: $property-name,
 	      $heading: $heading,
 	      $breakpoint: $breakpoint,
 	      $convert: $convert,
@@ -698,6 +700,8 @@ Output h1 font size styles with a base font size of 24px.
 Requires
 ~~~~~~~~
 
+* ``th-property``
+
 Used By
 ~~~~~~~
 
@@ -730,6 +734,7 @@ Source
 .. code-block:: scss
 
 	@mixin th-property-font-size($heading, $breakpoint: false, $convert: true, $base-font-size: $th-base-font-size) { 
+	  $heading: th-heading($heading, $breakpoint);
 	  @include th-property(
 	    $property-name: font-size,
 	    $heading: $heading,
@@ -806,6 +811,8 @@ Requires
 
 * ``th-property``
 
+* ``th-heading``
+
 Since
 ~~~~~
 
@@ -825,6 +832,7 @@ Source
 .. code-block:: scss
 
 	@mixin th-property-line-height($heading, $breakpoint: false, $convert: true, $base-font-size: $th-base-font-size) { 
+	  $heading: th-heading($heading, $breakpoint);
 	  $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
 	  @include th-property(
 	    $property-name: line-height,
@@ -902,6 +910,8 @@ Requires
 
 * ``th-property``
 
+* ``th-heading``
+
 Since
 ~~~~~
 
@@ -921,6 +931,7 @@ Source
 .. code-block:: scss
 
 	@mixin th-property-margin-top($heading, $breakpoint: false, $convert: true, $base-font-size: $th-base-font-size) { 
+	  $heading: th-heading($heading, $breakpoint);
 	  $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
 	  @include th-property(
 	    $property-name: margin-top,
@@ -998,6 +1009,8 @@ Requires
 
 * ``th-property``
 
+* ``th-heading``
+
 Since
 ~~~~~
 
@@ -1017,6 +1030,7 @@ Source
 .. code-block:: scss
 
 	@mixin th-property-margin-bottom($heading, $breakpoint: false, $convert: true, $base-font-size: $th-base-font-size) { 
+	  $heading: th-heading($heading, $breakpoint);
 	  $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
 	  @include th-property(
 	    $property-name: margin-bottom,
@@ -1093,6 +1107,8 @@ Requires
 ~~~~~~~~
 
 * ``th-property``
+
+* ``th-heading``
 
 Since
 ~~~~~
