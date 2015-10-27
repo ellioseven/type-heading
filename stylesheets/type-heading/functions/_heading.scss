@@ -26,7 +26,9 @@
 ){
   $breakpoint: _th-core-breakpoint-context($breakpoint);
   $heading: th-heading-get-map($heading);
-  $heading: _th-heading-maybe-next($heading, $breakpoint);
+  @if _th-heading-has-next($heading) {
+    $heading: _th-heading-get-next($heading, $breakpoint);
+  }
   @return $heading;
 }
 
@@ -115,26 +117,6 @@
     }
   } @else {
     $heading: nth($heading, 1);
-  }
-  @return $heading;
-}
-
-//  _th-heading-maybe-next()
-/// Check and get a heading list from a heading map key.
-///
-/// @since 0.0.14
-/// @access private
-/// @return {mixed} Returns heading list if available.
-///
-/// @param {list | string} $heading - A heading map key or list.
-/// @param {number} $breakpoint [false] - A heading list breakpoint.
-
-@function _th-heading-maybe-next(
-  $heading,
-  $breakpoint: false
-){
-  @if _th-heading-has-next($heading) {
-    $heading: _th-heading-get-next($heading, $breakpoint);
   }
   @return $heading;
 }
