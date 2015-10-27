@@ -81,29 +81,42 @@ $_th-core-with: () !default;
 /// @see th-with
 /// @access private
 ///
-/// @param {list} $heading-list - A list of heading property values.
+/// @param {list | string} $heading - A heading map key or list.
 /// @param {boolean} $convert [false] - If returned value should be unit converted.
 /// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
 
 @mixin _th-with-var-set(
-  $heading-list,
+  $heading,
   $convert: false,
   $base-font-size: $th-base-font-size
 ){
   $th-with-vars: ();
+  $breakpoint: $_th-core-breakpoint-context;
+  $heading: th-heading(
+    $heading: $heading,
+    $breakpoint: $breakpoint
+  );
   $font-size: th-property-font-size(
-    $heading: $heading-list,
+    $heading: $heading,
     $base-font-size: $base-font-size,
     $convert: false
   );
+  $th-with-vars: map-merge(
+    $th-with-vars, (
+      breakpoint: $breakpoint
+    )
+  );
   @each $property in $_th-core-properties {
     $base: th-if(font-size == $property, $base-font-size, $font-size);
-    $th-with-vars: map-merge($th-with-vars, (
-      $property: call(th-property-#{$property},
-        $heading: $heading-list,
-        $convert: $convert,
-        $base-font-size: $base
-      ))
+    $th-with-vars: map-merge(
+      $th-with-vars, (
+        $property: th-property(
+          $property-name: $property,
+          $heading: $heading,
+          $convert: $convert,
+          $base-font-size: $base
+        )
+      )
     );
   }
   $_th-core-with: $th-with-vars !global;
@@ -146,9 +159,16 @@ $_th-core-with: () !default;
   $convert: false,
   $base-font-size: $th-base-font-size
 ){
+  $loop: 1;
+  $heading: th-heading-get-map($heading);
   @include _th-heading-loop($heading) {
-    @include _th-with-var-set($heading, $convert, $base-font-size);
+    @include _th-with-var-set(
+      $heading: nth($heading, $loop),
+      $convert: $convert,
+      $base-font-size: $base-font-size
+    );
     @content;
     @include _th-with-var-reset;
+    $loop: $loop + 1;
   }
 }
