@@ -39,6 +39,7 @@
 ){
   $breakpoint: _th-core-breakpoint-context($breakpoint);
   @include th-with-breakpoint($breakpoint) {
+    $heading: th-heading($heading, $breakpoint);
     $font-size: th-property-font-size(
       $heading: $heading,
       $base-font-size: $base-font-size,
@@ -78,11 +79,13 @@
   $base-font-size: $th-base-font-size,
   $include: false
 ){
+  $loop: 1;
   @include _th-heading-loop($heading) {
     @include th-heading(
       $heading: $heading,
       $base-font-size: $base-font-size,
       $include: $include
     );
+    $loop: $loop + 1;
   }
 }
