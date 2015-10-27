@@ -4,9 +4,9 @@ module.exports = function(grunt) {
 
     // Watch.
     watch: {
-      shell: {
+      default: {
         files: ['**/*.scss'],
-        tasks: ['compass:test', 'sassdoc']
+        tasks: ['compass:test', 'shell:diff', 'sassdoc']
       }
     },
 
