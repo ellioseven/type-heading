@@ -49,24 +49,27 @@ mixin th-with-breakpoint {
 mixin th-with {
 
   @include th-assert(
-    $describe: "Output font-size, line-height, margin-top and margin-bottom properties individually for a heading with breakpoints."
+    $describe: "Output font-size, line-height, margin-top, margin-bottom and breakpoint variables individually for a heading with breakpoints."
   ){
     @include th-assert-expect {
       margin-top: 30px;
       margin-bottom: 40px;
       font-size: 10px;
       line-height: 20px;
+      breakpoint: false;
       @media (min-width: 768px) {
         margin-top: 70px;
         margin-bottom: 80px;
         font-size: 50px;
         line-height: 60px;
+        breakpoint: 768px;
       }
       @media (min-width: 1024px) {
         margin-top: 110px;
         margin-bottom: 120px;
         font-size: 90px;
         line-height: 100px;
+        breakpoint: 1024px;
       }
     }
     @include th-assert-actual {
@@ -75,6 +78,7 @@ mixin th-with {
         margin-bottom: th-with-get(margin-bottom);
         font-size: th-with-get(font-size);
         line-height: th-with-get(line-height);
+        breakpoint: th-with-get(breakpoint);
       }
     }
   }

@@ -8,11 +8,12 @@ mixin th-with-breakpoint {
 }
 
 mixin th-with {
-  /* Describe: Output font-size, line-height, margin-top and margin-bottom properties individually for a heading with breakpoints. */
+  /* Describe: Output font-size, line-height, margin-top, margin-bottom and breakpoint variables individually for a heading with breakpoints. */
   margin-top: 30px;
   margin-bottom: 40px;
   font-size: 10px;
   line-height: 20px;
+  breakpoint: false;
   /* Describe: Output font-size, line-height, margin-top and margin-bottom properties individually for a heading with a single breakpoint. */
   margin-top: 3px;
   margin-bottom: 4px;
@@ -35,6 +36,7 @@ mixin th-with {
     margin-bottom: 80px;
     font-size: 50px;
     line-height: 60px;
+    breakpoint: 768px;
   }
 }
 @media (min-width: 1024px) {
@@ -43,6 +45,7 @@ mixin th-with {
     margin-bottom: 120px;
     font-size: 90px;
     line-height: 100px;
+    breakpoint: 1024px;
   }
 }
 @media (min-width: 768px) {
