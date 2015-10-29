@@ -392,7 +392,11 @@ $_th-core-properties: (margin-top margin-bottom font-size line-height);
 ) {
   $_return: $base-font-size;
   @if $base-font-size == $th-base-font-size {
-    $_return: th-property-font-size($heading, $breakpoint, false);
+    $_return: th-property-font-size(
+      $heading: $heading,
+      $breakpoint: $breakpoint,
+      $convert: false
+    );
   }
   @return $_return;
 }
