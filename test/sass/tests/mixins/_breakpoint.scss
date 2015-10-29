@@ -60,3 +60,27 @@ mixin th-breakpoint {
   }
 
 }
+
+// th-breakpoint-context()
+// ------------------------------
+
+mixin th-breakpoint-context {
+
+  @include th-assert(
+    $describe: "Output a heading with a 768px breakpoint context."
+  ){
+    @include th-assert-expect {
+      margin-top: 110px;
+      margin-bottom: 5rem;
+      font-size: 5em;
+      line-height: 1.11111;
+    }
+    @include th-assert-actual {
+      @include th-breakpoint-context(1024px) {
+        $breakpoint: th-core-context-get(breakpoint);
+        @include th-heading($heading: h1, $breakpoint: $breakpoint);
+      }
+    }
+  }
+
+}

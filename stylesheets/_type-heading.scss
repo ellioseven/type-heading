@@ -4,9 +4,8 @@
 // ------------------------------
 
 @import "type-heading/settings";
-@import "type-heading/functions/helpers";
-@import "type-heading/functions/core";
-@import "type-heading/mixins/core";
+@import "type-heading/api/helpers";
+@import "type-heading/api/core";
 @import "type-heading/functions/heading";
 @import "type-heading/functions/property";
 @import "type-heading/mixins/breakpoint";

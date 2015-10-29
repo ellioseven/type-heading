@@ -4,7 +4,7 @@
 ////
 
 //  th-breakpoint()
-/// Output styles with a breakpoint within a media query. Requires the
+/// Output styles with a breakpoint context and a media query. Requires the
 /// Breakpoint gem (https://github.com/at-import/breakpoint).
 ///
 /// @since 0.0.10
@@ -12,11 +12,12 @@
 /// @throw th-breakpoint() requires the Breakpoint gem - https://github.com/at-import/breakpoint
 ///
 /// @param {list} $query - Media query to parse (https://github.com/at-import/breakpoint/wiki/Basic-Media-Queries).
-/// @param {number | boolean} $breakpoint [false] - A heading list breakpoint.
+/// @param {number} $breakpoint - A heading list breakpoint.
 ///
-/// @example scss - Output a heading with a 768px within a 768px min-width media query.
+/// @example scss - Output a heading with a 768px breakpoint within a 768px min-width media query.
 ///   @include th-breakpoint(min-width 768px, 768px) {
-///     @include th-heading(h1);
+///     $heading: th-core-context-get(heading);
+///     @include th-heading($heading);
 ///   }
 
 @mixin th-breakpoint(
@@ -25,11 +26,33 @@
 ){
   @if variable-exists('breakpoint') and mixin-exists('breakpoint') {
     @include breakpoint($query) {
-      @include th-with-breakpoint($breakpoint) {
+      @include th-breakpoint-context($breakpoint) {
         @content;
       }
     }
   } @else {
     @warn 'th-breakpoint requires the Breakpoint gem - https://github.com/at-import/breakpoint';
+  }
+}
+
+//  th-breakpoint-context
+/// Output content with breakpoint context.
+///
+/// @since 0.0.15
+/// @content [Output with breakpoint context]
+///
+/// @param {number} $breakpoint - A heading list breakpoint.
+///
+/// @example scss - Output a heading with a 768px breakpoint context.
+///   @include th-breakpoint(768px) {
+///     $heading: th-core-context-get(heading);
+///     @include th-heading($heading);
+///   }
+
+@mixin th-breakpoint-context(
+  $breakpoint
+){
+  @include th-core-context-set(breakpoint, $breakpoint) {
+    @content;
   }
 }

@@ -17,6 +17,15 @@ $th-properties: (
   breakpoint
 );
 
+//  $_th-core-properties
+/// List of available heading property names.
+///
+/// @since 0.0.14
+/// @type List
+/// @access private
+
+$_th-core-properties: (margin-top margin-bottom font-size line-height);
+
 //  th-property()
 /// Return heading list property value.
 ///

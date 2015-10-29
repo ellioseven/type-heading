@@ -15,7 +15,7 @@ Source
 .. code-block:: scss
 
 	@function th-heading($heading, $breakpoint: false) { 
-	  $breakpoint: _th-core-breakpoint-context($breakpoint);
+	  $breakpoint: th-core-context-get(breakpoint, $breakpoint);
 	  $heading: th-heading-get-map($heading);
 	  @if _th-heading-has-next($heading) {
 	    $heading: _th-heading-get-next($heading, $breakpoint);
@@ -63,6 +63,8 @@ Return a heading list with breakpoint.
 
 Requires
 ~~~~~~~~
+
+* ``th-core-context-get``
 
 * ``th-heading-get-map``
 
@@ -143,9 +145,9 @@ Requires
 Used By
 ~~~~~~~
 
-* [mixin] ``th-with``
-
 * [function] ``th-heading``
+
+* [mixin] ``th-heading-context``
 
 Since
 ~~~~~
@@ -166,8 +168,8 @@ Source
 .. code-block:: scss
 
 	@mixin th-heading($heading, $breakpoint: false, $base-font-size: $th-base-font-size, $include: false) { 
-	  $breakpoint: _th-core-breakpoint-context($breakpoint);
-	  @include th-with-breakpoint($breakpoint) {
+	  $breakpoint: th-core-context-get(breakpoint, $breakpoint);
+	  @include th-breakpoint-context($breakpoint) {
 	    $heading: th-heading($heading, $breakpoint);
 	    $font-size: th-property-font-size(
 	      $heading: $heading,
@@ -242,9 +244,11 @@ Output h1 styles but only include font-size and line-height.
 Requires
 ~~~~~~~~
 
-* ``th-with-breakpoint``
+* ``th-breakpoint-context``
 
 * ``th-property``
+
+* ``th-core-context-get``
 
 * ``th-heading``
 
@@ -260,6 +264,80 @@ Since
 
 0.0.10
 
+th-heading-context
+------------------
+
+Since
+~~~~~
+
+0.0.15
+
+Source
+~~~~~~
+
+.. code-block:: scss
+
+	@mixin th-heading-context($heading) { 
+	  $loop: 1;
+	  $heading: th-heading-get-map($heading);
+	  @include _th-heading-loop($heading, $breakpoint-output) {
+	    @include th-core-context-set(heading, nth($heading, $loop)) {
+	      @content;
+	    }
+	    $loop: $loop + 1;
+	  }
+	}
+
+Description
+~~~~~~~~~~~
+
+Output content with heading context.
+
+Parameters
+~~~~~~~~~~
+
+========================== ========================== ========================== ==========================
+Name                       Description                Type                       Default Value             
+========================== ========================== ========================== ==========================
+heading                    A heading map key or list. list | string                                        
+========================== ========================== ========================== ==========================
+
+Content
+~~~~~~~
+
+This mixin allows extra content to be passed (through the ``@content`` directive).
+
+Role: [Output with heading context]
+
+Example
+~~~~~~~
+
+Output a heading with a 768px breakpoint.
+
+.. code-block:: scss
+
+	@include th-heading-context(h1) {
+	  $heading: th-core-context-get(heading);
+	  @include th-heading($heading);
+	}
+
+Requires
+~~~~~~~~
+
+* ``th-core-context-set``
+
+* ``th-heading-get-map``
+
+Used By
+~~~~~~~
+
+* [mixin] ``th-headings``
+
+Since
+~~~~~
+
+0.0.15
+
 th-headings
 -----------
 
@@ -274,14 +352,13 @@ Source
 .. code-block:: scss
 
 	@mixin th-headings($heading, $base-font-size, $include: false) { 
-	  $loop: 1;
-	  @include _th-heading-loop($heading) {
+	  @include th-heading-context($heading, true) {
+	    $heading: th-core-context-get(heading);
 	    @include th-heading(
 	      $heading: $heading,
 	      $base-font-size: $base-font-size,
 	      $include: $include
 	    );
-	    $loop: $loop + 1;
 	  }
 	}
 
@@ -322,7 +399,11 @@ Output font-size and line-height h1 styles across all breakpoints.
 Requires
 ~~~~~~~~
 
+* ``th-heading-context``
+
 * ``th-heading``
+
+* ``th-core-context-get``
 
 Since
 ~~~~~

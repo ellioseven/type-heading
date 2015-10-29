@@ -24,7 +24,7 @@
   $heading,
   $breakpoint: false
 ){
-  $breakpoint: _th-core-breakpoint-context($breakpoint);
+  $breakpoint: th-core-context-get(breakpoint, $breakpoint);
   $heading: th-heading-get-map($heading);
   @if _th-heading-has-next($heading) {
     $heading: _th-heading-get-next($heading, $breakpoint);

@@ -12,10 +12,10 @@
 // Tests
 // ------------------------------
 
-@import "tests/mixins/core";
+@import "tests/core";
+@import "tests/helpers";
 @import "tests/functions/heading";
 @import "tests/functions/property";
-@import "tests/functions/helpers";
 @import "tests/mixins/heading";
 @import "tests/mixins/property";
 @import "tests/mixins/breakpoint";

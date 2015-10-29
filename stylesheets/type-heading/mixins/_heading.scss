@@ -3,6 +3,39 @@
 /// @group Heading
 ////
 
+// _th-heading-loop
+/// Loops through a heading map and outputs @content with breakpoint context.
+///
+/// @since 0.0.14
+/// @access private
+/// @content
+///
+/// @param {type} $name
+/// @param {list | string} $heading - A heading map key or list.
+
+@mixin _th-heading-loop(
+  $heading,
+  $breakpoint-output: false
+){
+  $heading-map: th-heading-get-map($heading);
+  @each $heading-list in $heading-map {
+    $breakpoint: _th-property-get($heading-list, breakpoint);
+    @if $breakpoint {
+      @if $breakpoint-output {
+        @include th-breakpoint($breakpoint, $breakpoint) {
+          @content;
+        }
+      } @else {
+        @include th-breakpoint-context($breakpoint) {
+          @content;
+        }
+      }
+    } @else {
+      @content;
+    }
+  }
+}
+
 //  th-heading()
 /// Output styles for a heading list.
 ///
@@ -37,8 +70,8 @@
   $base-font-size: $th-base-font-size,
   $include: false
 ){
-  $breakpoint: _th-core-breakpoint-context($breakpoint);
-  @include th-with-breakpoint($breakpoint) {
+  $breakpoint: th-core-context-get(breakpoint, $breakpoint);
+  @include th-breakpoint-context($breakpoint) {
     $heading: th-heading($heading, $breakpoint);
     $font-size: th-property-font-size(
       $heading: $heading,
@@ -54,6 +87,34 @@
         );
       }
     }
+  }
+}
+
+//  th-heading-context
+/// Output content with heading context.
+///
+/// @since 0.0.15
+/// @content [Output with heading context]
+///
+/// @param {list | string} $heading - A heading map key or list.
+///
+/// @example scss - Output a heading with a 768px breakpoint.
+///   @include th-heading-context(h1) {
+///     $heading: th-core-context-get(heading);
+///     @include th-heading($heading);
+///   }
+
+@mixin th-heading-context(
+  $heading,
+  $breakpoint-output: false
+){
+  $loop: 1;
+  $heading: th-heading-get-map($heading);
+  @include _th-heading-loop($heading, $breakpoint-output) {
+    @include th-core-context-set(heading, nth($heading, $loop)) {
+      @content;
+    }
+    $loop: $loop + 1;
   }
 }
 
@@ -79,13 +140,12 @@
   $base-font-size: $th-base-font-size,
   $include: false
 ){
-  $loop: 1;
-  @include _th-heading-loop($heading) {
+  @include th-heading-context($heading, true) {
+    $heading: th-core-context-get(heading);
     @include th-heading(
       $heading: $heading,
       $base-font-size: $base-font-size,
       $include: $include
     );
-    $loop: $loop + 1;
   }
 }

@@ -1,164 +1,31 @@
 Core
 ====
 
-th-with-get
------------
+th-core-context-get
+-------------------
 
 Since
 ~~~~~
 
-0.0.14
+0.0.15
 
 Source
 ~~~~~~
 
 .. code-block:: scss
 
-	@function th-with-get($property-name) { 
-	  @if $_th-core-with {
-	    @return map-get($_th-core-with, $property-name);
+	@function th-core-context-get($context, $value) { 
+	  @if global_variable_exists('_th-core-contexts') and map-get($_th-core-contexts, $context) {
+	    @return map-get($_th-core-contexts, $context);
+	  } @else {
+	    @return $value;
 	  }
 	}
 
 Description
 ~~~~~~~~~~~
 
-Return a heading contextual variable within a th-with loop.
-
-Parameters
-~~~~~~~~~~
-
-=========================================================================================================== =========================================================================================================== =========================================================================================================== ===========================================================================================================
-Name                                                                                                        Description                                                                                                 Type                                                                                                        Default Value                                                                                              
-=========================================================================================================== =========================================================================================================== =========================================================================================================== ===========================================================================================================
-property-name                                                                                               (font-size | line-height | margin-top | margin-bottom | breakpoint) Name of the heading property to return. string                                                                                                                                                                                                                 
-=========================================================================================================== =========================================================================================================== =========================================================================================================== ===========================================================================================================
-
-Returns
-~~~~~~~
-
-``mixed`` — Heading contextual variable.
-
-Example
-~~~~~~~
-
-Return font size from within a th-with loop.
-
-.. code-block:: scss
-
-	@include th-with(h1) {
-	  font-size: th-with-get(font-size);
-	}
-	// font-size: 18px;
-
-Requires
-~~~~~~~~
-
-Since
-~~~~~
-
-0.0.14
-
-th-with-breakpoint
-------------------
-
-Since
-~~~~~
-
-0.0.12
-
-Source
-~~~~~~
-
-.. code-block:: scss
-
-	@mixin th-with-breakpoint($breakpoint) { 
-	  $cache: $_th-core-breakpoint-context;
-	  $_th-core-breakpoint-context: $breakpoint !global;
-	  @content;
-	  $_th-core-breakpoint-context: $cache !global;
-	}
-
-Description
-~~~~~~~~~~~
-
-Use a breakpoint for a section of code.
-
-Parameters
-~~~~~~~~~~
-
-========================== ========================== ========================== ==========================
-Name                       Description                Type                       Default Value             
-========================== ========================== ========================== ==========================
-breakpoint                 A heading list breakpoint. number                                               
-========================== ========================== ========================== ==========================
-
-Content
-~~~~~~~
-
-This mixin allows extra content to be passed (through the ``@content`` directive).
-
-Example
-~~~~~~~
-
-Output a heading with a 768px breakpoint.
-
-.. code-block:: scss
-
-	@include th-with-breakpoint(768px) {
-	  @include th-heading(h1);
-	}
-
-Requires
-~~~~~~~~
-
-Used By
-~~~~~~~
-
-* [mixin] ``th-breakpoint``
-
-* [mixin] ``th-heading``
-
-Since
-~~~~~
-
-0.0.12
-
-th-with
--------
-
-Since
-~~~~~
-
-0.0.14
-
-Source
-~~~~~~
-
-.. code-block:: scss
-
-	@mixin th-with($heading, $convert: false, $base-font-size: $th-base-font-size) { 
-	  $loop: 1;
-	  $heading: th-heading-get-map($heading);
-	  @include _th-heading-loop($heading) {
-	    @include _th-with-var-set(
-	      $heading: nth($heading, $loop),
-	      $convert: $convert,
-	      $base-font-size: $base-font-size
-	    );
-	    @content;
-	    @include _th-with-var-reset;
-	    $loop: $loop + 1;
-	  }
-	}
-
-Description
-~~~~~~~~~~~
-
-Loop through a headings breakpoints with access to it's
-property values as a global variable. $th-font-size, $th-line-height,
-$th-margin-top, $th-margin-bottom will become available to you within the
-mixin.
+Check and get contextual value from globals.
 
 Parameters
 ~~~~~~~~~~
@@ -166,38 +33,104 @@ Parameters
 =========================================== =========================================== =========================================== ===========================================
 Name                                        Description                                 Type                                        Default Value                              
 =========================================== =========================================== =========================================== ===========================================
-heading                                     A heading map key or list.                  list | string                                                                          
-convert                                     If returned value should be unit converted. boolean                                     false                                      
-base-font-size                              Font size used for relative calculations.   number                                      $th-base-font-size                         
+context                                     [heading | breakpoint] Context property.    string                                                                                 
+value                                       The original value of the context property. mixed                                                                                  
 =========================================== =========================================== =========================================== ===========================================
+
+Returns
+~~~~~~~
+
+``mixed`` — Contextual value from globals or passed value.
+
+Example
+~~~~~~~
+
+Return contextual breakpoint value.
+
+.. code-block:: scss
+
+	_th-core-context-get(breakpoint, 768px)
+	// 1024px
+
+Requires
+~~~~~~~~
+
+Used By
+~~~~~~~
+
+* [function] ``th-heading``
+
+* [mixin] ``th-heading``
+
+* [mixin] ``th-headings``
+
+Since
+~~~~~
+
+0.0.15
+
+th-core-context-set
+-------------------
+
+Since
+~~~~~
+
+0.0.15
+
+Source
+~~~~~~
+
+.. code-block:: scss
+
+	@mixin th-core-context-set($context, $value) { 
+	  $cache: $_th-core-contexts;
+	  $_th-core-contexts: th-map-set($_th-core-contexts, $context, $value) !global;
+	  @content;
+	  $_th-core-contexts: $cache !global;
+	}
+
+Description
+~~~~~~~~~~~
+
+Set contextual value to globals.
+
+Parameters
+~~~~~~~~~~
+
+======================================== ======================================== ======================================== ========================================
+Name                                     Description                              Type                                     Default Value                           
+======================================== ======================================== ======================================== ========================================
+context                                  [heading | breakpoint] Context property. string                                                                           
+value                                    The new value of the context property.   mixed                                                                            
+======================================== ======================================== ======================================== ========================================
 
 Content
 ~~~~~~~
 
 This mixin allows extra content to be passed (through the ``@content`` directive).
 
-Role: [Styles for the contextual heading list]
+Role: [Output with context]
 
 Example
 ~~~~~~~
 
-Output font-size, line-height, margin-top and margin-bottom properties individually for a heading.
+Set contextual breakpoint value.
 
 .. code-block:: scss
 
-	@include th-with(h1) {
-	  margin-top: th-with-get(margin-top);
-	  margin-bottom: th-with-get(margin-bottom);
-	  font-size: th-with-get(font-size);;
-	  line-height: th-with-get(line-height);
-	}
+	_th-core-context-set(breakpoint, 768px)
 
 Requires
 ~~~~~~~~
 
-* ``th-heading-get-map``
+Used By
+~~~~~~~
+
+* [mixin] ``th-breakpoint-context``
+
+* [mixin] ``th-heading-context``
 
 Since
 ~~~~~
 
-0.0.14
+0.0.15

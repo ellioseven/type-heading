@@ -1,0 +1,109 @@
+// Tests / Mixins / Core
+
+// th-core-context-get()
+// ------------------------------
+
+mixin th-core-context-get {
+
+  @include th-assert(
+    $describe: "Return breakpoint list from context."
+  ){
+    @include th-assert-expect {
+      result: 768px;
+    }
+    @include th-assert-actual {
+      @include th-core-context-set(breakpoint, 768px) {
+        result: th-core-context-get(breakpoint);
+      }
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return h1 heading list from context."
+  ){
+    @include th-assert-expect {
+      result: 10px 20px (30px 40px);
+    }
+    @include th-assert-actual {
+      $heading: th-heading(h1);
+      @include th-core-context-set(heading, $heading) {
+        result: th-core-context-get(heading);
+      }
+    }
+  }
+
+  @include th-assert(
+    $describe: "Interact heading context with API."
+  ){
+    @include th-assert-expect {
+      font-size: 10px;
+      line-height: 20px;
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+    @include th-assert-actual {
+      @include th-core-context-set(heading, th-heading(h1)) {
+        $heading: th-core-context-get(heading);
+        font-size: th-property($heading: $heading, $property-name: font-size, $convert: false);
+        line-height: th-property($heading: $heading, $property-name: line-height, $convert: false);
+        margin-top: th-property($heading: $heading, $property-name: margin-top, $convert: false);
+        margin-bottom: th-property($heading: $heading, $property-name: margin-bottom, $convert: false);
+      }
+    }
+  }
+
+}
+
+// th-core-context-set()
+// ------------------------------
+
+mixin th-core-context-set {
+
+  @include th-assert(
+    $describe: "Return breakpoint list from context."
+  ){
+    @include th-assert-expect {
+      result: 768px;
+    }
+    @include th-assert-actual {
+      @include th-core-context-set(breakpoint, 768px) {
+        result: th-core-context-get(breakpoint);
+      }
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return h1 heading list from context."
+  ){
+    @include th-assert-expect {
+      result: 10px 20px (30px 40px);
+    }
+    @include th-assert-actual {
+      $heading: th-heading(h1);
+      @include th-core-context-set(heading, $heading) {
+        result: th-core-context-get(heading);
+      }
+    }
+  }
+
+  @include th-assert(
+    $describe: "Interact heading context with API."
+  ){
+    @include th-assert-expect {
+      font-size: 10px;
+      line-height: 20px;
+      margin-top: 30px;
+      margin-bottom: 40px;
+    }
+    @include th-assert-actual {
+      @include th-core-context-set(heading, th-heading(h1)) {
+        $heading: th-core-context-get(heading);
+        font-size: th-property($heading: $heading, $property-name: font-size, $convert: false);
+        line-height: th-property($heading: $heading, $property-name: line-height, $convert: false);
+        margin-top: th-property($heading: $heading, $property-name: margin-top, $convert: false);
+        margin-bottom: th-property($heading: $heading, $property-name: margin-bottom, $convert: false);
+      }
+    }
+  }
+
+}

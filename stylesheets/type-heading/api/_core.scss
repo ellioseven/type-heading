@@ -1,0 +1,65 @@
+////
+/// Core
+/// @group Core
+////
+
+//  $_th-core-contexts
+/// Global values to keep track of contexts.
+///
+/// @since 0.0.15
+/// @type map
+/// @access private
+///
+/// @prop {boolean | list} base.heading [false] - Contextual heading list
+/// @prop {boolean \ number} base.heading [false] - Contextual breakpoint
+
+$_th-core-contexts: (
+  heading: false,
+  breakpoint: false
+);
+
+//  th-core-context-get()
+/// Check and get contextual value from globals.
+///
+/// @since 0.0.15
+/// @return {mixed} Contextual value from globals or passed value.
+///
+/// @param {string} $context - [heading | breakpoint] Context property.
+/// @param {mixed} $value - The original value of the context property.
+///
+/// @example scss - Return contextual breakpoint value.
+///   _th-core-context-get(breakpoint, 768px)
+///   // 1024px
+
+@function th-core-context-get(
+  $context,
+  $value: false
+){
+  @if global_variable_exists('_th-core-contexts') and map-get($_th-core-contexts, $context) {
+    @return map-get($_th-core-contexts, $context);
+  } @else {
+    @return $value;
+  }
+}
+
+//  th-core-context-set()
+/// Set contextual value to globals.
+///
+/// @since 0.0.15
+/// @content [Output with context]
+///
+/// @param {string} $context - [heading | breakpoint] Context property.
+/// @param {mixed} $value - The new value of the context property.
+///
+/// @example scss - Set contextual breakpoint value.
+///   _th-core-context-set(breakpoint, 768px)
+
+@mixin th-core-context-set(
+  $context,
+  $value
+){
+  $cache: $_th-core-contexts;
+  $_th-core-contexts: th-map-set($_th-core-contexts, $context, $value) !global;
+  @content;
+  $_th-core-contexts: $cache !global;
+}

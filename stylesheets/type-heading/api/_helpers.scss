@@ -90,6 +90,48 @@
   @return $_return;
 }
 
+// Maps
+// ------------------------------
+
+//  th-map-set()
+/// Set a map key with a new value.
+///
+/// @since 0.0.15
+/// @return {map} Map with new property
+///
+/// @param {map} $map - The map/haystack of values.
+/// @param {string} $key - The key/needle used to find value.
+/// @param {$value} $value - The new value of the map key.
+///
+/// @example scss - Set map key 'foo' to 'Hello World'
+///   th-map-set(
+///     (
+///       foo: 'First',
+///       bar: 'Second'
+///     ),
+///     $key: foo,
+///     $value: 'Hello Word'
+///   )
+///   // (
+///   //   foo: 'Hello World',
+///   //   bar: 'Second'
+///   // )
+
+@function th-map-set(
+  $map,
+  $key,
+  $value
+){
+  $_return: ();
+  @each $item in $map {
+    @if nth($item, 1) != $key {
+      $_return: map-merge($_return, (nth($item, 1): nth($item, 2)));
+    }
+  }
+  $_return: map-merge($_return, ($key: $value));
+  @return $_return;
+}
+
 // Lists
 // ------------------------------
 

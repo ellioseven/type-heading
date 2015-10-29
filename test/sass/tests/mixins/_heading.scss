@@ -48,7 +48,7 @@ mixin th-heading {
   }
 
   @include th-assert(
-  $describe: "Output styles for a heading with a breakpoint manually."
+    $describe: "Output styles for a heading with a breakpoint manually."
   ){
     @include th-assert-expect {
       margin-top: 70px;
@@ -185,6 +185,87 @@ mixin th-headings {
         $heading: h1,
         $include: (font-size line-height)
       );
+    }
+  }
+
+}
+
+// _th-heading-loop()
+// ------------------------------
+
+mixin _th-heading-loop {
+
+  @include th-assert(
+    $describe: "Simple loop through a heading."
+  ){
+    @include th-assert-expect {
+      result: null;
+      result: null;
+      result: null;
+    }
+    @include th-assert-actual {
+      @include _th-heading-loop(h1) {
+        result: null;
+      }
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return heading font size from each list in a heading."
+  ){
+    @include th-assert-expect {
+      result: 10px 20px (30px 40px);
+      result: 50px 60px (70px 80px) 768px;
+      result: 90px 100px (110px 120px) 1024px;
+    }
+    @include th-assert-actual {
+      $loop: 1;
+      $heading: th-heading-get-map(h1);
+      @include _th-heading-loop($heading) {
+        result: nth($heading, $loop);
+        $loop: $loop + 1;
+      }
+    }
+  }
+
+}
+
+// th-heading-context()
+// ------------------------------
+
+mixin th-heading-context {
+
+  @include th-assert(
+    $describe: "Description."
+  ){
+    @include th-assert-expect {
+      result: 10px 20px (30px 40px);
+      result: 50px 60px (70px 80px) 768px;
+      result: 90px 100px (110px 120px) 1024px;
+    }
+    @include th-assert-actual {
+      @include th-heading-context(h1) {
+        result: th-core-context-get(heading);
+      }
+    }
+  }
+
+  @include th-assert(
+    $describe: "Description."
+  ){
+    @include th-assert-expect {
+      result: 10px 20px (30px 40px);
+      @media (min-width: 768px) {
+        result: 50px 60px (70px 80px) 768px;
+      }
+      @media (min-width: 1024px) {
+        result: 90px 100px (110px 120px) 1024px;
+      }
+    }
+    @include th-assert-actual {
+      @include th-heading-context(h1, true) {
+        result: th-core-context-get(heading);
+      }
     }
   }
 

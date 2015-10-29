@@ -58,6 +58,25 @@ function th-math-round-to {
 
 }
 
+// th-map-set()
+// ------------------------------
+
+function th-map-set {
+
+  @include th-assert(
+    $describe: "Set map key 'foo' to 'Hello World'"
+  ){
+    @include th-assert-expect {
+      result: "Hello World";
+    }
+    @include th-assert-actual {
+      $result: th-map-set((foo: 'First', bar: 'Second'), $key: foo, $value: 'Hello World');
+      result: map-get($result, foo);
+    }
+  }
+
+}
+
 // th-list-has-index()
 // ------------------------------
 
