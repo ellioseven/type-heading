@@ -3,29 +3,6 @@
 /// @group Property
 ////
 
-//  $th-properties
-/// An ordered list of available properties.
-///
-/// @since 0.0.10
-/// @type list
-/// @access private
-
-$th-properties: (
-  font-size,
-  line-height,
-  (margin-top margin-bottom),
-  breakpoint
-);
-
-//  $_th-core-properties
-/// List of available heading property names.
-///
-/// @since 0.0.14
-/// @type List
-/// @access private
-
-$_th-core-properties: (margin-top margin-bottom font-size line-height);
-
 //  th-property()
 /// Return heading list property value.
 ///
@@ -108,7 +85,8 @@ $_th-core-properties: (margin-top margin-bottom font-size line-height);
   $heading,
   $property-name
 ){
-  $property-indexes: th-list-get-index-deep($th-properties, $property-name);
+  $properties: (font-size, line-height, (margin-top margin-bottom), breakpoint);
+  $property-indexes: th-list-get-index-deep($properties, $property-name);
   @return th-list-get-nth-deep($heading, $property-indexes);
 }
 

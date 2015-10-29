@@ -50,16 +50,14 @@
   @if font-size != $property-name {
     $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
   }
-  @if th-list-has($_th-core-properties, $property-name) {
-    $breakpoint: _th-core-breakpoint-context($breakpoint);
-    #{$property-name}: th-property(
-      $property-name: $property-name,
-      $heading: $heading,
-      $breakpoint: $breakpoint,
-      $convert: $convert,
-      $base-font-size: $base-font-size
-    );
-  }
+  $breakpoint: _th-core-breakpoint-context($breakpoint);
+  #{$property-name}: th-property(
+    $property-name: $property-name,
+    $heading: $heading,
+    $breakpoint: $breakpoint,
+    $convert: $convert,
+    $base-font-size: $base-font-size
+  );
 }
 
 //  th-property-font-size()
