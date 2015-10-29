@@ -79,9 +79,9 @@
   @include th-heading-context($heading, true) {
     $heading: th-core-context-get(heading);
     @include th-heading(
-    $heading: $heading,
-    $base-font-size: $base-font-size,
-    $include: $include
+      $heading: $heading,
+      $base-font-size: $base-font-size,
+      $include: $include
     );
   }
 }
