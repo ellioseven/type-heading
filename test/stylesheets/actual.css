@@ -322,7 +322,7 @@ mixin th-headings {
   }
 }
 
-mixin _th-heading-loop {
+mixin _th-heading-context-loop {
   /* Describe: Simple loop through a heading. */
   result: null;
   result: null;

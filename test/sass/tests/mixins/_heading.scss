@@ -190,10 +190,10 @@ mixin th-headings {
 
 }
 
-// _th-heading-loop()
+// _th-heading-context-loop()
 // ------------------------------
 
-mixin _th-heading-loop {
+mixin _th-heading-context-loop {
 
   @include th-assert(
     $describe: "Simple loop through a heading."
@@ -204,7 +204,7 @@ mixin _th-heading-loop {
       result: null;
     }
     @include th-assert-actual {
-      @include _th-heading-loop(h1) {
+      @include _th-heading-context-loop(h1) {
         result: null;
       }
     }
@@ -221,7 +221,7 @@ mixin _th-heading-loop {
     @include th-assert-actual {
       $loop: 1;
       $heading: th-heading-get-map(h1);
-      @include _th-heading-loop($heading) {
+      @include _th-heading-context-loop($heading) {
         result: nth($heading, $loop);
         $loop: $loop + 1;
       }

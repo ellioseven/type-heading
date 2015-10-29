@@ -257,6 +257,78 @@ Since
 
 0.0.10
 
+th-headings
+-----------
+
+Since
+~~~~~
+
+0.0.10
+
+Source
+~~~~~~
+
+.. code-block:: scss
+
+	@mixin th-headings($heading, $base-font-size, $include: false) { 
+	  @include th-heading-context($heading, true) {
+	    $heading: th-core-context-get(heading);
+	    @include th-heading(
+	    $heading: $heading,
+	    $base-font-size: $base-font-size,
+	    $include: $include
+	    );
+	  }
+	}
+
+Description
+~~~~~~~~~~~
+
+Output styles for a heading across all breakpoints.
+
+Parameters
+~~~~~~~~~~
+
+================================================================================== ================================================================================== ================================================================================== ==================================================================================
+Name                                                                               Description                                                                        Type                                                                               Default Value                                                                     
+================================================================================== ================================================================================== ================================================================================== ==================================================================================
+heading                                                                            A heading map key or list.                                                         list | string                                                                                                                                                        
+base-font-size                                                                     ($th-base-font-size) Font size used for relative calculations.                     number                                                                                                                                                               
+include                                                                            (font-size | line-height | margin-top | margin-bottom) Restrict output properties. list | boolean                                                                     false                                                                             
+================================================================================== ================================================================================== ================================================================================== ==================================================================================
+
+Example
+~~~~~~~
+
+Output all h1 styles across all breakpoints.
+
+.. code-block:: scss
+
+	@include th-headings(h1)
+
+Output font-size and line-height h1 styles across all breakpoints.
+
+.. code-block:: scss
+
+	th-headings(
+	  $heading: h1,
+	  $include: (font-size line-height)
+	)
+
+Requires
+~~~~~~~~
+
+* ``th-heading-context``
+
+* ``th-heading``
+
+* ``th-core-context-get``
+
+Since
+~~~~~
+
+0.0.10
+
 th-heading-context
 ------------------
 
@@ -273,7 +345,7 @@ Source
 	@mixin th-heading-context($heading) { 
 	  $loop: 1;
 	  $heading: th-heading-get-map($heading);
-	  @include _th-heading-loop($heading, $breakpoint-output) {
+	  @include _th-heading-context-loop($heading, $breakpoint-output) {
 	    @include th-core-context-set(heading, nth($heading, $loop)) {
 	      @content;
 	    }
@@ -330,75 +402,3 @@ Since
 ~~~~~
 
 0.0.15
-
-th-headings
------------
-
-Since
-~~~~~
-
-0.0.10
-
-Source
-~~~~~~
-
-.. code-block:: scss
-
-	@mixin th-headings($heading, $base-font-size, $include: false) { 
-	  @include th-heading-context($heading, true) {
-	    $heading: th-core-context-get(heading);
-	    @include th-heading(
-	      $heading: $heading,
-	      $base-font-size: $base-font-size,
-	      $include: $include
-	    );
-	  }
-	}
-
-Description
-~~~~~~~~~~~
-
-Output styles for a heading across all breakpoints.
-
-Parameters
-~~~~~~~~~~
-
-================================================================================== ================================================================================== ================================================================================== ==================================================================================
-Name                                                                               Description                                                                        Type                                                                               Default Value                                                                     
-================================================================================== ================================================================================== ================================================================================== ==================================================================================
-heading                                                                            A heading map key or list.                                                         list | string                                                                                                                                                        
-base-font-size                                                                     ($th-base-font-size) Font size used for relative calculations.                     number                                                                                                                                                               
-include                                                                            (font-size | line-height | margin-top | margin-bottom) Restrict output properties. list | boolean                                                                     false                                                                             
-================================================================================== ================================================================================== ================================================================================== ==================================================================================
-
-Example
-~~~~~~~
-
-Output all h1 styles across all breakpoints.
-
-.. code-block:: scss
-
-	@include th-headings(h1)
-
-Output font-size and line-height h1 styles across all breakpoints.
-
-.. code-block:: scss
-
-	th-headings(
-	  $heading: h1,
-	  $include: (font-size line-height)
-	)
-
-Requires
-~~~~~~~~
-
-* ``th-heading-context``
-
-* ``th-heading``
-
-* ``th-core-context-get``
-
-Since
-~~~~~
-
-0.0.10
