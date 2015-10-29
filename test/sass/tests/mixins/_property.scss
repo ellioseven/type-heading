@@ -1,9 +1,9 @@
 // Tests / Mixins / Property
 
-// th-property-font-size()
+// th-property()
 // ------------------------------
 
-mixin th-property-font-size {
+mixin th-property {
 
   @include th-assert(
     $describe: "Output font-size for a heading."
@@ -12,7 +12,10 @@ mixin th-property-font-size {
       font-size: 0.55556em;
     }
     @include th-assert-actual {
-      @include th-property-font-size(h1);
+      @include th-property(
+        $property: font-size,
+        $heading: h1
+      );
     }
   }
 
@@ -23,7 +26,11 @@ mixin th-property-font-size {
       font-size: 2.77778em;
     }
     @include th-assert-actual {
-      @include th-property-font-size(h1, 768px);
+      @include th-property(
+        $property: font-size,
+        $heading: h1,
+        $breakpoint: 768px
+      );
     }
   }
 
@@ -34,7 +41,10 @@ mixin th-property-font-size {
       font-size: 0.27778em;
     }
     @include th-assert-actual {
-      @include th-property-font-size(h6);
+      @include th-property(
+        $property: font-size,
+        $heading: h6
+      );
     }
   }
 
@@ -45,7 +55,8 @@ mixin th-property-font-size {
       font-size: 5px;
     }
     @include th-assert-actual {
-      @include th-property-font-size(
+      @include th-property(
+        $property: font-size,
         $heading: h6,
         $convert: false
       );
@@ -59,7 +70,12 @@ mixin th-property-font-size {
       font-size: 55.55556%;
     }
     @include th-assert-actual {
-      font-size: th-property(h1, font-size, false, percent);
+      @include th-property(
+        $property: font-size,
+        $heading: h1,
+        $breakpoint: false,
+        $convert: percent
+      );
     }
   }
 
@@ -70,7 +86,13 @@ mixin th-property-font-size {
       font-size: 357.14286%;
     }
     @include th-assert-actual {
-      font-size: th-property(h1, font-size, 768px, percent, 14px);
+      @include th-property(
+        $property: font-size,
+        $heading: h1,
+        $breakpoint: 768px,
+        $convert: percent,
+        $base-font-size: 14px
+      );
     }
   }
 
@@ -88,7 +110,10 @@ mixin th-property-line-height {
       line-height: 2;
     }
     @include th-assert-actual {
-      @include th-property-line-height(h1);
+      @include th-property(
+        $property: line-height,
+        $heading: h1
+      );
     }
   }
 
@@ -99,7 +124,11 @@ mixin th-property-line-height {
       line-height: 1.2;
     }
     @include th-assert-actual {
-      @include th-property-line-height(h1, 768px);
+      @include th-property(
+        $property: line-height,
+        $heading: h1,
+        $breakpoint: 768px
+      );
     }
   }
 
@@ -110,7 +139,8 @@ mixin th-property-line-height {
       line-height: 20px;
     }
     @include th-assert-actual {
-      @include th-property-line-height(
+      @include th-property(
+        $property: line-height,
         $heading: h1,
         $convert: false
       );
@@ -124,8 +154,10 @@ mixin th-property-line-height {
       line-height: 200%;
     }
     @include th-assert-actual {
-      @include th-property-line-height(
+      @include th-property(
+        $property: line-height,
         $heading: h1,
+        $breakpoint: false,
         $convert: percent
       );
     }
@@ -145,7 +177,10 @@ mixin th-property-margin-top {
       margin-top: 30px;
     }
     @include th-assert-actual {
-      @include th-property-margin-top(h1);
+      @include th-property(
+        $property: margin-top,
+        $heading: h1
+      );
     }
   }
 
@@ -156,7 +191,11 @@ mixin th-property-margin-top {
       margin-top: 70px;
     }
     @include th-assert-actual {
-      @include th-property-margin-top(h1, 768px);
+      @include th-property(
+        $property: margin-top,
+        $heading: h1,
+        $breakpoint: 768px
+      );
     }
   }
 
@@ -167,7 +206,10 @@ mixin th-property-margin-top {
       margin-top: 29px;
     }
     @include th-assert-actual {
-      @include th-property-margin-top(h2);
+      @include th-property(
+        $property: margin-top,
+        $heading: h2
+      );
     }
   }
 
@@ -178,7 +220,8 @@ mixin th-property-margin-top {
       margin-top: 29px;
     }
     @include th-assert-actual {
-      @include th-property-margin-top(
+      @include th-property(
+        $property: margin-top,
         $heading: h2,
         $convert: false
       );
@@ -192,7 +235,8 @@ mixin th-property-margin-top {
       margin-top: 300%;
   }
     @include th-assert-actual {
-      @include th-property-margin-top(
+      @include th-property(
+        $property: margin-top,
         $heading: h1,
         $convert: percent
       );
@@ -213,7 +257,10 @@ mixin th-property-margin-bottom {
       margin-bottom: 1.66667rem;
     }
     @include th-assert-actual {
-      @include th-property-margin-bottom(h1);
+      @include th-property(
+        $property: margin-bottom,
+        $heading: h1
+      );
     }
   }
 
@@ -224,7 +271,11 @@ mixin th-property-margin-bottom {
       margin-bottom: 3.33333rem;
     }
     @include th-assert-actual {
-      @include th-property-margin-bottom(h1, 768px);
+      @include th-property(
+        $property: margin-bottom,
+        $heading: h1,
+        $breakpoint: 768px
+      );
     }
   }
 
@@ -235,7 +286,10 @@ mixin th-property-margin-bottom {
       margin-bottom: 1.20833rem;
     }
     @include th-assert-actual {
-      @include th-property-margin-bottom(h2);
+      @include th-property(
+        $property: margin-bottom,
+        $heading: h2
+      );
     }
   }
 
@@ -246,7 +300,8 @@ mixin th-property-margin-bottom {
       margin-bottom: 29px;
     }
     @include th-assert-actual {
-      @include th-property-margin-bottom(
+      @include th-property(
+        $property: margin-bottom,
         $heading: h2,
         $convert: false
       );
@@ -260,7 +315,8 @@ mixin th-property-margin-bottom {
       margin-bottom: 400%;
     }
     @include th-assert-actual {
-      @include th-property-margin-bottom(
+      @include th-property(
+        $property: margin-bottom,
         $heading: h1,
         $convert: percent
       );

@@ -12,7 +12,7 @@ function th-property {
       result: 0.55556em;
     }
     @include th-assert-actual {
-      result: th-property(h1, font-size);
+      result: th-property($heading: h1, $property: font-size);
     }
   }
 
@@ -23,7 +23,7 @@ function th-property {
       result: 2.77778em;
     }
     @include th-assert-actual {
-      result: th-property(h1, font-size, 768px);
+      result: th-property($heading: h1, $property: font-size, $breakpoint: 768px);
     }
   }
 
@@ -34,7 +34,7 @@ function th-property {
       result: 3px;
     }
     @include th-assert-actual {
-      result: th-property(h3, margin-top);
+      result: th-property($heading: h3, $property: margin-top);
     }
   }
 
@@ -45,7 +45,7 @@ function th-property {
       result: 0.16667rem;
     }
     @include th-assert-actual {
-      result: th-property(h3, margin-bottom, 768px);
+      result: th-property($heading: h3, $property: margin-bottom, $breakpoint: 768px);
     }
   }
 
@@ -56,7 +56,7 @@ function th-property {
       result: 3px;
     }
     @include th-assert-actual {
-      result: th-property(h3, margin-top);
+      result: th-property($heading: h3, $property: margin-top);
     }
   }
 
@@ -67,7 +67,7 @@ function th-property {
       result: 0.33333;
     }
     @include th-assert-actual {
-      result: th-property(h5, line-height);
+      result: th-property($heading: h5, $property: line-height);
     }
   }
 
@@ -78,7 +78,7 @@ function th-property {
       result: 55.55556%;
     }
     @include th-assert-actual {
-      result: th-property(h1, font-size, false, percent);
+      result: th-property($heading: h1, $property: font-size, $breakpoint: false, $convert: percent);
     }
   }
 
@@ -89,7 +89,7 @@ function th-property {
       result: 357.14286%;
     }
     @include th-assert-actual {
-      result: th-property(h1, font-size, 768px, percent, 14px);
+      result: th-property($heading: h1, $property: font-size, $breakpoint: 768px, $convert: percent, $base-font-size: 14px);
     }
   }
 
@@ -169,7 +169,10 @@ function th-property-font-size {
       result: 0.55556em;
     }
     @include th-assert-actual {
-      result: th-property-font-size(h1);
+      result: th-property(
+        $property: font-size,
+        $heading: h1
+      );
     }
   }
 
@@ -180,7 +183,11 @@ function th-property-font-size {
       result: 2.77778em;
     }
     @include th-assert-actual {
-      result: th-property-font-size(h1, 768px);
+      result: th-property(
+        $property: font-size,
+        $heading: h1,
+        $breakpoint: 768px
+      );
     }
   }
 
@@ -191,7 +198,10 @@ function th-property-font-size {
       result: 0.27778em;
     }
     @include th-assert-actual {
-      result: th-property-font-size(h6);
+      result: th-property(
+        $property: font-size,
+        $heading: h6
+      );
     }
   }
 
@@ -209,7 +219,10 @@ function th-property-line-height {
       result: 2;
     }
     @include th-assert-actual {
-      result: th-property-line-height(h1);
+      result: th-property(
+        $property: line-height,
+        $heading: h1
+      );
     }
   }
 
@@ -220,7 +233,11 @@ function th-property-line-height {
       result: 1.2;
     }
     @include th-assert-actual {
-      result: th-property-line-height(h1, 768px);
+      result: th-property(
+        $property: line-height,
+        $heading: h1,
+        $breakpoint: 768px
+      );
     }
   }
 
@@ -238,7 +255,10 @@ function th-property-margin-top {
       result: 30px;
     }
     @include th-assert-actual {
-      result: th-property-margin-top(h1);
+      result: th-property(
+        $property: margin-top,
+        $heading: h1
+      );
     }
   }
 
@@ -249,7 +269,11 @@ function th-property-margin-top {
       result: 70px;
     }
     @include th-assert-actual {
-      result: th-property-margin-top(h1, 768px);
+      result: th-property(
+        $property: margin-top,
+        $heading: h1,
+        $breakpoint: 768px
+      );
     }
   }
 
@@ -260,7 +284,10 @@ function th-property-margin-top {
       result: 29px;
     }
     @include th-assert-actual {
-      result: th-property-margin-top(h2);
+      result: th-property(
+        $property: margin-top,
+        $heading: h2
+      );
     }
   }
 
@@ -278,7 +305,12 @@ function th-property-margin-bottom {
       result: 1.66667rem;
     }
     @include th-assert-actual {
-      result: th-property-margin-bottom(h1);
+      @include th-assert-actual {
+        result: th-property(
+          $property: margin-bottom,
+          $heading: h1
+        );
+      }
     }
   }
 
@@ -289,7 +321,13 @@ function th-property-margin-bottom {
       result: 3.33333rem;
     }
     @include th-assert-actual {
-      result: th-property-margin-bottom(h1, 768px);
+      @include th-assert-actual {
+        result: th-property(
+          $property: margin-bottom,
+          $heading: h1,
+          $breakpoint: 768px
+        );
+      }
     }
   }
 
@@ -300,7 +338,10 @@ function th-property-margin-bottom {
       result: 1.20833rem;
     }
     @include th-assert-actual {
-      result: th-property-margin-bottom(h2);
+      result: th-property(
+        $property: margin-bottom,
+        $heading: h2
+      );
     }
   }
 

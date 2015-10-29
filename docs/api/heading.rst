@@ -75,14 +75,6 @@ Used By
 
 * [function] ``th-property``
 
-* [mixin] ``th-property-font-size``
-
-* [mixin] ``th-property-line-height``
-
-* [mixin] ``th-property-margin-top``
-
-* [mixin] ``th-property-margin-bottom``
-
 Since
 ~~~~~
 
@@ -169,15 +161,17 @@ Source
 
 	@mixin th-heading($heading, $breakpoint: false, $base-font-size: $th-base-font-size, $include: false) { 
 	  $heading: th-heading($heading, $breakpoint);
-	  $font-size: th-property-font-size(
+	  $properties: (margin-top margin-bottom font-size line-height);
+	  $font-size: th-property(
+	    $property: font-size,
 	    $heading: $heading,
 	    $base-font-size: $base-font-size,
 	    $convert: false
 	  );
-	  @each $property in $_th-core-properties {
+	  @each $property in $properties {
 	    @if not $include or th-list-has($include, $property) {
 	      @include th-property(
-	        $property-name: $property,
+	        $property: $property,
 	        $heading: $heading,
 	        $base-font-size: th-if(font-size == $property, $base-font-size, $font-size)
 	      );
@@ -245,8 +239,6 @@ Requires
 
 * ``th-heading``
 
-* ``th-property-font-size``
-
 Used By
 ~~~~~~~
 
@@ -274,9 +266,9 @@ Source
 	  @include th-heading-context($heading, true) {
 	    $heading: th-core-context-get(heading);
 	    @include th-heading(
-	    $heading: $heading,
-	    $base-font-size: $base-font-size,
-	    $include: $include
+	      $heading: $heading,
+	      $base-font-size: $base-font-size,
+	      $include: $include
 	    );
 	  }
 	}

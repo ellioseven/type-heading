@@ -352,7 +352,7 @@ mixin th-heading-context {
   }
 }
 
-mixin th-property-font-size {
+mixin th-property {
   /* Describe: Output font-size for a heading. */
   font-size: 0.55556em;
   /* Describe: Output font-size for a heading with a breakpoint. */
