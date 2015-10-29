@@ -144,8 +144,6 @@ Used By
 
 * [mixin] ``th-breakpoint``
 
-* [mixin] ``th-heading``
-
 Since
 ~~~~~
 

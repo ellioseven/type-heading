@@ -60,8 +60,6 @@ Used By
 
 * [function] ``th-heading``
 
-* [mixin] ``th-heading``
-
 * [mixin] ``th-headings``
 
 Since

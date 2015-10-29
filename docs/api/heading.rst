@@ -168,22 +168,19 @@ Source
 .. code-block:: scss
 
 	@mixin th-heading($heading, $breakpoint: false, $base-font-size: $th-base-font-size, $include: false) { 
-	  $breakpoint: th-core-context-get(breakpoint, $breakpoint);
-	  @include th-breakpoint-context($breakpoint) {
-	    $heading: th-heading($heading, $breakpoint);
-	    $font-size: th-property-font-size(
-	      $heading: $heading,
-	      $base-font-size: $base-font-size,
-	      $convert: false
-	    );
-	    @each $property in $_th-core-properties {
-	      @if not $include or th-list-has($include, $property) {
-	        @include th-property(
-	          $property-name: $property,
-	          $heading: $heading,
-	          $base-font-size: th-if(font-size == $property, $base-font-size, $font-size)
-	        );
-	      }
+	  $heading: th-heading($heading, $breakpoint);
+	  $font-size: th-property-font-size(
+	    $heading: $heading,
+	    $base-font-size: $base-font-size,
+	    $convert: false
+	  );
+	  @each $property in $_th-core-properties {
+	    @if not $include or th-list-has($include, $property) {
+	      @include th-property(
+	        $property-name: $property,
+	        $heading: $heading,
+	        $base-font-size: th-if(font-size == $property, $base-font-size, $font-size)
+	      );
 	    }
 	  }
 	}
@@ -244,11 +241,7 @@ Output h1 styles but only include font-size and line-height.
 Requires
 ~~~~~~~~
 
-* ``th-breakpoint-context``
-
 * ``th-property``
-
-* ``th-core-context-get``
 
 * ``th-heading``
 
