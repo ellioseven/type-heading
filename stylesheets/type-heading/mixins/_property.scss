@@ -62,3 +62,25 @@
     $base-font-size: $base-font-size
   );
 }
+
+//  th-p()
+/// Alias to th-property() mixin.
+///
+/// @since 0.0.15
+/// @alias th-property
+
+@mixin th-p(
+  $property-name,
+  $heading,
+  $breakpoint: false,
+  $convert: true,
+  $base-font-size: $th-base-font-size
+){
+  @include th-property(
+    $property-name: $property-name,
+    $heading: $heading,
+    $breakpoint: $breakpoint,
+    $convert: $convert,
+    $base-font-size: $base-font-size
+  );
+}

@@ -303,3 +303,307 @@ mixin th-property {
   }
 
 }
+
+// th-p()
+// ------------------------------
+
+mixin th-p {
+
+  @include th-assert(
+    $describe: "Output font-size for a heading."
+  ){
+    @include th-assert-expect {
+      font-size: 0.55556em;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: font-size,
+      $heading: h1
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output font-size for a heading with a breakpoint."
+  ){
+    @include th-assert-expect {
+      font-size: 2.77778em;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: font-size,
+      $heading: h1,
+      $breakpoint: 768px
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output font-size for a heading with a single value."
+  ){
+    @include th-assert-expect {
+      font-size: 0.27778em;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: font-size,
+      $heading: h6
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output font-size for a heading without unit conversion."
+  ){
+    @include th-assert-expect {
+      font-size: 5px;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: font-size,
+      $heading: h6,
+      $convert: false
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output font-size from heading and unit override to percent."
+  ){
+    @include th-assert-expect {
+      font-size: 55.55556%;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: font-size,
+      $heading: h1,
+      $breakpoint: false,
+      $convert: percent
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output property from heading and unit override to percent with base font size of 14px."
+  ){
+    @include th-assert-expect {
+      font-size: 357.14286%;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: font-size,
+      $heading: h1,
+      $breakpoint: 768px,
+      $convert: percent,
+      $base-font-size: 14px
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output line-height for a heading."
+  ){
+    @include th-assert-expect {
+      line-height: 2;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: line-height,
+      $heading: h1
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output line-height for a heading with a breakpoint."
+  ){
+    @include th-assert-expect {
+      line-height: 1.2;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: line-height,
+      $heading: h1,
+      $breakpoint: 768px
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output line-height for a heading without unit conversion."
+  ){
+    @include th-assert-expect {
+      line-height: 20px;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: line-height,
+      $heading: h1,
+      $convert: false
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output line-height from heading and unit override to percent."
+  ){
+    @include th-assert-expect {
+      line-height: 200%;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: line-height,
+      $heading: h1,
+      $breakpoint: false,
+      $convert: percent
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output margin-top for a heading."
+  ){
+    @include th-assert-expect {
+      margin-top: 30px;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: margin-top,
+      $heading: h1
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output margin-top for a heading with a breakpoint."
+  ){
+    @include th-assert-expect {
+      margin-top: 70px;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: margin-top,
+      $heading: h1,
+      $breakpoint: 768px
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output margin-top for a heading with a singular list value."
+  ){
+    @include th-assert-expect {
+      margin-top: 29px;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: margin-top,
+      $heading: h2
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output margin-top for a heading without unit conversion."
+  ){
+    @include th-assert-expect {
+      margin-top: 29px;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: margin-top,
+      $heading: h2,
+      $convert: false
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output margin-top from heading and unit override to percent."
+  ){
+    @include th-assert-expect {
+      margin-top: 300%;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: margin-top,
+      $heading: h1,
+      $convert: percent
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output margin-bottom for a heading."
+  ){
+    @include th-assert-expect {
+      margin-bottom: 1.66667rem;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: margin-bottom,
+      $heading: h1
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output margin-bottom for a heading with a breakpoint."
+  ){
+    @include th-assert-expect {
+      margin-bottom: 3.33333rem;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: margin-bottom,
+      $heading: h1,
+      $breakpoint: 768px
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output margin-bottom for a heading with a singular list value."
+  ){
+    @include th-assert-expect {
+      margin-bottom: 1.20833rem;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: margin-bottom,
+      $heading: h2
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output margin-bottom for a heading without unit conversion."
+  ){
+    @include th-assert-expect {
+      margin-bottom: 29px;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: margin-bottom,
+      $heading: h2,
+      $convert: false
+      );
+    }
+  }
+
+  @include th-assert(
+  $describe: "Output margin-bottom from heading and unit override to percent."
+  ){
+    @include th-assert-expect {
+      margin-bottom: 400%;
+    }
+    @include th-assert-actual {
+      @include th-p(
+      $property-name: margin-bottom,
+      $heading: h1,
+      $convert: percent
+      );
+    }
+  }
+
+}

@@ -148,3 +148,41 @@
     }
   }
 }
+
+//  th-h()
+/// Alias to th-heading() mixin.
+///
+/// @since 0.0.15
+/// @alias th-heading
+
+@mixin th-h(
+  $heading,
+  $breakpoint: false,
+  $base-font-size: $th-base-font-size,
+  $include: (font-size line-height margin-top margin-bottom)
+){
+  @include th-heading(
+    $heading: $heading,
+    $breakpoint: $breakpoint,
+    $base-font-size: $base-font-size,
+    $include: $include
+  );
+}
+
+//  th-h()
+/// Alias to th-headings() mixin.
+///
+/// @since 0.0.15
+/// @alias th-headings
+
+@mixin th-hs(
+  $heading,
+  $base-font-size: $th-base-font-size,
+  $include: (font-size line-height margin-top margin-bottom)
+){
+  @include th-headings(
+    $heading: $heading,
+    $base-font-size: $base-font-size,
+    $include: $include
+  );
+}

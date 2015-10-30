@@ -171,7 +171,7 @@
   $heading,
   $breakpoint,
   $base-font-size
-) {
+){
   $_return: $base-font-size;
   @if $base-font-size == $th-base-font-size {
     $_return: th-property(
@@ -182,4 +182,26 @@
     );
   }
   @return $_return;
+}
+
+//  th-p()
+/// Alias to th-property() function.
+///
+/// @since 0.0.15
+/// @alias th-property
+
+@function th-p(
+  $property-name,
+  $heading,
+  $breakpoint: false,
+  $convert: true,
+  $base-font-size: $th-base-font-size
+){
+  @return th-property(
+    $property-name: $property-name,
+    $heading: $heading,
+    $breakpoint: $breakpoint,
+    $convert: $convert,
+    $base-font-size: $base-font-size
+  );
 }

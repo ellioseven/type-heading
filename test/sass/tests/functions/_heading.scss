@@ -126,3 +126,43 @@ function th-heading-get-next {
 	}
 
 }
+
+// th-h()
+// ------------------------------
+
+function th-h {
+
+  @include th-assert(
+    $describe: "Return heading"
+  ){
+    @include th-assert-expect {
+      result: (10px 20px (30px 40px));
+    }
+    @include th-assert-actual {
+      result: th-h(h1);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return heading by breakpoint"
+  ){
+    @include th-assert-expect {
+      result: (50px 60px (70px 80px) 768px);
+    }
+    @include th-assert-actual {
+      result: th-h(h1, 768px);
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return a further heading by breakpoint"
+  ){
+    @include th-assert-expect {
+      result: (90px 100px (110px 120px) 1024px);
+    }
+    @include th-assert-actual {
+      result: th-h(h1, 1024px);
+    }
+  }
+
+}
