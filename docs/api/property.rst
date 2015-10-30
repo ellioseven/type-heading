@@ -114,12 +114,52 @@ Requires
 Used By
 ~~~~~~~
 
+* [function] ``th-p``
+
 * [mixin] ``th-property``
 
 Since
 ~~~~~
 
 0.0.10
+
+th-p
+----
+
+Since
+~~~~~
+
+0.0.15
+
+Source
+~~~~~~
+
+.. code-block:: scss
+
+	@function th-p() { 
+	  @return th-property(
+	    $property-name: $property-name,
+	    $heading: $heading,
+	    $breakpoint: $breakpoint,
+	    $convert: $convert,
+	    $base-font-size: $base-font-size
+	  );
+	}
+
+Description
+~~~~~~~~~~~
+
+Alias to th-property() function.
+
+Requires
+~~~~~~~~
+
+* ``th-property``
+
+Since
+~~~~~
+
+0.0.15
 
 th-property
 -----------
@@ -227,7 +267,47 @@ Used By
 
 * [mixin] ``th-heading``
 
+* [mixin] ``th-p``
+
 Since
 ~~~~~
 
 0.0.14
+
+th-p
+----
+
+Since
+~~~~~
+
+0.0.15
+
+Source
+~~~~~~
+
+.. code-block:: scss
+
+	@mixin th-p() { 
+	  @include th-property(
+	    $property-name: $property-name,
+	    $heading: $heading,
+	    $breakpoint: $breakpoint,
+	    $convert: $convert,
+	    $base-font-size: $base-font-size
+	  );
+	}
+
+Description
+~~~~~~~~~~~
+
+Alias to th-property() mixin.
+
+Requires
+~~~~~~~~
+
+* ``th-property``
+
+Since
+~~~~~
+
+0.0.15
