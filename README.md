@@ -33,11 +33,11 @@ h1 { @include th-headings(h1); }
 // }
 
 // Return properties
-$font-size-tablet: th-property-font-size(h1, 768px);
+$font-size-tablet: th-property(font-size, h1, 768px);
 // 36px
 
 // Output properties
-.my-component { @include th-property-font-size(h1); }
+.my-component { @include th-property(font-size, h1); }
 
 // .my-component {
 //   font-size: 32px
@@ -59,6 +59,20 @@ h3 { @include th-headings(h3); }
 //   font-size: 150%;
 //   line-height: 1.25;
 // }
+
+// Advanced:
+// Using contextual properties:
+
+h1 {
+  @include th-heading-context(h1) {
+    $heading: th-core-context-get(heading);
+    font-size: th-property(font-size, $heading);
+  }
+}
+
+// h1 {
+//  font-size: 32px;
+//  font-size: 36px
 ```
 
 ## Libsass Compatible

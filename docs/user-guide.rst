@@ -423,47 +423,41 @@ You can return the following contextual properties from the heading with
 Working With Properties
 -----------------------
 
-You can output a heading value with a series of different mixins:
+You can output a heading value with:
 
--  ``th-property-font-size()``
--  ``th-property-line-height()``
--  ``th-property-margin-top()``
--  ``th-property-margin-bottom()``
+-  ``th-property()``
 
 Each mixin will return its respective property, like so:
 
 .. code-block:: scss
 
    // Output h1 font size
-   @include th-property-font-size(h1);
+   @include th-property(font-size, h1);
 
 
 Which will output something similar to:
 
 .. code-block:: scss
 
-   // th-property-font-size mixin output
+   // th-property mixin output
    font-size: 32px;
 
-You can return a heading value with a series of different functions:
+You can return a heading value with:
 
--  ``th-property-font-size()``
--  ``th-property-line-height()``
--  ``th-property-margin-top()``
--  ``th-property-margin-bottom()``
+-  ``th-property()``
 
 Each function will return its respective property, like so:
 
 .. code-block:: scss
 
     // Return h1 font size
-    th-property-font-size(h1);
+    th-property(font-size, h1);
 
 Which will return a number:
 
 .. code-block:: scss
 
-   // th-property-font-size function return
+   // th-property function return
    32px
 
 Property Breakpoints
@@ -474,7 +468,8 @@ You can output the property for a heading with a breakpoint:
 .. code-block:: scss
 
    // Output h1 font size with 768px breakpoint font size
-   @include th-property-font-size(
+   @include th-property(
+      $property-name: font-size,
       $heading: h1,
       $breakpoint: 768px
    );
@@ -488,7 +483,8 @@ parameter to another unit
 .. code-block:: scss
 
     // Output h1 font size without unit conversion
-    @include th-property-font-size(
+    @include th-property(
+        $property-name: font-size,
         $heading: h1,
         $convert: px
     );
@@ -510,7 +506,8 @@ parameter as false:
 .. code-block:: scss
 
     // Output h1 font size without unit conversion
-    @include th-property-font-size(
+    @include th-property(
+        $property-name: font-size,
         $heading: h1,
         $convert: false
     );
@@ -525,7 +522,8 @@ the font size context used:
 .. code-block:: scss
 
     // Output h1 line height with a font size context of 24px
-    @include th-property-line-height(
+    @include th-property(
+        $property-name: line-height,
         $heading: h1,
         $base-font-size: 24px
     );
