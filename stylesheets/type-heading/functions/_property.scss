@@ -46,14 +46,13 @@
 ///   )
 
 @function th-property(
-  $property,
+  $property-name,
   $heading,
   $breakpoint: false,
   $convert: true,
   $base-font-size: $th-base-font-size
 ){
   $heading: th-heading($heading, $breakpoint);
-  $property-name: $property;
   $property: _th-property-get($heading, $property-name);
   @if $property-name != font-size {
     $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
@@ -176,7 +175,7 @@
   $_return: $base-font-size;
   @if $base-font-size == $th-base-font-size {
     $_return: th-property(
-      $property: font-size,
+      $property-name: font-size,
       $heading: $heading,
       $breakpoint: $breakpoint,
       $convert: false

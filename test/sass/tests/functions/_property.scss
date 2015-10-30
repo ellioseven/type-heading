@@ -12,7 +12,7 @@ function th-property {
       result: 0.55556em;
     }
     @include th-assert-actual {
-      result: th-property($heading: h1, $property: font-size);
+      result: th-property($heading: h1, $property-name: font-size);
     }
   }
 
@@ -23,7 +23,7 @@ function th-property {
       result: 2.77778em;
     }
     @include th-assert-actual {
-      result: th-property($heading: h1, $property: font-size, $breakpoint: 768px);
+      result: th-property($heading: h1, $property-name: font-size, $breakpoint: 768px);
     }
   }
 
@@ -34,7 +34,7 @@ function th-property {
       result: 3px;
     }
     @include th-assert-actual {
-      result: th-property($heading: h3, $property: margin-top);
+      result: th-property($heading: h3, $property-name: margin-top);
     }
   }
 
@@ -45,7 +45,7 @@ function th-property {
       result: 0.16667rem;
     }
     @include th-assert-actual {
-      result: th-property($heading: h3, $property: margin-bottom, $breakpoint: 768px);
+      result: th-property($heading: h3, $property-name: margin-bottom, $breakpoint: 768px);
     }
   }
 
@@ -56,7 +56,7 @@ function th-property {
       result: 3px;
     }
     @include th-assert-actual {
-      result: th-property($heading: h3, $property: margin-top);
+      result: th-property($heading: h3, $property-name: margin-top);
     }
   }
 
@@ -67,7 +67,7 @@ function th-property {
       result: 0.33333;
     }
     @include th-assert-actual {
-      result: th-property($heading: h5, $property: line-height);
+      result: th-property($heading: h5, $property-name: line-height);
     }
   }
 
@@ -78,7 +78,7 @@ function th-property {
       result: 55.55556%;
     }
     @include th-assert-actual {
-      result: th-property($heading: h1, $property: font-size, $breakpoint: false, $convert: percent);
+      result: th-property($heading: h1, $property-name: font-size, $breakpoint: false, $convert: percent);
     }
   }
 
@@ -89,7 +89,7 @@ function th-property {
       result: 357.14286%;
     }
     @include th-assert-actual {
-      result: th-property($heading: h1, $property: font-size, $breakpoint: 768px, $convert: percent, $base-font-size: 14px);
+      result: th-property($heading: h1, $property-name: font-size, $breakpoint: 768px, $convert: percent, $base-font-size: 14px);
     }
   }
 
@@ -170,7 +170,7 @@ function th-property-font-size {
     }
     @include th-assert-actual {
       result: th-property(
-        $property: font-size,
+        $property-name: font-size,
         $heading: h1
       );
     }
@@ -184,7 +184,7 @@ function th-property-font-size {
     }
     @include th-assert-actual {
       result: th-property(
-        $property: font-size,
+        $property-name: font-size,
         $heading: h1,
         $breakpoint: 768px
       );
@@ -199,7 +199,7 @@ function th-property-font-size {
     }
     @include th-assert-actual {
       result: th-property(
-        $property: font-size,
+        $property-name: font-size,
         $heading: h6
       );
     }
@@ -220,7 +220,7 @@ function th-property-line-height {
     }
     @include th-assert-actual {
       result: th-property(
-        $property: line-height,
+        $property-name: line-height,
         $heading: h1
       );
     }
@@ -234,7 +234,7 @@ function th-property-line-height {
     }
     @include th-assert-actual {
       result: th-property(
-        $property: line-height,
+        $property-name: line-height,
         $heading: h1,
         $breakpoint: 768px
       );
@@ -256,7 +256,7 @@ function th-property-margin-top {
     }
     @include th-assert-actual {
       result: th-property(
-        $property: margin-top,
+        $property-name: margin-top,
         $heading: h1
       );
     }
@@ -270,7 +270,7 @@ function th-property-margin-top {
     }
     @include th-assert-actual {
       result: th-property(
-        $property: margin-top,
+        $property-name: margin-top,
         $heading: h1,
         $breakpoint: 768px
       );
@@ -285,7 +285,7 @@ function th-property-margin-top {
     }
     @include th-assert-actual {
       result: th-property(
-        $property: margin-top,
+        $property-name: margin-top,
         $heading: h2
       );
     }
@@ -307,7 +307,7 @@ function th-property-margin-bottom {
     @include th-assert-actual {
       @include th-assert-actual {
         result: th-property(
-          $property: margin-bottom,
+          $property-name: margin-bottom,
           $heading: h1
         );
       }
@@ -323,7 +323,7 @@ function th-property-margin-bottom {
     @include th-assert-actual {
       @include th-assert-actual {
         result: th-property(
-          $property: margin-bottom,
+          $property-name: margin-bottom,
           $heading: h1,
           $breakpoint: 768px
         );
@@ -339,7 +339,7 @@ function th-property-margin-bottom {
     }
     @include th-assert-actual {
       result: th-property(
-        $property: margin-bottom,
+        $property-name: margin-bottom,
         $heading: h2
       );
     }

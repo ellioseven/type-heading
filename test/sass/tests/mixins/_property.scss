@@ -13,7 +13,7 @@ mixin th-property {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: font-size,
+        $property-name: font-size,
         $heading: h1
       );
     }
@@ -27,7 +27,7 @@ mixin th-property {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: font-size,
+        $property-name: font-size,
         $heading: h1,
         $breakpoint: 768px
       );
@@ -42,7 +42,7 @@ mixin th-property {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: font-size,
+        $property-name: font-size,
         $heading: h6
       );
     }
@@ -56,7 +56,7 @@ mixin th-property {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: font-size,
+        $property-name: font-size,
         $heading: h6,
         $convert: false
       );
@@ -71,7 +71,7 @@ mixin th-property {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: font-size,
+        $property-name: font-size,
         $heading: h1,
         $breakpoint: false,
         $convert: percent
@@ -87,7 +87,7 @@ mixin th-property {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: font-size,
+        $property-name: font-size,
         $heading: h1,
         $breakpoint: 768px,
         $convert: percent,
@@ -111,7 +111,7 @@ mixin th-property-line-height {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: line-height,
+        $property-name: line-height,
         $heading: h1
       );
     }
@@ -125,7 +125,7 @@ mixin th-property-line-height {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: line-height,
+        $property-name: line-height,
         $heading: h1,
         $breakpoint: 768px
       );
@@ -140,7 +140,7 @@ mixin th-property-line-height {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: line-height,
+        $property-name: line-height,
         $heading: h1,
         $convert: false
       );
@@ -155,7 +155,7 @@ mixin th-property-line-height {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: line-height,
+        $property-name: line-height,
         $heading: h1,
         $breakpoint: false,
         $convert: percent
@@ -178,7 +178,7 @@ mixin th-property-margin-top {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: margin-top,
+        $property-name: margin-top,
         $heading: h1
       );
     }
@@ -192,7 +192,7 @@ mixin th-property-margin-top {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: margin-top,
+        $property-name: margin-top,
         $heading: h1,
         $breakpoint: 768px
       );
@@ -207,7 +207,7 @@ mixin th-property-margin-top {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: margin-top,
+        $property-name: margin-top,
         $heading: h2
       );
     }
@@ -221,7 +221,7 @@ mixin th-property-margin-top {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: margin-top,
+        $property-name: margin-top,
         $heading: h2,
         $convert: false
       );
@@ -236,7 +236,7 @@ mixin th-property-margin-top {
   }
     @include th-assert-actual {
       @include th-property(
-        $property: margin-top,
+        $property-name: margin-top,
         $heading: h1,
         $convert: percent
       );
@@ -258,7 +258,7 @@ mixin th-property-margin-bottom {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: margin-bottom,
+        $property-name: margin-bottom,
         $heading: h1
       );
     }
@@ -272,7 +272,7 @@ mixin th-property-margin-bottom {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: margin-bottom,
+        $property-name: margin-bottom,
         $heading: h1,
         $breakpoint: 768px
       );
@@ -287,7 +287,7 @@ mixin th-property-margin-bottom {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: margin-bottom,
+        $property-name: margin-bottom,
         $heading: h2
       );
     }
@@ -301,7 +301,7 @@ mixin th-property-margin-bottom {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: margin-bottom,
+        $property-name: margin-bottom,
         $heading: h2,
         $convert: false
       );
@@ -316,7 +316,7 @@ mixin th-property-margin-bottom {
     }
     @include th-assert-actual {
       @include th-property(
-        $property: margin-bottom,
+        $property-name: margin-bottom,
         $heading: h1,
         $convert: percent
       );

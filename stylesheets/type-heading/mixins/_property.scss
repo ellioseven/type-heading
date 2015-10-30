@@ -41,21 +41,21 @@
 ///   )
 
 @mixin th-property(
-  $property,
+  $property-name,
   $heading,
   $breakpoint: false,
   $convert: true,
   $base-font-size: $th-base-font-size
 ){
-  @if font-size != $property {
+  @if font-size != $property-name {
     $base-font-size: _th-property-base(
       $heading,
       $breakpoint,
       $base-font-size
     );
   }
-  #{$property}: th-property(
-    $property: $property,
+  #{$property-name}: th-property(
+    $property-name: $property-name,
     $heading: $heading,
     $breakpoint: $breakpoint,
     $convert: $convert,

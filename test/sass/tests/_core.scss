@@ -44,10 +44,10 @@ mixin th-core-context-get {
     @include th-assert-actual {
       @include th-core-context-set(heading, th-heading(h1)) {
         $heading: th-core-context-get(heading);
-        font-size: th-property($heading: $heading, $property: font-size, $convert: false);
-        line-height: th-property($heading: $heading, $property: line-height, $convert: false);
-        margin-top: th-property($heading: $heading, $property: margin-top, $convert: false);
-        margin-bottom: th-property($heading: $heading, $property: margin-bottom, $convert: false);
+        font-size: th-property($heading: $heading, $property-name: font-size, $convert: false);
+        line-height: th-property($heading: $heading, $property-name: line-height, $convert: false);
+        margin-top: th-property($heading: $heading, $property-name: margin-top, $convert: false);
+        margin-bottom: th-property($heading: $heading, $property-name: margin-bottom, $convert: false);
       }
     }
   }
@@ -98,10 +98,10 @@ mixin th-core-context-set {
     @include th-assert-actual {
       @include th-core-context-set(heading, th-heading(h1)) {
         $heading: th-core-context-get(heading);
-        font-size: th-property($heading: $heading, $property: font-size, $convert: false);
-        line-height: th-property($heading: $heading, $property: line-height, $convert: false);
-        margin-top: th-property($heading: $heading, $property: margin-top, $convert: false);
-        margin-bottom: th-property($heading: $heading, $property: margin-bottom, $convert: false);
+        font-size: th-property($heading: $heading, $property-name: font-size, $convert: false);
+        line-height: th-property($heading: $heading, $property-name: line-height, $convert: false);
+        margin-top: th-property($heading: $heading, $property-name: margin-top, $convert: false);
+        margin-bottom: th-property($heading: $heading, $property-name: margin-bottom, $convert: false);
       }
     }
   }

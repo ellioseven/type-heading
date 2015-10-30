@@ -109,7 +109,7 @@
   @if $breakpoint {
     @each $heading-list in $heading {
       @if th-property(
-        $property: breakpoint,
+        $property-name: breakpoint,
         $heading: $heading-list,
         $convert: false) == $breakpoint {
         $heading: $heading-list;
