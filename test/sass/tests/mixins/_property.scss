@@ -96,13 +96,6 @@ mixin th-property {
     }
   }
 
-}
-
-// th-property-line-height()
-// ------------------------------
-
-mixin th-property-line-height {
-
   @include th-assert(
     $describe: "Output line-height for a heading."
   ){
@@ -162,13 +155,6 @@ mixin th-property-line-height {
       );
     }
   }
-
-}
-
-// th-property-margin-top()
-// ------------------------------
-
-mixin th-property-margin-top {
 
   @include th-assert(
     $describe: "Output margin-top for a heading."
@@ -242,13 +228,6 @@ mixin th-property-margin-top {
       );
     }
   }
-
-}
-
-// th-property-margin-bottom()
-// ------------------------------
-
-mixin th-property-margin-bottom {
 
   @include th-assert(
     $describe: "Output margin-bottom for a heading."

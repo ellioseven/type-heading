@@ -93,6 +93,168 @@ function th-property {
     }
   }
 
+  @include th-assert(
+    $describe: "Return font size from heading"
+  ){
+    @include th-assert-expect {
+      result: 0.55556em;
+    }
+    @include th-assert-actual {
+      result: th-property(
+        $property-name: font-size,
+        $heading: h1
+      );
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return font size from heading with breakpoint"
+  ){
+    @include th-assert-expect {
+      result: 2.77778em;
+    }
+    @include th-assert-actual {
+      result: th-property(
+        $property-name: font-size,
+        $heading: h1,
+        $breakpoint: 768px
+      );
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return font size from heading with a single value"
+  ){
+    @include th-assert-expect {
+      result: 0.27778em;
+    }
+    @include th-assert-actual {
+      result: th-property(
+        $property-name: font-size,
+        $heading: h6
+      );
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return line height from heading"
+  ){
+    @include th-assert-expect {
+      result: 2;
+    }
+    @include th-assert-actual {
+      result: th-property(
+        $property-name: line-height,
+        $heading: h1
+      );
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return line height from heading with breakpoint"
+  ){
+    @include th-assert-expect {
+      result: 1.2;
+    }
+    @include th-assert-actual {
+      result: th-property(
+        $property-name: line-height,
+        $heading: h1,
+        $breakpoint: 768px
+      );
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return margin-top from heading"
+  ){
+    @include th-assert-expect {
+      result: 30px;
+    }
+    @include th-assert-actual {
+      result: th-property(
+        $property-name: margin-top,
+        $heading: h1
+      );
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return margin-top from heading with breakpoint"
+  ){
+    @include th-assert-expect {
+      result: 70px;
+    }
+    @include th-assert-actual {
+      result: th-property(
+        $property-name: margin-top,
+        $heading: h1,
+        $breakpoint: 768px
+      );
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return margin-top from heading with single value"
+  ){
+    @include th-assert-expect {
+      result: 29px;
+    }
+    @include th-assert-actual {
+      result: th-property(
+        $property-name: margin-top,
+        $heading: h2
+      );
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return margin-bottom from heading"
+  ){
+    @include th-assert-expect {
+      result: 1.66667rem;
+    }
+    @include th-assert-actual {
+      @include th-assert-actual {
+        result: th-property(
+          $property-name: margin-bottom,
+          $heading: h1
+        );
+      }
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return margin-bottom from heading with breakpoint"
+  ){
+    @include th-assert-expect {
+      result: 3.33333rem;
+    }
+    @include th-assert-actual {
+      @include th-assert-actual {
+        result: th-property(
+          $property-name: margin-bottom,
+          $heading: h1,
+          $breakpoint: 768px
+        );
+      }
+    }
+  }
+
+  @include th-assert(
+    $describe: "Return margin-bottom from heading with single value"
+  ){
+    @include th-assert-expect {
+      result: 1.20833rem;
+    }
+    @include th-assert-actual {
+      result: th-property(
+        $property-name: margin-bottom,
+        $heading: h2
+      );
+    }
+  }
+
 }
 
 // _th-property-get()
@@ -152,196 +314,6 @@ function _th-property-get {
     }
     @include th-assert-actual {
       result: _th-property-get((10px 20px 30px), margin-bottom);
-    }
-  }
-
-}
-
-// th-property-font-size()
-// ------------------------------
-
-function th-property-font-size {
-
-  @include th-assert(
-    $describe: "Return font size from heading"
-  ){
-    @include th-assert-expect {
-      result: 0.55556em;
-    }
-    @include th-assert-actual {
-      result: th-property(
-        $property-name: font-size,
-        $heading: h1
-      );
-    }
-  }
-
-  @include th-assert(
-    $describe: "Return font size from heading with breakpoint"
-  ){
-    @include th-assert-expect {
-      result: 2.77778em;
-    }
-    @include th-assert-actual {
-      result: th-property(
-        $property-name: font-size,
-        $heading: h1,
-        $breakpoint: 768px
-      );
-    }
-  }
-
-  @include th-assert(
-    $describe: "Return font size from heading with a single value"
-  ){
-    @include th-assert-expect {
-      result: 0.27778em;
-    }
-    @include th-assert-actual {
-      result: th-property(
-        $property-name: font-size,
-        $heading: h6
-      );
-    }
-  }
-
-}
-
-// th-property-line-height()
-// ------------------------------
-
-function th-property-line-height {
-
-  @include th-assert(
-    $describe: "Return line height from heading"
-  ){
-    @include th-assert-expect {
-      result: 2;
-    }
-    @include th-assert-actual {
-      result: th-property(
-        $property-name: line-height,
-        $heading: h1
-      );
-    }
-  }
-
-  @include th-assert(
-    $describe: "Return line height from heading with breakpoint"
-  ){
-    @include th-assert-expect {
-      result: 1.2;
-    }
-    @include th-assert-actual {
-      result: th-property(
-        $property-name: line-height,
-        $heading: h1,
-        $breakpoint: 768px
-      );
-    }
-  }
-
-}
-
-// th-property-margin-top()
-// ------------------------------
-
-function th-property-margin-top {
-
-  @include th-assert(
-    $describe: "Return margin-top from heading"
-  ){
-    @include th-assert-expect {
-      result: 30px;
-    }
-    @include th-assert-actual {
-      result: th-property(
-        $property-name: margin-top,
-        $heading: h1
-      );
-    }
-  }
-
-  @include th-assert(
-    $describe: "Return margin-top from heading with breakpoint"
-  ){
-    @include th-assert-expect {
-      result: 70px;
-    }
-    @include th-assert-actual {
-      result: th-property(
-        $property-name: margin-top,
-        $heading: h1,
-        $breakpoint: 768px
-      );
-    }
-  }
-
-  @include th-assert(
-    $describe: "Return margin-top from heading with single value"
-  ){
-    @include th-assert-expect {
-      result: 29px;
-    }
-    @include th-assert-actual {
-      result: th-property(
-        $property-name: margin-top,
-        $heading: h2
-      );
-    }
-  }
-
-}
-
-// th-property-margin-bottom()
-// ------------------------------
-
-function th-property-margin-bottom {
-
-  @include th-assert(
-    $describe: "Return margin-bottom from heading"
-  ){
-    @include th-assert-expect {
-      result: 1.66667rem;
-    }
-    @include th-assert-actual {
-      @include th-assert-actual {
-        result: th-property(
-          $property-name: margin-bottom,
-          $heading: h1
-        );
-      }
-    }
-  }
-
-  @include th-assert(
-    $describe: "Return margin-bottom from heading with breakpoint"
-  ){
-    @include th-assert-expect {
-      result: 3.33333rem;
-    }
-    @include th-assert-actual {
-      @include th-assert-actual {
-        result: th-property(
-          $property-name: margin-bottom,
-          $heading: h1,
-          $breakpoint: 768px
-        );
-      }
-    }
-  }
-
-  @include th-assert(
-    $describe: "Return margin-bottom from heading with single value"
-  ){
-    @include th-assert-expect {
-      result: 1.20833rem;
-    }
-    @include th-assert-actual {
-      result: th-property(
-        $property-name: margin-bottom,
-        $heading: h2
-      );
     }
   }
 
