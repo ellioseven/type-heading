@@ -58,7 +58,7 @@
     $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
   }
   @if $property == default or $property == false {
-    $property: th-property-default($property-name, $base-font-size, false);
+    $property: _th-property-default($property-name, $base-font-size, false);
   }
   @if string == type-of($convert) {
     $property: th-unit-convert($convert, $property, $base-font-size);
@@ -89,10 +89,11 @@
   @return th-list-get-nth-deep($heading, $property-indexes);
 }
 
-//  th-property-default()
+//  _th-property-default()
 /// Return default property value.
 ///
 /// @since 0.0.10
+/// @access private
 /// @return {number} The default property value.
 ///
 /// @param {string} $property-name - (font-size | line-height | margin-top | margin-bottom | breakpoint) A property name.
@@ -100,9 +101,9 @@
 /// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
 ///
 /// @example scss - Get default font size.
-///   th-property-default(font-size)
+///   _th-property-default(font-size)
 
-@function th-property-default(
+@function _th-property-default(
   $property-name,
   $convert: true,
   $base-font-size: $th-base-font-size

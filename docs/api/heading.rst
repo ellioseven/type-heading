@@ -161,17 +161,17 @@ Source
 
 	@mixin th-heading($heading, $breakpoint: false, $base-font-size: $th-base-font-size, $include: false) { 
 	  $heading: th-heading($heading, $breakpoint);
-	  $properties: (margin-top margin-bottom font-size line-height);
 	  $font-size: th-property(
-	    $property: font-size,
+	    $property-name: font-size,
 	    $heading: $heading,
 	    $base-font-size: $base-font-size,
 	    $convert: false
 	  );
+	  $properties: th-list-flatten($_th-core-heading-structure);
 	  @each $property in $properties {
 	    @if not $include or th-list-has($include, $property) {
 	      @include th-property(
-	        $property: $property,
+	        $property-name: $property,
 	        $heading: $heading,
 	        $base-font-size: th-if(font-size == $property, $base-font-size, $font-size)
 	      );

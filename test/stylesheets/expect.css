@@ -230,7 +230,7 @@ function th-property-margin-bottom {
   result: 1.20833rem;
 }
 
-function th-property-default {
+function _th-property-default {
   /* Describe: Return default font size value. */
   result: 0.05556em;
 }

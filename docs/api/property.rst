@@ -16,13 +16,12 @@ Source
 
 	@function th-property($heading, $property-name, $breakpoint: false, $convert: true, $base-font-size: $th-base-font-size) { 
 	  $heading: th-heading($heading, $breakpoint);
-	  $property-name: $property;
 	  $property: _th-property-get($heading, $property-name);
 	  @if $property-name != font-size {
 	    $base-font-size: _th-property-base($heading, $breakpoint, $base-font-size);
 	  }
 	  @if $property == default or $property == false {
-	    $property: th-property-default($property-name, $base-font-size, false);
+	    $property: _th-property-default($property-name, $base-font-size, false);
 	  }
 	  @if string == type-of($convert) {
 	    $property: th-unit-convert($convert, $property, $base-font-size);
@@ -112,78 +111,10 @@ Requires
 
 * ``th-heading``
 
-* ``th-property-default``
-
 Used By
 ~~~~~~~
 
 * [mixin] ``th-property``
-
-Since
-~~~~~
-
-0.0.10
-
-th-property-default
--------------------
-
-Since
-~~~~~
-
-0.0.10
-
-Source
-~~~~~~
-
-.. code-block:: scss
-
-	@function th-property-default($property-name, $convert: true, $base-font-size: $th-base-font-size) { 
-	  $property: map-get($th-property-defaults, $property-name);
-	  @if $convert == true {
-	    $property: _th-property-unit-convert-property($property-name, $property, $base-font-size);
-	  }
-	  @return $property;
-	}
-
-Description
-~~~~~~~~~~~
-
-Return default property value.
-
-Parameters
-~~~~~~~~~~
-
-======================================================================================================== ======================================================================================================== ======================================================================================================== ========================================================================================================
-Name                                                                                                     Description                                                                                              Type                                                                                                     Default Value                                                                                           
-======================================================================================================== ======================================================================================================== ======================================================================================================== ========================================================================================================
-property-name                                                                                            (font-size | line-height | margin-top | margin-bottom | breakpoint) A property name.                     string                                                                                                                                                                                                           
-convert                                                                                                  (true | false | px | em | rem | rel | percent) If returned value should be unit converted or overridden. boolean | string                                                                                         true                                                                                                    
-base-font-size                                                                                           Font size used for relative calculations.                                                                number                                                                                                   $th-base-font-size                                                                                      
-======================================================================================================== ======================================================================================================== ======================================================================================================== ========================================================================================================
-
-Returns
-~~~~~~~
-
-``number`` — The default property value.
-
-Example
-~~~~~~~
-
-Get default font size.
-
-.. code-block:: scss
-
-	th-property-default(font-size)
-
-Requires
-~~~~~~~~
-
-* ``th-property-defaults``
-
-Used By
-~~~~~~~
-
-* [function] ``th-property``
 
 Since
 ~~~~~
@@ -204,15 +135,15 @@ Source
 .. code-block:: scss
 
 	@mixin th-property($heading, $property-name, $breakpoint: false, $convert: true, $base-font-size: $th-base-font-size) { 
-	  @if font-size != $property {
+	  @if font-size != $property-name {
 	    $base-font-size: _th-property-base(
 	      $heading,
 	      $breakpoint,
 	      $base-font-size
 	    );
 	  }
-	  #{$property}: th-property(
-	    $property: $property,
+	  #{$property-name}: th-property(
+	    $property-name: $property-name,
 	    $heading: $heading,
 	    $breakpoint: $breakpoint,
 	    $convert: $convert,

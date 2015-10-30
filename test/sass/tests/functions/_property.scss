@@ -347,10 +347,10 @@ function th-property-margin-bottom {
 
 }
 
-// th-property-default()
+// _th-property-default()
 // ------------------------------
 
-function th-property-default {
+function _th-property-default {
 
   @include th-assert(
     $describe: "Return default font size value."
@@ -359,7 +359,7 @@ function th-property-default {
       result: 0.05556em;
     }
     @include th-assert-actual {
-      result: th-property-default(font-size);
+      result: _th-property-default(font-size);
     }
   }
 

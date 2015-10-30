@@ -160,8 +160,6 @@ margin-bottom                      Default margin bottom for headings number    
 Used By
 ~~~~~~~
 
-* [function] ``th-property-default``
-
 Since
 ~~~~~
 
