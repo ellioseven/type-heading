@@ -71,6 +71,8 @@ Requires
 Used By
 ~~~~~~~
 
+* [function] ``th-h``
+
 * [mixin] ``th-heading``
 
 * [function] ``th-property``
@@ -145,6 +147,41 @@ Since
 ~~~~~
 
 0.0.10
+
+th-h
+----
+
+Since
+~~~~~
+
+0.0.15
+
+Source
+~~~~~~
+
+.. code-block:: scss
+
+	@function th-h() { 
+	  @return th-heading(
+	    $heading: $heading,
+	    $breakpoint: $breakpoint
+	  )
+	}
+
+Description
+~~~~~~~~~~~
+
+Alias to th-heading() function.
+
+Requires
+~~~~~~~~
+
+* ``th-heading``
+
+Since
+~~~~~
+
+0.0.15
 
 th-heading
 ----------
@@ -244,6 +281,8 @@ Used By
 
 * [mixin] ``th-headings``
 
+* [mixin] ``th-h``
+
 Since
 ~~~~~
 
@@ -319,6 +358,8 @@ Requires
 Used By
 ~~~~~~~
 
+* [mixin] ``th-hs``
+
 Since
 ~~~~~
 
@@ -392,6 +433,79 @@ Used By
 ~~~~~~~
 
 * [mixin] ``th-headings``
+
+Since
+~~~~~
+
+0.0.15
+
+th-h
+----
+
+Since
+~~~~~
+
+0.0.15
+
+Source
+~~~~~~
+
+.. code-block:: scss
+
+	@mixin th-h() { 
+	  @include th-heading(
+	    $heading: $heading,
+	    $breakpoint: $breakpoint,
+	    $base-font-size: $base-font-size,
+	    $include: $include
+	  );
+	}
+
+Description
+~~~~~~~~~~~
+
+Alias to th-heading() mixin.
+
+Requires
+~~~~~~~~
+
+* ``th-heading``
+
+Since
+~~~~~
+
+0.0.15
+
+th-hs
+-----
+
+Since
+~~~~~
+
+0.0.15
+
+Source
+~~~~~~
+
+.. code-block:: scss
+
+	@mixin th-hs() { 
+	  @include th-headings(
+	    $heading: $heading,
+	    $base-font-size: $base-font-size,
+	    $include: $include
+	  );
+	}
+
+Description
+~~~~~~~~~~~
+
+Alias to th-headings() mixin.
+
+Requires
+~~~~~~~~
+
+* ``th-headings``
 
 Since
 ~~~~~
