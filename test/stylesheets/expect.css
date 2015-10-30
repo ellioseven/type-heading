@@ -164,6 +164,15 @@ function th-heading-get-next {
   result: 50px 60px 70px 80px 768px;
 }
 
+function th-h {
+  /* Describe: Return heading */
+  result: 10px 20px 30px 40px;
+  /* Describe: Return heading by breakpoint */
+  result: 50px 60px 70px 80px 768px;
+  /* Describe: Return a further heading by breakpoint */
+  result: 90px 100px 110px 120px 1024px;
+}
+
 function th-property {
   /* Describe: Return property from heading */
   result: 0.55556em;
@@ -181,6 +190,28 @@ function th-property {
   result: 55.55556%;
   /* Describe: Return property from heading and unit override to percent with base font size of 14px. */
   result: 357.14286%;
+  /* Describe: Return font size from heading */
+  result: 0.55556em;
+  /* Describe: Return font size from heading with breakpoint */
+  result: 2.77778em;
+  /* Describe: Return font size from heading with a single value */
+  result: 0.27778em;
+  /* Describe: Return line height from heading */
+  result: 2;
+  /* Describe: Return line height from heading with breakpoint */
+  result: 1.2;
+  /* Describe: Return margin-top from heading */
+  result: 30px;
+  /* Describe: Return margin-top from heading with breakpoint */
+  result: 70px;
+  /* Describe: Return margin-top from heading with single value */
+  result: 29px;
+  /* Describe: Return margin-bottom from heading */
+  result: 1.66667rem;
+  /* Describe: Return margin-bottom from heading with breakpoint */
+  result: 3.33333rem;
+  /* Describe: Return margin-bottom from heading with single value */
+  result: 1.20833rem;
 }
 
 function _th-property-get {
@@ -196,40 +227,6 @@ function _th-property-get {
   result: 30px;
 }
 
-function th-property-font-size {
-  /* Describe: Return font size from heading */
-  result: 0.55556em;
-  /* Describe: Return font size from heading with breakpoint */
-  result: 2.77778em;
-  /* Describe: Return font size from heading with a single value */
-  result: 0.27778em;
-}
-
-function th-property-line-height {
-  /* Describe: Return line height from heading */
-  result: 2;
-  /* Describe: Return line height from heading with breakpoint */
-  result: 1.2;
-}
-
-function th-property-margin-top {
-  /* Describe: Return margin-top from heading */
-  result: 30px;
-  /* Describe: Return margin-top from heading with breakpoint */
-  result: 70px;
-  /* Describe: Return margin-top from heading with single value */
-  result: 29px;
-}
-
-function th-property-margin-bottom {
-  /* Describe: Return margin-bottom from heading */
-  result: 1.66667rem;
-  /* Describe: Return margin-bottom from heading with breakpoint */
-  result: 3.33333rem;
-  /* Describe: Return margin-bottom from heading with single value */
-  result: 1.20833rem;
-}
-
 function _th-property-default {
   /* Describe: Return default font size value. */
   result: 0.05556em;
@@ -240,6 +237,47 @@ function _th-property-unit-convert-property {
   result: 0.55556em;
   /* Describe: Convert 10px font size with base font size of 20px. */
   result: 0.5em;
+}
+
+function th-p {
+  /* Describe: Return property from heading */
+  result: 0.55556em;
+  /* Describe: Return property from heading with breakpoint */
+  result: 2.77778em;
+  /* Describe: Return default property from heading */
+  result: 3px;
+  /* Describe: Return default property from heading with breakpoint */
+  result: 0.16667rem;
+  /* Describe: Return default from heading via keyword */
+  result: 3px;
+  /* Describe: Return default from heading via missing value */
+  result: 0.33333;
+  /* Describe: Return property from heading and unit override to percent. */
+  result: 55.55556%;
+  /* Describe: Return property from heading and unit override to percent with base font size of 14px. */
+  result: 357.14286%;
+  /* Describe: Return font size from heading */
+  result: 0.55556em;
+  /* Describe: Return font size from heading with breakpoint */
+  result: 2.77778em;
+  /* Describe: Return font size from heading with a single value */
+  result: 0.27778em;
+  /* Describe: Return line height from heading */
+  result: 2;
+  /* Describe: Return line height from heading with breakpoint */
+  result: 1.2;
+  /* Describe: Return margin-top from heading */
+  result: 30px;
+  /* Describe: Return margin-top from heading with breakpoint */
+  result: 70px;
+  /* Describe: Return margin-top from heading with single value */
+  result: 29px;
+  /* Describe: Return margin-bottom from heading */
+  result: 1.66667rem;
+  /* Describe: Return margin-bottom from heading with breakpoint */
+  result: 3.33333rem;
+  /* Describe: Return margin-bottom from heading with single value */
+  result: 1.20833rem;
 }
 
 mixin th-heading {
@@ -357,6 +395,91 @@ mixin th-heading-context {
   }
 }
 
+mixin th-h {
+  /* Describe: Output styles for a heading. */
+  font-size: 0.55556em;
+  line-height: 2;
+  margin-top: 30px;
+  margin-bottom: 1.66667rem;
+  /* Describe: Output styles for a heading manually. */
+  font-size: 0.55556em;
+  line-height: 2;
+  margin-top: 30px;
+  margin-bottom: 1.66667rem;
+  /* Describe: Output styles for a heading with a breakpoint. */
+  font-size: 2.77778em;
+  line-height: 1.2;
+  margin-top: 70px;
+  margin-bottom: 3.33333rem;
+  /* Describe: Output styles for a heading with a breakpoint manually. */
+  font-size: 2.77778em;
+  line-height: 1.2;
+  margin-top: 70px;
+  margin-bottom: 3.33333rem;
+  /* Describe: Output styles for a heading with a default keyword. */
+  font-size: 0.22222em;
+  line-height: 0.5;
+  margin-top: 28px;
+  margin-bottom: 2rem;
+  /* Describe: Output styles for a heading with only one value. */
+  font-size: 0.27778em;
+  line-height: 0.4;
+  margin-top: 3px;
+  margin-bottom: 0.16667rem;
+  /* Describe: Output styles for a heading with a singular list value. */
+  font-size: 0.5em;
+  line-height: 2.11111;
+  margin-top: 29px;
+  margin-bottom: 1.20833rem;
+  /* Describe: Output only font-size and line-height styles for a heading. */
+  font-size: 0.55556em;
+  line-height: 2;
+}
+
+mixin th-hs {
+  /* Describe: Output styles for a heading. */
+  font-size: 0.27778em;
+  line-height: 0.4;
+  margin-top: 3px;
+  margin-bottom: 0.16667rem;
+  /* Describe: Output styles for a heading with multiple breakpoints. */
+  font-size: 0.55556em;
+  line-height: 2;
+  margin-top: 30px;
+  margin-bottom: 1.66667rem;
+  /* Describe: Output font-size and line-height styles for h1 heading with multiple breakpoints. */
+  font-size: 0.55556em;
+  line-height: 2;
+}
+@media (min-width: 768px) {
+  mixin th-hs {
+    font-size: 2.77778em;
+    line-height: 1.2;
+    margin-top: 70px;
+    margin-bottom: 3.33333rem;
+  }
+}
+@media (min-width: 1024px) {
+  mixin th-hs {
+    font-size: 5em;
+    line-height: 1.11111;
+    margin-top: 110px;
+    margin-bottom: 5rem;
+  }
+}
+@media (min-width: 768px) {
+  mixin th-hs {
+    font-size: 2.77778em;
+    line-height: 1.2;
+  }
+}
+@media (min-width: 1024px) {
+  mixin th-hs {
+    font-size: 5em;
+    line-height: 1.11111;
+  }
+}
+
 mixin th-property {
   /* Describe: Output font-size for a heading. */
   font-size: 0.55556em;
@@ -370,9 +493,6 @@ mixin th-property {
   font-size: 55.55556%;
   /* Describe: Output property from heading and unit override to percent with base font size of 14px. */
   font-size: 357.14286%;
-}
-
-mixin th-property-line-height {
   /* Describe: Output line-height for a heading. */
   line-height: 2;
   /* Describe: Output line-height for a heading with a breakpoint. */
@@ -381,9 +501,6 @@ mixin th-property-line-height {
   line-height: 20px;
   /* Describe: Output line-height from heading and unit override to percent. */
   line-height: 200%;
-}
-
-mixin th-property-margin-top {
   /* Describe: Output margin-top for a heading. */
   margin-top: 30px;
   /* Describe: Output margin-top for a heading with a breakpoint. */
@@ -394,9 +511,49 @@ mixin th-property-margin-top {
   margin-top: 29px;
   /* Describe: Output margin-top from heading and unit override to percent. */
   margin-top: 300%;
+  /* Describe: Output margin-bottom for a heading. */
+  margin-bottom: 1.66667rem;
+  /* Describe: Output margin-bottom for a heading with a breakpoint. */
+  margin-bottom: 3.33333rem;
+  /* Describe: Output margin-bottom for a heading with a singular list value. */
+  margin-bottom: 1.20833rem;
+  /* Describe: Output margin-bottom for a heading without unit conversion. */
+  margin-bottom: 29px;
+  /* Describe: Output margin-bottom from heading and unit override to percent. */
+  margin-bottom: 400%;
 }
 
-mixin th-property-margin-bottom {
+mixin th-p {
+  /* Describe: Output font-size for a heading. */
+  font-size: 0.55556em;
+  /* Describe: Output font-size for a heading with a breakpoint. */
+  font-size: 2.77778em;
+  /* Describe: Output font-size for a heading with a single value. */
+  font-size: 0.27778em;
+  /* Describe: Output font-size for a heading without unit conversion. */
+  font-size: 5px;
+  /* Describe: Output font-size from heading and unit override to percent. */
+  font-size: 55.55556%;
+  /* Describe: Output property from heading and unit override to percent with base font size of 14px. */
+  font-size: 357.14286%;
+  /* Describe: Output line-height for a heading. */
+  line-height: 2;
+  /* Describe: Output line-height for a heading with a breakpoint. */
+  line-height: 1.2;
+  /* Describe: Output line-height for a heading without unit conversion. */
+  line-height: 20px;
+  /* Describe: Output line-height from heading and unit override to percent. */
+  line-height: 200%;
+  /* Describe: Output margin-top for a heading. */
+  margin-top: 30px;
+  /* Describe: Output margin-top for a heading with a breakpoint. */
+  margin-top: 70px;
+  /* Describe: Output margin-top for a heading with a singular list value. */
+  margin-top: 29px;
+  /* Describe: Output margin-top for a heading without unit conversion. */
+  margin-top: 29px;
+  /* Describe: Output margin-top from heading and unit override to percent. */
+  margin-top: 300%;
   /* Describe: Output margin-bottom for a heading. */
   margin-bottom: 1.66667rem;
   /* Describe: Output margin-bottom for a heading with a breakpoint. */
