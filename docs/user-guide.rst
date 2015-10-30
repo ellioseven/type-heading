@@ -378,11 +378,12 @@ This is particularly usefully when calculating arbitrary relative units:
 
 .. code-block:: scss
 
-    @include th-with(
+    @include th-heading-context(
         $heading: h2,
-        $convert: false
+        $breakpoint-output: true
     ){
-        $font-size: th-with-get(font-size);
+        $heading: th-core-context-get(heading);
+        $font-size: th-property(font-size, $heading);
         margin-top: em-calc(20px, $font-size);
         margin-bottom: em-calc(10px, $font-size);
     }
@@ -411,14 +412,6 @@ This will output something similar to:
             margin-bottom: .5;
         }
     }
-
-You can return the following contextual properties from the heading with
-``th-with-get``:
-
--   ``font-size``
--   ``line-height``
--   ``margin-top``
--   ``margin-bottom``
 
 Working With Properties
 -----------------------
