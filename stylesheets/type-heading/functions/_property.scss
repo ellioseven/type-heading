@@ -85,8 +85,7 @@
   $heading,
   $property-name
 ){
-  $properties: (font-size, line-height, (margin-top margin-bottom), breakpoint);
-  $property-indexes: th-list-get-index-deep($properties, $property-name);
+  $property-indexes: th-list-get-index-deep($_th-core-heading-structure, $property-name);
   @return th-list-get-nth-deep($heading, $property-indexes);
 }
 

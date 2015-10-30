@@ -175,6 +175,22 @@ function th-list-has-deep {
 
 }
 
+function th-list-flatten {
+
+  @include th-assert(
+  $describe: "Flatten multidimensional list."
+  ){
+    @include th-assert-expect {
+      result: (a, b, c, d);
+    }
+    @include th-assert-actual {
+      result: th-list-flatten((a, b, (c, d)));
+    }
+  }
+
+}
+
+
 // th-unit-strip()
 // ------------------------------
 

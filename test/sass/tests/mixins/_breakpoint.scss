@@ -10,10 +10,10 @@ mixin th-breakpoint {
   ){
     @include th-assert-expect {
       @media (min-width: 768px) {
-        margin-top: 69px;
-        margin-bottom: 2.875rem;
         font-size: 2.72222em;
         line-height: 1.20408;
+        margin-top: 69px;
+        margin-bottom: 2.875rem;
       }
     }
     @include th-assert-actual {
@@ -28,10 +28,10 @@ mixin th-breakpoint {
   ){
     @include th-assert-expect {
       @media (max-width: 768px) {
-        margin-top: 69px;
-        margin-bottom: 2.875rem;
         font-size: 2.72222em;
         line-height: 1.20408;
+        margin-top: 69px;
+        margin-bottom: 2.875rem;
       }
     }
     @include th-assert-actual {
@@ -46,10 +46,10 @@ mixin th-breakpoint {
   ){
     @include th-assert-expect {
       @media (min-width: 768px) and (max-width: 1023px) {
-        margin-top: 69px;
-        margin-bottom: 2.875rem;
         font-size: 2.72222em;
         line-height: 1.20408;
+        margin-top: 69px;
+        margin-bottom: 2.875rem;
       }
     }
     @include th-assert-actual {
@@ -70,10 +70,10 @@ mixin th-breakpoint-context {
     $describe: "Output a heading with a 768px breakpoint context."
   ){
     @include th-assert-expect {
-      margin-top: 110px;
-      margin-bottom: 5rem;
       font-size: 5em;
       line-height: 1.11111;
+      margin-top: 110px;
+      margin-bottom: 5rem;
     }
     @include th-assert-actual {
       @include th-breakpoint-context(1024px) {
