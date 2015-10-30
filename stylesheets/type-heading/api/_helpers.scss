@@ -285,6 +285,35 @@
   @return $_return;
 }
 
+//  th-list-flatten()
+/// Turns multidimensional `$list` into a one-level list.
+///
+/// @since 0.0.15
+/// @link https://github.com/at-import/SassyLists/blob/master/stylesheets/SassyLists/_flatten.scss
+/// @return {list} Flattened one-level list.
+///
+/// @param {list} $list - Multidimensional list to flatten
+///
+/// @example scss - Flatten multidimensional list.
+///   th-list-flatten(a, b, (c, d))
+///   // (a, b, c, d)
+
+@function th-list-flatten($list) {
+  $result: ();
+  @each $item in $list {
+    @if length($item) > 1 {
+      $flatten: th-list-flatten($item);
+      @each $i in $flatten {
+        $result: append($result, $i, list-separator($list));
+      }
+    }
+    @else {
+      $result: append($result, $item, list-separator($list));
+    }
+  }
+  @return $result;
+}
+
 // Units
 // ------------------------------
 

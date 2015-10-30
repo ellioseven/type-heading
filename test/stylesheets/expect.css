@@ -64,6 +64,11 @@ function th-list-has-deep {
   result: false;
 }
 
+function th-list-flatten {
+  /* Describe: Flatten multidimensional list. */
+  result: a, b, c, d;
+}
+
 function th-unit-strip {
   /* Describe: Strip unit from 32px. */
   result: 32;
@@ -239,40 +244,40 @@ function _th-property-unit-convert-property {
 
 mixin th-heading {
   /* Describe: Output styles for a heading. */
-  margin-top: 30px;
-  margin-bottom: 1.66667rem;
   font-size: 0.55556em;
   line-height: 2;
+  margin-top: 30px;
+  margin-bottom: 1.66667rem;
   /* Describe: Output styles for a heading manually. */
-  margin-top: 30px;
-  margin-bottom: 1.66667rem;
   font-size: 0.55556em;
   line-height: 2;
+  margin-top: 30px;
+  margin-bottom: 1.66667rem;
   /* Describe: Output styles for a heading with a breakpoint. */
-  margin-top: 70px;
-  margin-bottom: 3.33333rem;
   font-size: 2.77778em;
   line-height: 1.2;
+  margin-top: 70px;
+  margin-bottom: 3.33333rem;
   /* Describe: Output styles for a heading with a breakpoint manually. */
-  margin-top: 70px;
-  margin-bottom: 3.33333rem;
   font-size: 2.77778em;
   line-height: 1.2;
+  margin-top: 70px;
+  margin-bottom: 3.33333rem;
   /* Describe: Output styles for a heading with a default keyword. */
-  margin-top: 28px;
-  margin-bottom: 2rem;
   font-size: 0.22222em;
   line-height: 0.5;
+  margin-top: 28px;
+  margin-bottom: 2rem;
   /* Describe: Output styles for a heading with only one value. */
-  margin-top: 3px;
-  margin-bottom: 0.16667rem;
   font-size: 0.27778em;
   line-height: 0.4;
+  margin-top: 3px;
+  margin-bottom: 0.16667rem;
   /* Describe: Output styles for a heading with a singular list value. */
-  margin-top: 29px;
-  margin-bottom: 1.20833rem;
   font-size: 0.5em;
   line-height: 2.11111;
+  margin-top: 29px;
+  margin-bottom: 1.20833rem;
   /* Describe: Output only font-size and line-height styles for a heading. */
   font-size: 0.55556em;
   line-height: 2;
@@ -280,33 +285,33 @@ mixin th-heading {
 
 mixin th-headings {
   /* Describe: Output styles for a heading. */
-  margin-top: 3px;
-  margin-bottom: 0.16667rem;
   font-size: 0.27778em;
   line-height: 0.4;
+  margin-top: 3px;
+  margin-bottom: 0.16667rem;
   /* Describe: Output styles for a heading with multiple breakpoints. */
-  margin-top: 30px;
-  margin-bottom: 1.66667rem;
   font-size: 0.55556em;
   line-height: 2;
+  margin-top: 30px;
+  margin-bottom: 1.66667rem;
   /* Describe: Output font-size and line-height styles for h1 heading with multiple breakpoints. */
   font-size: 0.55556em;
   line-height: 2;
 }
 @media (min-width: 768px) {
   mixin th-headings {
-    margin-top: 70px;
-    margin-bottom: 3.33333rem;
     font-size: 2.77778em;
     line-height: 1.2;
+    margin-top: 70px;
+    margin-bottom: 3.33333rem;
   }
 }
 @media (min-width: 1024px) {
   mixin th-headings {
-    margin-top: 110px;
-    margin-bottom: 5rem;
     font-size: 5em;
     line-height: 1.11111;
+    margin-top: 110px;
+    margin-bottom: 5rem;
   }
 }
 @media (min-width: 768px) {
@@ -411,33 +416,33 @@ mixin th-breakpoint {
 }
 @media (min-width: 768px) {
   mixin th-breakpoint {
-    margin-top: 69px;
-    margin-bottom: 2.875rem;
     font-size: 2.72222em;
     line-height: 1.20408;
+    margin-top: 69px;
+    margin-bottom: 2.875rem;
   }
 }
 @media (max-width: 768px) {
   mixin th-breakpoint {
-    margin-top: 69px;
-    margin-bottom: 2.875rem;
     font-size: 2.72222em;
     line-height: 1.20408;
+    margin-top: 69px;
+    margin-bottom: 2.875rem;
   }
 }
 @media (min-width: 768px) and (max-width: 1023px) {
   mixin th-breakpoint {
-    margin-top: 69px;
-    margin-bottom: 2.875rem;
     font-size: 2.72222em;
     line-height: 1.20408;
+    margin-top: 69px;
+    margin-bottom: 2.875rem;
   }
 }
 
 mixin th-breakpoint-context {
   /* Describe: Output a heading with a 768px breakpoint context. */
-  margin-top: 110px;
-  margin-bottom: 5rem;
   font-size: 5em;
   line-height: 1.11111;
+  margin-top: 110px;
+  margin-bottom: 5rem;
 }

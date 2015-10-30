@@ -3,6 +3,13 @@
 /// @group Core
 ////
 
+$_th-core-heading-structure: (
+  font-size,
+  line-height,
+  (margin-top margin-bottom),
+  breakpoint
+);
+
 //  $_th-core-contexts
 /// Global values to keep track of contexts.
 ///

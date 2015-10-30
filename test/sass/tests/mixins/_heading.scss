@@ -9,10 +9,10 @@ mixin th-heading {
     $describe: "Output styles for a heading."
   ){
     @include th-assert-expect {
-      margin-top: 30px;
-      margin-bottom: 1.66667rem;
       font-size: 0.55556em;
       line-height: 2;
+      margin-top: 30px;
+      margin-bottom: 1.66667rem;
     }
     @include th-assert-actual {
       @include th-heading(h1);
@@ -23,10 +23,10 @@ mixin th-heading {
     $describe: "Output styles for a heading manually."
   ){
     @include th-assert-expect {
-      margin-top: 30px;
-      margin-bottom: 1.66667rem;
       font-size: 0.55556em;
       line-height: 2;
+      margin-top: 30px;
+      margin-bottom: 1.66667rem;
     }
     @include th-assert-actual {
       @include th-heading(10px 20px (30px 40px));
@@ -37,10 +37,10 @@ mixin th-heading {
     $describe: "Output styles for a heading with a breakpoint."
   ){
     @include th-assert-expect {
-      margin-top: 70px;
-      margin-bottom: 3.33333rem;
       font-size: 2.77778em;
       line-height: 1.2;
+      margin-top: 70px;
+      margin-bottom: 3.33333rem;
     }
     @include th-assert-actual {
       @include th-heading(h1, 768px);
@@ -51,10 +51,10 @@ mixin th-heading {
     $describe: "Output styles for a heading with a breakpoint manually."
   ){
     @include th-assert-expect {
-      margin-top: 70px;
-      margin-bottom: 3.33333rem;
       font-size: 2.77778em;
       line-height: 1.2;
+      margin-top: 70px;
+      margin-bottom: 3.33333rem;
     }
     @include th-assert-actual {
       @include th-heading((10px 20px (30px 40px), 50px 60px (70px 80px) 768px, 90px 100px (110px 120px) 1024px), 768px);
@@ -65,10 +65,10 @@ mixin th-heading {
     $describe: "Output styles for a heading with a default keyword."
   ){
     @include th-assert-expect {
-      margin-top: 28px;
-      margin-bottom: 2rem;
       font-size: 0.22222em;
       line-height: 0.5;
+      margin-top: 28px;
+      margin-bottom: 2rem;
     }
     @include th-assert-actual {
       @include th-heading(h7);
@@ -79,10 +79,10 @@ mixin th-heading {
     $describe: "Output styles for a heading with only one value."
   ){
     @include th-assert-expect {
-      margin-top: 3px;
-      margin-bottom: 0.16667rem;
       font-size: 0.27778em;
       line-height: 0.4;
+      margin-top: 3px;
+      margin-bottom: 0.16667rem;
     }
     @include th-assert-actual {
       @include th-heading(h6);
@@ -93,10 +93,10 @@ mixin th-heading {
     $describe: "Output styles for a heading with a singular list value."
   ){
     @include th-assert-expect {
-      margin-top: 29px;
-      margin-bottom: 1.20833rem;
       font-size: 0.5em;
       line-height: 2.11111;
+      margin-top: 29px;
+      margin-bottom: 1.20833rem;
     }
     @include th-assert-actual {
       @include th-heading(h2);
@@ -129,10 +129,10 @@ mixin th-headings {
     $describe: "Output styles for a heading."
   ){
     @include th-assert-expect {
-      margin-top: 3px;
-      margin-bottom: 0.16667rem;
       font-size: 0.27778em;
       line-height: 0.4;
+      margin-top: 3px;
+      margin-bottom: 0.16667rem;
     }
     @include th-assert-actual {
       @include th-headings(h6);
@@ -143,21 +143,21 @@ mixin th-headings {
     $describe: "Output styles for a heading with multiple breakpoints."
   ){
     @include th-assert-expect {
-      margin-top: 30px;
-      margin-bottom: 1.66667rem;
       font-size: 0.55556em;
       line-height: 2;
+      margin-top: 30px;
+      margin-bottom: 1.66667rem;
       @media (min-width: 768px) {
-        margin-top: 70px;
-        margin-bottom: 3.33333rem;
         font-size: 2.77778em;
         line-height: 1.2;
+        margin-top: 70px;
+        margin-bottom: 3.33333rem;
       }
       @media (min-width: 1024px) {
-        margin-top: 110px;
-        margin-bottom: 5rem;
         font-size: 5em;
         line-height: 1.11111;
+        margin-top: 110px;
+        margin-bottom: 5rem;
       }
     }
     @include th-assert-actual {
