@@ -188,6 +188,20 @@ mixin th-headings {
     }
   }
 
+  @include th-assert(
+    $describe: "Output styles for a heading with no breakpoint."
+  ){
+    @include th-assert-expect {
+      font-size: 0.16667em;
+      line-height: 1.33333;
+      margin-top: 5px;
+      margin-bottom: 0.20833rem;
+    }
+    @include th-assert-actual {
+      @include th-headings(h8);
+    }
+  }
+
 }
 
 // _th-heading-context-loop()
@@ -236,7 +250,7 @@ mixin _th-heading-context-loop {
 mixin th-heading-context {
 
   @include th-assert(
-    $describe: "Description."
+    $describe: "Loop heading context without breakpoint output."
   ){
     @include th-assert-expect {
       result: 10px 20px (30px 40px);
@@ -251,7 +265,7 @@ mixin th-heading-context {
   }
 
   @include th-assert(
-    $describe: "Description."
+    $describe: "Loop heading context with breakpoint output."
   ){
     @include th-assert-expect {
       result: 10px 20px (30px 40px);

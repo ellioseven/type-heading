@@ -106,13 +106,23 @@
   $heading,
   $breakpoint-output: false
 ){
-  $loop: 1;
+
   $heading: th-heading-get-map($heading);
-  @include _th-heading-context-loop($heading, $breakpoint-output) {
-    @include th-core-context-set(heading, nth($heading, $loop)) {
+  @if _th-heading-has-next($heading) {
+    @include _th-heading-context-loop($heading, $breakpoint-output) {
+      @include th-core-context-set(
+        heading, th-heading(
+          $heading: $heading,
+          $breakpoint: th-core-context-get(breakpoint)
+        )
+      ){
+        @content;
+      }
+    }
+  } @else {
+    @include th-core-context-set(heading, $heading) {
       @content;
     }
-    $loop: $loop + 1;
   }
 }
 
@@ -131,20 +141,22 @@
   $breakpoint-output: false
 ){
   $heading-map: th-heading-get-map($heading);
-  @each $heading-list in $heading-map {
-    $breakpoint: _th-property-get($heading-list, breakpoint);
-    @if $breakpoint {
-      @if $breakpoint-output {
-        @include th-breakpoint($breakpoint, $breakpoint) {
-          @content;
+  @if _th-heading-has-next($heading) {
+    @each $heading-list in $heading-map {
+      $breakpoint: _th-property-get($heading-list, breakpoint);
+      @if $breakpoint {
+        @if $breakpoint-output {
+          @include th-breakpoint($breakpoint, $breakpoint) {
+            @content;
+          }
+        } @else {
+          @include th-breakpoint-context($breakpoint) {
+            @content;
+          }
         }
       } @else {
-        @include th-breakpoint-context($breakpoint) {
-          @content;
-        }
+        @content;
       }
-    } @else {
-      @content;
     }
   }
 }

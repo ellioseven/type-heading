@@ -335,6 +335,11 @@ mixin th-headings {
   /* Describe: Output font-size and line-height styles for h1 heading with multiple breakpoints. */
   font-size: 0.55556em;
   line-height: 2;
+  /* Describe: Output styles for a heading with no breakpoint. */
+  font-size: 0.16667em;
+  line-height: 1.33333;
+  margin-top: 5px;
+  margin-bottom: 0.20833rem;
 }
 @media (min-width: 768px) {
   mixin th-headings {
@@ -377,11 +382,11 @@ mixin _th-heading-context-loop {
 }
 
 mixin th-heading-context {
-  /* Describe: Description. */
+  /* Describe: Loop heading context without breakpoint output. */
   result: 10px 20px 30px 40px;
   result: 50px 60px 70px 80px 768px;
   result: 90px 100px 110px 120px 1024px;
-  /* Describe: Description. */
+  /* Describe: Loop heading context with breakpoint output. */
   result: 10px 20px 30px 40px;
 }
 @media (min-width: 768px) {

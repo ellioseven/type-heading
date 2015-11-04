@@ -62,6 +62,8 @@ Used By
 
 * [mixin] ``th-headings``
 
+* [mixin] ``th-heading-context``
+
 Since
 ~~~~~
 

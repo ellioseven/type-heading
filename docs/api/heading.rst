@@ -75,6 +75,8 @@ Used By
 
 * [mixin] ``th-heading``
 
+* [mixin] ``th-heading-context``
+
 * [function] ``th-property``
 
 Since
@@ -379,13 +381,23 @@ Source
 .. code-block:: scss
 
 	@mixin th-heading-context($heading) { 
-	  $loop: 1;
+	
 	  $heading: th-heading-get-map($heading);
-	  @include _th-heading-context-loop($heading, $breakpoint-output) {
-	    @include th-core-context-set(heading, nth($heading, $loop)) {
+	  @if _th-heading-has-next($heading) {
+	    @include _th-heading-context-loop($heading, $breakpoint-output) {
+	      @include th-core-context-set(
+	        heading, th-heading(
+	          $heading: $heading,
+	          $breakpoint: th-core-context-get(breakpoint)
+	        )
+	      ){
+	        @content;
+	      }
+	    }
+	  } @else {
+	    @include th-core-context-set(heading, $heading) {
 	      @content;
 	    }
-	    $loop: $loop + 1;
 	  }
 	}
 
@@ -428,6 +440,10 @@ Requires
 * ``th-core-context-set``
 
 * ``th-heading-get-map``
+
+* ``th-heading``
+
+* ``th-core-context-get``
 
 Used By
 ~~~~~~~
