@@ -1,4 +1,4 @@
-Type Heading 0.0.15
+Type Heading 0.0.16
 ===================
 
 Type Heading is a lightweight Compass Extension that lets you easily manage
