@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   # Release Specific Information
-  s.version = "0.0.15"
-  s.date = "2015-03-23"
+  s.version = "0.0.16"
+  s.date = "2015-11-04"
 
   # Gem Details
   s.name = "type-heading"
