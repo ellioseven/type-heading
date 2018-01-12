@@ -78,8 +78,7 @@ h1 {
 
 ## Libsass Compatible
 
-Ruby is fucking slow as fuck and I hate it. Type heading is 100% (or will try to
-be) compatible with Libsass.
+Type heading aims for 100% compatible with Libsass.
 
 ## Organised & Maintainable
 
