@@ -20,8 +20,7 @@ Contents
 Libsass Compatible
 ------------------
 
-Ruby is fucking slow as fuck and I hate it. Type heading is 100% (or will try to
-be) compatible with Libsass.
+Type heading is aims for 100% compatability with Libsass.
 
 Organised & Maintainable
 ------------------------

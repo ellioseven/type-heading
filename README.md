@@ -78,7 +78,7 @@ h1 {
 
 ## Libsass Compatible
 
-Type heading aims for 100% compatible with Libsass.
+Type heading aims for 100% compatability with Libsass.
 
 ## Organised & Maintainable
 
