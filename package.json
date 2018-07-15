@@ -3,10 +3,6 @@
   "version": "0.0.17",
   "description": "A responsive typography tool.",
   "main": "index.js",
-  "directories": {
-    "doc": "docs",
-    "test": "test"
-  },
   "devDependencies": {
     "breakpoint-sass": "^2.7.1",
     "gulp": "^3.9.1",
