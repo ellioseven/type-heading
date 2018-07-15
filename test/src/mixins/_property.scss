@@ -1,0 +1,183 @@
+@include test-module('th-property') {
+
+  @include test('[th-property] Output font-size for a heading.') {
+    @include assert {
+      @include output { @include th-property($property-name: font-size, $heading: h1); }
+      @include expect {
+        font-size: 0.55556em;
+      }
+    }
+  }
+
+  @include test('[th-property] Output font-size for a heading with a breakpoint.') {
+    @include assert {
+      @include output { @include th-property($property-name: font-size, $heading: h1, $breakpoint: 768px); }
+      @include expect {
+        font-size: 2.77778em;
+      }
+    }
+  }
+
+  @include test('[th-property] Output font-size for a heading with a single value.') {
+    @include assert {
+      @include output { @include th-property($property-name: font-size, $heading: h6); }
+      @include expect {
+        font-size: 0.27778em;
+      }
+    }
+  }
+
+  @include test('[th-property] Output font-size for a heading without unit conversion.') {
+    @include assert {
+      @include output { @include th-property($property-name: font-size, $heading: h6, $convert: false); }
+      @include expect {
+        font-size: 5px;
+      }
+    }
+  }
+
+  @include test('[th-property] Output font-size from heading and unit override to percent.') {
+    @include assert {
+      @include output { @include th-property($property-name: font-size, $heading: h1, $breakpoint: false, $convert: percent); }
+      @include expect {
+        font-size: 55.55556%;
+      }
+    }
+  }
+
+  @include test('[th-property] Output property from heading and unit override to percent with base font size of 14px.') {
+    @include assert {
+      @include output { @include th-property($property-name: font-size, $heading: h1, $breakpoint: 768px, $convert: percent, $base-font-size: 14px); }
+      @include expect {
+        font-size: 357.14286%;
+      }
+    }
+  }
+
+  @include test('[th-property] Output line-height for a heading.') {
+    @include assert {
+      @include output { @include th-property($property-name: line-height, $heading: h1); }
+      @include expect {
+        line-height: 2;
+      }
+    }
+  }
+
+  @include test('[th-property] Output line-height for a heading with a breakpoint.') {
+    @include assert {
+      @include output { @include th-property($property-name: line-height, $heading: h1, $breakpoint: 768px); }
+      @include expect {
+        line-height: 1.2;
+      }
+    }
+  }
+
+  @include test('[th-property] Output line-height for a heading without unit conversion.') {
+    @include assert {
+      @include output { @include th-property($property-name: line-height, $heading: h1, $convert: false); }
+      @include expect {
+        line-height: 20px;
+      }
+    }
+  }
+
+  @include test('[th-property] Output line-height from heading and unit override to percent.') {
+    @include assert {
+      @include output { @include th-property($property-name: line-height, $heading: h1, $breakpoint: false, $convert: percent); }
+      @include expect {
+        line-height: 200%;
+      }
+    }
+  }
+
+  @include test('[th-property] Output margin-top for a heading.') {
+    @include assert {
+      @include output { @include th-property($property-name: margin-top, $heading: h1); }
+      @include expect {
+        margin-top: 30px;
+      }
+    }
+  }
+
+  @include test('[th-property] Output margin-top for a heading with a breakpoint.') {
+    @include assert {
+      @include output { @include th-property($property-name: margin-top, $heading: h1, $breakpoint: 768px); }
+      @include expect {
+        margin-top: 70px;
+      }
+    }
+  }
+
+  @include test('[th-property] Output margin-top for a heading with a singular list value.') {
+    @include assert {
+      @include output { @include th-property($property-name: margin-top, $heading: h2); }
+      @include expect {
+        margin-top: 29px;
+      }
+    }
+  }
+
+  @include test('[th-property] Output margin-top for a heading without unit conversion.') {
+    @include assert {
+      @include output { @include th-property($property-name: margin-top, $heading: h2, $convert: false); }
+      @include expect {
+        margin-top: 29px;
+      }
+    }
+  }
+
+  @include test('[th-property] Output margin-top from heading and unit override to percent.') {
+    @include assert {
+      @include output { @include th-property($property-name: margin-top, $heading: h1, $convert: percent); }
+      @include expect {
+        margin-top: 300%;
+      }
+    }
+  }
+
+  @include test('[th-property] Output margin-bottom for a heading.') {
+    @include assert {
+      @include output { @include th-property($property-name: margin-bottom, $heading: h1); }
+      @include expect {
+        margin-bottom: 2.22222rem;
+      }
+    }
+  }
+
+  @include test('[th-property] Output margin-bottom for a heading with a breakpoint.') {
+    @include assert {
+      @include output { @include th-property($property-name: margin-bottom, $heading: h1, $breakpoint: 768px); }
+      @include expect {
+        margin-bottom: 4.44444rem;
+      }
+    }
+  }
+
+  @include test('[th-property] Output margin-bottom for a heading with a singular list value.') {
+    @include assert {
+      @include output { @include th-property($property-name: margin-bottom, $heading: h2); }
+      @include expect {
+        margin-bottom: 1.61111rem;
+      }
+    }
+  }
+
+  @include test('[th-property] Output margin-bottom for a heading without unit conversion.') {
+    @include assert {
+      @include output { @include th-property($property-name: margin-bottom, $heading: h2, $convert: false); }
+      @include expect {
+        margin-bottom: 29px;
+      }
+    }
+  }
+
+  @include test('[th-property] Output margin-bottom from heading and unit override to percent.') {
+    @include assert {
+      @include output { @include th-property($property-name: margin-bottom, $heading: h1, $convert: percent); }
+      @include expect {
+        margin-bottom: 400%;
+      }
+    }
+  }
+
+}

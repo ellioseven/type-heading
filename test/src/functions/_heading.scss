@@ -1,0 +1,91 @@
+@include test-module('th-heading') {
+
+  @include test('[th-heading] Return heading.') {
+    $test: th-heading(h1);
+    $expect: (10px 20px (30px 40px));
+    @include assert-equal($test, $expect);
+  }
+
+	@include test('[th-heading] Return heading by breakpoint.') {
+    $test: th-heading(h1, 768px);
+    $expect: (50px 60px (70px 80px) 768px);
+    @include assert-equal($test, $expect);
+  }
+
+	@include test('[th-heading] Return heading by breakpoint.') {
+    $test: th-heading(h1, 1024px);
+    $expect: (90px 100px (110px 120px) 1024px);
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('th-heading-get-map') {
+
+	@include test('[th-heading-get-map] Return heading map.') {
+    $test: th-heading-get-map(h6);
+    $expect: (5px);
+    @include assert-equal($test, $expect);
+  }
+
+	@include test('[th-heading-get-map] Return heading map with breakpoint.') {
+    $test: th-heading-get-map(h1);
+    $expect: (10px 20px (30px 40px), 50px 60px (70px 80px) 768px, 90px 100px (110px 120px) 1024px);
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('th-heading-has-next') {
+
+	@include test('[th-heading-has-next] Check for heading with next.') {
+    $test: _th-heading-has-next(h1);
+    $expect: true;
+    @include assert-equal($test, $expect);
+  }
+
+	@include test('[th-heading-has-next] Check for heading without next.') {
+    $test: _th-heading-has-next(h6);
+    $expect: false;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('th-heading-get-next') {
+
+	@include test('[th-heading-get-next] Get heading with next.') {
+    $test: _th-heading-get-next(h1);
+    $expect: (10px 20px (30px 40px));
+    @include assert-equal($test, $expect);
+  }
+
+	@include test('[th-heading-get-next] Get heading with next and breakpoint.') {
+    $test: _th-heading-get-next(h1, 768px);
+    $expect: (50px 60px (70px 80px) 768px);
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('th-h') {
+
+	@include test('[th-h] Return heading.') {
+    $test: th-h(h1);
+    $expect: (10px 20px (30px 40px));
+    @include assert-equal($test, $expect);
+  }
+
+	@include test('[th-h] Return heading by breakpoint.') {
+    $test: th-h(h1, 768px);
+    $expect: (50px 60px (70px 80px) 768px);
+    @include assert-equal($test, $expect);
+  }
+
+	@include test('[th-h] Return a further heading by breakpoint.') {
+    $test: th-h(h1, 1024px);
+    $expect: (90px 100px (110px 120px) 1024px);
+    @include assert-equal($test, $expect);
+  }
+
+}

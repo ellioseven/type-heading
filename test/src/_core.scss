@@ -1,0 +1,33 @@
+@include test-module('th-core-context-get|set') {
+
+  @include test('[th-core-context-get|set] Return breakpoint list from context.') {
+    $expect: 768px;
+    @include th-core-context-set(breakpoint, 768px) {
+      $test: th-core-context-get(breakpoint);
+      @include assert-equal($test, $expect);
+    }
+  }
+
+  @include test('[th-core-context-get|set] Return h1 heading list from context.') {
+    $expect: 10px 20px (30px 40px);
+    $heading: th-heading(h1);
+    @include th-core-context-set(heading, $heading) {
+      $test: th-core-context-get(heading);
+      @include assert-equal($test, $expect);
+    }
+  }
+
+  @include test('[th-core-context-get|set] Interact heading context with API.') {
+    $expect: (10px, 20px, 30px, 40px);
+    @include th-core-context-set(heading, th-heading(h1)) {
+      $heading: th-core-context-get(heading);
+      $font-size: th-property($heading: $heading, $property-name: font-size, $convert: false);
+      $line-height: th-property($heading: $heading, $property-name: line-height, $convert: false);
+      $margin-top: th-property($heading: $heading, $property-name: margin-top, $convert: false);
+      $margin-bottom: th-property($heading: $heading, $property-name: margin-bottom, $convert: false);
+      $test: ($font-size, $line-height, $margin-top, $margin-bottom);
+      @include assert-equal($test, $expect);
+    }
+  }
+
+}
