@@ -31,7 +31,7 @@
       }
     }
   } @else {
-    @warn 'th-breakpoint requires the Breakpoint gem - https://github.com/at-import/breakpoint';
+    @warn 'th-breakpoint requires the breakpoint-sass module - https://github.com/at-import/breakpoint';
   }
 }
 
