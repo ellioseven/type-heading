@@ -1,6 +1,6 @@
 {
   "name": "type-heading",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "A responsive typography tool.",
   "main": "index.js",
   "directories": {
@@ -8,13 +8,15 @@
     "test": "test"
   },
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-compass": "^1.0.3",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-sassdoc": "^2.0.1",
-    "grunt-shell": "^1.1.2",
-    "sassdoc": "^2.1.15",
-    "sassdoc-theme-rest": "1.0.2"
+    "breakpoint-sass": "^2.7.1",
+    "gulp": "^3.9.1",
+    "gulp-mocha": "^6.0.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sass-lint": "^1.4.0",
+    "sass-true": "^4.0.0",
+    "sassdash": "^0.9.0",
+    "sassdoc": "^2.5.0",
+    "sassdoc-theme-markdown": "^2.0.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/ellioseven/type-heading/issues"
   },
-  "homepage": "https://github.com/ellioseven/type-heading#readme"
+  "homepage": "https://github.com/ellioseven/type-heading#readme",
+  "dependencies": {
+    "sass-units-translate": "^1.0.3"
+  }
 }
