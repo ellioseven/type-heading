@@ -176,7 +176,6 @@ $th-base-font-size: 18px;
 ```
 
 ## Working With Headings
----------------------
 
 To output the styles for a heading list, use `th-heading()` like so:
 
