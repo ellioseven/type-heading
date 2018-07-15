@@ -64,7 +64,7 @@
       $_return: $_return / $number;
     }
   }
-  @return $_return; 
+  @return $_return;
 }
 
 //  th-math-round-to()
@@ -317,7 +317,7 @@
 // Units
 // ------------------------------
 
-//  _th-unit-convert()
+//  th-unit-convert()
 /// Coverts a number into another unit.
 ///
 /// @since 0.0.14
@@ -328,10 +328,10 @@
 /// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
 ///
 /// @example scss - Convert 14px to em.
-///   _th-unit-convert($unit: em, $number: 14px)
+///   th-unit-convert($unit: em, $number: 14px)
 ///   // 0.875em
 /// @example scss - Convert 14px with base font size of 20px to em.
-///   _th-unit-convert($unit: em, $number: 14px, $base-font-size: 20px)
+///   th-unit-convert($unit: em, $number: 14px, $base-font-size: 20px)
 ///   // 0.700em
 
 @function th-unit-convert(
@@ -339,273 +339,12 @@
   $number,
   $base-font-size: $th-base-font-size
 ){
-  $function: th-unit-convert-#{$unit};
+  $function: sut-unit-#{$unit};
+  // REM requires root base font size.
+  @if ($unit == rem) { $base-font-size: $th-base-font-size }
   @if function-exists($function) and unit($number) != $unit {
-    @return call($function, $number, $base-font-size);
+    @return call(get-function($function), $number, $base-font-size);
   } @else {
     @return $number;
   }
-}
-
-//  th-unit-strip()
-/// Strips the unit from a number.
-///
-/// @since 0.0.11
-/// @return {number} The stripped number.
-///
-/// @param {number} $number - Number to strip unit from.
-///
-/// @example scss - Strip px from 24px.
-///   th-unit-strip(24px)
-///   // 24
-
-@function th-unit-strip(
-  $number
-){
-  $_return: $number / ($number * 0 + 1);
-  @return $_return;
-}
-
-//  th-unit-cast()
-/// Creates a number with a unit.
-///
-/// @since 0.0.11
-/// @return {number} The number with new unit.
-///
-/// @param {number} $number - The unitless number to create.
-/// @param {string} $unit - The type of unit to create.
-///
-/// @example scss - Change 24 to 24px.
-///   th-unit-cast(24, px);
-///   // 24px
-
-@function th-unit-cast(
-  $number,
-  $unit
-){
-  $_return: $number;
-  $strings: px em rem;
-  $units: 1px 1em 1rem;
-  $index: index($strings, $unit);
-  @if $index {
-    $_return: $number * nth($units, $index);
-  }
-  @return $_return;
-}
-
-//  th-unit-convert-number()
-/// Converts the unit of a number.
-///
-/// @since 0.0.11
-/// @return {number} The converted number.
-///
-/// @param {number} $number - The numbered unit to convert.
-/// @param {string} $unit - The unit to convert to.
-///
-/// @example scss - Convert unit of 24px to em.
-///   th-unit-convert-number(24px, em)
-///   // 24em
-
-@function th-unit-convert-number(
-  $number,
-  $unit
-){
-  $_return: $number;
-  $_return: th-unit-strip($number) * th-unit-cast(1, $unit);
-  @if ($_return == th-unit-cast(0, $unit)) { 
-    $_return: 0;
-  }
-  @return $_return;
-}
-
-//  th-unit-convert-absolute()
-/// Converts a relative number to an absolute number.
-///
-/// @since 0.0.11
-/// @return {number} The converted absolute number.
-///
-/// @param {number} $number - The number to convert.
-/// @param {string} $unit - The type of absolute unit.
-/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
-///
-/// @example scss - Convert 2em to px.
-///   th-unit-convert-absolute(2em, px)
-///   // 32px
-/// @example scss - Convert 2em to px with base font size of 10px.
-///   th-unit-convert-absolute(2em, px, 10px);
-///   // 20px
-
-@function th-unit-convert-absolute(
-  $number,
-  $unit,
-  $base-font-size: $th-base-font-size
-){
-  $_return: $number;
-  $_return: th-unit-strip($number) * th-unit-strip($base-font-size);
-  $_return: th-math-round-to($_return, 5);
-  @if $unit {
-    $_return: th-unit-convert-number($_return, $unit);
-  }
-  @return $_return;
-}
-
-//  th-unit-convert-relative()
-/// Converts an absolute number to a relative number.
-///
-/// @since 0.0.11
-/// @return {number} The converted relative number.
-///
-/// @param {number} $number - The number to convert.
-/// @param {string} $unit - The type of relative unit.
-/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
-///
-/// @example scss - Convert 24px to em.
-///   th-unit-convert-relative(24px, em)
-///   // 1.5
-/// @example scss - Convert 24px to em with a base font size of 32px.
-///   th-unit-convert-relative(24px, em, 32px)
-///   // 0.75em
-
-@function th-unit-convert-relative(
-  $number,
-  $unit,
-  $base-font-size: $th-base-font-size
-){
-  $_return: $number;
-  $_return: th-unit-strip($number) / th-unit-strip($base-font-size);
-  @if $unit {
-    $_return: th-unit-convert-number($_return, $unit);
-  }
-  @return $_return;
-}
-
-//  th-unit-convert-em()
-/// Converts an absolute number to an em number.
-///
-/// @since 0.0.11
-/// @return {number} The converted number with em unit.
-///
-/// @param {number} $number - The number to convert.
-/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
-///
-/// @example scss - Convert 24px to em.
-///   th-unit-convert-em(24px)
-///   // 1.5em
-/// @example scss - Convert 24px to em with a base font size of 32px.
-///   th-unit-convert-em(24px, 32px)
-///   // 0.75em
-
-@function th-unit-convert-em(
-  $number,
-  $base-font-size: $th-base-font-size
-){
-  $_return: $number;
-  $_return: th-math-round-to($_return, 5);
-  $_return: th-unit-convert-relative($_return, em, $base-font-size);
-  @return $_return;
-}
-
-//  th-unit-convert-rem()
-/// Converts an absolute number to an rem number.
-///
-/// @since 0.0.11
-/// @return {number} The converted number with rem unit.
-///
-/// @param {number} $number - The number to convert.
-/// @param {number} $base-font-size [$th-rem-base] - Font size used for rem calculations.
-///
-/// @example scss - Convert 24px to rem.
-///   th-unit-convert-rem(24px)
-///   // 1.5rem
-/// @example scss - Convert 24px to rem with a rem base of 32px.
-///   th-unit-convert-rem(24px, 32px)
-///   // 0.75rem
-
-@function th-unit-convert-rem(
-  $number,
-  $base-font-size: $th-rem-base
-){
-  $_return: $number;
-  $_return: th-math-round-to($_return, 5);
-  $_return: th-unit-convert-relative($_return, rem, $th-rem-base);
-  @return $_return;
-}
-
-//  th-unit-convert-rel
-/// Converts an absolute number to a relative number.
-///
-/// @since 0.0.11
-/// @return {number} The converted relative number.
-///
-/// @param {number} $number - The number to convert.
-/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
-///
-/// @example scss - Convert 24px to a relative number.
-///   th-unit-convert-rel(24px)
-///   // 1.5
-/// @example scss - 24px to a relative number with a base font size of 32px.
-///   th-unit-convert-rel(24px, 32px)
-///   // 0.75
-
-@function th-unit-convert-rel(
-  $number,
-  $base-font-size: $th-base-font-size
-){
-  $_return: $number;
-  $_return: th-math-round-to($_return, 5);
-  $_return: th-unit-convert-relative($_return, false, $base-font-size);
-  @return $_return;
-}
-
-//  th-unit-convert-px()
-/// Converts a relative number to a px number.
-///
-/// @since 0.0.11
-/// @return {number} The converted absolute number.
-///
-/// @param {number} $number - The number to convert.
-/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
-///
-/// @example scss - Convert 2em to a px number.
-///   th-unit-convert-absolute(2em)
-///   // 32px
-/// @example scss - Convert 2em to a px number with a base font size of 18px.
-///   th-unit-convert-px(2em, 18px)
-///   // 36px
-
-@function th-unit-convert-px(
-  $number,
-  $base-font-size: $th-base-font-size
-){
-  $_return: $number;
-  $_return: th-math-round-to($_return, 5);
-  $_return: th-unit-convert-absolute($_return, px, $base-font-size);
-  @return $_return;
-}
-
-//  th-unit-convert-percent
-/// Converts an absolute number to a percentage.
-///
-/// @since 0.0.11
-/// @return {number} The converted percentage number.
-///
-/// @param {number} $number - The number to convert.
-/// @param {number} $base-font-size [$th-base-font-size] - Font size used for relative calculations.
-///
-/// @example scss - Convert 24px to a percentage.
-///   th-unit-convert-rel(24px)
-///   // 150%
-/// @example scss - Convert 24px to a percentage with a base font size of 32px.
-///   th-unit-convert-rel(24px, 32px)
-///   // 75%
-
-@function th-unit-convert-percent(
-  $number,
-  $base-font-size: $th-base-font-size
-){
-  $_return: $number;
-  $_return: th-math-round-to($_return, 7);
-  $_return: th-unit-convert-relative($number, false, $base-font-size);
-  $_return: $_return * 100%;
-  @return $_return;
 }

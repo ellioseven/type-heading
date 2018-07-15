@@ -1,9 +1,13 @@
 // Type Heading
 
+@import "node_modules/sass-units-translate/sass/sass-units-translate";
+
 // Imports
 // ------------------------------
 
 @import "type-heading/settings";
+@include sut-core-set-base($th-base-font-size);
+
 @import "type-heading/api/helpers";
 @import "type-heading/api/core";
 @import "type-heading/functions/heading";

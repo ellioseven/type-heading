@@ -1,0 +1,102 @@
+@include test-module('th-math-power') {
+
+  @include test('[th-math-power] Calculate power of 5 to 3.') {
+    $test: th-math-power(5, 3);
+    $expect: 125;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[th-math-power] Calculate power of 5 to 1.') {
+    $test: th-math-power(5, 1);
+    $expect: 5;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[th-math-power] Calculate power of -5 to 3.') {
+    $test: th-math-power(-5, 3);
+    $expect: -125;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('th-math-round-to') {
+
+  @include test('[th-math-round-to] Round 5.0246 to 3 decimal places.') {
+    $test: th-math-round-to(5.0246, 3);
+    $expect: 5.025;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('th-map-set') {
+
+  @include test('[th-map-set] Set map key \'foo\' to \'Hello World\'.') {
+    $test: th-map-set((foo: 'First', bar: 'Second'), $key: foo, $value: 'Hello World');
+    $test: map-get($test, foo);
+    $expect: "Hello World";
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('th-list-has-index') {
+
+  @include test('[th-list-has-index] Check list for an index.') {
+    $test: th-list-has-index( (1, 2, 3), 1 );
+    $expect: true;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[th-list-has-index] Check list for an index.') {
+    $test: th-list-has-index( (1, 2, 3), 4 );
+    $expect: false;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('th-list-has') {
+
+  @include test('[th-list-has] Check list for value x (exists).') {
+    $test: th-list-has( (a, b, x), x );
+    $expect: true;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[th-list-has] Check list for value x (exists).') {
+    $test: th-list-has( (a, b, c), x );
+    $expect: false;
+    @include assert-equal($test, $expect);
+  }
+
+}
+
+@include test-module('th-list-has-deep') {
+
+  @include test('[th-list-has-deep] Check list for a value.') {
+    $test: th-list-has-deep( (a, (b, c), d), a);
+    $expect: true;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[th-list-has-deep] Check list for a deep value.') {
+    $test: th-list-has-deep( (a, (b, c), d), c);
+    $expect: true;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[th-list-has-deep] Check list for a deep value that doesnt exist.') {
+    $test: th-list-has-deep( (a, (b, c), d), e);
+    $expect: false;
+    @include assert-equal($test, $expect);
+  }
+
+  @include test('[th-list-has-deep] Flatten multidimensional list.') {
+    $test: th-list-flatten((a, b, (c, d)));
+    $expect: (a, b, c, d);
+    @include assert-equal($test, $expect);
+  }
+
+}

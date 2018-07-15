@@ -2,7 +2,7 @@
 
 # Type Heading
 
-Type Heading is a lightweight Compass Extension that lets you easily manage
+Type Heading is a lightweight libsass extension that lets you easily manage
 responsive typographic sizing.
 
 ```sass
@@ -22,7 +22,7 @@ h1 { @include th-headings(h1); }
 //   font-size: 32px;
 //   line-height: 36px;
 // }
-// 
+//
 // @media (min-width: 768px) {
 //   h1 {
 //     margin-top: 20px;
@@ -76,9 +76,9 @@ h1 {
 // }
 ```
 
-## Libsass Compatible
+## User Guide
 
-Type heading aims for 100% compatability with Libsass.
+For more detail documentation, read `USERGUIDE.md` in this repository.
 
 ## Organised & Maintainable
 

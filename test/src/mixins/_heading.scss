@@ -1,0 +1,231 @@
+@include test-module('th-heading') {
+
+  @include test('[th-heading] Output styles for a heading.') {
+    @include assert {
+      @include output { @include th-heading(h1); }
+      @include expect {
+        font-size: 0.55556em;
+        line-height: 2;
+        margin-top: 30px;
+        margin-bottom: 2.22222rem;
+      }
+    }
+  }
+
+  @include test('[th-heading] Output styles for a heading manually.') {
+    @include assert {
+      @include output { @include th-heading(h1); }
+      @include expect {
+        font-size: 0.55556em;
+        line-height: 2;
+        margin-top: 30px;
+        margin-bottom: 2.22222rem;
+      }
+    }
+  }
+
+  @include test('[th-heading] Output styles for a heading with a breakpoint.') {
+    @include assert {
+      @include output { @include th-heading(h1, 768px); }
+      @include expect {
+        font-size: 2.77778em;
+        line-height: 1.2;
+        margin-top: 70px;
+        margin-bottom: 4.44444rem;
+      }
+    }
+  }
+
+  @include test('[th-heading] Output styles for a heading with a breakpoint manually.') {
+    @include assert {
+      @include output { @include th-heading((10px 20px (30px 40px), 50px 60px (70px 80px) 768px, 90px 100px (110px 120px) 1024px), 768px); }
+      @include expect {
+        font-size: 2.77778em;
+        line-height: 1.2;
+        margin-top: 70px;
+        margin-bottom: 4.44444rem;
+      }
+    }
+  }
+
+  @include test('[th-heading] Output styles for a heading with a default keyword.') {
+    @include assert {
+      @include output { @include th-heading(h7); }
+      @include expect {
+        font-size: 0.22222em;
+        line-height: 0.5;
+        margin-top: 28px;
+        margin-bottom: 2.66667rem;
+      }
+    }
+  }
+
+  @include test('[th-heading] Output styles for a heading with only one value.') {
+    @include assert {
+      @include output { @include th-heading(h6); }
+      @include expect {
+        font-size: 0.27778em;
+        line-height: 0.4;
+        margin-top: 3px;
+        margin-bottom: 0.22222rem;
+      }
+    }
+  }
+
+  @include test('[th-heading] Output styles for a heading with a singular list value.') {
+    @include assert {
+      @include output { @include th-heading(h2); }
+      @include expect {
+        font-size: 0.5em;
+        line-height: 2.11111;
+        margin-top: 29px;
+        margin-bottom: 1.61111rem;
+      }
+    }
+  }
+
+  @include test('[th-heading] Output only font-size and line-height styles for a heading.') {
+    @include assert {
+      @include output { @include th-heading($heading: h1, $include: font-size line-height); }
+      @include expect {
+        font-size: 0.55556em;
+        line-height: 2;
+      }
+    }
+  }
+
+}
+
+@include test-module('th-headings') {
+
+  @include test('[th-headings] Output styles for a heading.') {
+    @include assert {
+      @include output { @include th-headings(h6); }
+      @include expect {
+        font-size: 0.27778em;
+        line-height: 0.4;
+        margin-top: 3px;
+        margin-bottom: 0.22222rem;
+      }
+    }
+  }
+
+  @include test('[th-headings] Output styles for a heading with multiple breakpoints.') {
+    @include assert {
+      @include output { @include th-headings(h1); }
+      @include expect {
+        font-size: 0.55556em;
+        line-height: 2;
+        margin-top: 30px;
+        margin-bottom: 2.22222rem;
+        @media (min-width: 768px) {
+          font-size: 2.77778em;
+          line-height: 1.2;
+          margin-top: 70px;
+          margin-bottom: 4.44444rem;
+        }
+        @media (min-width: 1024px) {
+          font-size: 5em;
+          line-height: 1.11111;
+          margin-top: 110px;
+          margin-bottom: 6.66667rem;
+        }
+      }
+    }
+  }
+
+  @include test('[th-headings] Output font-size and line-height styles for h1 heading with multiple breakpoints.') {
+    @include assert {
+      @include output { @include th-headings($heading: h1, $include: (font-size line-height)); }
+      @include expect {
+        font-size: 0.55556em;
+        line-height: 2;
+        @media (min-width: 768px) {
+          font-size: 2.77778em;
+          line-height: 1.2;
+        }
+        @media (min-width: 1024px) {
+          font-size: 5em;
+          line-height: 1.11111;
+        }
+      }
+    }
+  }
+
+  @include test('[th-headings] Output styles for a heading with no breakpoint.') {
+    @include assert {
+      @include output { @include th-headings(h8); }
+      @include expect {
+        font-size: 0.16667em;
+        line-height: 1.33333;
+        margin-top: 5px;
+        margin-bottom: 0.27778rem;
+      }
+    }
+  }
+
+}
+
+@include test-module('_th-heading-context-loop') {
+
+  @include test('[_th-heading-context-loop] Simple loop through a heading.') {
+    @include assert {
+      @include output { @include _th-heading-context-loop(h1) { result: null; } }
+      @include expect {
+        result: null;
+        result: null;
+        result: null;
+      }
+    }
+  }
+
+  @include test('[_th-heading-context-loop] Return heading font size from each list in a heading.') {
+    @include assert {
+      @include output {
+        $loop: 1;
+        $heading: th-heading-get-map(h1);
+        @include _th-heading-context-loop($heading) {
+          result: nth($heading, $loop);
+          $loop: $loop + 1;
+        }
+      }
+
+      @include expect {
+        result: 10px 20px (30px 40px);
+        result: 50px 60px (70px 80px) 768px;
+        result: 90px 100px (110px 120px) 1024px;
+      }
+    }
+  }
+
+}
+
+@include test-module('th-heading-context') {
+
+  @include test('[th-heading-context] Loop heading context without breakpoint output.') {
+    @include assert {
+      @include output { @include th-heading-context(h1) { result: th-core-context-get(heading); } }
+      @include expect {
+        result: 10px 20px (30px 40px);
+        result: 50px 60px (70px 80px) 768px;
+        result: 90px 100px (110px 120px) 1024px;
+      }
+    }
+  }
+
+  @include test('[th-heading-context] Loop heading context with breakpoint output.') {
+    @include assert {
+      @include output { @include th-heading-context(h1, true) { result: th-core-context-get(heading); } }
+      @include expect {
+        result: 10px 20px (30px 40px);
+        @media (min-width: 768px) {
+          result: 50px 60px (70px 80px) 768px;
+        }
+        @media (min-width: 1024px) {
+          result: 90px 100px (110px 120px) 1024px;
+        }
+      }
+    }
+  }
+
+}
