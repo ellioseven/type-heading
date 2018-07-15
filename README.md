@@ -76,6 +76,10 @@ h1 {
 // }
 ```
 
+## User Guide
+
+For more detail documentation, read `USERGUIDE.md` in this repository.
+
 ## Organised & Maintainable
 
 Reference or change any heading size throughout your stylesheets from a single
