@@ -1,6 +1,6 @@
 {
   "name": "type-heading",
-  "version": "0.0.17",
+  "version": "0.1.0",
   "description": "A responsive typography tool.",
   "main": "index.js",
   "devDependencies": {
