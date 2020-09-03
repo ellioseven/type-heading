@@ -19,31 +19,24 @@ var path = {
   }
 }
 
-gulp.task('default', function () {
-  var tasks = ['sass', 'lint'];
-  gulp.watch(path.sass.src + '/**/*.scss', tasks);
-});
-
-gulp.task('build', ['sass', 'lint', 'test', 'doc']);
-
-gulp.task('sass', function () {
+gulp.task('sass', gulp.series(function () {
   return gulp.src('build.scss')
     .pipe(sass().on('error', sass.logError));
-});
+}));
 
-gulp.task('lint', function () {
+gulp.task('lint', gulp.series(function () {
   return gulp.src(path.doc.src + '/**/*.scss')
     .pipe(sassLint())
     .pipe(sassLint.format())
     .pipe(sassLint.failOnError())
-});
+}));
 
-gulp.task('test', function () {
+gulp.task('test', gulp.series(function () {
   return gulp.src(path.test.src + '/test.js', { read: false })
     .pipe(mocha());
-});
+}));
 
-gulp.task('doc', function () {
+gulp.task('doc', gulp.series(function () {
   return gulp.src(path.doc.src + '/**/*.scss')
     .pipe(sassdoc({
       dest: path.doc.dest,
@@ -57,4 +50,11 @@ gulp.task('doc', function () {
         utilities: 'Utilities'
       }
     }));
-});
+}));
+
+gulp.task('default', gulp.series(function () {
+  var tasks = ['sass', 'lint'];
+  gulp.watch(path.sass.src + '/**/*.scss', gulp.series(tasks));
+}));
+
+gulp.task('build', gulp.series(['sass', 'lint', 'test', 'doc']));

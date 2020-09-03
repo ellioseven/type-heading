@@ -5,7 +5,7 @@
   "main": "index.js",
   "devDependencies": {
     "breakpoint-sass": "^2.7.1",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-mocha": "^6.0.0",
     "gulp-sass": "^4.0.1",
     "gulp-sass-lint": "^1.4.0",
